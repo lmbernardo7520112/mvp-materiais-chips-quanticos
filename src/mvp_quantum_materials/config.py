@@ -4,8 +4,7 @@ Centralizes all configuration, constants, and stability checks.
 No magic numbers allowed outside this module.
 """
 
-from dataclasses import dataclass, field
-from typing import Optional
+from dataclasses import dataclass
 
 # ---------------------------------------------------------------------------
 # Physical Constants
@@ -40,7 +39,7 @@ class ThermalConfig:
     t_init: float = 1500.0
     t_total: float = 1.0
     safety_factor: float = 0.4
-    dt_override: Optional[float] = None
+    dt_override: float | None = None
     n_snapshots: int = 10
 
 
@@ -69,7 +68,7 @@ class DiffusionConfig:
     c_init: float = 0.0
     t_total: float = 1.0
     safety_factor: float = 0.4
-    dt_override: Optional[float] = None
+    dt_override: float | None = None
     n_snapshots: int = 10
 
 
@@ -94,9 +93,7 @@ def compute_max_stable_dt_thermal(dx: float, alpha: float, safety_factor: float)
     return safety_factor * dx**2 / (2.0 * alpha)
 
 
-def compute_max_stable_dt_diffusion(
-    dx: float, d_max: float, safety_factor: float
-) -> float:
+def compute_max_stable_dt_diffusion(dx: float, d_max: float, safety_factor: float) -> float:
     """Compute maximum stable dt for explicit Euler diffusion solver.
 
     Formula: dt_max = safety_factor * dx² / (2 * max(D(T)))

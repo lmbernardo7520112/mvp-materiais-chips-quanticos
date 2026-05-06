@@ -6,7 +6,6 @@ Stability: enforced via CFL check before execution.
 """
 
 from dataclasses import dataclass
-from typing import List
 
 import numpy as np
 import numpy.typing as npt
@@ -32,10 +31,10 @@ class ThermalResult:
     """
 
     T_final: npt.NDArray[np.float64]
-    T_history: List[npt.NDArray[np.float64]]
+    T_history: list[npt.NDArray[np.float64]]
     dt: float
     n_steps: int
-    times: List[float]
+    times: list[float]
 
 
 def solve_thermal_1d(domain: Domain1D, config: ThermalConfig) -> ThermalResult:
@@ -72,8 +71,8 @@ def solve_thermal_1d(domain: Domain1D, config: ThermalConfig) -> ThermalResult:
 
     # Snapshot interval
     snapshot_interval = max(1, n_steps // config.n_snapshots)
-    history: List[npt.NDArray[np.float64]] = [T.copy()]
-    times: List[float] = [0.0]
+    history: list[npt.NDArray[np.float64]] = [T.copy()]
+    times: list[float] = [0.0]
 
     r = config.alpha * dt / dx**2
 

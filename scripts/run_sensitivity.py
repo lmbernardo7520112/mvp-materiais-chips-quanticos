@@ -18,9 +18,7 @@ def main(output_dir: Path) -> None:
     results = run_sensitivity_analysis()
     print(f"  {len(results)} cases evaluated")
 
-    fig_path = plot_sensitivity_results(
-        results, output_dir / "sensitivity_analysis.png"
-    )
+    fig_path = plot_sensitivity_results(results, output_dir / "sensitivity_analysis.png")
     print(f"  Figure saved: {fig_path}")
 
     # Print summary table
@@ -33,7 +31,9 @@ def main(output_dir: Path) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run sensitivity analysis")
     parser.add_argument(
-        "--output-dir", type=Path, default=Path("results/figures"),
+        "--output-dir",
+        type=Path,
+        default=Path("results/figures"),
     )
     args = parser.parse_args()
     main(args.output_dir)

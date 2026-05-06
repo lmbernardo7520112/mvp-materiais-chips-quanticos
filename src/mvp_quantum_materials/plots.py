@@ -6,13 +6,14 @@ Generates publication-quality figures saved to disk.
 from pathlib import Path
 
 import matplotlib
+
 matplotlib.use("Agg")  # Non-interactive backend for headless generation
 import matplotlib.pyplot as plt
 import numpy as np
 import numpy.typing as npt
 
-from mvp_quantum_materials.thermal_solver import ThermalResult
 from mvp_quantum_materials.diffusion_solver import DiffusionResult
+from mvp_quantum_materials.thermal_solver import ThermalResult
 
 
 def plot_thermal_evolution(
@@ -78,7 +79,10 @@ def plot_diffusion_evolution(
 
     ax.set_xlabel("Position [mm]")
     ax.set_ylabel("C (adimensional proxy)")
-    ax.set_title("Concentration Proxy Evolution (1D)\n[C is adimensional — not calibrated physical concentration]")
+    ax.set_title(
+        "Concentration Proxy Evolution (1D)\n"
+        "[C is adimensional — not calibrated physical concentration]"
+    )
     ax.legend()
     ax.grid(True, alpha=0.3)
 

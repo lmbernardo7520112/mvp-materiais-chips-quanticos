@@ -10,7 +10,6 @@ C does NOT represent calibrated physical concentration.
 """
 
 from dataclasses import dataclass
-from typing import List
 
 import numpy as np
 import numpy.typing as npt
@@ -37,10 +36,10 @@ class DiffusionResult:
     """
 
     C_final: npt.NDArray[np.float64]
-    C_history: List[npt.NDArray[np.float64]]
+    C_history: list[npt.NDArray[np.float64]]
     dt: float
     n_steps: int
-    times: List[float]
+    times: list[float]
 
 
 def arrhenius_diffusivity(
@@ -128,8 +127,8 @@ def solve_diffusion_1d(
 
     # Snapshot management
     snapshot_interval = max(1, n_steps // config.n_snapshots)
-    history: List[npt.NDArray[np.float64]] = [C.copy()]
-    times: List[float] = [0.0]
+    history: list[npt.NDArray[np.float64]] = [C.copy()]
+    times: list[float] = [0.0]
 
     for step in range(1, n_steps + 1):
         C_new = C.copy()

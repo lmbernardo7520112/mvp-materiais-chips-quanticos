@@ -6,7 +6,6 @@ Usage:
 """
 
 import argparse
-import sys
 from pathlib import Path
 
 from mvp_quantum_materials.config import DiffusionConfig, ThermalConfig
@@ -25,7 +24,10 @@ def run_thermal(output_dir: Path) -> None:
     """Run thermal simulation and generate figure."""
     domain = Domain1D(length=0.01, nx=101)
     config = ThermalConfig(
-        t_left=1700.0, t_right=1400.0, t_init=1500.0, t_total=0.5,
+        t_left=1700.0,
+        t_right=1400.0,
+        t_init=1500.0,
+        t_total=0.5,
     )
     print(f"  Solving thermal 1D (nx={domain.nx})...")
     result = solve_thermal_1d(domain, config)
@@ -37,7 +39,10 @@ def run_diffusion(output_dir: Path) -> None:
     """Run diffusion simulation and generate figure."""
     domain = Domain1D(length=0.01, nx=101)
     thermal_config = ThermalConfig(
-        t_left=1700.0, t_right=1400.0, t_init=1500.0, t_total=0.5,
+        t_left=1700.0,
+        t_right=1400.0,
+        t_init=1500.0,
+        t_total=0.5,
     )
     diffusion_config = DiffusionConfig(t_total=0.5)
 
@@ -54,9 +59,7 @@ def run_sensitivity(output_dir: Path) -> None:
     """Run sensitivity analysis and generate figure."""
     print("  Running sensitivity analysis (5 parameters)...")
     results = run_sensitivity_analysis()
-    fig_path = plot_sensitivity_results(
-        results, output_dir / "sensitivity_analysis.png"
-    )
+    fig_path = plot_sensitivity_results(results, output_dir / "sensitivity_analysis.png")
     print(f"  Figure: {fig_path}")
 
 
@@ -89,7 +92,9 @@ def main(output_dir: Path) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate all MVP results")
     parser.add_argument(
-        "--output-dir", type=Path, default=Path("results/figures"),
+        "--output-dir",
+        type=Path,
+        default=Path("results/figures"),
     )
     args = parser.parse_args()
     main(args.output_dir)

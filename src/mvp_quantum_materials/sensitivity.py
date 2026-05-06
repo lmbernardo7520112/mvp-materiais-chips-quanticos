@@ -5,14 +5,11 @@ Varies ≥5 parameters and measures impact on heterogeneity metrics.
 
 from typing import Any
 
-import numpy as np
-
 from mvp_quantum_materials.config import DiffusionConfig, ThermalConfig
 from mvp_quantum_materials.diffusion_solver import solve_diffusion_1d
 from mvp_quantum_materials.domain import Domain1D
 from mvp_quantum_materials.metrics import compute_all_metrics
 from mvp_quantum_materials.thermal_solver import solve_thermal_1d
-
 
 # Default parameter variations for sensitivity analysis
 SENSITIVITY_PARAMETERS: dict[str, list[Any]] = {
@@ -106,11 +103,13 @@ def run_sensitivity_analysis(
 
             metrics = _run_single_case(domain, thermal_cfg, diffusion_cfg)
 
-            results.append({
-                "parameter": param_name,
-                "value": val,
-                "metric_value": metrics["global_c_integral"],
-                "all_metrics": metrics,
-            })
+            results.append(
+                {
+                    "parameter": param_name,
+                    "value": val,
+                    "metric_value": metrics["global_c_integral"],
+                    "all_metrics": metrics,
+                }
+            )
 
     return results

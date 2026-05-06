@@ -36,8 +36,8 @@ def test_source_maximum_near_tc():
 def test_diffusion_constant_field_no_source_stable():
     """T-07: Constant C field without source remains constant (Neumann BCs)."""
     from mvp_quantum_materials.config import DiffusionConfig
-    from mvp_quantum_materials.domain import Domain1D
     from mvp_quantum_materials.diffusion_solver import solve_diffusion_1d
+    from mvp_quantum_materials.domain import Domain1D
 
     domain = Domain1D(length=0.01, nx=51)
     t_field = np.full(51, 1500.0)
@@ -72,8 +72,8 @@ def test_source_decays_far_from_tc():
 def test_diffusion_rejects_unstable_dt():
     """T-16: Diffusion solver raises ValueError for unstable dt."""
     from mvp_quantum_materials.config import DiffusionConfig
-    from mvp_quantum_materials.domain import Domain1D
     from mvp_quantum_materials.diffusion_solver import solve_diffusion_1d
+    from mvp_quantum_materials.domain import Domain1D
 
     domain = Domain1D(length=0.01, nx=51)
     t_field = np.full(51, 5000.0)  # High T → large D(T)
@@ -91,8 +91,8 @@ def test_diffusion_rejects_unstable_dt():
 def test_c_remains_finite_with_source():
     """T-17: C remains finite after integration with source active."""
     from mvp_quantum_materials.config import DiffusionConfig
-    from mvp_quantum_materials.domain import Domain1D
     from mvp_quantum_materials.diffusion_solver import solve_diffusion_1d
+    from mvp_quantum_materials.domain import Domain1D
 
     domain = Domain1D(length=0.01, nx=51)
     t_field = np.full(51, 1500.0)  # At T_c — max source

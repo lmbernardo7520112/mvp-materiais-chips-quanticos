@@ -1,7 +1,5 @@
 """Tests for sensitivity analysis — T-10."""
 
-import pytest
-
 
 def test_sensitivity_returns_non_empty_table():
     """T-10: Sensitivity analysis returns a non-empty results table."""

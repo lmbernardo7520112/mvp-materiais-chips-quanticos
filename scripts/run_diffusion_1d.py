@@ -9,8 +9,8 @@ import argparse
 from pathlib import Path
 
 from mvp_quantum_materials.config import DiffusionConfig, ThermalConfig
-from mvp_quantum_materials.domain import Domain1D
 from mvp_quantum_materials.diffusion_solver import solve_diffusion_1d
+from mvp_quantum_materials.domain import Domain1D
 from mvp_quantum_materials.plots import plot_diffusion_evolution
 from mvp_quantum_materials.thermal_solver import solve_thermal_1d
 
@@ -19,7 +19,10 @@ def main(output_dir: Path) -> None:
     """Run thermal + diffusion simulation and generate figure."""
     domain = Domain1D(length=0.01, nx=101)
     thermal_config = ThermalConfig(
-        t_left=1700.0, t_right=1400.0, t_init=1500.0, t_total=0.5,
+        t_left=1700.0,
+        t_right=1400.0,
+        t_init=1500.0,
+        t_total=0.5,
     )
     diffusion_config = DiffusionConfig(t_total=0.5)
 
@@ -40,7 +43,9 @@ def main(output_dir: Path) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run 1D diffusion solver")
     parser.add_argument(
-        "--output-dir", type=Path, default=Path("results/figures"),
+        "--output-dir",
+        type=Path,
+        default=Path("results/figures"),
     )
     args = parser.parse_args()
     main(args.output_dir)
