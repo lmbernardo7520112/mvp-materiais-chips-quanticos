@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Results (generated, not tracked)
+results/figures/*
+results/tables/*
+results/runs/*
+!results/figures/.gitkeep
+!results/tables/.gitkeep
+!results/runs/.gitkeep
+
+# Ruff
+.ruff_cache/

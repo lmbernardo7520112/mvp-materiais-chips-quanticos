@@ -1,0 +1,8 @@
+# Core
+numpy>=1.26,<2.0
+matplotlib>=3.8,<4.0
+scipy>=1.11,<2.0
+
+# Development
+pytest>=7.4,<9.0
+ruff>=0.4,<1.0

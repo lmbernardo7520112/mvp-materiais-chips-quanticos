@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "mvp-quantum-materials"
+version = "0.1.0"
+description = "MVP computacional: modelagem termo-difusiva simplificada para análise de heterogeneidades em material semicondutor idealizado"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "numpy>=1.26,<2.0",
+    "matplotlib>=3.8,<4.0",
+    "scipy>=1.11,<2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4,<9.0",
+    "ruff>=0.4,<1.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "SIM"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.setuptools.packages.find]
+where = ["src"]
