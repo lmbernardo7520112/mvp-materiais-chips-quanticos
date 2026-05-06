@@ -130,3 +130,49 @@ def plot_sensitivity_results(
     fig.savefig(output_path, dpi=150, bbox_inches="tight")
     plt.close(fig)
     return output_path
+
+
+def plot_sensitivity_ranking(
+    ranking: list[dict],
+    output_path: Path,
+) -> Path:
+    """Plot sensitivity ranking as horizontal bar chart.
+
+    Args:
+        ranking: List of dicts from compute_sensitivity_ranking.
+        output_path: Path to save figure.
+
+    Returns:
+        Path to saved figure.
+    """
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    params = [r["parameter"] for r in ranking]
+    sensitivities = [r["sensitivity"] for r in ranking]
+    colors = plt.cm.RdYlGn_r(np.linspace(0.2, 0.8, len(params)))
+
+    bars = ax.barh(params, sensitivities, color=colors, edgecolor="gray", linewidth=0.5)
+
+    # Add value labels
+    for bar, val in zip(bars, sensitivities, strict=True):
+        ax.text(
+            bar.get_width() + 0.01 * max(sensitivities),
+            bar.get_y() + bar.get_height() / 2,
+            f"{val:.3f}",
+            va="center",
+            fontsize=9,
+        )
+
+    ax.set_xlabel("Normalized Sensitivity (demonstrative)")
+    ax.set_title(
+        "Parameter Sensitivity Ranking\n"
+        "[Normalized range: S = (max-min)/|mean| — demonstrative, not calibrated]"
+    )
+    ax.invert_yaxis()
+    ax.grid(True, axis="x", alpha=0.3)
+
+    fig.tight_layout()
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(output_path, dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    return output_path

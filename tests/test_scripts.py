@@ -27,14 +27,36 @@ def test_scripts_execute_without_error(tmp_path: Path):
         )
 
 
-def test_generate_all_produces_at_least_3_figures(tmp_path: Path):
-    """T-12: generate_all_results.py produces >= 3 figures."""
+def test_generate_all_produces_at_least_4_figures(tmp_path: Path):
+    """T-12: generate_all_results.py produces >= 4 figures + CSV."""
     result = _run_script("generate_all_results.py", tmp_path)
     assert result.returncode == 0, (
         f"generate_all_results failed:\nstdout: {result.stdout}\nstderr: {result.stderr}"
     )
 
     figures = list(tmp_path.glob("*.png"))
-    assert len(figures) >= 3, (
-        f"Expected >= 3 figures, got {len(figures)}: {[f.name for f in figures]}"
+    assert len(figures) >= 4, (
+        f"Expected >= 4 figures, got {len(figures)}: {[f.name for f in figures]}"
     )
+
+    # Verify ranking figure exists
+    ranking_fig = tmp_path / "sensitivity_ranking.png"
+    assert ranking_fig.exists(), "sensitivity_ranking.png not generated"
+
+
+def test_generate_all_produces_sensitivity_csv(tmp_path: Path):
+    """T-18: generate_all_results.py produces sensitivity CSV."""
+    result = _run_script("generate_all_results.py", tmp_path)
+    assert result.returncode == 0, (
+        f"generate_all_results failed:\nstdout: {result.stdout}\nstderr: {result.stderr}"
+    )
+
+    tables_dir = tmp_path.parent / "tables"
+    csv_file = tables_dir / "sensitivity_results.csv"
+    assert csv_file.exists(), f"CSV not found at {csv_file}"
+
+    # Verify CSV has content
+    content = csv_file.read_text()
+    lines = content.strip().split("\n")
+    assert len(lines) > 1, "CSV has no data rows"
+    assert "parameter" in lines[0], "CSV header missing 'parameter' column"

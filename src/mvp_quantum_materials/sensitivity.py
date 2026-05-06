@@ -3,6 +3,7 @@
 Varies ≥5 parameters and measures impact on heterogeneity metrics.
 """
 
+from pathlib import Path
 from typing import Any
 
 from mvp_quantum_materials.config import DiffusionConfig, ThermalConfig
@@ -113,3 +114,91 @@ def run_sensitivity_analysis(
             )
 
     return results
+
+
+def export_sensitivity_csv(
+    results: list[dict[str, Any]],
+    output_path: Path,
+) -> Path:
+    """Export sensitivity results to CSV.
+
+    Columns: parameter, variation_index, variation_value, metric_name, metric_value.
+
+    Args:
+        results: Results from run_sensitivity_analysis.
+        output_path: Path to save CSV file.
+
+    Returns:
+        Path to saved CSV.
+    """
+    import csv
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    with open(output_path, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(
+            ["parameter", "variation_index", "variation_value", "metric_name", "metric_value"]
+        )
+
+        # Track variation index per parameter
+        param_indices: dict[str, int] = {}
+        for r in results:
+            param = r["parameter"]
+            idx = param_indices.get(param, 0)
+            param_indices[param] = idx + 1
+
+            for metric_name, metric_value in r["all_metrics"].items():
+                writer.writerow([param, idx, r["value"], metric_name, f"{metric_value:.8e}"])
+
+    return output_path
+
+
+def compute_sensitivity_ranking(
+    results: list[dict[str, Any]],
+    metric_key: str = "global_c_integral",
+) -> list[dict[str, Any]]:
+    """Compute normalized sensitivity ranking for each parameter.
+
+    Sensitivity is measured as the normalized range:
+        S_i = (max - min) / max(|mean|, eps)
+    for the chosen metric across each parameter's variations.
+
+    This is a demonstrative metric, not a calibrated sensitivity index.
+
+    Args:
+        results: Results from run_sensitivity_analysis.
+        metric_key: Which metric to rank by.
+
+    Returns:
+        List of dicts with 'parameter', 'sensitivity', 'min', 'max', 'mean',
+        sorted by sensitivity descending.
+    """
+    # Group by parameter
+    param_values: dict[str, list[float]] = {}
+    for r in results:
+        param = r["parameter"]
+        if param not in param_values:
+            param_values[param] = []
+        param_values[param].append(r["all_metrics"][metric_key])
+
+    ranking: list[dict[str, Any]] = []
+    for param, values in param_values.items():
+        v_min = min(values)
+        v_max = max(values)
+        v_mean = sum(values) / len(values)
+        denominator = max(abs(v_mean), 1e-30)
+        sensitivity = (v_max - v_min) / denominator
+
+        ranking.append(
+            {
+                "parameter": param,
+                "sensitivity": sensitivity,
+                "min": v_min,
+                "max": v_max,
+                "mean": v_mean,
+            }
+        )
+
+    ranking.sort(key=lambda x: x["sensitivity"], reverse=True)
+    return ranking

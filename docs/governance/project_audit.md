@@ -16,39 +16,51 @@ mvp-materiais-chips-quanticos/
 │   ├── hipoteses_e_limitacoes.md
 │   ├── parameters.md
 │   ├── plano_tecnico_mvp.md
-│   └── referencias.md
+│   ├── referencias.md
+│   └── relatorio_30_dias.md
 ├── notebooks/README.md         # Stub (deferred to v0.2)
-├── results/figures/            # 3 generated figures
+├── results/
+│   ├── figures/                # 4 generated figures
+│   └── tables/                 # 1 CSV (sensitivity)
 ├── scripts/                    # 4 CLI scripts
 ├── src/mvp_quantum_materials/  # 7 modules
-└── tests/                      # 6 test files, 19 tests
+└── tests/                      # 6 test files, 21 tests
 ```
 
 ## File Inventory
 
 ### Source (7 modules)
-| File | Lines | Purpose |
-|------|-------|---------|
-| __init__.py | 14 | Package init, disclaimers |
-| config.py | ~115 | Dataclasses, constants, stability |
-| domain.py | ~30 | Domain1D |
-| thermal_solver.py | ~95 | Thermal solver, Dirichlet, stability |
-| diffusion_solver.py | ~170 | Diffusion, Arrhenius, source, Neumann |
-| metrics.py | ~115 | 6 heterogeneity metrics |
-| sensitivity.py | ~110 | 5-parameter analysis |
-| plots.py | ~130 | 3 figure types |
+| File | Purpose |
+|------|---------|
+| __init__.py | Package init, disclaimers |
+| config.py | Dataclasses, constants, stability functions |
+| domain.py | Domain1D |
+| thermal_solver.py | Thermal solver, Dirichlet, stability guard |
+| diffusion_solver.py | Diffusion, Arrhenius, source, Neumann, finiteness |
+| metrics.py | 7 heterogeneity metrics (incl. boundary flux proxy) |
+| sensitivity.py | 5-parameter analysis, CSV export, ranking |
+| plots.py | 4 figure types |
 
-### Tests (6 files, 19 tests)
+### Tests (6 files, 21 tests)
 | File | Tests | Coverage |
 |------|-------|----------|
 | test_domain.py | 2 | Domain1D coherence |
 | test_thermal_solver.py | 4 | T-02,03,04,15 |
 | test_diffusion_solver.py | 7 | T-05,06,07,13,14,16,17 |
-| test_metrics.py | 3 | T-08,09,extra |
+| test_metrics.py | 4 | T-08,09,19,extra |
 | test_sensitivity.py | 1 | T-10 |
-| test_scripts.py | 2 | T-11,12 |
+| test_scripts.py | 3 | T-11,12,18 |
 
-### Documentation (14 files)
+### Results
+| File | Purpose |
+|------|---------|
+| thermal_1d_evolution.png | Thermal field evolution |
+| diffusion_1d_evolution.png | Concentration proxy evolution |
+| sensitivity_analysis.png | Parameter variation curves |
+| sensitivity_ranking.png | Ranked sensitivity bar chart |
+| sensitivity_results.csv | Full tabular sensitivity data |
+
+### Documentation (14+ files)
 | File | Purpose |
 |------|---------|
 | README.md | Institutional README |
@@ -56,6 +68,7 @@ mvp-materiais-chips-quanticos/
 | docs/hipoteses_e_limitacoes.md | 7 limitations |
 | docs/parameters.md | Parameter table |
 | docs/plano_tecnico_mvp.md | Technical plan |
+| docs/relatorio_30_dias.md | Interpretive report (per-figure) |
 | docs/adr/ADR-001..003 | 3 ADRs |
 | docs/governance/* | 5 governance docs |
 
@@ -63,23 +76,24 @@ mvp-materiais-chips-quanticos/
 
 | Metric | Value |
 |--------|-------|
-| Tests | 19 |
-| pytest result | 19/19 passed |
+| Tests | 21 |
+| pytest result | 21/21 passed |
 | ruff check | All checks passed |
 | ruff format | 20 files formatted |
-| Figures generated | 3 |
+| Figures generated | 4 |
+| CSV tables | 1 |
 | References documented | 14 |
 | ADRs | 3 |
 | Technical debts (open) | 0 |
 | Technical debts (deferred) | 2 |
-| Commits | 11 |
+| Commits | 13 |
 | Branch | feature/mvp-termo-difusivo-quantum-materials |
 | Working tree | Clean |
 | CI remoto | Pending (push not authorized) |
 
 ## Risks & Limitations
 
-1. **C is adimensional proxy** — documented in README, hipóteses, parameters.
+1. **C is adimensional proxy** — documented in README, hipóteses, parameters, report.
 2. **No industrial simulation** — L-02.
 3. **No quantum coherence prediction** — ADR-002, L-03.
 4. **No solidification equivalence** — L-04.
@@ -95,3 +109,4 @@ mvp-materiais-chips-quanticos/
 4. Consider ADI or implicit solver.
 5. Explore parameter calibration with literature.
 6. Coverage measurement with pytest-cov.
+7. Global sensitivity methods (Sobol/Morris).

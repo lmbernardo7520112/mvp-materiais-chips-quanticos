@@ -114,4 +114,25 @@ def compute_all_metrics(
         "local_accumulation_index": local_accumulation_index(c_field),
         "global_c_integral": global_c_integral(c_field, dx),
         "max_over_mean_c": max_over_mean_ratio(c_field),
+        "boundary_flux_proxy": boundary_flux_proxy(c_field, dx),
     }
+
+
+def boundary_flux_proxy(c_field: npt.NDArray[np.float64], dx: float) -> float:
+    """Approximate boundary flux magnitude for qualitative Neumann check.
+
+    Computes max(|dC/dx|) at both boundaries using one-sided differences.
+    For a well-enforced Neumann no-flux BC, this should be near zero.
+
+    This is a qualitative diagnostic, not a rigorous flux computation.
+
+    Args:
+        c_field: Concentration field (adimensional proxy).
+        dx: Grid spacing [m].
+
+    Returns:
+        Maximum absolute boundary flux proxy (should be ≈ 0 for no-flux BC).
+    """
+    flux_left = abs(c_field[1] - c_field[0]) / dx
+    flux_right = abs(c_field[-1] - c_field[-2]) / dx
+    return float(max(flux_left, flux_right))

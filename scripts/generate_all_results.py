@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate all results: thermal, diffusion, and sensitivity figures.
+"""Generate all results: thermal, diffusion, sensitivity figures and CSV.
 
 Usage:
     python scripts/generate_all_results.py [--output-dir DIR]
@@ -13,10 +13,15 @@ from mvp_quantum_materials.diffusion_solver import solve_diffusion_1d
 from mvp_quantum_materials.domain import Domain1D
 from mvp_quantum_materials.plots import (
     plot_diffusion_evolution,
+    plot_sensitivity_ranking,
     plot_sensitivity_results,
     plot_thermal_evolution,
 )
-from mvp_quantum_materials.sensitivity import run_sensitivity_analysis
+from mvp_quantum_materials.sensitivity import (
+    compute_sensitivity_ranking,
+    export_sensitivity_csv,
+    run_sensitivity_analysis,
+)
 from mvp_quantum_materials.thermal_solver import solve_thermal_1d
 
 
@@ -55,37 +60,61 @@ def run_diffusion(output_dir: Path) -> None:
     print(f"  Figure: {fig_path}")
 
 
-def run_sensitivity(output_dir: Path) -> None:
-    """Run sensitivity analysis and generate figure."""
+def run_sensitivity(output_dir: Path, tables_dir: Path) -> None:
+    """Run sensitivity analysis, generate figures and CSV."""
     print("  Running sensitivity analysis (5 parameters)...")
     results = run_sensitivity_analysis()
+
     fig_path = plot_sensitivity_results(results, output_dir / "sensitivity_analysis.png")
     print(f"  Figure: {fig_path}")
+
+    # Ranking
+    ranking = compute_sensitivity_ranking(results)
+    fig_rank = plot_sensitivity_ranking(ranking, output_dir / "sensitivity_ranking.png")
+    print(f"  Figure: {fig_rank}")
+
+    # CSV
+    csv_path = export_sensitivity_csv(results, tables_dir / "sensitivity_results.csv")
+    print(f"  CSV: {csv_path}")
+
+    # Print ranking
+    print("\n  Sensitivity Ranking (normalized range, demonstrative):")
+    for r in ranking:
+        print(f"    {r['parameter']:15s}  S = {r['sensitivity']:.4f}")
 
 
 def main(output_dir: Path) -> None:
     """Generate all results and figures."""
     output_dir.mkdir(parents=True, exist_ok=True)
 
+    # Tables dir: sibling of output_dir or results/tables
+    tables_dir = output_dir.parent / "tables"
+    tables_dir.mkdir(parents=True, exist_ok=True)
+
     print("=" * 60)
     print("MVP Quantum Materials — Generating All Results")
     print(f"Output directory: {output_dir}")
+    print(f"Tables directory: {tables_dir}")
     print("=" * 60)
 
-    print("[1/3] Thermal 1D")
+    print("[1/4] Thermal 1D")
     run_thermal(output_dir)
 
-    print("[2/3] Diffusion 1D")
+    print("[2/4] Diffusion 1D")
     run_diffusion(output_dir)
 
-    print("[3/3] Sensitivity Analysis")
-    run_sensitivity(output_dir)
+    print("[3/4] Sensitivity Analysis + Ranking")
+    run_sensitivity(output_dir, tables_dir)
 
+    print("[4/4] Summary")
     figures = list(output_dir.glob("*.png"))
+    csvs = list(tables_dir.glob("*.csv"))
     print("=" * 60)
-    print(f"Done. {len(figures)} figures generated:")
+    print(f"Done. {len(figures)} figures, {len(csvs)} CSV(s) generated:")
     for f in sorted(figures):
         print(f"  - {f.name}")
+    for c in sorted(csvs):
+        print(f"  - {c.name}")
     print("=" * 60)
 
 

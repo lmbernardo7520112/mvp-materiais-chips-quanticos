@@ -36,3 +36,14 @@ def test_thermal_non_uniformity_zero_for_constant():
     nu = thermal_non_uniformity(t_field)
 
     assert nu == pytest.approx(0.0, abs=1e-10)
+
+
+def test_boundary_flux_zero_for_constant_field():
+    """T-19: Boundary flux proxy is zero for constant C field (Neumann check)."""
+    from mvp_quantum_materials.metrics import boundary_flux_proxy
+
+    c_field = np.full(51, 1.0)
+    dx = 0.01 / 50
+
+    flux = boundary_flux_proxy(c_field, dx)
+    assert flux == pytest.approx(0.0, abs=1e-10)

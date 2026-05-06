@@ -7,7 +7,7 @@
 | Status | Count |
 |--------|-------|
 | RESOLVED | 0 |
-| DEFERRED | 2 |
+| DEFERRED | 3 |
 | OPEN | 0 |
 | WONTFIX | 0 |
 
@@ -33,3 +33,16 @@
   com `--output-dir` cobrem a funcionalidade básica.
   Ver `notebooks/README.md`.
 - **Evidence:** [notebooks/README.md](../../notebooks/README.md)
+
+---
+
+## TD-03: Global Sensitivity Methods
+
+- **Description:** Análise de sensibilidade usa método OAT (one-at-a-time)
+  com sensibilidade normalizada demonstrativa.
+- **Impact:** Não captura interações entre parâmetros. Ranking depende
+  dos ranges e defaults escolhidos.
+- **Status:** DEFERRED
+- **Decision:** Métodos globais (Sobol, Morris) deferidos para v0.2.
+  O método OAT demonstrativo é suficiente para o escopo v0.1.
+- **Evidence:** Documentado em `docs/relatorio_30_dias.md`, seção Sensibilidade.
