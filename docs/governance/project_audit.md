@@ -2,7 +2,7 @@
 
 > **Date:** 2026-05-06  
 > **Auditor:** Staff Research Software Engineer (AI-assisted)  
-> **Status:** LOCAL + REMOTE VALIDATED ✅
+> **Status:** RELEASE CLOSED ✅
 
 ## Remote Infrastructure
 
@@ -10,10 +10,9 @@
 |------|-------|
 | Repository | https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos |
 | Visibility | **Private** |
-| Branch | `feature/mvp-termo-difusivo-quantum-materials` |
-| PR | [#1](https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos/pull/1) |
-| CI (push) | [25450236235](https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos/actions/runs/25450236235) ✅ |
-| CI (PR) | [25450411341](https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos/actions/runs/25450411341) ✅ |
+| Branch | `main` |
+| PR | [#1 (Merged)](https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos/pull/1) |
+| Tag | `v0.1.0` (contained in `main`) |
 
 ## Repository Topology
 
@@ -52,8 +51,8 @@ mvp-materiais-chips-quanticos/
 | References documented | 14 |
 | ADRs | 3 |
 | Technical debts (deferred) | 3 |
-| Commits | 13 |
-| CI runs (all green) | 2 |
+| Commits | 13 feature + 1 merge |
+| CI runs (all green) | 2 (feature) + 1 (main pending) |
 | Working tree | Clean |
 
 ## Confirmations
@@ -62,9 +61,8 @@ mvp-materiais-chips-quanticos/
 - ✅ Nenhum escopo físico novo introduzido
 - ✅ C permanece documentado como proxy adimensional
 - ✅ Repositório remoto é privado
-- ✅ Nenhum merge em main realizado
-- ✅ Nenhum código legado reutilizado
-- ✅ Nenhum notebook criado
+- ✅ PR #1 mergeado de forma controlada (merge commit)
+- ✅ Tag v0.1.0 intacta e válida
 
 ## Next Steps (v0.2)
 

@@ -1,8 +1,20 @@
 # Walkthrough — MVP v0.1
 
 > **Date:** 2026-05-06  
-> **Branch:** `feature/mvp-termo-difusivo-quantum-materials`  
-> **Status:** ✅ LOCAL + REMOTE VALIDATED
+> **Status:** ✅ V0.1 RELEASE CLOSED
+
+## Post-Merge Validation Evidence
+
+| Item | Value |
+|------|-------|
+| **PR #1** | [Merged via merge commit](https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos/pull/1) |
+| **Target Branch** | `main` |
+| **Final Commit** | `dbfa832` |
+| **Tag** | `v0.1.0` (contained in `main`) |
+| **Post-Merge `pytest`** | ✅ 21/21 passed in `main` |
+| **Post-Merge `ruff`** | ✅ Clean in `main` |
+| **Post-Merge Figures** | ✅ 4 generated |
+| **Working Tree** | ✅ Clean |
 
 ## Remote Validation Evidence
 
@@ -11,29 +23,8 @@
 | **Repository URL** | https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos |
 | **Visibility** | Private |
 | **Branch pushed** | `feature/mvp-termo-difusivo-quantum-materials` |
-| **Last commit** | `38b44d2` |
 | **Push CI Run** | [25450236235](https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos/actions/runs/25450236235) — ✅ success |
 | **PR CI Run** | [25450411341](https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos/actions/runs/25450411341) — ✅ success |
-| **PR** | [#1](https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos/pull/1) — open |
-| **Jobs (push)** | quality (3.11) ✅, quality (3.12) ✅ |
-| **Jobs (PR)** | quality (3.11) ✅, quality (3.12) ✅ |
-| **CI steps** | ruff check, ruff format, pytest, generate results, verify figures, upload artifacts |
-
-## Local Evidence Summary
-
-| Gate | Status | Evidence |
-|------|--------|----------|
-| pytest | ✅ 21/21 passed | `pytest -v --tb=short` → 21 passed in 4.37s |
-| ruff check | ✅ Clean | `ruff check .` → All checks passed! |
-| ruff format | ✅ Clean | `ruff format --check .` → 20 files already formatted |
-| Tests ≥17 | ✅ 21 tests | `pytest --collect-only` → 21 tests collected |
-| Figures ≥4 | ✅ 4 figures | `ls results/figures/*.png \| wc -l` → 4 |
-| CSV | ✅ Exists | `results/tables/sensitivity_results.csv` |
-| Working tree | ✅ Clean | `git status` → nothing to commit |
-| Commits | ✅ 13 atomic | `git log --oneline` → 13 semantic commits |
-| ci.yml created | ✅ Exists | `.github/workflows/ci.yml` — matrix 3.11+3.12 |
-| CI remoto (push) | ✅ Green | Run 25450236235 |
-| CI remoto (PR) | ✅ Green | Run 25450411341 |
 
 ## Confirmations
 
@@ -41,7 +32,6 @@
 - ✅ Nenhuma alteração de escopo físico
 - ✅ C permanece documentado como proxy adimensional
 - ✅ Repositório remoto é privado
-- ✅ Nenhum merge em main realizado
 
 ## Figures Generated
 
@@ -54,7 +44,7 @@
 
 1. `results/tables/sensitivity_results.csv`
 
-## Commits (13 atomic, semantic)
+## Commits (13 atomic, semantic + 1 merge)
 
 | # | Hash | Message |
 |---|------|---------|
@@ -71,6 +61,8 @@
 | 11 | dee45d4 | ci: add GitHub Actions with ruff and matrix |
 | 12 | f14179f | docs: add walkthrough and project audit for v0.1 |
 | 13 | 38b44d2 | feat: add sensitivity ranking and result traceability |
+| 14 | fa0481f | docs: add remote ci validation evidence |
+| 15 | dbfa832 | Merge pull request #1 from lmbernardo7520112/feature/mvp-termo-difusivo-quantum-materials |
 
 ## Test Inventory (21 tests)
 

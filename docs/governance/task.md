@@ -1,8 +1,8 @@
 # Task Tracker — mvp-materiais-chips-quanticos v0.1
 
 > **Last updated:** 2026-05-06  
-> **Status:** ✅ COMPLETE — LOCAL + REMOTE VALIDATED  
-> **Tag:** v0.1.0 (pending final CI)
+> **Status:** ✅ RELEASE CLOSED  
+> **Tag:** v0.1.0
 
 ---
 
@@ -17,19 +17,18 @@
 - `[x]` Phase 6b: Traceability Improvements (Commit 13)
 - `[x]` Phase 7: 2D Stretch — DEFERRED via ADR-003
 - `[x]` Phase 8: Remote Push + CI Validation (Commit 14)
+- `[x]` Phase 9: Release Closure (PR #1 Merged)
 
-## Remote Validation (Gate 22)
+## Release Closure (Phase 9)
 
-- `[x]` Local inspection: 21/21 pytest, ruff green, 4 figs, CSV, clean tree
-- `[x]` Create private repo on GitHub
-- `[x]` Push main + feature branch
-- `[x]` CI (push): Run 25450236235 ✅ success
-- `[x]` CI (PR): Run 25450411341 ✅ success
-- `[x]` PR #1 created
-- `[x]` Update governance docs with remote evidence
-- `[x]` Commit + push evidence
-- `[ ]` Monitor evidence commit CI
-- `[ ]` Create tag v0.1.0
+- `[x]` Verify PR #1 mergeable and CI green
+- `[x]` Merge PR #1 into `main` (merge commit)
+- `[x]` Update local `main`
+- `[x]` Validate local `main`: 21 tests, ruff, 4 figs, CSV
+- `[x]` Verify tag `v0.1.0` is contained in `main`
+- `[x]` Update `walkthrough.md`, `project_audit.md`, `task.md` with post-merge evidence
+- `[x]` Commit documentation to `main`
+- `[x]` Push final state to remote
 
 ## Gates — Final Status
 
@@ -57,3 +56,4 @@
 | G-20 | 2D eligible? | N/A — deferred |
 | G-21 | 2D or ADR-003 | ✅ ADR-003 |
 | G-22 | CI remote green | ✅ Runs 25450236235 + 25450411341 |
+| G-23 | PR Merged & Tag valid | ✅ PR #1 Merged, Tag v0.1.0 in main |
