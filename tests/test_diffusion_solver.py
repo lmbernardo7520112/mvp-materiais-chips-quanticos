@@ -76,8 +76,13 @@ def test_diffusion_rejects_unstable_dt():
     from mvp_quantum_materials.diffusion_solver import solve_diffusion_1d
 
     domain = Domain1D(length=0.01, nx=51)
-    t_field = np.full(51, 1500.0)
-    config = DiffusionConfig(dt_override=1.0, t_total=0.1)
+    t_field = np.full(51, 5000.0)  # High T → large D(T)
+    config = DiffusionConfig(
+        d0=1.0,  # Very large D0 to ensure large D_max
+        ea=0.5,
+        dt_override=1.0,
+        t_total=0.1,
+    )
 
     with pytest.raises(ValueError, match="[Ss]tabilit|[Ii]nstab|dt"):
         solve_diffusion_1d(domain, t_field, config)
