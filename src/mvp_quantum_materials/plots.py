@@ -176,3 +176,43 @@ def plot_sensitivity_ranking(
     fig.savefig(output_path, dpi=150, bbox_inches="tight")
     plt.close(fig)
     return output_path
+
+
+# ---------------------------------------------------------------------------
+# 2D Plot Functions (v0.2)
+# ---------------------------------------------------------------------------
+
+
+def plot_thermal_2d_final(
+    x: npt.NDArray[np.float64],
+    y: npt.NDArray[np.float64],
+    T_final: npt.NDArray[np.float64],
+    output_path: Path,
+) -> Path:
+    """Plot final 2D thermal field as contour/heatmap.
+
+    Args:
+        x: x-coordinates [m].
+        y: y-coordinates [m].
+        T_final: Final temperature field, shape (nx, ny) [K].
+        output_path: Path to save figure.
+
+    Returns:
+        Path to saved figure.
+    """
+    fig, ax = plt.subplots(figsize=(10, 8))
+
+    X, Y = np.meshgrid(x * 1e3, y * 1e3, indexing="ij")
+    cf = ax.contourf(X, Y, T_final, levels=20, cmap="inferno")
+    fig.colorbar(cf, ax=ax, label="Temperature [K]")
+
+    ax.set_xlabel("x [mm]")
+    ax.set_ylabel("y [mm]")
+    ax.set_title("2D Thermal Field (Final State)\n[demonstrativo — não calibrado]")
+    ax.set_aspect("equal")
+
+    fig.tight_layout()
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(output_path, dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    return output_path
