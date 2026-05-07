@@ -1,7 +1,7 @@
-# Walkthrough — MVP v0.1
+# Walkthrough — MVP v0.1 / v0.2
 
 > **Date:** 2026-05-06  
-> **Status:** ✅ V0.1 RELEASE CLOSED
+> **Status:** ✅ V0.1 RELEASE CLOSED | v0.2 LOCAL IMPLEMENTATION COMPLETE
 
 ## Post-Merge Validation Evidence
 
@@ -89,3 +89,107 @@
 | T-18 | CSV generated | test_scripts.py | ✅ |
 | T-19 | Boundary flux=0 const | test_metrics.py | ✅ |
 | Extra | Non-unif=0 const | test_metrics.py | ✅ |
+
+---
+
+## v0.2 Local Implementation Evidence
+
+> **Date:** 2026-05-06  
+> **Branch:** `feature/v0.2-2d-robustness`  
+> **Status:** LOCAL IMPLEMENTATION COMPLETE — awaiting push authorization  
+> **Version:** 0.2.0 (candidate — tag NOT created yet)
+
+### v0.2 Commits (11 atomic, semantic, TDD)
+
+| # | Hash | Message |
+|---|------|---------|
+| 1 | 6e1459a | test: add domain2d specifications |
+| 2 | bc81718 | feat: implement domain2d |
+| 3 | f7fb0ea | test: add thermal 2d stability specifications |
+| 4 | cc26363 | feat: add thermal 2d stability guard |
+| 5 | d9db771 | test: add thermal solver 2d specifications |
+| 6 | 0d19ff0 | feat: implement thermal solver 2d |
+| 7 | 8be83f2 | test: add convergence analysis specifications |
+| 8 | dbc2b4a | feat: implement convergence analysis |
+| 9 | c2c7a57 | feat: add 2d scripts, plots and update result generation |
+| 10 | 2cd88a9 | ci: add coverage gate and v0.2 artifact verification |
+| 11 | f37a01e | docs: update governance and bump version to 0.2.0 |
+
+### Files Created
+
+| File | Type |
+|------|------|
+| `src/mvp_quantum_materials/thermal_solver_2d.py` | Module — 2D thermal solver |
+| `src/mvp_quantum_materials/convergence.py` | Module — convergence analysis |
+| `scripts/run_thermal_2d.py` | Script — 2D thermal CLI |
+| `scripts/run_convergence.py` | Script — convergence CLI |
+| `tests/test_domain_2d.py` | Tests — Domain2D (11 tests) |
+| `tests/test_stability_2d.py` | Tests — 2D stability (5 tests) |
+| `tests/test_thermal_solver_2d.py` | Tests — 2D solver (6 tests) |
+| `tests/test_convergence.py` | Tests — convergence (6 tests) |
+| `tests/test_plots.py` | Tests — direct plot coverage (5 tests) |
+
+### Files Modified (additive-only)
+
+| File | Change |
+|------|--------|
+| `src/mvp_quantum_materials/domain.py` | Add Domain2D (Domain1D untouched) |
+| `src/mvp_quantum_materials/config.py` | Add `compute_max_stable_dt_thermal_2d` (1D functions untouched) |
+| `src/mvp_quantum_materials/plots.py` | Add `plot_thermal_2d_final` (1D functions untouched) |
+| `scripts/generate_all_results.py` | Add 2D thermal + convergence outputs (1D outputs preserved) |
+| `tests/test_scripts.py` | Add v0.2 artifact tests (v0.1 tests preserved) |
+| `pyproject.toml` | Add pytest-cov, bump to 0.2.0, add N803 ignore |
+| `src/mvp_quantum_materials/__init__.py` | Bump `__version__` to 0.2.0 |
+| `.github/workflows/ci.yml` | Add coverage gate, v0.2 artifact verification |
+
+### Quality Gates
+
+| Gate | Result |
+|------|--------|
+| pytest | ✅ 56/56 passed |
+| Coverage | ✅ 92.44% (gate: 70%) |
+| ruff check | ✅ All checks passed |
+| ruff format | ✅ 29 files formatted |
+| v0.1 regression | ✅ 21 original tests pass |
+| v0.1 artifacts | ✅ 4 figures + 1 CSV preserved |
+| Convergence order | ✅ observed_order ≥ 1.5 |
+
+### Figures Generated (6 total)
+
+1. `results/figures/thermal_1d_evolution.png` (v0.1)
+2. `results/figures/diffusion_1d_evolution.png` (v0.1)
+3. `results/figures/sensitivity_analysis.png` (v0.1)
+4. `results/figures/sensitivity_ranking.png` (v0.1)
+5. `results/figures/thermal_2d_final.png` (v0.2 — new)
+6. `results/figures/convergence_analysis.png` (v0.2 — new)
+
+### Tables Generated (2 total)
+
+1. `results/tables/sensitivity_results.csv` (v0.1)
+2. `results/tables/convergence_results.csv` (v0.2 — new)
+
+### Non-Regression Confirmations
+
+- ✅ `thermal_solver.py`: **zero diff** vs main
+- ✅ `diffusion_solver.py`: **zero diff** vs main
+- ✅ All 21 v0.1 tests passing
+- ✅ All 4 v0.1 figures generated
+- ✅ `sensitivity_results.csv` generated
+- ✅ C remains adimensional proxy
+- ✅ Scientific disclaimers intact
+
+### Scope Exclusions (confirmed)
+
+- ✅ Diffusion 2D: **deferred** (SHOULD conditional — documented in TD)
+- ✅ Notebooks/Jupytext: **deferred** (SHOULD — documented in TD)
+- ✅ Morris/Sobol global sensitivity: **deferred** (COULD — documented in TD)
+- ✅ Poisson/Schrödinger/TCAD: **NOT implemented** (WON'T until v0.4/v0.5)
+- ✅ Czochralski/phase-field/OpenFOAM: **NOT implemented**
+- ✅ Quantum coherence: **NOT implemented** (ADR-002 permanent)
+
+### Version Note
+
+- `pyproject.toml` and `__init__.py` set to `0.2.0`
+- This is a **local candidate version** only
+- Tag `v0.2.0` must NOT be created until: push → PR → CI green → merge to main
+
