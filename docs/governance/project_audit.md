@@ -158,13 +158,55 @@ mvp-materiais-chips-quanticos/
 | Parameters not calibrated | ACKNOWLEDGED | Documented in TD-v0.2-05, disclaimers present |
 | sensitivity.py coverage 59% | LOW | Subprocess coverage boundary; OAT is demonstrative |
 
+## v0.2.0 Release Status
+
+1. ✅ Branch `feature/v0.2-2d-robustness` pushed
+2. ✅ PR #4 created and CI green (5/5 checks)
+3. ✅ PR #4 merged to main
+4. ✅ Tag `v0.2.0` created on main (`77e37ba`)
+5. ✅ CI green on main post-merge
+
+---
+
+## v0.2.1 Institutional Release Audit
+
+> **Date:** 2026-05-07  
+> **Type:** Documentation-only release
+
+### New Documentation
+
+| Document | Purpose |
+|----------|---------|
+| `docs/release_notes/v0.2.0.md` | Formal changelog for v0.2.0 |
+| `docs/tutorials/reproduce_v0.2.0.md` | Step-by-step reproducibility guide |
+| `notebooks/v0.2_demo.py` | Jupytext demonstrative notebook |
+| `docs/decision_briefs/v0.2.1_vs_v0.3.md` | Strategic decision: why v0.2.1 before v0.3 |
+| `docs/institutional/cnpem_lnnano_summary.md` | Institutional summary for partners |
+| `docs/governance/v0.2.1_task.md` | Task tracker |
+
+### v0.2.1 Metrics
+
+| Metric | v0.2.0 | v0.2.1 | Delta |
+|--------|--------|--------|-------|
+| Tests | 56 | 56 | 0 (no code changes) |
+| Coverage | 92.44% | 92.44% | 0 |
+| Figures | 6 | 6 | 0 |
+| CSVs | 2 | 2 | 0 |
+| Documentation files | ~25 | ~31 | +6 |
+
+### Scope Confirmation
+
+- ✅ No physics changes
+- ✅ No solver modifications
+- ✅ Diffusion 2D remains deferred
+- ✅ v0.3 not started
+- ✅ C remains adimensional proxy
+
 ---
 
 ## Next Steps
 
-1. Push `feature/v0.2-2d-robustness` (requires authorization)
-2. Create PR → main
-3. Wait for CI green
-4. Merge PR
-5. Create tag `v0.2.0`
-6. Consider SHOULD items for v0.2.1 or v0.3
+1. v0.3: defect-like reaction-diffusion (requires ADR-006, spec, gates)
+2. v0.4: Poisson 2D (requires C_def from v0.3)
+3. v0.5: Schrödinger simplificado
+

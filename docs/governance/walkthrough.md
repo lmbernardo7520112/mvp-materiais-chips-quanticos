@@ -190,6 +190,36 @@
 ### Version Note
 
 - `pyproject.toml` and `__init__.py` set to `0.2.0`
-- This is a **local candidate version** only
-- Tag `v0.2.0` must NOT be created until: push → PR → CI green → merge to main
+- Tag `v0.2.0` created on main after PR #4 merge and CI green
+- Merge commit: `77e37ba`
+
+---
+
+## v0.2.1 Institutional Release Evidence
+
+> **Date:** 2026-05-07
+> **Branch:** `feature/v0.2.1-institutional`
+> **Status:** Documentation-only release — no physics changes
+
+### Files Created
+
+| File | Type |
+|------|------|
+| `docs/release_notes/v0.2.0.md` | Release notes formal |
+| `docs/tutorials/reproduce_v0.2.0.md` | Reproducibility tutorial |
+| `notebooks/v0.2_demo.py` | Jupytext percent-format notebook |
+| `docs/decision_briefs/v0.2.1_vs_v0.3.md` | Strategic decision brief |
+| `docs/institutional/cnpem_lnnano_summary.md` | Institutional summary |
+| `docs/governance/v0.2.1_task.md` | Task tracker |
+
+### Confirmations
+
+- ✅ No physics changes
+- ✅ No solver modifications (thermal_solver.py, diffusion_solver.py: zero diff)
+- ✅ Diffusion 2D NOT implemented (remains deferred)
+- ✅ v0.3 NOT started
+- ✅ C remains adimensional proxy
+- ✅ Notebook executes correctly (Agg backend, no new logic)
+- ✅ Decision brief answers 6 banca-level questions
+- ✅ Institutional summary uses prudent tone
 
