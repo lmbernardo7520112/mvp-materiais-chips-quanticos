@@ -1,13 +1,14 @@
-# Technical Debt Scorecard — MVP v0.1 / v0.2
+# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1
 
-> **Last updated:** 2026-05-06
+> **Last updated:** 2026-05-07
 
 ## Summary
 
 | Status | Count |
 |--------|-------|
 | RESOLVED | 1 |
-| DEFERRED | 7 |
+| PARTIALLY RESOLVED | 1 |
+| DEFERRED | 6 |
 | OPEN | 0 |
 | WONTFIX | 0 |
 
@@ -78,11 +79,12 @@
 - **Description:** Notebooks Jupyter/Jupytext demonstrativos não criados na v0.2.
 - **Impact:** Usuários interagem apenas via CLI. Demonstração interativa
   não disponível.
-- **Status:** DEFERRED
-- **Justificativa:** Classificado como SHOULD na ADR-004. Funcionalidade
-  coberta por scripts CLI. Não bloqueia gates MUST.
-- **Versão-alvo:** v0.2.1 ou v0.3
-- **Evidence:** [ADR-004 §SHOULD](../adr/ADR-004-v0.2-scope-selection.md)
+- **Status:** ✅ PARTIALLY RESOLVED in v0.2.1
+- **Resolution:** `notebooks/v0.2_demo.py` criado como Jupytext percent-format.
+  Notebook executa Domain2D, solver térmico 2D e convergência.
+  Jupytext como dependência formal não adicionada (script executável diretamente).
+- **Residual:** Conversão para .ipynb nativo requer `jupytext --to notebook`.
+- **Evidence:** [notebooks/v0.2_demo.py](../../notebooks/v0.2_demo.py)
 
 ---
 
