@@ -1,6 +1,18 @@
 #!/usr/bin/env python3
 """Generate all results: thermal, diffusion, sensitivity figures and CSV.
 
+v0.1 artifacts (preserved):
+  - thermal_1d_evolution.png
+  - diffusion_1d_evolution.png
+  - sensitivity_analysis.png
+  - sensitivity_ranking.png
+  - sensitivity_results.csv
+
+v0.2 artifacts (new):
+  - thermal_2d_final.png
+  - convergence_analysis.png
+  - convergence_results.csv
+
 Usage:
     python scripts/generate_all_results.py [--output-dir DIR]
 """
@@ -8,13 +20,21 @@ Usage:
 import argparse
 from pathlib import Path
 
+import numpy as np
+
 from mvp_quantum_materials.config import DiffusionConfig, ThermalConfig
+from mvp_quantum_materials.convergence import (
+    export_convergence_csv,
+    plot_convergence,
+    run_convergence_analysis,
+)
 from mvp_quantum_materials.diffusion_solver import solve_diffusion_1d
-from mvp_quantum_materials.domain import Domain1D
+from mvp_quantum_materials.domain import Domain1D, Domain2D
 from mvp_quantum_materials.plots import (
     plot_diffusion_evolution,
     plot_sensitivity_ranking,
     plot_sensitivity_results,
+    plot_thermal_2d_final,
     plot_thermal_evolution,
 )
 from mvp_quantum_materials.sensitivity import (
@@ -23,6 +43,7 @@ from mvp_quantum_materials.sensitivity import (
     run_sensitivity_analysis,
 )
 from mvp_quantum_materials.thermal_solver import solve_thermal_1d
+from mvp_quantum_materials.thermal_solver_2d import solve_thermal_2d
 
 
 def run_thermal(output_dir: Path) -> None:
@@ -83,6 +104,50 @@ def run_sensitivity(output_dir: Path, tables_dir: Path) -> None:
         print(f"    {r['parameter']:15s}  S = {r['sensitivity']:.4f}")
 
 
+def run_thermal_2d(output_dir: Path) -> None:
+    """Run 2D thermal simulation and generate figure."""
+    domain = Domain2D(Lx=0.01, Ly=0.01, nx=51, ny=51)
+    T_init = np.full((domain.nx, domain.ny), 1500.0)
+    T_init[0, :] = 1400.0
+    T_init[-1, :] = 1400.0
+    T_init[:, 0] = 1400.0
+    T_init[:, -1] = 1400.0
+
+    print(f"  Solving thermal 2D (nx={domain.nx}, ny={domain.ny})...")
+    result = solve_thermal_2d(
+        domain=domain,
+        T_init=T_init,
+        alpha=8.8e-5,
+        t_total=0.01,
+        t_boundary=1400.0,
+        safety_factor=0.4,
+    )
+
+    fig_path = plot_thermal_2d_final(
+        domain.x, domain.y, result.T_final, output_dir / "thermal_2d_final.png"
+    )
+    print(f"  Figure: {fig_path}")
+
+
+def run_convergence(output_dir: Path, tables_dir: Path) -> None:
+    """Run convergence analysis with manufactured solution."""
+    print("  Running convergence analysis (nx = 11, 21, 41)...")
+    results = run_convergence_analysis(
+        nx_values=[11, 21, 41],
+        alpha=8.8e-5,
+        Lx=0.01,
+        Ly=0.01,
+        t_final=0.001,
+        safety_factor=0.4,
+    )
+
+    csv_path = export_convergence_csv(results, tables_dir / "convergence_results.csv")
+    print(f"  CSV: {csv_path}")
+
+    fig_path = plot_convergence(results, output_dir / "convergence_analysis.png")
+    print(f"  Figure: {fig_path}")
+
+
 def main(output_dir: Path) -> None:
     """Generate all results and figures."""
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -97,16 +162,24 @@ def main(output_dir: Path) -> None:
     print(f"Tables directory: {tables_dir}")
     print("=" * 60)
 
-    print("[1/4] Thermal 1D")
+    # --- v0.1 artifacts (preserved) ---
+    print("[1/6] Thermal 1D")
     run_thermal(output_dir)
 
-    print("[2/4] Diffusion 1D")
+    print("[2/6] Diffusion 1D")
     run_diffusion(output_dir)
 
-    print("[3/4] Sensitivity Analysis + Ranking")
+    print("[3/6] Sensitivity Analysis + Ranking")
     run_sensitivity(output_dir, tables_dir)
 
-    print("[4/4] Summary")
+    # --- v0.2 artifacts (new) ---
+    print("[4/6] Thermal 2D")
+    run_thermal_2d(output_dir)
+
+    print("[5/6] Convergence Analysis")
+    run_convergence(output_dir, tables_dir)
+
+    print("[6/6] Summary")
     figures = list(output_dir.glob("*.png"))
     csvs = list(tables_dir.glob("*.csv"))
     print("=" * 60)

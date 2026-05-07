@@ -128,3 +128,27 @@ def validate_stability(dt: float, dt_max: float, solver_name: str) -> None:
             f"dt={dt:.6e} exceeds maximum stable dt={dt_max:.6e}. "
             f"Reduce dt or increase grid spacing."
         )
+
+
+# ---------------------------------------------------------------------------
+# 2D Stability Functions (v0.2)
+# ---------------------------------------------------------------------------
+
+
+def compute_max_stable_dt_thermal_2d(
+    dx: float, dy: float, alpha: float, safety_factor: float
+) -> float:
+    """Compute maximum stable dt for explicit Euler 2D thermal solver.
+
+    Formula: dt_max = safety_factor * dx² * dy² / (2 * alpha * (dx² + dy²))
+
+    Args:
+        dx: Grid spacing in x-direction [m].
+        dy: Grid spacing in y-direction [m].
+        alpha: Thermal diffusivity [m²/s].
+        safety_factor: Safety factor (< 0.5).
+
+    Returns:
+        Maximum stable time step [s].
+    """
+    return safety_factor * dx**2 * dy**2 / (2.0 * alpha * (dx**2 + dy**2))

@@ -32,18 +32,41 @@ jobs:
       - name: Format — ruff format check
         run: ruff format --check .
 
-      - name: Test — pytest
-        run: pytest -v --tb=short
+      - name: Test — pytest with coverage
+        run: pytest -v --tb=short --cov=mvp_quantum_materials --cov-report=term-missing --cov-fail-under=70
 
       - name: Generate results
         run: python scripts/generate_all_results.py --output-dir results/figures
 
-      - name: Verify figures (>= 3)
+      - name: Verify v0.1 figures (>= 4)
         run: |
           FIGURE_COUNT=$(ls results/figures/*.png 2>/dev/null | wc -l)
           echo "Figures generated: $FIGURE_COUNT"
-          if [ "$FIGURE_COUNT" -lt 3 ]; then
-            echo "ERROR: Expected >= 3 figures, got $FIGURE_COUNT"
+          if [ "$FIGURE_COUNT" -lt 4 ]; then
+            echo "ERROR: Expected >= 4 figures, got $FIGURE_COUNT"
+            exit 1
+          fi
+
+      - name: Verify v0.2 artifacts
+        run: |
+          # v0.2 figures
+          test -f results/figures/thermal_2d_final.png || { echo "ERROR: thermal_2d_final.png missing"; exit 1; }
+          test -f results/figures/convergence_analysis.png || { echo "ERROR: convergence_analysis.png missing"; exit 1; }
+          echo "v0.2 figures: OK"
+
+          # v0.2 CSV
+          test -f results/tables/convergence_results.csv || { echo "ERROR: convergence_results.csv missing"; exit 1; }
+          echo "v0.2 convergence CSV: OK"
+
+          # v0.1 CSV (non-regression)
+          test -f results/tables/sensitivity_results.csv || { echo "ERROR: sensitivity_results.csv missing"; exit 1; }
+          echo "v0.1 sensitivity CSV: OK"
+
+          # Total figure count (>= 6)
+          TOTAL=$(ls results/figures/*.png 2>/dev/null | wc -l)
+          echo "Total figures: $TOTAL"
+          if [ "$TOTAL" -lt 6 ]; then
+            echo "ERROR: Expected >= 6 total figures, got $TOTAL"
             exit 1
           fi
 

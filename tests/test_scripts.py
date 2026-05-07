@@ -1,4 +1,4 @@
-"""Tests for scripts — T-11, T-12."""
+"""Tests for scripts — T-11, T-12, T-v0.2 result generation."""
 
 import subprocess
 import sys
@@ -60,3 +60,44 @@ def test_generate_all_produces_sensitivity_csv(tmp_path: Path):
     lines = content.strip().split("\n")
     assert len(lines) > 1, "CSV has no data rows"
     assert "parameter" in lines[0], "CSV header missing 'parameter' column"
+
+
+# ---------------------------------------------------------------------------
+# v0.2 result generation tests
+# ---------------------------------------------------------------------------
+
+
+def test_generate_all_produces_v02_figures(tmp_path: Path):
+    """v0.2: generate_all produces >= 6 figures (4 v0.1 + 2 v0.2)."""
+    result = _run_script("generate_all_results.py", tmp_path)
+    assert result.returncode == 0, (
+        f"generate_all_results failed:\nstdout: {result.stdout}\nstderr: {result.stderr}"
+    )
+
+    figures = list(tmp_path.glob("*.png"))
+    assert len(figures) >= 6, (
+        f"Expected >= 6 figures, got {len(figures)}: {[f.name for f in figures]}"
+    )
+
+    # v0.2 specific figures
+    assert (tmp_path / "thermal_2d_final.png").exists(), "thermal_2d_final.png not generated"
+    assert (tmp_path / "convergence_analysis.png").exists(), (
+        "convergence_analysis.png not generated"
+    )
+
+
+def test_generate_all_produces_convergence_csv(tmp_path: Path):
+    """v0.2: generate_all produces convergence CSV."""
+    result = _run_script("generate_all_results.py", tmp_path)
+    assert result.returncode == 0, (
+        f"generate_all_results failed:\nstdout: {result.stdout}\nstderr: {result.stderr}"
+    )
+
+    tables_dir = tmp_path.parent / "tables"
+    csv_file = tables_dir / "convergence_results.csv"
+    assert csv_file.exists(), f"Convergence CSV not found at {csv_file}"
+
+    content = csv_file.read_text()
+    lines = content.strip().split("\n")
+    assert len(lines) > 1, "Convergence CSV has no data rows"
+    assert "error_l2" in lines[0], "CSV header missing 'error_l2' column"

@@ -1,8 +1,8 @@
-# Project Audit — MVP v0.1
+# Project Audit — MVP v0.1 / v0.2
 
 > **Date:** 2026-05-06  
 > **Auditor:** Staff Research Software Engineer (AI-assisted)  
-> **Status:** RELEASE CLOSED ✅
+> **Status:** v0.1 CLOSED ✅ | v0.2 LOCAL COMPLETE ✅
 
 ## Remote Infrastructure
 
@@ -11,10 +11,14 @@
 | Repository | https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos |
 | Visibility | **Private** |
 | Branch | `main` |
-| PR | [#1 (Merged)](https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos/pull/1) |
+| PR #1 | [Merged](https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos/pull/1) — v0.1 |
+| PR #2 | [Merged](https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos/pull/2) — v0.2 spec |
+| PR #3 | [Merged](https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos/pull/3) — ADR-004 acceptance |
 | Tag | `v0.1.0` (contained in `main`) |
 
-## Repository Topology
+---
+
+## v0.1 Repository Topology
 
 ```
 mvp-materiais-chips-quanticos/
@@ -38,7 +42,7 @@ mvp-materiais-chips-quanticos/
 └── tests/ (6 files, 21 tests)
 ```
 
-## Metrics
+## v0.1 Metrics
 
 | Metric | Value |
 |--------|-------|
@@ -55,7 +59,7 @@ mvp-materiais-chips-quanticos/
 | CI runs (all green) | 2 (feature) + 1 (main pending) |
 | Working tree | Clean |
 
-## Confirmations
+## v0.1 Confirmations
 
 - ✅ 2D permanece deferido via ADR-003
 - ✅ Nenhum escopo físico novo introduzido
@@ -64,12 +68,103 @@ mvp-materiais-chips-quanticos/
 - ✅ PR #1 mergeado de forma controlada (merge commit)
 - ✅ Tag v0.1.0 intacta e válida
 
-## Next Steps (v0.2)
+---
 
-1. Implement 2D simplified case
-2. Create Jupyter notebooks from scripts
-3. Add convergence analysis
-4. Consider ADI or implicit solver
-5. Explore parameter calibration with literature
-6. Coverage measurement with pytest-cov
-7. Global sensitivity methods (Sobol/Morris)
+## v0.2 Audit — Local Implementation
+
+> **Branch:** `feature/v0.2-2d-robustness`  
+> **Status:** LOCAL COMPLETE — awaiting push
+
+### v0.2 Repository Topology (delta from v0.1)
+
+```
+mvp-materiais-chips-quanticos/
+├── .github/workflows/ci.yml                    [MODIFIED — coverage gate]
+├── docs/
+│   ├── adr/
+│   │   ├── ADR-004-v0.2-scope-selection.md     [NEW — Accepted]
+│   │   └── ADR-005-process-to-device-bridge.md [NEW — roadmap]
+│   ├── governance/
+│   │   ├── v0.2_implementation_plan.md         [NEW — spec]
+│   │   ├── v0.2_task.md                        [NEW — tracker]
+│   │   ├── v0.2_risk_matrix.md                 [NEW — 11 risks]
+│   │   ├── v0.2_acceptance_gates.md            [NEW — 26 gates]
+│   │   ├── walkthrough.md                      [MODIFIED — v0.2 evidence]
+│   │   ├── project_audit.md                    [MODIFIED — v0.2 section]
+│   │   └── technical_debt.md                   [MODIFIED — v0.2 TDs]
+│   ├── research_council/
+│   │   └── evolution_deliberation.md           [NEW]
+│   ├── relatorio_v0.2.md                       [NEW]
+│   └── parameters.md                           [MODIFIED — 2D params]
+├── results/
+│   ├── figures/ (6 figures: 4 v0.1 + 2 v0.2)
+│   └── tables/ (2 CSVs: 1 v0.1 + 1 v0.2)
+├── scripts/ (6 CLI scripts: 4 v0.1 + 2 v0.2)
+├── src/mvp_quantum_materials/ (9 modules: 7 v0.1 + 2 v0.2)
+└── tests/ (11 files, 56 tests: 21 v0.1 + 35 v0.2)
+```
+
+### New Modules (v0.2)
+
+| Module | Purpose |
+|--------|---------|
+| `thermal_solver_2d.py` | 2D heat equation: explicit Euler, Dirichlet BCs, stability guard |
+| `convergence.py` | Manufactured analytical solution, mesh refinement, CSV/plot export |
+
+### Extended Modules (additive-only)
+
+| Module | Extension |
+|--------|-----------|
+| `domain.py` | `Domain2D` dataclass (Domain1D untouched) |
+| `config.py` | `compute_max_stable_dt_thermal_2d` (1D functions untouched) |
+| `plots.py` | `plot_thermal_2d_final` contour function (1D functions untouched) |
+
+### New Scripts (v0.2)
+
+| Script | Purpose |
+|--------|---------|
+| `run_thermal_2d.py` | Run 2D thermal simulation |
+| `run_convergence.py` | Run convergence analysis with CSV and figure |
+
+### v0.2 Metrics
+
+| Metric | v0.1 | v0.2 | Delta |
+|--------|------|------|-------|
+| Tests | 21 | 56 | +35 |
+| Coverage | N/A | 92.44% | Gate: 70% |
+| Figures | 4 | 6 | +2 |
+| CSVs | 1 | 2 | +1 |
+| Source modules | 7 | 9 | +2 |
+| Scripts | 4 | 6 | +2 |
+| Test files | 6 | 11 | +5 |
+| ADRs | 3 | 5 | +2 |
+| Commits | 15 | 26 | +11 |
+
+### Risks Mitigated
+
+| Risk | Status |
+|------|--------|
+| R-01: Numerical instability 2D | ✅ Stability guard + CFL formula |
+| R-02: No convergence evidence | ✅ Manufactured solution + observed_order ≥ 1.5 |
+| R-03: Coverage blind spots | ✅ 92.44% coverage with CI gate |
+| R-04: v0.1 regression | ✅ Zero diff on 1D solvers, 21 tests pass |
+| R-11: Additive-only violation | ✅ thermal_solver.py and diffusion_solver.py untouched |
+
+### Residual Risks
+
+| Risk | Status | Mitigation |
+|------|--------|------------|
+| Diffusion 2D not tested | DEFERRED | Documented in TD-v0.2-01 |
+| Parameters not calibrated | ACKNOWLEDGED | Documented in TD-v0.2-05, disclaimers present |
+| sensitivity.py coverage 59% | LOW | Subprocess coverage boundary; OAT is demonstrative |
+
+---
+
+## Next Steps
+
+1. Push `feature/v0.2-2d-robustness` (requires authorization)
+2. Create PR → main
+3. Wait for CI green
+4. Merge PR
+5. Create tag `v0.2.0`
+6. Consider SHOULD items for v0.2.1 or v0.3
