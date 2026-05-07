@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mvp-quantum-materials"
-version = "0.1.0"
+version = "0.2.0"
 description = "MVP computacional: modelagem termo-difusiva simplificada para análise de heterogeneidades em material semicondutor idealizado"
 readme = "README.md"
 license = {text = "MIT"}
