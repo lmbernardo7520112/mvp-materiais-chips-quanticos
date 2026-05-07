@@ -12,9 +12,15 @@
 | Category | Description |
 |----------|-------------|
 | **Toy/Demonstrative** | Chosen for numerical behavior, not physical accuracy |
-| **Literature-Inspired** | Order of magnitude from published data, not calibrated |
+| **Literature-Inspired** | Order of magnitude from published data, not calibrated for C_def |
 | **Undefined** | Not yet determined; requires further deliberation |
 | **Prohibited** | Must NOT be presented as physically calibrated |
+
+**Critical distinction:** Crystal growth references (Dornberger, Brown,
+Voronkov) serve as **equation sources** (the form of the PDE) but NOT
+as **parameter sources** (the numerical values). Literature-inspired
+values use published orders of magnitude as starting points for toy
+parameters, not as calibrated values for our C_def model.
 
 ---
 
@@ -103,3 +109,6 @@ The following MUST NOT be stated:
 - "The model predicts real defect concentrations"
 - "Parameters are from Maurand et al."
 - "Results can be compared to TCAD simulations"
+- "Literature-inspired values are calibrated for this model"
+- "The parameters are taken from Dornberger/Brown/Voronkov"
+  (correct: "the equation *form* is inspired by..., values are toy")

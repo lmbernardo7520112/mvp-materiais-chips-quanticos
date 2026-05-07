@@ -20,7 +20,8 @@ to heterogeneity representation.
 - Maurand et al. (2016) is the device-target anchor for silicon CMOS
   spin qubits, motivating why process-generated disorder matters
 - Literature on point defects in CZ silicon (Dornberger, Brown, Voronkov)
-  provides the reaction-diffusion equation structure
+  provides structural inspiration for the reaction-diffusion equation form
+  (equation source; parameter values remain toy/demonstrative for v0.3)
 - Literature on charge noise (Martinez & Niquet, Culcer, Shehata)
   validates the downstream impact of disorder on qubits
 - The project needs to approximate semiconductor materials and defects
@@ -116,8 +117,10 @@ No back-coupling of C_def on T.
 
 ```
 ρ_eff(x,y) = q_eff · C_def(x,y,t_final)
-∇²φ(x,y) = −ρ_eff(x,y) / ε
+∇·(ε∇φ(x,y)) = −ρ_eff(x,y)
 ```
+
+(Note: ∇²φ = −ρ_eff/ε is valid only for spatially homogeneous ε.)
 
 C_def_final serves as input for v0.4 Poisson source term.
 
@@ -126,7 +129,9 @@ C_def_final serves as input for v0.4 Poisson source term.
 ### A — Full V/I Coupled System
 
 Two coupled PDEs (vacancies + interstitials). Closest to Dornberger/Brown
-literature but requires 10+ parameters per species. **Rejected:**
+literature but requires 10+ parameters per species. Equations are
+schematic representations; actual models vary by author and may include
+convection, thermodiffusion, oxygen, and cluster terms. **Rejected:**
 too complex, insufficient parameter availability, overclaim risk.
 
 ### B — Effective Interface-Trap Model
@@ -153,7 +158,9 @@ advance; deferral risks losing momentum.
 - Prepares clean interface for v0.4 Poisson
 - Maintains simplicity and testability
 - Maintains rastreability with CMOS spin-qubit target
-- Standard reaction-diffusion formalism (Dornberger, Brown analogy)
+- Reaction-diffusion form structurally inspired by crystal growth
+  literature (Dornberger, Brown) — used as equation source, not as
+  calibrated parameter source
 - Bounded C_def (bounded model → numerical stability)
 - Educational and demonstrative value
 
