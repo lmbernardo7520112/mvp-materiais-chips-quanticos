@@ -78,3 +78,40 @@ class TestConvergenceAnalysis:
             )
         else:
             pytest.skip("No observed orders computed (need >= 2 refinement levels)")
+
+
+class TestConvergenceExport:
+    """Tests for convergence CSV and plot export."""
+
+    def test_export_csv(self, tmp_path):
+        """CSV export creates valid file."""
+        from mvp_quantum_materials.convergence import export_convergence_csv
+
+        results = run_convergence_analysis(
+            nx_values=[11, 21],
+            alpha=8.8e-5,
+            Lx=0.01,
+            Ly=0.01,
+            t_final=0.001,
+            safety_factor=0.4,
+        )
+        csv_path = export_convergence_csv(results, tmp_path / "conv.csv")
+        assert csv_path.exists()
+        content = csv_path.read_text()
+        assert "error_l2" in content
+        assert len(content.strip().split("\n")) > 1
+
+    def test_plot_convergence(self, tmp_path):
+        """Convergence plot generates valid PNG."""
+        from mvp_quantum_materials.convergence import plot_convergence
+
+        results = run_convergence_analysis(
+            nx_values=[11, 21],
+            alpha=8.8e-5,
+            Lx=0.01,
+            Ly=0.01,
+            t_final=0.001,
+            safety_factor=0.4,
+        )
+        fig_path = plot_convergence(results, tmp_path / "conv.png")
+        assert fig_path.exists()
