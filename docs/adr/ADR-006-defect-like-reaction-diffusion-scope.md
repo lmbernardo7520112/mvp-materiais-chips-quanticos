@@ -2,7 +2,7 @@
 
 ## Status
 
-**Proposed** — awaiting user approval before implementation.
+**Accepted**
 
 ## Date
 
@@ -187,6 +187,36 @@ advance; deferral risks losing momentum.
     calibration source for C_def, G(T), or R(T,C)
 11. thermal_solver.py and diffusion_solver.py must remain untouched
 12. Additive-only policy: new modules, not modifications
+
+## Acceptance Record
+
+Accepted on 2026-05-08 after the v0.3 literature review, Research
+Council deliberation (8/8 approve), ADR-006 proposal, and v0.3 draft
+specification were merged into main via PR #6.
+
+The accepted v0.3 direction is a bounded, adimensional, defect-like /
+trap-like / charge-disorder-like state variable C_def governed by a
+thermally motivated reaction-diffusion formulation:
+
+```
+∂C_def/∂t = ∇·(D(T)∇C_def) + G(T)(1 − C_def/C_sat) − R(T)C_def
+```
+
+This acceptance authorizes a future implementation branch for the v0.3
+core, but does not implement it.
+
+The accepted guardrails remain:
+
+- C_def is adimensional.
+- C_def is not a calibrated physical defect concentration.
+- G(T), R(T,C_def), and D(T) parameters remain toy/demonstrative
+  unless future curation explicitly upgrades them.
+- v0.3 must not solve Poisson.
+- v0.3 must not solve Schrödinger.
+- v0.3 must not claim device-level prediction.
+- v0.3 must not predict charge noise, coherence, fidelity, or
+  wafer quality.
+- v0.3 must preserve v0.2.1 regression.
 
 ## References
 
