@@ -101,3 +101,69 @@ def test_generate_all_produces_convergence_csv(tmp_path: Path):
     lines = content.strip().split("\n")
     assert len(lines) > 1, "Convergence CSV has no data rows"
     assert "error_l2" in lines[0], "CSV header missing 'error_l2' column"
+
+
+# ---------------------------------------------------------------------------
+# v0.3 result generation tests
+# ---------------------------------------------------------------------------
+
+
+def test_generate_all_produces_v03_defect_figure(tmp_path: Path):
+    """v0.3: generate_all produces defect_2d_final.png."""
+    result = _run_script("generate_all_results.py", tmp_path)
+    assert result.returncode == 0, (
+        f"generate_all_results failed:\nstdout: {result.stdout}\nstderr: {result.stderr}"
+    )
+
+    assert (tmp_path / "defect_2d_final.png").exists(), "defect_2d_final.png not generated"
+
+    # Total figures should be >= 7 (4 v0.1 + 2 v0.2 + 1 v0.3)
+    figures = list(tmp_path.glob("*.png"))
+    assert len(figures) >= 7, (
+        f"Expected >= 7 figures, got {len(figures)}: {[f.name for f in figures]}"
+    )
+
+
+def test_generate_all_produces_v03_csvs(tmp_path: Path):
+    """v0.3: generate_all produces defect metrics and snapshot CSVs."""
+    result = _run_script("generate_all_results.py", tmp_path)
+    assert result.returncode == 0, (
+        f"generate_all_results failed:\nstdout: {result.stdout}\nstderr: {result.stderr}"
+    )
+
+    tables_dir = tmp_path.parent / "tables"
+
+    # Metrics CSV
+    metrics_csv = tables_dir / "defect_metrics.csv"
+    assert metrics_csv.exists(), f"defect_metrics.csv not found at {metrics_csv}"
+    content = metrics_csv.read_text()
+    assert "metric" in content, "defect_metrics.csv missing header"
+    assert "proxy/demonstrative" in content, "defect_metrics.csv missing nature column"
+
+    # Snapshot CSV
+    snapshot_csv = tables_dir / "defect_final_snapshot.csv"
+    assert snapshot_csv.exists(), f"defect_final_snapshot.csv not found at {snapshot_csv}"
+    snap_content = snapshot_csv.read_text()
+    assert "C_def" in snap_content, "snapshot CSV missing C_def column"
+
+    # Total CSVs should be >= 4
+    csvs = list(tables_dir.glob("*.csv"))
+    assert len(csvs) >= 4, f"Expected >= 4 CSVs, got {len(csvs)}: {[c.name for c in csvs]}"
+
+
+def test_v03_snapshot_values_bounded(tmp_path: Path):
+    """v0.3: C_def values in snapshot CSV are bounded in [0, 1]."""
+    result = _run_script("generate_all_results.py", tmp_path)
+    assert result.returncode == 0
+
+    tables_dir = tmp_path.parent / "tables"
+    snapshot_csv = tables_dir / "defect_final_snapshot.csv"
+    assert snapshot_csv.exists()
+
+    import csv
+
+    with open(snapshot_csv) as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            val = float(row["C_def"])
+            assert 0.0 <= val <= 1.0, f"C_def out of bounds: {val}"
