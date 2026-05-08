@@ -70,6 +70,25 @@ jobs:
             exit 1
           fi
 
+      - name: Verify v0.3 artifacts
+        run: |
+          # v0.3 figure
+          test -f results/figures/defect_2d_final.png || { echo "ERROR: defect_2d_final.png missing"; exit 1; }
+          echo "v0.3 defect figure: OK"
+
+          # v0.3 CSVs
+          test -f results/tables/defect_metrics.csv || { echo "ERROR: defect_metrics.csv missing"; exit 1; }
+          test -f results/tables/defect_final_snapshot.csv || { echo "ERROR: defect_final_snapshot.csv missing"; exit 1; }
+          echo "v0.3 defect CSVs: OK"
+
+          # Total CSV count (>= 4)
+          CSV_COUNT=$(ls results/tables/*.csv 2>/dev/null | wc -l)
+          echo "Total CSVs: $CSV_COUNT"
+          if [ "$CSV_COUNT" -lt 4 ]; then
+            echo "ERROR: Expected >= 4 CSVs, got $CSV_COUNT"
+            exit 1
+          fi
+
       - name: Upload results artifacts
         uses: actions/upload-artifact@v4
         if: always()
