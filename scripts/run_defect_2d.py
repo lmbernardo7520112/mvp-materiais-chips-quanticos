@@ -90,7 +90,7 @@ def main(output_dir: Path, table_dir: Path) -> None:
         writer = csv.writer(f)
         writer.writerow(["# C_def final snapshot — adimensional proxy"])
         writer.writerow([f"# Shape: ({domain.nx}, {domain.ny})"])
-        writer.writerow(["# For future v0.4 coupling: C_def → rho_eff"])
+        writer.writerow(["# For future v0.4 coupling: C_def as charge source"])
         writer.writerow(["i", "j", "x_m", "y_m", "C_def"])
         for i in range(domain.nx):
             for j in range(domain.ny):

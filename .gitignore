@@ -42,3 +42,6 @@ results/runs/*
 
 # Ruff
 .ruff_cache/
+
+# AI-RSE GateOps private forbidden terms (never commit)
+.quality_gates_forbidden_terms.local
