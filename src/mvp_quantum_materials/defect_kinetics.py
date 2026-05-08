@@ -44,9 +44,7 @@ def defect_diffusivity(T: float, D0: float, E_D: float) -> float:
     return float(D0 * np.exp(-E_D / (BOLTZMANN_EV * T)))
 
 
-def defect_generation(
-    T: float, A_G: float, T_G: float, sigma_G: float
-) -> float:
+def defect_generation(T: float, A_G: float, T_G: float, sigma_G: float) -> float:
     """Compute Gaussian defect generation rate G(T).
 
     G(T) = A_G * exp(-(T - T_G)^2 / (2 * sigma_G^2))

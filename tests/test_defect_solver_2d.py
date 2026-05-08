@@ -90,10 +90,14 @@ class TestDefectSolverPhysics:
         """T-SOLV-06: Saturation term reduces G when C_def approaches C_sat."""
         T_field = np.full((small_domain.nx, small_domain.ny), 1100.0)
         result_short = solve_defect_2d(
-            domain=small_domain, T_field=T_field, t_total=0.001,
+            domain=small_domain,
+            T_field=T_field,
+            t_total=0.001,
         )
         result_long = solve_defect_2d(
-            domain=small_domain, T_field=T_field, t_total=0.1,
+            domain=small_domain,
+            T_field=T_field,
+            t_total=0.1,
         )
         # Longer run should not exceed C_sat=1.0
         assert np.all(result_long.C_def_final <= 1.0)

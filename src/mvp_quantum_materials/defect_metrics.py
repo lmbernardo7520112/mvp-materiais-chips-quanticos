@@ -37,7 +37,5 @@ def compute_defect_metrics(
         "mean": float(np.mean(C_def)),
         "std": float(np.std(C_def)),
         "integral": float(np.sum(C_def) * dx * dy),
-        "bounded_fraction": float(
-            np.sum((C_def >= 0.0) & (C_def <= C_sat)) / C_def.size
-        ),
+        "bounded_fraction": float(np.sum((C_def >= 0.0) & (C_def <= C_sat)) / C_def.size),
     }
