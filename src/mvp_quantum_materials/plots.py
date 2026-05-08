@@ -110,7 +110,7 @@ def plot_sensitivity_results(
 
     # Group by parameter
     params = sorted(set(r["parameter"] for r in results))
-    colors = plt.cm.Set2(np.linspace(0, 1, len(params)))
+    colors = matplotlib.colormaps["Set2"](np.linspace(0, 1, len(params)))
 
     for i, param in enumerate(params):
         param_results = [r for r in results if r["parameter"] == param]
@@ -149,7 +149,7 @@ def plot_sensitivity_ranking(
 
     params = [r["parameter"] for r in ranking]
     sensitivities = [r["sensitivity"] for r in ranking]
-    colors = plt.cm.RdYlGn_r(np.linspace(0.2, 0.8, len(params)))
+    colors = matplotlib.colormaps["RdYlGn_r"](np.linspace(0.2, 0.8, len(params)))
 
     bars = ax.barh(params, sensitivities, color=colors, edgecolor="gray", linewidth=0.5)
 
