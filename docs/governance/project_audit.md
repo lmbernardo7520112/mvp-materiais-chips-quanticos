@@ -204,9 +204,69 @@ mvp-materiais-chips-quanticos/
 
 ---
 
+## v0.3 Core Implementation Audit
+
+> **Date:** 2026-05-08
+> **Branch:** `feature/v0.3-defect-like-core`
+
+### Topology v0.3
+
+| Layer | Files |
+|-------|-------|
+| Kinetics | `defect_kinetics.py` — D(T), G(T), R(T) |
+| Stability | `defect_stability.py` — CFL-like guard |
+| Solver | `defect_solver_2d.py` — explicit Euler, Neumann no-flux |
+| Metrics | `defect_metrics.py` — proxy summary statistics |
+| CLI | `run_defect_2d.py` |
+| Plots | `plots.py` → `plot_defect_2d_final` |
+| Tests | 4 test files (33 new tests) |
+
+### v0.3 Metrics
+
+| Metric | v0.2.1 | v0.3 | Delta |
+|--------|--------|------|-------|
+| Tests | 56 | 92 | +36 |
+| Coverage | 92.44% | 91.78% | −0.66% (new code well-tested; sensitivity.py ratio) |
+| Figures | 6 | 9 | +3 (1 defect + 2 notebook) |
+| CSVs | 2 | 4 | +2 |
+| Source modules | 8 | 12 | +4 |
+| pyright errors | 6 | 0 | −6 (resolved) |
+
+### Controlled Exception
+
+| File | Nature | Impact |
+|------|--------|--------|
+| `diffusion_solver.py` | `@overload` type annotations | **Zero behavioral change** |
+| `plots.py` | `matplotlib.colormaps[]` API migration | **Zero behavioral change** |
+
+Both changes resolve Pylance/Pyright IDE errors. Neither changes
+any calculation, formula, loop, boundary condition, or return value.
+
+### Risks Mitigated
+
+| Risk | Status |
+|------|--------|
+| R-30: C_def unbounded | ✅ Clipping [0, C_sat] + test verification |
+| R-31: Stability violation | ✅ CFL guard with safety_factor=0.4 |
+| R-32: v0.1/v0.2 regression | ✅ 56 existing tests pass, zero diff on thermal_solver.py |
+| R-33: Scope creep (Poisson) | ✅ Zero Poisson/Schrödinger/TCAD in code |
+| R-34: False calibration claims | ✅ All params labeled toy/demonstrative |
+| R-35: Out-of-scope platform leakage | ✅ Zero occurrences |
+
+### Residual Risks
+
+| Risk | Status | Mitigation |
+|------|--------|------------|
+| Defect params not calibrated | DEFERRED | TD-v0.3-01 |
+| Poisson not yet coupled | DEFERRED | TD-v0.3-02 |
+| Solver perf on fine grids | DEFERRED | TD-v0.3-03 |
+| sensitivity.py coverage 59% | LOW | Pre-existing, OAT is demonstrative |
+
+---
+
 ## Next Steps
 
-1. v0.3: defect-like reaction-diffusion (requires ADR-006, spec, gates)
-2. v0.4: Poisson 2D (requires C_def from v0.3)
+1. v0.3: push branch, create PR, CI green, merge, tag v0.3.0
+2. v0.4: Poisson 2D — ∇·(ε∇φ) = −ρ_eff with C_def → ρ_eff coupling
 3. v0.5: Schrödinger simplificado
-
+4. Parameter curation: real defect/trap data from peer-reviewed literature

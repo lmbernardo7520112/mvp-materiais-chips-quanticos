@@ -1,6 +1,6 @@
-# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1
+# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3
 
-> **Last updated:** 2026-05-07
+> **Last updated:** 2026-05-08
 
 ## Summary
 
@@ -8,7 +8,7 @@
 |--------|-------|
 | RESOLVED | 1 |
 | PARTIALLY RESOLVED | 1 |
-| DEFERRED | 6 |
+| DEFERRED | 9 |
 | OPEN | 0 |
 | WONTFIX | 0 |
 
@@ -132,3 +132,45 @@
 - **Evidence:** [parameters.md](../parameters.md),
   [hipoteses_e_limitacoes.md](../hipoteses_e_limitacoes.md),
   [ADR-002](../adr/ADR-002-no-quantum-coherence-prediction.md)
+
+---
+
+## v0.3 Technical Debts
+
+### TD-v0.3-01: Defect Parameter Curation Deferred
+
+- **Description:** v0.3 defect kinetics parameters (D₀, E_D, A_G, T_G, σ_G,
+  A_R, E_R) are toy/demonstrative or literature-inspired order-of-magnitude.
+  No parameter is calibrated for a specific defect type in silicon.
+- **Impact:** C_def dynamics are qualitative. Cannot predict real defect
+  concentrations or charge noise.
+- **Status:** DEFERRED
+- **Justificativa:** Calibration requires curated experimental data and
+  targeted literature review per defect species (V, I, O_i, etc.).
+- **Versão-alvo:** v0.5+ or publication
+- **Evidence:** [parameters_v0.3_candidates.md](../parameters_v0.3_candidates.md),
+  [ADR-006](../adr/ADR-006-defect-like-reaction-diffusion-scope.md)
+
+---
+
+### TD-v0.3-02: Poisson Electrostatics Deferred
+
+- **Description:** v0.3 exports C_def_final but does NOT compute ρ_eff or
+  solve Poisson (∇·(ε∇φ) = −ρ_eff). The coupling C_def → ρ_eff → φ is
+  explicitly deferred to v0.4 per ADR-005/ADR-006.
+- **Impact:** No electrostatic potential, no confinement, no device physics.
+- **Status:** DEFERRED
+- **Versão-alvo:** v0.4
+- **Evidence:** [ADR-006 §Acceptance Record](../adr/ADR-006-defect-like-reaction-diffusion-scope.md)
+
+---
+
+### TD-v0.3-03: Solver Performance (Python Loops)
+
+- **Description:** defect_solver_2d uses explicit Python loops for the
+  interior update (variable D). A vectorized/Cython/Numba implementation
+  would improve performance on fine grids.
+- **Impact:** Solver is slow for nx/ny > ~100. Acceptable for demonstrative
+  grids (51×51).
+- **Status:** DEFERRED
+- **Versão-alvo:** v0.4+ if performance becomes blocking

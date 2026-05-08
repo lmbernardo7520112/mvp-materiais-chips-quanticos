@@ -110,7 +110,7 @@ def plot_sensitivity_results(
 
     # Group by parameter
     params = sorted(set(r["parameter"] for r in results))
-    colors = plt.cm.Set2(np.linspace(0, 1, len(params)))
+    colors = matplotlib.colormaps["Set2"](np.linspace(0, 1, len(params)))
 
     for i, param in enumerate(params):
         param_results = [r for r in results if r["parameter"] == param]
@@ -149,7 +149,7 @@ def plot_sensitivity_ranking(
 
     params = [r["parameter"] for r in ranking]
     sensitivities = [r["sensitivity"] for r in ranking]
-    colors = plt.cm.RdYlGn_r(np.linspace(0.2, 0.8, len(params)))
+    colors = matplotlib.colormaps["RdYlGn_r"](np.linspace(0.2, 0.8, len(params)))
 
     bars = ax.barh(params, sensitivities, color=colors, edgecolor="gray", linewidth=0.5)
 
@@ -209,6 +209,49 @@ def plot_thermal_2d_final(
     ax.set_xlabel("x [mm]")
     ax.set_ylabel("y [mm]")
     ax.set_title("2D Thermal Field (Final State)\n[demonstrativo — não calibrado]")
+    ax.set_aspect("equal")
+
+    fig.tight_layout()
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(output_path, dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    return output_path
+
+
+# ---------------------------------------------------------------------------
+# Defect 2D Plot Functions (v0.3)
+# ---------------------------------------------------------------------------
+
+
+def plot_defect_2d_final(
+    x: npt.NDArray[np.float64],
+    y: npt.NDArray[np.float64],
+    C_def_final: npt.NDArray[np.float64],
+    output_path: Path,
+) -> Path:
+    """Plot final 2D defect-like field as contour/heatmap.
+
+    Args:
+        x: x-coordinates [m].
+        y: y-coordinates [m].
+        C_def_final: Final C_def field, shape (nx, ny). Adimensional.
+        output_path: Path to save figure.
+
+    Returns:
+        Path to saved figure.
+
+    Note:
+        C_def is adimensional — demonstrative, not calibrated.
+    """
+    fig, ax = plt.subplots(figsize=(10, 8))
+
+    X, Y = np.meshgrid(x * 1e3, y * 1e3, indexing="ij")
+    cf = ax.contourf(X, Y, C_def_final, levels=20, cmap="viridis")
+    fig.colorbar(cf, ax=ax, label="C_def (adimensional proxy)")
+
+    ax.set_xlabel("x [mm]")
+    ax.set_ylabel("y [mm]")
+    ax.set_title("2D Defect-like Field C_def (Final State)\n[demonstrative — not calibrated]")
     ax.set_aspect("equal")
 
     fig.tight_layout()

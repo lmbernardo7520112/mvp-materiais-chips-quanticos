@@ -10,6 +10,7 @@ C does NOT represent calibrated physical concentration.
 """
 
 from dataclasses import dataclass
+from typing import overload
 
 import numpy as np
 import numpy.typing as npt
@@ -40,6 +41,22 @@ class DiffusionResult:
     dt: float
     n_steps: int
     times: list[float]
+
+
+@overload
+def arrhenius_diffusivity(
+    temperature: float,
+    d0: float,
+    ea: float,
+) -> float: ...
+
+
+@overload
+def arrhenius_diffusivity(
+    temperature: npt.NDArray[np.float64],
+    d0: float,
+    ea: float,
+) -> npt.NDArray[np.float64]: ...
 
 
 def arrhenius_diffusivity(

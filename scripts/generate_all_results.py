@@ -8,16 +8,22 @@ v0.1 artifacts (preserved):
   - sensitivity_ranking.png
   - sensitivity_results.csv
 
-v0.2 artifacts (new):
+v0.2 artifacts (preserved):
   - thermal_2d_final.png
   - convergence_analysis.png
   - convergence_results.csv
+
+v0.3 artifacts (new):
+  - defect_2d_final.png
+  - defect_metrics.csv
+  - defect_final_snapshot.csv
 
 Usage:
     python scripts/generate_all_results.py [--output-dir DIR]
 """
 
 import argparse
+import csv
 from pathlib import Path
 
 import numpy as np
@@ -28,9 +34,12 @@ from mvp_quantum_materials.convergence import (
     plot_convergence,
     run_convergence_analysis,
 )
+from mvp_quantum_materials.defect_metrics import compute_defect_metrics
+from mvp_quantum_materials.defect_solver_2d import solve_defect_2d
 from mvp_quantum_materials.diffusion_solver import solve_diffusion_1d
 from mvp_quantum_materials.domain import Domain1D, Domain2D
 from mvp_quantum_materials.plots import (
+    plot_defect_2d_final,
     plot_diffusion_evolution,
     plot_sensitivity_ranking,
     plot_sensitivity_results,
@@ -148,6 +157,75 @@ def run_convergence(output_dir: Path, tables_dir: Path) -> None:
     print(f"  Figure: {fig_path}")
 
 
+def run_defect(output_dir: Path, tables_dir: Path) -> None:
+    """Run 2D defect reaction-diffusion and generate outputs."""
+    domain = Domain2D(Lx=0.01, Ly=0.01, nx=51, ny=51)
+
+    # Generate thermal field (same as v0.2)
+    T_init = np.full((domain.nx, domain.ny), 1500.0)
+    T_init[0, :] = 1400.0
+    T_init[-1, :] = 1400.0
+    T_init[:, 0] = 1400.0
+    T_init[:, -1] = 1400.0
+
+    thermal_result = solve_thermal_2d(
+        domain=domain,
+        T_init=T_init,
+        alpha=8.8e-5,
+        t_total=0.01,
+        t_boundary=1400.0,
+        safety_factor=0.4,
+    )
+
+    print("  Solving defect reaction-diffusion 2D...")
+    defect_result = solve_defect_2d(
+        domain=domain,
+        T_field=thermal_result.T_final,
+        t_total=0.01,
+    )
+
+    # Plot
+    fig_path = plot_defect_2d_final(
+        domain.x,
+        domain.y,
+        defect_result.C_def_final,
+        output_dir / "defect_2d_final.png",
+    )
+    print(f"  Figure: {fig_path}")
+
+    # Metrics CSV
+    metrics = compute_defect_metrics(
+        defect_result.C_def_final,
+        domain.dx,
+        domain.dy,
+    )
+    metrics_path = tables_dir / "defect_metrics.csv"
+    with open(metrics_path, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["metric", "value", "nature"])
+        for key, val in metrics.items():
+            writer.writerow([key, f"{val:.6e}", "proxy/demonstrative"])
+    print(f"  CSV: {metrics_path}")
+
+    # Final snapshot CSV
+    snapshot_path = tables_dir / "defect_final_snapshot.csv"
+    with open(snapshot_path, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["i", "j", "x_m", "y_m", "C_def"])
+        for i in range(domain.nx):
+            for j in range(domain.ny):
+                writer.writerow(
+                    [
+                        i,
+                        j,
+                        f"{domain.x[i]:.6e}",
+                        f"{domain.y[j]:.6e}",
+                        f"{defect_result.C_def_final[i, j]:.6e}",
+                    ]
+                )
+    print(f"  CSV: {snapshot_path}")
+
+
 def main(output_dir: Path) -> None:
     """Generate all results and figures."""
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -179,7 +257,10 @@ def main(output_dir: Path) -> None:
     print("[5/6] Convergence Analysis")
     run_convergence(output_dir, tables_dir)
 
-    print("[6/6] Summary")
+    print("[6/7] Defect 2D (v0.3)")
+    run_defect(output_dir, tables_dir)
+
+    print("[7/7] Summary")
     figures = list(output_dir.glob("*.png"))
     csvs = list(tables_dir.glob("*.csv"))
     print("=" * 60)
