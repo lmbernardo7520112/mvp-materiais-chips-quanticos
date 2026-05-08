@@ -251,7 +251,7 @@ any calculation, formula, loop, boundary condition, or return value.
 | R-32: v0.1/v0.2 regression | ✅ 56 existing tests pass, zero diff on thermal_solver.py |
 | R-33: Scope creep (Poisson) | ✅ Zero Poisson/Schrödinger/TCAD in code |
 | R-34: False calibration claims | ✅ All params labeled toy/demonstrative |
-| R-35: Majorana/topological leakage | ✅ Zero occurrences |
+| R-35: Out-of-scope platform leakage | ✅ Zero occurrences |
 
 ### Residual Risks
 

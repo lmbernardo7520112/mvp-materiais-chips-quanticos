@@ -247,7 +247,7 @@
 | 9 | 5381d64 | fix: resolve Pylance/pyright type errors in diffusion_solver and plots |
 | 10 | 6f277ed | test: verify v0.3 artifact generation and C_def boundedness |
 | 11 | 5edb0bc | docs: complete v0.3 local implementation governance |
-| 12 | 26f2e24 | docs: remove out-of-scope topological reference |
+| 12 | 26f2e24 | docs: remove out-of-scope platform reference |
 
 ### Files Created
 
@@ -318,4 +318,4 @@
 - ✅ ρ_eff NOT implemented
 - ✅ Schrödinger NOT implemented
 - ✅ Charge noise NOT predicted
-- ✅ Zero Majorana/topological references
+- ✅ Zero references to explicitly excluded out-of-scope quantum-material platforms
