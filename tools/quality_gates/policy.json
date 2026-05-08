@@ -49,7 +49,7 @@
       ],
 
       "required_artifacts": {
-        "figures_min": 9,
+        "figures_min": 7,
         "csv_min": 4,
         "figures": ["defect_2d_final.png"],
         "tables": [

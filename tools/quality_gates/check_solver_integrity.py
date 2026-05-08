@@ -33,21 +33,20 @@ TYPE_ONLY_PATTERNS = [
 
 def _get_diff_lines(repo_root: Path, filepath: str) -> list[str]:
     """Get added/removed lines from git diff against main."""
-    try:
-        result = subprocess.run(
-            ["git", "diff", "main", "--", filepath],
-            capture_output=True,
-            text=True,
-            cwd=str(repo_root),
-            timeout=10,
-        )
-        if result.returncode != 0:
-            return [f"ERROR: git diff failed: {result.stderr.strip()}"]
-        return result.stdout.splitlines()
-    except FileNotFoundError:
-        return ["ERROR: git not available"]
-    except subprocess.TimeoutExpired:
-        return ["ERROR: git diff timed out"]
+    for ref in ["main", "origin/main"]:
+        try:
+            result = subprocess.run(
+                ["git", "diff", ref, "--", filepath],
+                capture_output=True,
+                text=True,
+                cwd=str(repo_root),
+                timeout=10,
+            )
+            if result.returncode == 0:
+                return result.stdout.splitlines()
+        except (FileNotFoundError, subprocess.TimeoutExpired):
+            continue
+    return ["ERROR: git diff failed — neither main nor origin/main available"]
 
 
 def _is_type_only_change(diff_lines: list[str]) -> bool:
