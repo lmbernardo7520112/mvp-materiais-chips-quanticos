@@ -1,4 +1,4 @@
-# Walkthrough — MVP v0.1 / v0.2
+# Walkthrough — MVP v0.1 / v0.2 / v0.3
 
 > **Date:** 2026-05-06  
 > **Status:** ✅ V0.1 RELEASE CLOSED | v0.2 LOCAL IMPLEMENTATION COMPLETE
@@ -223,3 +223,99 @@
 - ✅ Decision brief answers 6 banca-level questions
 - ✅ Institutional summary uses prudent tone
 
+---
+
+## v0.3 Core Implementation Evidence
+
+> **Date:** 2026-05-08
+> **Branch:** `feature/v0.3-defect-like-core`
+> **Status:** LOCAL IMPLEMENTATION COMPLETE — awaiting push authorization
+> **ADR:** ADR-006 (Accepted)
+
+### v0.3 Commits
+
+| # | Hash | Message |
+|---|------|---------|
+| 1 | 252c86f | feat: implement defect kinetics D(T), G(T), R(T) with TDD |
+| 2 | c74cece | feat: implement defect stability guard with TDD |
+| 3 | 56df00d | feat: implement 2D defect reaction-diffusion solver with TDD |
+| 4 | 9d9c6dc | feat: implement defect proxy metrics with TDD |
+| 5 | f9c59c5 | feat: add defect 2D CLI, plots, and artifact generation |
+| 6 | 741225a | ci: validate v0.3 defect artifacts in CI pipeline |
+| 7 | 156822e | docs: update v0.3 governance and technical report |
+| 8 | 2726fb2 | style: apply ruff formatting to v0.3 modules |
+| 9 | 5381d64 | fix: resolve Pylance/pyright type errors in diffusion_solver and plots |
+| 10 | 6f277ed | test: verify v0.3 artifact generation and C_def boundedness |
+| 11 | 5edb0bc | docs: complete v0.3 local implementation governance |
+| 12 | 26f2e24 | docs: remove out-of-scope topological reference |
+
+### Files Created
+
+| File | Type |
+|------|------|
+| `src/mvp_quantum_materials/defect_kinetics.py` | Module — D(T), G(T), R(T) |
+| `src/mvp_quantum_materials/defect_stability.py` | Module — CFL-like stability guard |
+| `src/mvp_quantum_materials/defect_solver_2d.py` | Module — 2D reaction-diffusion solver |
+| `src/mvp_quantum_materials/defect_metrics.py` | Module — proxy metrics |
+| `scripts/run_defect_2d.py` | Script — defect CLI |
+| `tests/test_defect_kinetics.py` | Tests — 11 kinetics tests |
+| `tests/test_defect_stability.py` | Tests — 6 stability tests |
+| `tests/test_defect_solver_2d.py` | Tests — 11 solver tests |
+| `tests/test_defect_metrics.py` | Tests — 5 metrics tests |
+| `docs/relatorio_v0.3.md` | Technical report |
+| `docs/release_notes/v0.3.0_draft.md` | Release notes draft |
+
+### Files Modified (additive-only)
+
+| File | Change |
+|------|--------|
+| `plots.py` | Add `plot_defect_2d_final`; fix `matplotlib.colormaps[]` (Pylance) |
+| `generate_all_results.py` | Add v0.3 defect outputs |
+| `ci.yml` | Add v0.3 artifact verification |
+| `test_scripts.py` | Add 3 v0.3 artifact tests |
+| `parameters.md` | Add v0.3 parameter table |
+| `technical_debt.md` | Add TD-v0.3-01/02/03 |
+| `v0.3_task.md` | Mark items complete |
+
+### Controlled Exception: diffusion_solver.py
+
+| Aspect | Detail |
+|--------|--------|
+| **File** | `diffusion_solver.py` |
+| **Change** | `@overload` type signatures for `arrhenius_diffusivity` |
+| **Reason** | Resolve Pylance/Pyright `reportIndexIssue` |
+| **Behavioral impact** | **Zero** — type annotations only |
+| **Physics impact** | **Zero** — no formula, loop, BC, or return change |
+
+### Quality Gates
+
+| Gate | Result |
+|------|--------|
+| pytest | ✅ 92/92 passed |
+| Coverage | ✅ 91.78% (gate 70%) |
+| ruff check | ✅ All checks passed |
+| ruff format | ✅ All files formatted |
+| pyright | ✅ 0 errors, 0 warnings |
+| generate_all_results | ✅ 9 figures + 4 CSVs |
+
+### v0.3 Artifacts
+
+| Artifact | Type |
+|----------|------|
+| `defect_2d_final.png` | Figure — C_def contour |
+| `defect_metrics.csv` | CSV — proxy metrics |
+| `defect_final_snapshot.csv` | CSV — C_def snapshot for v0.4 |
+
+### Non-Regression Confirmations
+
+- ✅ `thermal_solver.py`: **zero diff** vs main
+- ✅ `diffusion_solver.py`: **type-only** @overload fix (zero behavior change)
+- ✅ All 56 v0.1/v0.2 tests passing
+- ✅ All 6+2 v0.1/v0.2 artifacts preserved
+- ✅ C_def remains adimensional proxy
+- ✅ Parameters classified as toy/demonstrative
+- ✅ Poisson NOT implemented
+- ✅ ρ_eff NOT implemented
+- ✅ Schrödinger NOT implemented
+- ✅ Charge noise NOT predicted
+- ✅ Zero Majorana/topological references
