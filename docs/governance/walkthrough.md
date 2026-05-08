@@ -247,7 +247,9 @@
 | 9 | 5381d64 | fix: resolve Pylance/pyright type errors in diffusion_solver and plots |
 | 10 | 6f277ed | test: verify v0.3 artifact generation and C_def boundedness |
 | 11 | 5edb0bc | docs: complete v0.3 local implementation governance |
-| 12 | 26f2e24 | docs: remove out-of-scope platform reference |
+| 12 | cad02f1 | docs: remove out-of-scope platform reference |
+| 13 | 082950f | docs: complete v0.3 release governance |
+| 14 | 9a1e9de | docs: sanitize out-of-scope platform references |
 
 ### Files Created
 
