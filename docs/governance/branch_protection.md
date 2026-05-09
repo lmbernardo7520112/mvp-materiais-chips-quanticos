@@ -82,3 +82,47 @@ If a critical fix must reach `main` urgently:
 1. The repository owner can bypass protection (enforce_admins is not enabled).
 2. Any bypass must be documented in the next PR with justification.
 3. Bypasses must never disable gates permanently.
+
+## Repository Visibility Decision
+
+> **Decision date:** 2026-05-09
+> **Decision:** Keep repository **public**.
+
+### Rationale
+
+The repository was changed from private to public to enable GitHub Branch
+Protection Rules, which are not available on the GitHub Free plan for private
+repositories. This is a deliberate trade-off:
+
+| Factor | Assessment |
+|--------|------------|
+| **Benefit** | Branch protection with required CI checks enforced on `main` |
+| **Trade-off** | Code, CI logs, and repository history are publicly visible |
+| **Risk: secrets in code** | ✅ **None found** — audited 2026-05-09 |
+| **Risk: tokens/keys** | ✅ **None found** — no `ghp_`, `github_pat_`, `sk-`, or PEM keys |
+| **Risk: email addresses** | ✅ **None found** |
+| **Risk: private terms** | ✅ **Mitigated** — `PRIVATE_FORBIDDEN_TERMS_REGEX` stored as GitHub Secret only, never in repo; CI output redacted |
+| **Risk: local paths** | ⚠️ **One reference** to local workspace path in `implementation_plan.md` — acceptable (no security impact) |
+
+### Mitigations
+
+1. **Strict private terms gate** — CI blocks any code containing forbidden
+   terms, with redacted output that never leaks the regex or matched content.
+2. **GitHub Secrets** — sensitive values stored exclusively as repository
+   secrets, never committed to files.
+3. **Branch protection** — prevents unreviewed code from reaching `main`.
+4. **Scope guardrails** — AI-RSE GateOps blocks out-of-order physics
+   implementation.
+5. **Regular audits** — exposure audits should be performed before each
+   minor release.
+
+### Alternative for Future
+
+If the repository must return to private (e.g., for IP protection or
+institutional requirements), upgrade to **GitHub Pro**, **Team**, or
+**Enterprise** to retain branch protection on private repositories.
+
+```bash
+# To revert to private (requires GitHub Pro or higher):
+gh repo edit --visibility private
+```
