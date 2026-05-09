@@ -1,4 +1,4 @@
-# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1 / v0.3.2 / v0.3.3 / v0.3.4
+# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.5
 
 > **Last updated:** 2026-05-09
 
@@ -6,9 +6,9 @@
 
 | Status | Count |
 |--------|-------|
-| RESOLVED | 5 |
+| RESOLVED | 6 |
 | PARTIALLY RESOLVED | 1 |
-| DEFERRED | 6 |
+| DEFERRED | 5 |
 | OPEN | 0 |
 | WONTFIX | 0 |
 
@@ -220,3 +220,18 @@
 - **Resolution:** MIT License file added. README badge and CITATION.cff
   updated. Decision brief marked as Accepted.
 - **Evidence:** [LICENSE](../../LICENSE), [public_release_metadata.md](../decision_briefs/public_release_metadata.md)
+
+---
+
+### TD-v0.3.5-01: Parameter Curation Absent
+
+- **Description:** MVP parameters lacked formal evidence classification.
+  No literature review justified parameter ranges. No machine-readable
+  registry existed.
+- **Impact:** Risk of overclaim; difficulty tracing parameter provenance.
+- **Status:** ✅ RESOLVED in v0.3.5
+- **Resolution:** Evidence tier system (T0–TX) defined. 17 parameters
+  classified in JSON registry. Directed literature review with 10 sources.
+  C_def → ρ_eff mapping options documented.
+- **Evidence:** [parameter_registry](../parameter_registry/v0.3.5_parameter_registry.json),
+  [literature_review](../literature_review/v0.3.5_parameter_curation.md)

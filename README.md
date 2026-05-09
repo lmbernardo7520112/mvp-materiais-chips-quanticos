@@ -161,6 +161,9 @@ See [AI-RSE Quality Gates](docs/governance/ai_rse_quality_gates.md) for details.
 | v0.3 | ✅ Released | Defect reaction-diffusion, AI-RSE GateOps |
 | v0.3.1 | ✅ Released | Strict private terms gate hardening |
 | v0.3.2 | ✅ Released | Branch protection, public governance |
+| v0.3.3 | ✅ Released | Public repository polish |
+| v0.3.4 | ✅ Released | MIT License, public legal metadata |
+| v0.3.5 | ✅ Released | Parameter curation, evidence tiers, C_def→ρ_eff spec |
 | v0.4 | 🔜 Planned | Requires ADR approval — scope TBD |
 
 ## Governance
