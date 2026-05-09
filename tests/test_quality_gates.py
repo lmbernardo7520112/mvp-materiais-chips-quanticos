@@ -301,14 +301,20 @@ class TestDocsRequired:
 class TestPrivateForbiddenTerms:
     """Tests for check_private_forbidden_terms."""
 
-    def test_detects_violation_via_env(self, tmp_path: Path, monkeypatch):
+    def test_detects_violation_via_env(self, tmp_path: Path):
         """Detects forbidden term from env variable."""
         src = tmp_path / "src"
         src.mkdir()
-        (src / "bad.py").write_text("BLOCKME_value = 42\n")
+        (src / "bad.py").write_text("BLOCKME_TEST_ONLY_value = 42\n")
 
-        violations = check_private_forbidden_terms(tmp_path, ["BLOCKME"])
+        violations = check_private_forbidden_terms(tmp_path, ["BLOCKME_TEST_ONLY"])
         assert len(violations) >= 1
+        
+        # Ensure it is redacted
+        violation = violations[0]
+        assert "BLOCKME_TEST_ONLY" not in violation
+        assert "value = 42" not in violation
+        assert "PRIVATE_FORBIDDEN_TERMS violation at" in violation
 
     def test_clean_repo_passes(self, tmp_path: Path):
         """Clean repo passes."""
@@ -316,14 +322,15 @@ class TestPrivateForbiddenTerms:
         src.mkdir()
         (src / "good.py").write_text("value = 42\n")
 
-        violations = check_private_forbidden_terms(tmp_path, ["BLOCKME"])
+        violations = check_private_forbidden_terms(tmp_path, ["BLOCKME_TEST_ONLY"])
         assert violations == []
 
     def test_local_file_works(self, tmp_path: Path):
         """Local gitignored file works as term source."""
         src = tmp_path / "src"
         src.mkdir()
-        (src / "code.py").write_text("secret_term = True\n")
+        (src / "code.py").write_text("secret_term_123 = True\n")
 
-        violations = check_private_forbidden_terms(tmp_path, ["secret_term"])
+        violations = check_private_forbidden_terms(tmp_path, ["secret_term_123"])
         assert len(violations) >= 1
+        assert "secret_term_123" not in violations[0]
