@@ -92,10 +92,13 @@ jobs:
           fi
 
       # AI-RSE GateOps — version-aware quality gates
-      # To enable strict private terms, configure secret
-      # PRIVATE_FORBIDDEN_TERMS_REGEX and add --strict-private-terms
       - name: AI-RSE Quality Gates
-        run: PYTHONPATH=. python tools/quality_gates/run_all_quality_gates.py --require-artifacts
+        env:
+          PRIVATE_FORBIDDEN_TERMS_REGEX: ${{ secrets.PRIVATE_FORBIDDEN_TERMS_REGEX }}
+        run: |
+          PYTHONPATH=. python tools/quality_gates/run_all_quality_gates.py \
+            --require-artifacts \
+            --strict-private-terms
 
       - name: Upload results artifacts
         uses: actions/upload-artifact@v4
