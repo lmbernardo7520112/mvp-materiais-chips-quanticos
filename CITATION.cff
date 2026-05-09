@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+title: "MVP — Quantum Semiconductor Materials Modeling"
+message: >-
+  If you use this software, please cite it using the metadata from this file.
+type: software
+authors:
+  - family-names: Bernardo
+    given-names: Leonardo Maximino
+repository-code: https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos
+version: 0.3.2
+date-released: "2026-05-09"
+keywords:
+  - semiconductor
+  - thermal modeling
+  - defect diffusion
+  - reaction-diffusion
+  - computational materials science
+  - quantum devices
+abstract: >-
+  Simplified thermo-diffusive and defect reaction-diffusion modeling for
+  heterogeneity analysis in idealized semiconductor material. This is a
+  demonstrative MVP with toy parameters — it does not simulate real fabrication
+  or predict quantum coherence.

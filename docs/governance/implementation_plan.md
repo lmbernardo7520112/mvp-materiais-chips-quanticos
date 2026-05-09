@@ -48,7 +48,7 @@ MVP computacional institucional que demonstra ponte **metodológica** entre simu
 | CI/CD | GitHub Actions |
 | Branch | `feature/mvp-termo-difusivo-quantum-materials` |
 | Repositório | `mvp-materiais-chips-quanticos` |
-| Workspace | `/home/leonardomaximinobernardo/My_projects/mvp-materiais-chips-quanticos` |
+| Workspace | `<your-workspace>/mvp-materiais-chips-quanticos` |
 | Projetos correlatos | `interdendritico`, `teseLB` — **assunção** de não-reutilização pendente auditoria formal |
 
 > [!WARNING]
