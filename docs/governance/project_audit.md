@@ -1,20 +1,23 @@
-# Project Audit — MVP v0.1 / v0.2
+# Project Audit — MVP v0.1 / v0.2 / v0.3 / v0.3.1
 
-> **Date:** 2026-05-06  
+> **Date:** 2026-05-09  
 > **Auditor:** Staff Research Software Engineer (AI-assisted)  
-> **Status:** v0.1 CLOSED ✅ | v0.2 LOCAL COMPLETE ✅
+> **Status:** v0.3.1 HARDENING COMPLETE ✅ | main PROTECTED ✅
 
 ## Remote Infrastructure
 
 | Item | Value |
 |------|-------|
 | Repository | https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos |
-| Visibility | **Private** |
-| Branch | `main` |
+| Visibility | **Public** |
+| Branch | `main` (protected) |
 | PR #1 | [Merged](https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos/pull/1) — v0.1 |
 | PR #2 | [Merged](https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos/pull/2) — v0.2 spec |
 | PR #3 | [Merged](https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos/pull/3) — ADR-004 acceptance |
-| Tag | `v0.1.0` (contained in `main`) |
+| PR #8 | [Merged](https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos/pull/8) — v0.3 core + AI-RSE GateOps |
+| PR #9 | [Merged](https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos/pull/9) — v0.3.1 strict private terms |
+| Tags | `v0.1.0`, `v0.2.0`, `v0.3.0`, `v0.3.1` |
+| Branch protection | Required checks: `quality (3.11)`, `quality (3.12)` |
 
 ---
 

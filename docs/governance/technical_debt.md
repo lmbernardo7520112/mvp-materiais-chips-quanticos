@@ -1,14 +1,14 @@
-# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3
+# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1
 
-> **Last updated:** 2026-05-08
+> **Last updated:** 2026-05-09
 
 ## Summary
 
 | Status | Count |
 |--------|-------|
-| RESOLVED | 1 |
+| RESOLVED | 2 |
 | PARTIALLY RESOLVED | 1 |
-| DEFERRED | 9 |
+| DEFERRED | 8 |
 | OPEN | 0 |
 | WONTFIX | 0 |
 
@@ -174,3 +174,16 @@
   grids (51×51).
 - **Status:** DEFERRED
 - **Versão-alvo:** v0.4+ if performance becomes blocking
+
+---
+
+### TD-v0.3.1-01: Branch Protection Not Configured
+
+- **Description:** The `main` branch had no protection rules, allowing direct
+  pushes and merges without CI validation.
+- **Impact:** Risk of unreviewed code reaching SSOT.
+- **Status:** ✅ RESOLVED in v0.3.1
+- **Resolution:** Branch protection configured via GitHub API. Required checks:
+  `quality (3.11)`, `quality (3.12)`. Force push and deletion blocked.
+  Repository made public to enable protection on GitHub Free plan.
+- **Evidence:** [branch_protection.md](branch_protection.md)
