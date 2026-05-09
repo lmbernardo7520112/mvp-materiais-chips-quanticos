@@ -48,7 +48,7 @@ def _load_patterns() -> list[str] | None:
     # Try environment variable first
     env_val = os.environ.get(TERMS_ENV_VAR, "").strip()
     if env_val:
-        return [p.strip() for p in env_val.split("|") if p.strip()]
+        return [env_val]
 
     # Try local file
     local = Path(LOCAL_FILE)
