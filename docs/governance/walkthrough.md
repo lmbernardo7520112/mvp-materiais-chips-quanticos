@@ -1,7 +1,7 @@
-# Walkthrough — MVP v0.1 / v0.2 / v0.3 / v0.3.1
+# Walkthrough — MVP v0.1 / v0.2 / v0.3 / v0.3.1 / v0.3.2 / v0.3.3
 
 > **Date:** 2026-05-09  
-> **Status:** ✅ v0.3.1 HARDENING COMPLETE | main branch protected
+> **Status:** ✅ v0.3.3 PUBLIC REPOSITORY POLISH
 
 ## Post-Merge Validation Evidence
 
@@ -383,3 +383,40 @@
 - ✅ Poisson NOT implemented
 - ✅ rho_eff NOT implemented
 - ✅ policy.json current_stage remains v0.3
+
+---
+
+## v0.3.3 Public Repository Polish Evidence
+
+> **Date:** 2026-05-09
+> **Status:** PUBLIC POLISH COMPLETE
+
+### Files Created
+
+| File | Type |
+|------|------|
+| `README.md` | Complete rewrite for public audience |
+| `CITATION.cff` | Citation metadata |
+| `CONTRIBUTING.md` | Contribution guidelines |
+| `SECURITY.md` | Security policy |
+| `docs/decision_briefs/public_release_metadata.md` | License decision brief |
+| `docs/release_notes/v0.3.3_draft.md` | Release notes draft |
+
+### Files Modified
+
+| File | Change |
+|------|--------|
+| `docs/governance/implementation_plan.md` | Sanitized local path |
+| `docs/governance/walkthrough.md` | Added v0.3.3 evidence |
+| `docs/governance/project_audit.md` | Updated for v0.3.3 |
+| `docs/governance/technical_debt.md` | Resolved README TD |
+
+### Non-Regression Confirmations
+
+- ✅ No physics changes
+- ✅ No solver modifications
+- ✅ C_def remains adimensional proxy
+- ✅ Poisson NOT implemented
+- ✅ rho_eff NOT implemented
+- ✅ policy.json current_stage remains v0.3
+- ✅ License decision deferred to user (MIT recommended)

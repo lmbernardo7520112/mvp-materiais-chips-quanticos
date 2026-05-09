@@ -1,4 +1,4 @@
-# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1
+# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1 / v0.3.2 / v0.3.3
 
 > **Last updated:** 2026-05-09
 
@@ -6,9 +6,9 @@
 
 | Status | Count |
 |--------|-------|
-| RESOLVED | 2 |
+| RESOLVED | 4 |
 | PARTIALLY RESOLVED | 1 |
-| DEFERRED | 8 |
+| DEFERRED | 7 |
 | OPEN | 0 |
 | WONTFIX | 0 |
 
@@ -187,3 +187,24 @@
   `quality (3.11)`, `quality (3.12)`. Force push and deletion blocked.
   Repository made public to enable protection on GitHub Free plan.
 - **Evidence:** [branch_protection.md](branch_protection.md)
+
+---
+
+### TD-v0.3.3-01: README Not Public-Facing
+
+- **Description:** The README was written for internal development with v0.1
+  scope only, missing badges, architecture, limitations, and roadmap.
+- **Impact:** Poor first impression for external readers of a public repo.
+- **Status:** ✅ RESOLVED in v0.3.3
+- **Resolution:** Complete rewrite with CI badge, scientific limitations,
+  architecture diagram, roadmap, governance links, and explicit disclaimers.
+
+---
+
+### TD-v0.3.3-02: Local Path Hardcoded in Documentation
+
+- **Description:** `implementation_plan.md` contained a hardcoded local
+  workspace path (`/home/...`).
+- **Impact:** Unprofessional in a public repository; no security risk.
+- **Status:** ✅ RESOLVED in v0.3.3
+- **Resolution:** Replaced with generic `<your-workspace>` placeholder.
