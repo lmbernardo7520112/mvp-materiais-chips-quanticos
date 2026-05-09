@@ -1,8 +1,8 @@
-# Project Audit — MVP v0.1 / v0.2 / v0.3 / v0.3.1 / v0.3.2 / v0.3.3
+# Project Audit — MVP v0.1 / v0.2 / v0.3 / v0.3.1 / v0.3.2 / v0.3.3 / v0.3.4
 
 > **Date:** 2026-05-09  
 > **Auditor:** Staff Research Software Engineer (AI-assisted)  
-> **Status:** v0.3.3 PUBLIC POLISH ✅ | main PROTECTED ✅
+> **Status:** v0.3.4 MIT LICENSE ✅ | main PROTECTED ✅
 
 ## Remote Infrastructure
 
