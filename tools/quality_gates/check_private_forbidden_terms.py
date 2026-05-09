@@ -88,9 +88,7 @@ def check_private_forbidden_terms(repo_root: Path, patterns: list[str]) -> list[
         for line_num, line in enumerate(content.splitlines(), 1):
             for pattern in compiled:
                 if pattern.search(line):
-                    violations.append(
-                        f"  PRIVATE_FORBIDDEN_TERMS violation at {rel}:{line_num}"
-                    )
+                    violations.append(f"  PRIVATE_FORBIDDEN_TERMS violation at {rel}:{line_num}")
 
     return violations
 
