@@ -1,4 +1,4 @@
-# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1 / v0.3.2 / v0.3.3
+# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1 / v0.3.2 / v0.3.3 / v0.3.4
 
 > **Last updated:** 2026-05-09
 
@@ -6,9 +6,9 @@
 
 | Status | Count |
 |--------|-------|
-| RESOLVED | 4 |
+| RESOLVED | 5 |
 | PARTIALLY RESOLVED | 1 |
-| DEFERRED | 7 |
+| DEFERRED | 6 |
 | OPEN | 0 |
 | WONTFIX | 0 |
 
@@ -208,3 +208,15 @@
 - **Impact:** Unprofessional in a public repository; no security risk.
 - **Status:** ✅ RESOLVED in v0.3.3
 - **Resolution:** Replaced with generic `<your-workspace>` placeholder.
+
+---
+
+### TD-v0.3.4-01: No LICENSE File
+
+- **Description:** The repository was public without a formal LICENSE file.
+  README mentioned MIT informally but no legal text was committed.
+- **Impact:** Legal ambiguity for public code.
+- **Status:** ✅ RESOLVED in v0.3.4
+- **Resolution:** MIT License file added. README badge and CITATION.cff
+  updated. Decision brief marked as Accepted.
+- **Evidence:** [LICENSE](../../LICENSE), [public_release_metadata.md](../decision_briefs/public_release_metadata.md)

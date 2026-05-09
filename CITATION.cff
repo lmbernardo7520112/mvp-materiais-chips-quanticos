@@ -7,7 +7,8 @@ authors:
   - family-names: Bernardo
     given-names: Leonardo Maximino
 repository-code: https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos
-version: 0.3.2
+license: MIT
+version: 0.3.4
 date-released: "2026-05-09"
 keywords:
   - semiconductor

@@ -1,7 +1,7 @@
-# Walkthrough — MVP v0.1 / v0.2 / v0.3 / v0.3.1 / v0.3.2 / v0.3.3
+# Walkthrough — MVP v0.1 / v0.2 / v0.3 / v0.3.1 / v0.3.2 / v0.3.3 / v0.3.4
 
 > **Date:** 2026-05-09  
-> **Status:** ✅ v0.3.3 PUBLIC REPOSITORY POLISH
+> **Status:** ✅ v0.3.4 MIT LICENSE RELEASE
 
 ## Post-Merge Validation Evidence
 
@@ -420,3 +420,38 @@
 - ✅ rho_eff NOT implemented
 - ✅ policy.json current_stage remains v0.3
 - ✅ License decision deferred to user (MIT recommended)
+
+---
+
+## v0.3.4 MIT License Release Evidence
+
+> **Date:** 2026-05-09
+> **Status:** LICENSE RELEASE COMPLETE
+
+### Files Created
+
+| File | Type |
+|------|------|
+| `LICENSE` | MIT License |
+| `docs/release_notes/v0.3.4_draft.md` | Release notes draft |
+
+### Files Modified
+
+| File | Change |
+|------|--------|
+| `README.md` | MIT badge + license section updated |
+| `CITATION.cff` | Added `license: MIT`, bumped version |
+| `docs/decision_briefs/public_release_metadata.md` | Marked Accepted |
+| `docs/governance/walkthrough.md` | Added v0.3.4 evidence |
+| `docs/governance/project_audit.md` | Updated for v0.3.4 |
+| `docs/governance/technical_debt.md` | Resolved LICENSE TD |
+
+### Non-Regression Confirmations
+
+- ✅ No physics changes
+- ✅ No solver modifications
+- ✅ C_def remains adimensional proxy
+- ✅ Poisson NOT implemented
+- ✅ rho_eff NOT implemented
+- ✅ policy.json current_stage remains v0.3
+- ✅ MIT License formally adopted

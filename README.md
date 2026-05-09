@@ -7,6 +7,7 @@
 [![Python 3.11 | 3.12](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue)](https://www.python.org/)
 [![Latest Release](https://img.shields.io/github/v/tag/lmbernardo7520112/mvp-materiais-chips-quanticos?label=release)](https://github.com/lmbernardo7520112/mvp-materiais-chips-quanticos/tags)
 [![Coverage](https://img.shields.io/badge/coverage-91.78%25-brightgreen)]()
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 ## Scientific Motivation
 
@@ -179,7 +180,7 @@ SDD + Clean Code + TDD + GitHub Actions + semantic commits + ADR-driven scope.
 
 ## License
 
-License decision pending — see [docs/decision_briefs/public_release_metadata.md](docs/decision_briefs/public_release_metadata.md).
+This project is licensed under the [MIT License](LICENSE).
 
 ## Citation
 
