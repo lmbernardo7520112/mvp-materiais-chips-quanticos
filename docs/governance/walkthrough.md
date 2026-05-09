@@ -1,7 +1,7 @@
-# Walkthrough — MVP v0.1 / v0.2 / v0.3
+# Walkthrough — MVP v0.1 / v0.2 / v0.3 / v0.3.1
 
-> **Date:** 2026-05-06  
-> **Status:** ✅ V0.1 RELEASE CLOSED | v0.2 LOCAL IMPLEMENTATION COMPLETE
+> **Date:** 2026-05-09  
+> **Status:** ✅ v0.3.1 HARDENING COMPLETE | main branch protected
 
 ## Post-Merge Validation Evidence
 
@@ -321,3 +321,65 @@
 - ✅ Schrödinger NOT implemented
 - ✅ Charge noise NOT predicted
 - ✅ Zero references to explicitly excluded out-of-scope quantum-material platforms
+
+---
+
+## v0.3.1 Hardening Evidence
+
+> **Date:** 2026-05-09
+> **Tag:** v0.3.1
+> **Status:** HARDENING COMPLETE
+
+### Changes (PR #9)
+
+| # | Hash | Message |
+|---|------|---------|
+| 1 | 0793b71 | test: harden private forbidden terms gate tests / chore: redact output |
+| 2 | df9e543 | ci: enable strict private terms gate |
+| 3 | 3e18944 | docs: document strict private terms secret setup |
+| 4 | c6cfdd7 | style: fix trailing whitespace |
+| 5 | 1ecb842 | style: apply ruff format |
+| 6 | a2084c9 | fix: handle invalid regex gracefully |
+| 7 | 5acf108 | fix: do not split private terms regex by pipe |
+
+### Security Hardening
+
+| Measure | Status |
+|---------|--------|
+| `PRIVATE_FORBIDDEN_TERMS_REGEX` secret | ✅ Configured |
+| `--strict-private-terms` in CI | ✅ Active |
+| Violation output redacted | ✅ No term, regex, or line content leaked |
+| Invalid regex handled gracefully | ✅ No crash, no value exposure |
+| Secret value stored in repo | ❌ Never |
+
+### Branch Protection (post v0.3.1)
+
+| Rule | Status |
+|------|--------|
+| PR required before merge | ✅ Active |
+| Required status checks: `quality (3.11)`, `quality (3.12)` | ✅ Active |
+| Strict mode (branch up to date) | ✅ Active |
+| Conversation resolution required | ✅ Active |
+| Force push blocked | ✅ Active |
+| Branch deletion blocked | ✅ Active |
+| Repository visibility | Public |
+
+### Quality Gates
+
+| Gate | Result |
+|------|--------|
+| pytest | ✅ 114/114 passed |
+| Coverage | ✅ 91.78% (gate 70%) |
+| ruff | ✅ Verde |
+| pyright | ✅ 0 errors |
+| AI-RSE GateOps | ✅ 6/6 gates pass |
+| Strict private terms | ✅ Active in CI |
+
+### Non-Regression Confirmations
+
+- ✅ No physics changes
+- ✅ No solver modifications
+- ✅ C_def remains adimensional proxy
+- ✅ Poisson NOT implemented
+- ✅ rho_eff NOT implemented
+- ✅ policy.json current_stage remains v0.3
