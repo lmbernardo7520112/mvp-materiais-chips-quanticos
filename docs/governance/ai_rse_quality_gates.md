@@ -75,16 +75,23 @@ Each gate prints `PASS`, `FAIL`, or `SKIPPED`. On failure:
 3. If yes: update the policy via PR (requires ADR if scope change).
 4. If no: remove the offending code.
 
-## Private Forbidden Terms
+## Strict private forbidden terms gate
 
 Some terms must be blocked without recording them in the repository.
 
 **Configuration:**
 
-- Set `PRIVATE_FORBIDDEN_TERMS_REGEX` as a GitHub secret (pipe-separated).
-- Or create `.quality_gates_forbidden_terms.local` (gitignored).
+- The CI uses the GitHub secret `PRIVATE_FORBIDDEN_TERMS_REGEX`.
+- You can verify its presence via: `gh secret list`.
+- Locally, you can use `.quality_gates_forbidden_terms.local` (gitignored).
 
-**In CI:** Add `--strict-private-terms` only after configuring the secret.
+**Security Measures:**
+
+- **No repo storage**: The real regex is never stored in files tracked by git.
+- **Redacted logs**: The failure output is redacted so the matched term, the regex, and the line content are not printed to logs.
+- **Testing**: Test the gate behavior locally with a fake term (e.g., `export PRIVATE_FORBIDDEN_TERMS_REGEX="BLOCKME_TEST_ONLY"`).
+- **Rotation**: Rotate the secret using GitHub repo settings -> Secrets.
+- **Disabling**: The gate can only be disabled by explicitly removing the `--strict-private-terms` flag in the CI workflow via PR, never by a silent hotfix.
 
 ## How to Update Gates for Future Versions
 
