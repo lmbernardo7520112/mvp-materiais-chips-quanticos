@@ -1,50 +1,51 @@
 # Public Release Metadata — License and Citation Decision
 
 > **Date:** 2026-05-09
-> **Status:** PENDING USER DECISION
+> **Status:** ✅ ACCEPTED
 
 ## Context
 
 The repository `mvp-materiais-chips-quanticos` was made public on 2026-05-09
-to enable GitHub branch protection on the Free plan. This requires formal
+to enable GitHub branch protection on the Free plan. This required formal
 decisions on licensing and citation metadata.
 
-## License
+## License Decision
 
-### Current State
+| Item | Value |
+|------|-------|
+| **License** | MIT |
+| **Decision date** | 2026-05-09 |
+| **Decision by** | Repository owner (explicit confirmation) |
+| **File** | `LICENSE` |
+| **Scope** | All code and documentation in this repository, unless otherwise stated |
 
-No `LICENSE` file exists in the repository. The previous `README.md` mentioned
-MIT informally in a badge, but no formal license file was committed.
+### Justification
 
-### Options
+- MIT is the most common license for academic computational science projects.
+- Compatible with NumPy (BSD), Matplotlib (PSF/BSD), and SciPy (BSD) licenses.
+- Permissive — allows reuse, modification, and distribution with minimal
+  restrictions.
+- Appropriate for a demonstrative MVP with toy parameters and no commercial IP.
 
-| License | Pros | Cons |
-|---------|------|------|
-| **MIT** | Simple, permissive, widely used in academic code | No patent protection |
-| **Apache 2.0** | Patent grant, permissive, compatible with MIT | Slightly more complex |
-| **GPL-3.0** | Strong copyleft, ensures derivatives remain open | May discourage commercial collaboration |
-| **CC BY 4.0** | Good for documentation/data | Not recommended for software |
+### Options Considered
 
-### Recommendation
-
-**MIT** is the most common choice for academic computational science MVPs.
-It is compatible with NumPy, Matplotlib, and SciPy licenses.
-
-> [!IMPORTANT]
-> The repository owner must explicitly choose a license before it can be
-> committed. Do not auto-select without user authorization.
+| License | Decision |
+|---------|----------|
+| **MIT** | ✅ **Selected** — simple, permissive, widely adopted |
+| Apache 2.0 | Rejected — patent grant unnecessary for academic MVP |
+| GPL-3.0 | Rejected — copyleft too restrictive for academic collaboration |
+| CC BY 4.0 | Rejected — not recommended for software |
 
 ## Citation
 
-A `CITATION.cff` file has been created with preliminary metadata.
-The owner should review and confirm:
+- `CITATION.cff` created with preliminary metadata.
+- License field: `MIT`.
+- Version: `0.3.4`.
+- Author: Leonardo Maximino Bernardo.
 
-- Author name and ORCID (if available).
-- Preferred citation title.
-- Whether to include institutional affiliation.
+## Action Completed
 
-## Action Required
-
-1. **Choose license** — confirm MIT or select alternative.
-2. **Review CITATION.cff** — confirm author metadata.
-3. Once confirmed, commit `LICENSE` file and finalize `CITATION.cff`.
+- [x] License chosen: MIT.
+- [x] `LICENSE` file committed.
+- [x] `CITATION.cff` updated with license field.
+- [x] README updated with MIT badge and license section.
