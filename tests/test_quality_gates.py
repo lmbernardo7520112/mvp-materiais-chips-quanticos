@@ -334,3 +334,10 @@ class TestPrivateForbiddenTerms:
         violations = check_private_forbidden_terms(tmp_path, ["secret_term_123"])
         assert len(violations) >= 1
         assert "secret_term_123" not in violations[0]
+
+    def test_invalid_regex_fails_safely(self, tmp_path: Path):
+        """Invalid regex fails gracefully without exposing the pattern."""
+        violations = check_private_forbidden_terms(tmp_path, ["(unclosed_group"])
+        assert len(violations) == 1
+        assert "invalid regex pattern" in violations[0]
+        assert "(unclosed_group" not in violations[0]

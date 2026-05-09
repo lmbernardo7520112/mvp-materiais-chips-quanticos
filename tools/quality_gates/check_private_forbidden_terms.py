@@ -66,7 +66,13 @@ def check_private_forbidden_terms(repo_root: Path, patterns: list[str]) -> list[
         List of violation descriptions. Empty means pass.
     """
     violations: list[str] = []
-    compiled = [re.compile(p, re.IGNORECASE) for p in patterns]
+    compiled = []
+    for p in patterns:
+        try:
+            compiled.append(re.compile(p, re.IGNORECASE))
+        except re.error:
+            violations.append("  PRIVATE_FORBIDDEN_TERMS invalid regex pattern")
+            return violations
 
     for fpath in sorted(repo_root.rglob("*")):
         if fpath.is_dir():
