@@ -309,7 +309,7 @@ class TestPrivateForbiddenTerms:
 
         violations = check_private_forbidden_terms(tmp_path, ["BLOCKME_TEST_ONLY"])
         assert len(violations) >= 1
-        
+
         # Ensure it is redacted
         violation = violations[0]
         assert "BLOCKME_TEST_ONLY" not in violation
