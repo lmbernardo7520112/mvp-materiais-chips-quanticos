@@ -48,7 +48,7 @@ def _load_patterns() -> list[str] | None:
     # Try environment variable first
     env_val = os.environ.get(TERMS_ENV_VAR, "").strip()
     if env_val:
-        return [p.strip() for p in env_val.split("|") if p.strip()]
+        return [env_val]
 
     # Try local file
     local = Path(LOCAL_FILE)
@@ -66,7 +66,13 @@ def check_private_forbidden_terms(repo_root: Path, patterns: list[str]) -> list[
         List of violation descriptions. Empty means pass.
     """
     violations: list[str] = []
-    compiled = [re.compile(p, re.IGNORECASE) for p in patterns]
+    compiled = []
+    for p in patterns:
+        try:
+            compiled.append(re.compile(p, re.IGNORECASE))
+        except re.error:
+            violations.append("  PRIVATE_FORBIDDEN_TERMS invalid regex pattern")
+            return violations
 
     for fpath in sorted(repo_root.rglob("*")):
         if fpath.is_dir():
@@ -88,9 +94,7 @@ def check_private_forbidden_terms(repo_root: Path, patterns: list[str]) -> list[
         for line_num, line in enumerate(content.splitlines(), 1):
             for pattern in compiled:
                 if pattern.search(line):
-                    violations.append(
-                        f"  {rel}:{line_num} — matches '{pattern.pattern}': {line.strip()[:80]}"
-                    )
+                    violations.append(f"  PRIVATE_FORBIDDEN_TERMS violation at {rel}:{line_num}")
 
     return violations
 
