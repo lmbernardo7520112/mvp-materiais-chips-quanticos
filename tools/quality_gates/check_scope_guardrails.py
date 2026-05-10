@@ -25,7 +25,10 @@ def check_scope_guardrails(repo_root: Path, policy: dict) -> list[str]:
     """
     stage = get_active_stage(policy)
     forbidden = stage.get("forbidden_in_code", [])
-    if not forbidden:
+    conditional_forbidden = stage.get("forbidden_in_code_except_authorized", [])
+    authorized_files = set(stage.get("authorized_files", []))
+
+    if not forbidden and not conditional_forbidden:
         return []
 
     violations: list[str] = []
@@ -37,6 +40,8 @@ def check_scope_guardrails(repo_root: Path, policy: dict) -> list[str]:
             if fpath.name in EXCLUDED_FILES:
                 continue
             content = fpath.read_text(errors="replace")
+
+            # Check absolutely forbidden terms
             for term in forbidden:
                 for line_num, line in enumerate(content.splitlines(), 1):
                     if term in line:
@@ -44,6 +49,19 @@ def check_scope_guardrails(repo_root: Path, policy: dict) -> list[str]:
                         violations.append(
                             f"  {rel}:{line_num} — forbidden term '{term}': {line.strip()}"
                         )
+
+            # Check conditional forbidden terms (allowed only in authorized files)
+            if fpath.name not in authorized_files:
+                for term in conditional_forbidden:
+                    for line_num, line in enumerate(content.splitlines(), 1):
+                        if term in line:
+                            rel = fpath.relative_to(repo_root)
+                            msg = (
+                                f"  {rel}:{line_num} — conditionally forbidden term "
+                                f"'{term}' outside authorized file: {line.strip()}"
+                            )
+                            violations.append(msg)
+
     return violations
 
 

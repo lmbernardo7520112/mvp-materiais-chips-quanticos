@@ -32,9 +32,17 @@ def check_adr_status(repo_root: Path, policy: dict) -> list[str]:
             continue
 
         content = adr_path.read_text()
-        date_pos = content.find("## Date")
-        search_area = content[: date_pos + 1] if date_pos >= 0 else content[:500]
-        status_match = re.search(r"\*\*(\w+)\*\*", search_area)
+
+        # Support modern `> **Status:** Accepted` format
+        status_match = re.search(r"\*\*Status:\*\*\s+(\w+)", content)
+        if not status_match:
+            # Fallback to legacy `## Status\n\n**Word**` within first 500 chars
+            search_area = content[:500]
+            status_match = re.search(r"##\s+Status[\s\S]*?\*\*(\w+)\*\*", search_area)
+            if not status_match:
+                # Absolute fallback to first bold word
+                status_match = re.search(r"\*\*(\w+)\*\*", search_area)
+
         if status_match:
             actual = status_match.group(1)
             if actual != expected_status:

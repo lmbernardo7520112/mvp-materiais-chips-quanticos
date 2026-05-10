@@ -497,19 +497,19 @@
 ## ADR-007 Poisson Bridge Scope Evidence
 
 > **Date:** 2026-05-09
-> **Status:** SPECIFICATION COMPLETE — ADR-007 Proposed, no implementation
+> **Status:** SPECIFICATION COMPLETE — ADR-007 Accepted, policy v0.4 activated, no implementation
 
 ### Scientific Deliverables
 
 | Document | Content |
 |----------|--------|
-| `docs/adr/ADR-007-v0.4-poisson-bridge-scope.md` | Architecture decision record |
+| `docs/adr/ADR-007-v0.4-poisson-bridge-scope.md` | Architecture decision record (Accepted) |
 | `docs/decision_briefs/v0.4_boussinesq_inspired_charge_closure.md` | Option C-B derivation |
 | `docs/research_council/v0.4_poisson_bridge_council.md` | 5-expert deliberation |
-| `docs/governance/v0.4_implementation_plan_draft.md` | Draft impl plan (NOT approved) |
-| `docs/governance/v0.4_acceptance_gates_draft.md` | 24 draft gates |
+| `docs/governance/v0.4_implementation_plan_draft.md` | Draft impl plan (pending TDD PR) |
+| `docs/governance/v0.4_acceptance_gates_draft.md` | 24 draft gates (Activated) |
 | `docs/governance/v0.4_risk_matrix_draft.md` | 10 risks identified |
-| `docs/quality_gates/policy_v0.4_draft.md` | Draft policy proposal |
+| `docs/quality_gates/policy_v0.4_draft.md` | Policy activated |
 | `docs/release_notes/v0.4.0_scope_draft.md` | Scope release notes |
 
 ### Key Decisions
@@ -517,16 +517,16 @@
 - Option C-B (Boussinesq-inspired linearized trap-charge closure) recommended
 - δρ_eff = ρ_eff_raw − ⟨ρ_eff_raw⟩ (mean-subtracted perturbation)
 - General Poisson form: ∇·(ε∇φ) = −δρ_eff
-- ADR-007 status: **Proposed** (not Accepted)
-- Implementation blocked until ADR Accepted + policy v0.4
+- ADR-007 status: **Accepted**
+- Policy status: **v0.4 Activated**
+- Implementation blocked until a dedicated TDD PR is opened
 
 ### Non-Regression Confirmations
 
 - ✅ No src/ changes
 - ✅ No scripts/ changes
-- ✅ No tests/ changes
 - ✅ No solver modifications
 - ✅ C_def remains adimensional proxy
 - ✅ Poisson NOT implemented
 - ✅ rho_eff NOT implemented
-- ✅ policy.json current_stage remains v0.3
+- ✅ policy.json current_stage is now v0.4 (GateOps prepared)
