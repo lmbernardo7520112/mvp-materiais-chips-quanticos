@@ -577,3 +577,14 @@
   - docs/governance/project_audit.md (v0.4 status updated).
   - README.md (v0.4 scope, demonstrative electrostatic modeling).
 - **Branch ready for PR**.
+
+## v0.4.1 Deep Parameter Literature Curation
+
+- **Scope:** Documentation-only. Zero src/scripts/tests changes.
+- **Literature review:** 11 sources audited (Sze 2007, Bracht 1998, Sinno 1999, Watkins 2000, Fleetwood 2018, Connors 2022, Zwanenburg 2013, Burkard 2023, Stesmans 1998, CODATA 2018, Ioffe Institute).
+- **Registry:** 20 parameters classified across CONST/T0/T1/T2/T3/TX/NUM tiers.
+- **Unit audit:** C/m2 vs C/m3 documented; eV-1 cm-2 to J-1 m-2 conversion documented; t_eff role clarified.
+- **Promotions:** D0_def T0->T1; N_ref TX->T1. No parameter promoted to calibrated.
+- **New T2 candidates (not in code):** epsilon_r(Si), epsilon_r(SiO2), D_it.
+- **Overclaim audit:** All TX parameters have do_not_claim fields. No calibration claims made.
+- **Decision:** Curation only; calibration requires future ADR.

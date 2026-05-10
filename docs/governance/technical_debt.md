@@ -251,3 +251,16 @@
   implemented with full test coverage.
 - **Evidence:** [ADR-007](../adr/ADR-007-v0.4-poisson-bridge-scope.md),
   [implementation_plan](implementation_plan.md)
+---
+
+### TD-PARAMS-01: Unit Conversion Infrastructure
+
+- **Description:** The MVP uses demonstrative/dimensionless parameters.
+  Literature-supported T2 values (epsilon_r, D_it) exist but cannot be
+  used without implementing SI unit conversion throughout the pipeline.
+- **Impact:** Cannot promote parameters from demonstrative to calibrated
+  without unit infrastructure.
+- **Status:** DEFERRED
+- **Pre-requisite:** ADR authorizing unit conversion and calibrated mode.
+- **Evidence:** [v0.4.1 parameter registry](../parameter_registry/v0.4.1_parameter_registry.json),
+  [literature review](../literature_review/v0.4.1_deep_parameter_curation.md)
