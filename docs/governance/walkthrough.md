@@ -540,3 +540,15 @@
   - `poisson_solver_2d.py` does not exist yet.
   - `run_poisson_bridge.py` does not exist yet.
   - The global test suite is still expected to fail (missing Poisson solver).
+
+## v0.4 GREEN 2 — poisson_solver_2d.py
+
+- **File Created**: `src/mvp_quantum_materials/poisson_solver_2d.py`
+- **Numerical Method Used**: Vectorized Jacobi (Iterative, $\omega=1.0$)
+- **Tests Run**: `PYTHONPATH=. pytest tests/test_poisson_solver_2d.py -v --tb=short`
+- **Result**: `20 passed` (Green state across both effective_charge and poisson_solver_2d).
+- **Confirmations**:
+  - `effective_charge.py` continues to pass cleanly.
+  - `run_poisson_bridge.py` does not exist yet.
+  - `generate_all_results.py` is entirely untouched.
+  - The solver explicitly asserts that it is homogeneous, demonstrative, and non-predictive.

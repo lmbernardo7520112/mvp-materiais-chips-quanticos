@@ -54,7 +54,7 @@ def test_invalid_epsilon_raises():
 def test_homogeneous_dirichlet_boundaries_remain_zero():
     """homogeneous Dirichlet boundaries remain zero."""
     rho = np.ones((5, 5))
-    # Make rho have mean zero approximately? Wait, test says: Dirichlet homogeneous boundaries remain zero.
+    # Test says: Dirichlet homogeneous boundaries remain zero.
     # The solver enforces phi=0 on boundaries.
     result = solve_poisson_2d_demonstrative(rho, dx=1.0, dy=1.0, epsilon=1.0)
     phi = result.phi
@@ -64,7 +64,7 @@ def test_homogeneous_dirichlet_boundaries_remain_zero():
     assert np.all(phi[:, -1] == 0.0)
 
 
-def test_manufactured_solution_has_acceptable_L2_error():
+def test_manufactured_solution_has_acceptable_l2_error():
     """manufactured solution has acceptable L2 error."""
     Lx, Ly = 10.0, 10.0
     Nx, Ny = 20, 20
@@ -79,16 +79,13 @@ def test_manufactured_solution_has_acceptable_L2_error():
     phi_exact = np.sin(np.pi * X / Lx) * np.sin(np.pi * Y / Ly)
 
     # lambda = (pi/Lx)^2 + (pi/Ly)^2
-    lam = (np.pi / Lx)**2 + (np.pi / Ly)**2
+    lam = (np.pi / Lx) ** 2 + (np.pi / Ly) ** 2
 
     # rho(x,y) = epsilon * lambda * phi_exact
     rho = epsilon * lam * phi_exact
 
-    # Enforce exact mean zero on rho to avoid offset if solver relies on it
-    rho -= np.mean(rho)
-
     result = solve_poisson_2d_demonstrative(rho, dx=dx, dy=dy, epsilon=epsilon, tolerance=1e-5)
-    
+
     # Check L2 relative error
     error = np.linalg.norm(result.phi - phi_exact) / np.linalg.norm(phi_exact)
     assert error < 0.1, f"L2 error too high: {error}"
@@ -98,7 +95,9 @@ def test_non_convergence_raises():
     """non-convergence raises RuntimeError."""
     rho = np.ones((10, 10))
     with pytest.raises(RuntimeError, match="did not converge"):
-        solve_poisson_2d_demonstrative(rho, dx=1.0, dy=1.0, epsilon=1.0, max_iter=1, tolerance=1e-12)
+        solve_poisson_2d_demonstrative(
+            rho, dx=1.0, dy=1.0, epsilon=1.0, max_iter=1, tolerance=1e-12
+        )
 
 
 def test_result_exposes_metadata():
