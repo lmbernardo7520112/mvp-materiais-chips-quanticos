@@ -563,3 +563,17 @@
 - **Integration**: `scripts/generate_all_results.py` successfully updated with P-Bridge stage to avoid Quality Gate term violation.
 - **Global Validation**: `run_all_quality_gates.py` passed cleanly (0 violations).
 - **Confirmation**: The script explicitly outputs demonstrative uncalibrated fields without physical device claims.
+
+## v0.4 GREEN 3 Audit and Final Documentation
+
+- **Audit findings**:
+  - pandas: zero references in codebase or pyproject.toml.
+  - generate_all_results.py: hardened to use sys.executable.
+  - run_poisson_bridge.py: removed cosmetic self-assignments.
+- **Documentation created/updated**:
+  - docs/release_notes/v0.4.0_draft.md (new).
+  - docs/parameters_v0.4_candidates.md (new).
+  - docs/governance/technical_debt.md (TD-ADR007-01 resolved).
+  - docs/governance/project_audit.md (v0.4 status updated).
+  - README.md (v0.4 scope, demonstrative electrostatic modeling).
+- **Branch ready for PR**.

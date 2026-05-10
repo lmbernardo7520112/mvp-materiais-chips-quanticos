@@ -29,6 +29,7 @@ Usage:
 import argparse
 import csv
 import subprocess
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -269,7 +270,7 @@ def main(output_dir: Path) -> None:
     print("  Running demonstrative P-Bridge pipeline...")
     subprocess.run(
         [
-            "python",
+            sys.executable,
             "scripts/run_poisson_bridge.py",
             "--output-dir",
             str(output_dir),

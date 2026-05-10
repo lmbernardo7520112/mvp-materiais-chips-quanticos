@@ -18,8 +18,8 @@ devices. The approach is strictly **demonstrative and pedagogical**.
 
 ## What This Project Is
 
-- A computational MVP for 1D/2D thermal, diffusive, and defect
-  reaction-diffusion modeling.
+- A computational MVP for 1D/2D thermal, diffusive, defect
+  reaction-diffusion, and demonstrative electrostatic modeling.
 - A demonstrative framework with toy/pedagogical parameters.
 - A governance-hardened repository using AI-RSE GateOps.
 - An academic exercise in reproducible computational science.
@@ -32,8 +32,8 @@ devices. The approach is strictly **demonstrative and pedagogical**.
 > - Predict quantum coherence, qubit fidelity, or charge noise.
 > - Use calibrated experimental parameters.
 > - Replace TCAD, Sentaurus, Silvaco, or any commercial tool.
-> - Solve the Poisson equation or compute electrostatic potentials.
-> - Compute ρ_eff or any real carrier density.
+> - Solve nonlinear or self-consistent Poisson equations.
+> - Compute calibrated carrier densities or device-level ρ_eff.
 > - Claim equivalence between metallic solidification and semiconductor
 >   fabrication.
 
@@ -41,9 +41,9 @@ devices. The approach is strictly **demonstrative and pedagogical**.
 
 | Item | Status |
 |------|--------|
-| **Version** | v0.3.2 |
-| **Tests** | 114/114 passing |
-| **Coverage** | 91.78% (gate ≥ 70%) |
+| **Version** | v0.4.0 (pending merge) |
+| **Tests** | 127+ passing |
+| **Coverage** | ≥91% (gate ≥ 70%) |
 | **CI** | GitHub Actions — Python 3.11 + 3.12 |
 | **Quality Gates** | 6 AI-RSE gates active |
 | **Branch Protection** | Required checks enforced on `main` |

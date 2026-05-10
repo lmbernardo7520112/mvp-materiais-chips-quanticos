@@ -22,10 +22,7 @@ from mvp_quantum_materials.poisson_solver_2d import solve_poisson_2d_demonstrati
 def run_poisson_bridge(output_dir: Path, tables_dir: Path) -> None:
     """Run the demonstrative Poisson bridge pipeline."""
 
-    out_dir = output_dir
-    out_dir.mkdir(parents=True, exist_ok=True)
-
-    tables_dir = tables_dir
+    output_dir.mkdir(parents=True, exist_ok=True)
     tables_dir.mkdir(parents=True, exist_ok=True)
 
     # 1 & 2. Create demonstrative C_def and T fields
@@ -72,13 +69,18 @@ def run_poisson_bridge(output_dir: Path, tables_dir: Path) -> None:
 
     # 5. Save PNG
     plt.figure(figsize=(6, 5))
-    im = plt.imshow(result.phi.T, origin="lower", extent=(0.0, float(Lx), 0.0, float(Ly)), cmap="viridis")
+    im = plt.imshow(
+        result.phi.T,
+        origin="lower",
+        extent=(0.0, float(Lx), 0.0, float(Ly)),
+        cmap="viridis",
+    )
     plt.colorbar(im, label="Demonstrative Phi (a.u.)")
     plt.title("Demonstrative Poisson Bridge Potential")
     plt.xlabel("X (a.u.)")
     plt.ylabel("Y (a.u.)")
     plt.tight_layout()
-    fig_path = out_dir / "poisson_bridge_potential.png"
+    fig_path = output_dir / "poisson_bridge_potential.png"
     plt.savefig(fig_path, dpi=300)
     plt.close()
 
