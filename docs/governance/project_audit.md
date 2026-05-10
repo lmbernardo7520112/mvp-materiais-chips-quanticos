@@ -1,8 +1,8 @@
-# Project Audit — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.5
+# Project Audit — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.5 / ADR-007
 
 > **Date:** 2026-05-09  
 > **Auditor:** Staff Research Software Engineer (AI-assisted)  
-> **Status:** v0.3.5 PARAMETER CURATION ✅ | main PROTECTED ✅
+> **Status:** ADR-007 PROPOSED ✅ | main PROTECTED ✅
 
 ## Remote Infrastructure
 
