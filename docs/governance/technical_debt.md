@@ -1,4 +1,4 @@
-# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.5
+# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.5 / ADR-007
 
 > **Last updated:** 2026-05-09
 
@@ -235,3 +235,16 @@
   C_def → ρ_eff mapping options documented.
 - **Evidence:** [parameter_registry](../parameter_registry/v0.3.5_parameter_registry.json),
   [literature_review](../literature_review/v0.3.5_parameter_curation.md)
+
+---
+
+### TD-ADR007-01: v0.4 Implementation Pending ADR Acceptance
+
+- **Description:** ADR-007 specifies the v0.4 Poisson bridge scope with
+  Option C-B (Boussinesq-inspired closure). Implementation is blocked
+  until ADR is promoted to Accepted and policy.json updated.
+- **Impact:** No electrostatic coupling until v0.4 is implemented.
+- **Status:** ⏳ DEFERRED — pending ADR-007 acceptance
+- **Pre-requisite:** ADR-007 Accepted, policy v0.4, TDD tests written.
+- **Evidence:** [ADR-007](../adr/ADR-007-v0.4-poisson-bridge-scope.md),
+  [risk matrix](v0.4_risk_matrix_draft.md)
