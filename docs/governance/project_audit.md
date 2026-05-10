@@ -273,3 +273,16 @@ any calculation, formula, loop, boundary condition, or return value.
 2. v0.4: Poisson 2D — ∇·(ε∇φ) = −ρ_eff with C_def → ρ_eff coupling
 3. v0.5: Schrödinger simplificado
 4. Parameter curation: real defect/trap data from peer-reviewed literature
+
+---
+
+## v0.4 Preparation Audit
+
+> **Date:** 2026-05-10
+> **Status:** GOVERNANCE PREPARED — pending implementation
+
+- ✅ **ADR-007**: Accepted (Option C-B).
+- ✅ **Policy Stage**: Activated `current_stage: v0.4`.
+- ✅ **Implementation blocked**: `effective_charge.py` and `poisson_solver_2d.py` do not exist.
+- ✅ **Quality Gates**: Strict allowlist enforced for Poisson/rho_eff files.
+- ✅ **Next Phase**: TDD PR for Poisson Bridge Implementation.

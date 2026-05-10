@@ -34,10 +34,10 @@ class TestPolicyLoader:
         assert "current_stage" in policy
         assert "stages" in policy
 
-    def test_current_stage_is_v03(self):
-        """Current stage is v0.3."""
+    def test_current_stage_is_v04(self):
+        """Current stage is v0.4."""
         policy = load_policy()
-        assert get_stage_name(policy) == "v0.3"
+        assert get_stage_name(policy) == "v0.4"
 
     def test_active_stage_has_required_keys(self):
         """Active stage has essential keys."""
@@ -47,14 +47,6 @@ class TestPolicyLoader:
         assert "required_adrs" in stage
         assert "required_docs" in stage
         assert "required_artifacts" in stage
-
-    def test_v04_template_is_not_active(self):
-        """v0.4_future_template is present but not active."""
-        policy = load_policy()
-        assert "v0.4_future_template" in policy["stages"]
-        assert policy["current_stage"] != "v0.4_future_template"
-        template = policy["stages"]["v0.4_future_template"]
-        assert template["status"] == "template_only_not_active"
 
     def test_malformed_policy_raises(self, tmp_path: Path):
         """Malformed policy raises ValueError."""
@@ -169,6 +161,66 @@ class TestScopeGuardrails:
         policy = load_policy()
         violations = check_scope_guardrails(REPO_ROOT, policy)
         assert violations == [], f"Unexpected violations: {violations}"
+
+    def test_v04_allows_conditional_forbidden_in_authorized_files(self, tmp_path: Path):
+        """v0.4 allows Poisson in authorized files."""
+        src = tmp_path / "src"
+        src.mkdir()
+        (src / "poisson_solver_2d.py").write_text("result = solve_Poisson(field)\n")
+
+        policy = {
+            "current_stage": "v0.4",
+            "stages": {
+                "v0.4": {
+                    "forbidden_in_code": ["Schrodinger"],
+                    "forbidden_in_code_except_authorized": ["Poisson"],
+                    "authorized_files": ["poisson_solver_2d.py"],
+                }
+            },
+        }
+        violations = check_scope_guardrails(tmp_path, policy)
+        assert violations == []
+
+    def test_v04_blocks_conditional_forbidden_in_unauthorized_files(self, tmp_path: Path):
+        """v0.4 blocks Poisson in unauthorized files."""
+        src = tmp_path / "src"
+        src.mkdir()
+        (src / "bad.py").write_text("result = solve_Poisson(field)\n")
+
+        policy = {
+            "current_stage": "v0.4",
+            "stages": {
+                "v0.4": {
+                    "forbidden_in_code": ["Schrodinger"],
+                    "forbidden_in_code_except_authorized": ["Poisson"],
+                    "authorized_files": ["poisson_solver_2d.py"],
+                }
+            },
+        }
+        violations = check_scope_guardrails(tmp_path, policy)
+        assert len(violations) >= 1
+        assert "Poisson" in violations[0]
+        assert "conditionally forbidden" in violations[0]
+
+    def test_v04_blocks_forbidden_everywhere(self, tmp_path: Path):
+        """v0.4 blocks Schrodinger even in authorized files."""
+        src = tmp_path / "src"
+        src.mkdir()
+        (src / "poisson_solver_2d.py").write_text("result = Schrodinger()\n")
+
+        policy = {
+            "current_stage": "v0.4",
+            "stages": {
+                "v0.4": {
+                    "forbidden_in_code": ["Schrodinger"],
+                    "forbidden_in_code_except_authorized": ["Poisson"],
+                    "authorized_files": ["poisson_solver_2d.py"],
+                }
+            },
+        }
+        violations = check_scope_guardrails(tmp_path, policy)
+        assert len(violations) >= 1
+        assert "Schrodinger" in violations[0]
 
 
 # ---------------------------------------------------------------------------

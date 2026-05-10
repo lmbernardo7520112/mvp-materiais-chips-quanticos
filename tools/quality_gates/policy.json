@@ -3,28 +3,16 @@
     "AI-RSE GateOps — Version-Aware Quality Gate Policy",
     "",
     "Quality gates are NOT eternal prohibitions.",
-    "They are versioned policies per development stage.",
-    "",
-    "In v0.3, Poisson and rho_eff are forbidden in code.",
-    "In a future v0.4, they may be permitted, provided:",
-    "  1. A dedicated ADR is accepted;",
-    "  2. This policy is updated via PR;",
-    "  3. Authorized modules are defined;",
-    "  4. Mandatory tests and docs exist;",
-    "  5. Implementation remains demonstrative unless curated.",
-    "",
-    "Quality gate does not prevent evolution;",
-    "it prevents evolution out of order."
+    "They are versioned policies per development stage."
   ],
 
-  "current_stage": "v0.3",
+  "current_stage": "v0.4",
 
   "stages": {
     "v0.3": {
       "required_adrs": {
         "ADR-006-defect-like-reaction-diffusion-scope.md": "Accepted"
       },
-
       "forbidden_in_code": [
         "Poisson",
         "rho_eff",
@@ -33,11 +21,9 @@
         "quantum coherence",
         "charge noise prediction"
       ],
-
       "allowed_exceptions": {
         "diffusion_solver.py": ["type_only_overload"]
       },
-
       "required_docs": [
         "docs/governance/walkthrough.md",
         "docs/governance/project_audit.md",
@@ -47,7 +33,6 @@
         "docs/release_notes/v0.3.0_draft.md",
         "docs/adr/ADR-006-defect-like-reaction-diffusion-scope.md"
       ],
-
       "required_artifacts": {
         "figures_min": 7,
         "csv_min": 4,
@@ -61,24 +46,53 @@
       }
     },
 
-    "v0.4_future_template": {
-      "status": "template_only_not_active",
-      "activation_requires": [
-        "ADR-007 Accepted",
-        "policy PR merged",
-        "tests updated",
-        "docs updated"
+    "v0.4": {
+      "required_adrs": {
+        "ADR-007-v0.4-poisson-bridge-scope.md": "Accepted"
+      },
+      "forbidden_in_code": [
+        "Schrodinger",
+        "Schrödinger",
+        "TCAD",
+        "QTCAD",
+        "coherence prediction",
+        "fidelity prediction",
+        "charge-noise prediction",
+        "calibrated physical claims"
       ],
-      "allowed_in_code_after_activation": [
+      "forbidden_in_code_except_authorized": [
         "Poisson",
         "rho_eff"
       ],
-      "still_forbidden_until_future_adr": [
-        "Schrodinger",
-        "TCAD",
-        "quantum coherence prediction",
-        "device-level prediction"
-      ]
+      "authorized_files": [
+        "effective_charge.py",
+        "poisson_solver_2d.py",
+        "test_effective_charge.py",
+        "test_poisson_solver_2d.py",
+        "run_poisson_bridge.py"
+      ],
+      "allowed_exceptions": {
+        "diffusion_solver.py": ["type_only_overload"]
+      },
+      "required_docs": [
+        "docs/governance/walkthrough.md",
+        "docs/governance/project_audit.md",
+        "docs/governance/technical_debt.md",
+        "docs/parameters.md",
+        "docs/adr/ADR-007-v0.4-poisson-bridge-scope.md",
+        "docs/decision_briefs/v0.4_boussinesq_inspired_charge_closure.md"
+      ],
+      "required_artifacts": {
+        "figures_min": 7,
+        "csv_min": 4,
+        "figures": ["defect_2d_final.png"],
+        "tables": [
+          "defect_metrics.csv",
+          "defect_final_snapshot.csv",
+          "sensitivity_results.csv",
+          "convergence_results.csv"
+        ]
+      }
     }
   }
 }

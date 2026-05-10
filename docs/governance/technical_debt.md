@@ -1,6 +1,6 @@
-# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.5 / ADR-007
+# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.8 / v0.4 Prep
 
-> **Last updated:** 2026-05-09
+> **Last updated:** 2026-05-10
 
 ## Summary
 

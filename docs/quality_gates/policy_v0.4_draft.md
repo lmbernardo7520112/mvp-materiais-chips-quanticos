@@ -1,17 +1,19 @@
-# Policy Proposal — v0.4 (DRAFT)
+# Policy v0.4
 
-> **Date:** 2026-05-09
-> **Status:** DRAFT — does NOT modify tools/quality_gates/policy.json
-> **Prerequisite:** ADR-007 must be Accepted before this policy is applied
+> **Date:** 2026-05-10
+> **Status:** ACTIVATED
 
-> [!CAUTION]
-> This document proposes future changes to `policy.json`. The current
-> `policy.json` remains at `current_stage: v0.3` and must NOT be modified
-> until ADR-007 is formally Accepted.
+## v0.4 policy activation record
+
+- A policy real foi ativada (`current_stage: v0.4`).
+- Isso NÃO implementa Poisson.
+- Isso NÃO implementa rho_eff.
+- Isso apenas prepara os gates para a fase de implementação.
+- A implementação futura deverá vir através de um PR estruturado via TDD.
 
 ---
 
-## Proposed policy.json Change
+## Authorized policy.json Settings
 
 ```json
 {
