@@ -24,7 +24,7 @@ def test_compute_theta_preserves_shape():
     assert theta.shape == T.shape
 
 
-def test_compute_theta_uniform_T_returns_zeros():
+def test_compute_theta_uniform_t_returns_zeros():
     """compute_theta uniform T returns zeros without div-by-zero error."""
     T = np.ones((5, 5)) * 300.0
     theta = compute_theta(T)
@@ -39,13 +39,13 @@ def test_h_cdef_returns_values_in_bounds():
     assert np.all(h <= 1.0)
 
 
-def test_h_cdef_rejects_negative_C_def():
+def test_h_cdef_rejects_negative_c_def():
     """h_cdef rejects negative C_def with ValueError."""
     with pytest.raises(ValueError, match="must be >= 0"):
         h_cdef(np.array([-0.1, 0.5]))
 
 
-def test_h_cdef_rejects_excess_C_def():
+def test_h_cdef_rejects_excess_c_def():
     """h_cdef rejects C_def > C_sat with ValueError."""
     with pytest.raises(ValueError, match="must be <= C_sat"):
         h_cdef(np.array([0.5, 1.5]), C_sat=1.0)

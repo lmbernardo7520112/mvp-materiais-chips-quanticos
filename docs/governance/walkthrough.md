@@ -530,3 +530,13 @@
 - ✅ Poisson NOT implemented
 - ✅ rho_eff NOT implemented
 - ✅ policy.json current_stage is now v0.4 (GateOps prepared)
+
+## v0.4 GREEN 1 — effective_charge.py
+
+- **File Created**: `src/mvp_quantum_materials/effective_charge.py`
+- **Tests Run**: `PYTHONPATH=. pytest tests/test_effective_charge.py -v --tb=short`
+- **Result**: `11 passed` (Green state).
+- **Confirmations**:
+  - `poisson_solver_2d.py` does not exist yet.
+  - `run_poisson_bridge.py` does not exist yet.
+  - The global test suite is still expected to fail (missing Poisson solver).
