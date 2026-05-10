@@ -530,3 +530,50 @@
 - ✅ Poisson NOT implemented
 - ✅ rho_eff NOT implemented
 - ✅ policy.json current_stage is now v0.4 (GateOps prepared)
+
+## v0.4 GREEN 1 — effective_charge.py
+
+- **File Created**: `src/mvp_quantum_materials/effective_charge.py`
+- **Tests Run**: `PYTHONPATH=. pytest tests/test_effective_charge.py -v --tb=short`
+- **Result**: `11 passed` (Green state).
+- **Confirmations**:
+  - `poisson_solver_2d.py` does not exist yet.
+  - `run_poisson_bridge.py` does not exist yet.
+  - The global test suite is still expected to fail (missing Poisson solver).
+
+## v0.4 GREEN 2 — poisson_solver_2d.py
+
+- **File Created**: `src/mvp_quantum_materials/poisson_solver_2d.py`
+- **Numerical Method Used**: Vectorized Jacobi (Iterative, $\omega=1.0$)
+- **Tests Run**: `PYTHONPATH=. pytest tests/test_poisson_solver_2d.py -v --tb=short`
+- **Result**: `20 passed` (Green state across both effective_charge and poisson_solver_2d).
+- **Confirmations**:
+  - `effective_charge.py` continues to pass cleanly.
+  - `run_poisson_bridge.py` does not exist yet.
+  - `generate_all_results.py` is entirely untouched.
+  - The solver explicitly asserts that it is homogeneous, demonstrative, and non-predictive.
+
+## v0.4 GREEN 3 — Poisson Bridge Script & Artifacts
+
+- **Script Created**: `scripts/run_poisson_bridge.py`
+- **Command Executed**: `python scripts/run_poisson_bridge.py --output-dir results/figures --tables-dir results/tables`
+- **PNG Generated**: `results/figures/poisson_bridge_potential.png`
+- **CSV Generated**: `results/tables/poisson_bridge_metrics.csv`
+- **Metrics Summary**: max_abs_delta_rho_eff (~3.44e-20), max_abs_phi (~5.38e-24), converged (True).
+- **Integration**: `scripts/generate_all_results.py` successfully updated with P-Bridge stage to avoid Quality Gate term violation.
+- **Global Validation**: `run_all_quality_gates.py` passed cleanly (0 violations).
+- **Confirmation**: The script explicitly outputs demonstrative uncalibrated fields without physical device claims.
+
+## v0.4 GREEN 3 Audit and Final Documentation
+
+- **Audit findings**:
+  - pandas: zero references in codebase or pyproject.toml.
+  - generate_all_results.py: hardened to use sys.executable.
+  - run_poisson_bridge.py: removed cosmetic self-assignments.
+- **Documentation created/updated**:
+  - docs/release_notes/v0.4.0_draft.md (new).
+  - docs/parameters_v0.4_candidates.md (new).
+  - docs/governance/technical_debt.md (TD-ADR007-01 resolved).
+  - docs/governance/project_audit.md (v0.4 status updated).
+  - README.md (v0.4 scope, demonstrative electrostatic modeling).
+- **Branch ready for PR**.

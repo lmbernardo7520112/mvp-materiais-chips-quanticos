@@ -1,8 +1,8 @@
-# Project Audit — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.5 / ADR-007
+# Project Audit — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.9 / v0.4
 
-> **Date:** 2026-05-09  
+> **Date:** 2026-05-10  
 > **Auditor:** Staff Research Software Engineer (AI-assisted)  
-> **Status:** ADR-007 PROPOSED ✅ | main PROTECTED ✅
+> **Status:** ADR-007 ACCEPTED ✅ | v0.4 IMPLEMENTED ✅ | main PROTECTED ✅
 
 ## Remote Infrastructure
 
@@ -279,10 +279,13 @@ any calculation, formula, loop, boundary condition, or return value.
 ## v0.4 Preparation Audit
 
 > **Date:** 2026-05-10
-> **Status:** GOVERNANCE PREPARED — pending implementation
+> **Status:** GOVERNANCE PREPARED ✅ — implementation complete
 
 - ✅ **ADR-007**: Accepted (Option C-B).
 - ✅ **Policy Stage**: Activated `current_stage: v0.4`.
-- ✅ **Implementation blocked**: `effective_charge.py` and `poisson_solver_2d.py` do not exist.
-- ✅ **Quality Gates**: Strict allowlist enforced for Poisson/rho_eff files.
-- ✅ **Next Phase**: TDD PR for Poisson Bridge Implementation.
+- ✅ **effective_charge.py**: Implemented (11 tests passing).
+- ✅ **poisson_solver_2d.py**: Implemented (9 tests passing).
+- ✅ **run_poisson_bridge.py**: Implemented and integrated.
+- ✅ **Quality Gates**: 6/6 PASS.
+- ✅ **Artifacts**: poisson_bridge_potential.png + poisson_bridge_metrics.csv.
+- ✅ **Next Phase**: PR review, merge, and tag v0.4.0.

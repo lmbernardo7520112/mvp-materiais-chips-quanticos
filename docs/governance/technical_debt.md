@@ -1,4 +1,4 @@
-# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.8 / v0.4 Prep
+# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.9 / v0.4
 
 > **Last updated:** 2026-05-10
 
@@ -6,9 +6,9 @@
 
 | Status | Count |
 |--------|-------|
-| RESOLVED | 6 |
+| RESOLVED | 7 |
 | PARTIALLY RESOLVED | 1 |
-| DEFERRED | 5 |
+| DEFERRED | 4 |
 | OPEN | 0 |
 | WONTFIX | 0 |
 
@@ -241,10 +241,13 @@
 ### TD-ADR007-01: v0.4 Implementation Pending ADR Acceptance
 
 - **Description:** ADR-007 specifies the v0.4 Poisson bridge scope with
-  Option C-B (Boussinesq-inspired closure). Implementation is blocked
-  until ADR is promoted to Accepted and policy.json updated.
+  Option C-B (Boussinesq-inspired closure). Implementation was blocked
+  until ADR was promoted to Accepted and policy.json updated.
 - **Impact:** No electrostatic coupling until v0.4 is implemented.
-- **Status:** ⏳ DEFERRED — pending ADR-007 acceptance
-- **Pre-requisite:** ADR-007 Accepted, policy v0.4, TDD tests written.
+- **Status:** ✅ RESOLVED in v0.4
+- **Resolution:** ADR-007 accepted (v0.3.7). Policy updated to v0.4 (v0.3.8).
+  Implementation plan refined (v0.3.9). TDD RED/GREEN phases completed.
+  effective_charge.py, poisson_solver_2d.py, and run_poisson_bridge.py
+  implemented with full test coverage.
 - **Evidence:** [ADR-007](../adr/ADR-007-v0.4-poisson-bridge-scope.md),
-  [risk matrix](v0.4_risk_matrix_draft.md)
+  [implementation_plan](implementation_plan.md)
