@@ -289,3 +289,15 @@ any calculation, formula, loop, boundary condition, or return value.
 - ✅ **Quality Gates**: 6/6 PASS.
 - ✅ **Artifacts**: poisson_bridge_potential.png + poisson_bridge_metrics.csv.
 - ✅ **Next Phase**: PR review, merge, and tag v0.4.0.
+
+## v0.4.1 Parameter Curation Audit
+
+> **Date:** 2026-05-10
+> **Status:** DOCUMENTATION COMPLETE
+
+- Registry: 20 parameters, 7 tiers (CONST/T0/T1/T2/T3/TX/NUM).
+- Sources: 11 references (BibTeX).
+- Unit audit: surface vs volume density distinction documented.
+- Overclaim audit: all TX params have do_not_claim fields.
+- Zero src/scripts/tests changes.
+- No calibration performed.
