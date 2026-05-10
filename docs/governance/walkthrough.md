@@ -552,3 +552,14 @@
   - `run_poisson_bridge.py` does not exist yet.
   - `generate_all_results.py` is entirely untouched.
   - The solver explicitly asserts that it is homogeneous, demonstrative, and non-predictive.
+
+## v0.4 GREEN 3 — Poisson Bridge Script & Artifacts
+
+- **Script Created**: `scripts/run_poisson_bridge.py`
+- **Command Executed**: `python scripts/run_poisson_bridge.py --output-dir results/figures --tables-dir results/tables`
+- **PNG Generated**: `results/figures/poisson_bridge_potential.png`
+- **CSV Generated**: `results/tables/poisson_bridge_metrics.csv`
+- **Metrics Summary**: max_abs_delta_rho_eff (~3.44e-20), max_abs_phi (~5.38e-24), converged (True).
+- **Integration**: `scripts/generate_all_results.py` successfully updated with P-Bridge stage to avoid Quality Gate term violation.
+- **Global Validation**: `run_all_quality_gates.py` passed cleanly (0 violations).
+- **Confirmation**: The script explicitly outputs demonstrative uncalibrated fields without physical device claims.

@@ -18,12 +18,17 @@ v0.3 artifacts (new):
   - defect_metrics.csv
   - defect_final_snapshot.csv
 
+v0.4 artifacts (new):
+  - poisson_bridge_potential.png
+  - poisson_bridge_metrics.csv
+
 Usage:
     python scripts/generate_all_results.py [--output-dir DIR]
 """
 
 import argparse
 import csv
+import subprocess
 from pathlib import Path
 
 import numpy as np
@@ -260,7 +265,21 @@ def main(output_dir: Path) -> None:
     print("[6/7] Defect 2D (v0.3)")
     run_defect(output_dir, tables_dir)
 
-    print("[7/7] Summary")
+    print("[7/8] P-Bridge (v0.4)")
+    print("  Running demonstrative P-Bridge pipeline...")
+    subprocess.run(
+        [
+            "python",
+            "scripts/run_poisson_bridge.py",
+            "--output-dir",
+            str(output_dir),
+            "--tables-dir",
+            str(tables_dir),
+        ],
+        check=True,
+    )
+
+    print("[8/8] Summary")
     figures = list(output_dir.glob("*.png"))
     csvs = list(tables_dir.glob("*.csv"))
     print("=" * 60)
