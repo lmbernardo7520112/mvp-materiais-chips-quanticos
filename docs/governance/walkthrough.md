@@ -1,7 +1,7 @@
-# Walkthrough — MVP v0.1 / v0.2 / v0.3 / v0.3.1 / v0.3.2 / v0.3.3 / v0.3.4
+# Walkthrough — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.5
 
 > **Date:** 2026-05-09  
-> **Status:** ✅ v0.3.4 MIT LICENSE RELEASE
+> **Status:** ✅ v0.3.5 PARAMETER CURATION SPECIFICATION
 
 ## Post-Merge Validation Evidence
 
@@ -455,3 +455,39 @@
 - ✅ rho_eff NOT implemented
 - ✅ policy.json current_stage remains v0.3
 - ✅ MIT License formally adopted
+
+---
+
+## v0.3.5 Parameter Curation & Registry Evidence
+
+> **Date:** 2026-05-09
+> **Status:** SPECIFICATION COMPLETE — no implementation
+
+### Scientific Deliverables
+
+| Document | Content |
+|----------|--------|
+| `docs/literature_review/v0.3.5_parameter_curation.md` | 10 sources, 5 blocks (A–E) |
+| `docs/parameters_v0.3.5_curated_candidates.md` | Full parameter taxonomy with evidence tiers |
+| `docs/decision_briefs/Cdef_to_rhoeff_mapping_options.md` | 3 mapping options compared |
+| `docs/parameter_registry/v0.3.5_parameter_registry.json` | 17 parameters in machine-readable format |
+
+### Key Findings
+
+- Evidence tier system: T0/T1/T2/T3/TX/CONST defined and applied
+- 4 parameters at T1 (literature-inspired): α, D₀_def, E_D, E_R
+- T_G downgraded from T1 to T0 (1100 K ≠ Voronkov ~1100°C = ~1373 K)
+- 2 fields at TX (forbidden physical interpretation): C, C_def
+- Option C (trap/interface occupancy proxy) preferred for ADR-007
+- No implementation performed
+
+### Non-Regression Confirmations
+
+- ✅ No src/ changes
+- ✅ No scripts/ changes
+- ✅ No tests/ changes
+- ✅ No solver modifications
+- ✅ C_def remains adimensional proxy
+- ✅ Poisson NOT implemented
+- ✅ rho_eff NOT implemented
+- ✅ policy.json current_stage remains v0.3
