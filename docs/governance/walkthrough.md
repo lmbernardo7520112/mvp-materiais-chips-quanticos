@@ -474,8 +474,9 @@
 
 ### Key Findings
 
-- Evidence tier system: T0/T1/T2/T3/TX defined and applied
-- 4 parameters at T1 (literature-inspired): α, D₀_def, E_D, T_G, E_R
+- Evidence tier system: T0/T1/T2/T3/TX/CONST defined and applied
+- 4 parameters at T1 (literature-inspired): α, D₀_def, E_D, E_R
+- T_G downgraded from T1 to T0 (1100 K ≠ Voronkov ~1100°C = ~1373 K)
 - 2 fields at TX (forbidden physical interpretation): C, C_def
 - Option C (trap/interface occupancy proxy) preferred for ADR-007
 - No implementation performed

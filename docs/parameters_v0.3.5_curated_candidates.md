@@ -13,6 +13,7 @@
 | **T2** | candidate physical range | Published range exists; calibration feasible in principle |
 | **T3** | calibration-required | Meaningful only with experimental calibration |
 | **TX** | forbidden-to-interpret-physically | Must not be presented as physical quantity |
+| **CONST** | physical constant | Exact or CODATA value; not a free parameter |
 
 ---
 
@@ -30,12 +31,12 @@
 | safety_factor | CFL factor | 0.4 | T0 | Stability margin | not applicable | ✅ | ✅ | Must be < 0.5 for Euler explicit |
 | D₀ | Diffusion pre-exponential | 1.0e-8 m²/s | T0 | Impurity diffusivity pre-factor | parameter-source | ✅ | ✅ | Toy; real D₀ varies by species |
 | E_a | Activation energy | 0.5 eV | T0 | Migration energy | parameter-source | ✅ | ✅ | Toy; Si vacancy E_m ≈ 0.2–0.5 eV |
-| k_B | Boltzmann constant | 8.617e-5 eV/K | — | Physical constant | physical constant | ✅ | ✅ | CODATA value; not a free parameter |
-| T_c | Critical temperature | 1500 K | T0 | Nucleation temperature | parameter-source | ✅ | ✅ | Toy; void nucleation ~1100°C |
+| k_B | Boltzmann constant | 8.617e-5 eV/K | CONST | Physical constant | physical constant | ✅ | ✅ | CODATA value; not a free parameter |
+| T_c | Critical temperature | 1500 K | T0 | Nucleation temperature | not applicable | ✅ | ✅ | Toy; void nucleation ~1100°C (~1373 K) |
 | σ_T | Source width | 50 K | T0 | Temperature window | not applicable | ✅ | ✅ | Toy value |
 | A_C | Source amplitude | 1.0 /s | T0 | Generation rate | not applicable | ✅ | ✅ | Toy value |
 | C_init | Initial concentration | 0.0 | T0 | Starting defect density | not applicable | ✅ | ✅ | Dimensionless proxy |
-| C | Diffusion field | — (adim.) | TX | Heterogeneity proxy | — | ✅ | ✅ | **Must not** be interpreted as physical concentration |
+| C | Dimensionless heterogeneity proxy field | — (adim.) | TX | Heterogeneity proxy | — | ✅ | ✅ | **Must not** be interpreted as physical concentration |
 
 ## v0.2 Parameters (2D Thermal + Convergence)
 
@@ -53,12 +54,12 @@
 | D₀_def | Defect diffusion pre-exp | 1.0e-4 m²/s | T1 | Vacancy D₀ in Si | parameter-source | ✅ | ✅ | Sinno/Bracht: D₀ ≈ 1e-5 to 1e-3 |
 | E_D | Migration energy | 0.4 eV | T1 | Vacancy E_m in Si | parameter-source | ✅ | ✅ | Sinno: E_m ≈ 0.2–0.5 eV |
 | A_G | Generation amplitude | 1.0 /s | T0 | Defect generation rate | not applicable | ✅ | ✅ | Toy; no source for magnitude |
-| T_G | Generation center temp | 1100 K | T1 | Void nucleation temp | parameter-source | ✅ | ✅ | Voronkov: ~1100°C |
+| T_G | Generation center temp | 1100 K | T0 | Void nucleation temp | not applicable | ✅ | ✅ | Toy default; Voronkov nucleation ~1100°C (~1373 K); current value does NOT match literature |
 | σ_G | Generation width | 100 K | T0 | Temperature window | not applicable | ✅ | ✅ | Toy; no source for width |
 | A_R | Recombination amplitude | 10.0 /s | T0 | Recombination rate | not applicable | ✅ | ✅ | Toy; tuned for G/R balance |
 | E_R | Recombination energy | 0.6 eV | T1 | Frenkel pair barrier | parameter-source | ✅ | ✅ | Sinno: 0.3–1.0 eV |
 | C_sat | Saturation | 1.0 (adim.) | T0 | Maximum defect density | mathematical | ✅ | ✅ | Normalization bound |
-| C_def | Defect field | — (adim.) | TX | Defect density proxy | — | ✅ | ✅ | **Must not** be interpreted as calibrated defect density |
+| C_def | Dimensionless defect-like proxy field | — (adim.) | TX | Defect density proxy | — | ✅ | ✅ | **Must not** be interpreted as calibrated defect density |
 
 ## Future Parameters (v0.4 — NOT implemented)
 
@@ -66,7 +67,7 @@
 |--------|-----------------|---------------|--------|--------|
 | ρ_eff | Effective charge density | T3 | ❌ NOT IMPLEMENTED | Requires Poisson + charge state model |
 | ε_Si | Si permittivity | T2 | ❌ NOT IMPLEMENTED | Well-known: 11.7 ε₀ |
-| q | Elementary charge | — | ❌ NOT IMPLEMENTED | Physical constant |
+| q | Elementary charge | CONST | ❌ NOT IMPLEMENTED | Physical constant |
 | φ | Electrostatic potential | T3 | ❌ NOT IMPLEMENTED | Requires Poisson solver |
 | D_it | Interface trap density | T2 | ❌ NOT IMPLEMENTED | 1e10–1e12 cm⁻² eV⁻¹ (Sze) |
 

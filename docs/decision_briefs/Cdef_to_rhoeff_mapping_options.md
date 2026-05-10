@@ -11,7 +11,8 @@ The defect field C_def is currently a **dimensionless proxy** (tier TX) that
 represents spatial heterogeneity in a 2D reaction-diffusion model. To bridge
 toward device-relevant predictions (charge disorder, threshold voltage
 variation, noise), a mapping from C_def to an effective charge density ρ_eff
-is needed. This mapping would feed a Poisson solver: ∇²φ = −ρ_eff / ε.
+is needed. This mapping would feed a Poisson solver: ∇·(ε∇φ) = −ρ_eff
+(or ∇²φ = −ρ_eff/ε in the homogeneous-permittivity simplification).
 
 This brief compares three candidate approaches.
 

@@ -1,7 +1,7 @@
 {
   "registry_version": "v0.3.5",
   "created": "2026-05-09",
-  "description": "Parameter registry for MVP Quantum Materials. Evidence tiers: T0 (toy), T1 (literature-inspired), T2 (candidate range), T3 (calibration-required), TX (forbidden physical interpretation).",
+  "description": "Parameter registry for MVP Quantum Materials. Evidence tiers: T0 (toy), T1 (literature-inspired), T2 (candidate range), T3 (calibration-required), TX (forbidden physical interpretation), CONST (physical constant).",
   "parameters": [
     {
       "symbol": "alpha",
@@ -54,7 +54,7 @@
       "role": "physical constant",
       "dimension": "eV/K",
       "current_status": "active",
-      "evidence_tier": "physical_constant",
+      "evidence_tier": "CONST",
       "source_role": "physical constant",
       "default_value": 8.617e-5,
       "default_value_status": "CODATA",
@@ -110,7 +110,7 @@
     },
     {
       "symbol": "C",
-      "name": "Concentration field (1D diffusion)",
+      "name": "Dimensionless heterogeneity proxy field (1D)",
       "role": "heterogeneity proxy variable",
       "dimension": "dimensionless",
       "current_status": "active",
@@ -174,14 +174,14 @@
       "role": "center of Gaussian generation G(T)",
       "dimension": "K",
       "current_status": "active",
-      "evidence_tier": "T1",
-      "source_role": "parameter-source",
+      "evidence_tier": "T0",
+      "source_role": "not applicable",
       "default_value": 1100,
-      "default_value_status": "literature-inspired; Voronkov void nucleation",
+      "default_value_status": "toy; does NOT correspond to Voronkov ~1100 C (~1373 K)",
       "calibration_status": "not calibrated",
       "allowed_for_v0_3": true,
       "allowed_for_v0_4": true,
-      "caveat": "Voronkov: void nucleation ~1100 C; CZ-specific"
+      "caveat": "Toy default 1100 K; Voronkov nucleation ~1100 C = ~1373 K; current value does NOT match literature"
     },
     {
       "symbol": "sigma_G",
@@ -245,7 +245,7 @@
     },
     {
       "symbol": "C_def",
-      "name": "Defect concentration field",
+      "name": "Dimensionless defect-like proxy field",
       "role": "defect density proxy variable",
       "dimension": "dimensionless",
       "current_status": "active",
