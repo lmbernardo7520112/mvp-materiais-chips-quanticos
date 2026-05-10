@@ -1,6 +1,7 @@
-% v0.4.1 Parameter Curation — BibTeX Sources
+% v0.4.1 Parameter Curation — BibTeX Sources (hardened)
 % Scope: Si/SiO2, Si/SiGe, CMOS spin-qubit context
 % Classification: PRIMARY_EXPERIMENTAL, PRIMARY_THEORETICAL, REVIEW, TEXTBOOK
+% Source roles: parameter_anchor, equation_anchor, context_anchor
 
 @book{SZE2007,
   author    = {Sze, Simon M. and Ng, Kwok K.},
@@ -9,7 +10,12 @@
   publisher = {John Wiley \& Sons},
   year      = {2007},
   isbn      = {978-0-471-14323-9},
-  note      = {TEXTBOOK. Standard reference for epsilon_r, D_it ranges, semiconductor transport.}
+  note      = {TEXTBOOK.
+               source\_role: parameter\_anchor.
+               parameter\_anchor: true (epsilon\_r Si, epsilon\_r SiO2, D\_it ranges).
+               equation\_anchor: false.
+               context\_anchor: true (general semiconductor physics).
+               material\_stack: Si, SiO2, SiGe, general.}
 }
 
 @article{BRACHT1998,
@@ -21,8 +27,12 @@
   pages   = {393--396},
   year    = {1998},
   doi     = {10.1103/PhysRevLett.81.393},
-  note    = {PRIMARY_EXPERIMENTAL. Isotope tracer measurement of Si self-diffusion.
-             D0 and E_a for vacancy and interstitial mechanisms.}
+  note    = {PRIMARY\_EXPERIMENTAL.
+             source\_role: parameter\_anchor (D0, E\_a for vacancy/interstitial).
+             parameter\_anchor: true (D0 = 0.002--10 cm\^{}2/s for Si self-diffusion).
+             equation\_anchor: false.
+             context\_anchor: true (isotope tracer methodology).
+             material\_stack: Si isotope heterostructure.}
 }
 
 @incollection{SINNO1999,
@@ -33,8 +43,12 @@
   pages     = {149--198},
   year      = {2000},
   doi       = {10.1016/S0927-796X(00)00015-2},
-  note      = {REVIEW. Comprehensive review of point defect dynamics in Si crystal growth.
-               Vacancy migration energy, formation energy, diffusion parameters.}
+  note      = {REVIEW.
+               source\_role: equation\_anchor + context\_anchor.
+               parameter\_anchor: false (provides framework, not specific D0 values used).
+               equation\_anchor: true (defect dynamics formalism).
+               context\_anchor: true (Czochralski Si crystal growth defects).
+               material\_stack: Si (CZ growth).}
 }
 
 @incollection{WATKINS2000,
@@ -45,8 +59,12 @@
   pages     = {227--235},
   year      = {2000},
   doi       = {10.1016/S1369-8001(00)00037-8},
-  note      = {REVIEW. EPR characterization of vacancy and interstitial defects.
-               Migration barriers, charge state effects.}
+  note      = {REVIEW.
+               source\_role: parameter\_anchor (vacancy migration energy).
+               parameter\_anchor: true (E\_m vacancy ~ 0.4--0.5 eV).
+               equation\_anchor: false.
+               context\_anchor: true (EPR characterization of intrinsic defects).
+               material\_stack: Si.}
 }
 
 @article{FLEETWOOD2018,
@@ -58,8 +76,12 @@
   pages   = {68--85},
   year    = {2018},
   doi     = {10.1109/TNS.2017.2756480},
-  note    = {REVIEW. Interface trap density ranges, oxide charge,
-             border trap mechanisms in Si/SiO2.}
+  note    = {REVIEW.
+             source\_role: parameter\_anchor (D\_it ranges).
+             parameter\_anchor: true (D\_it 10\^{}10--10\^{}12 eV\^{}-1 cm\^{}-2).
+             equation\_anchor: false.
+             context\_anchor: true (oxide charge, border traps).
+             material\_stack: Si/SiO2.}
 }
 
 @article{CONNORS2022,
@@ -71,8 +93,14 @@
   pages   = {940},
   year    = {2022},
   doi     = {10.1038/s41467-022-28519-x},
-  note    = {PRIMARY_EXPERIMENTAL. Charge noise in Si/SiGe quantum dots.
-             D_it estimation at cryogenic temperatures.}
+  note    = {PRIMARY\_EXPERIMENTAL.
+             source\_role: context\_anchor (charge noise in Si/SiGe QDs).
+             parameter\_anchor: false (does not provide direct D\_it extraction
+             usable as numerical anchor without further analysis).
+             equation\_anchor: false.
+             context\_anchor: true (demonstrates relevance of interface traps
+             to charge noise in spin-qubit devices).
+             material\_stack: Si/SiGe heterostructure.}
 }
 
 @article{ZWANENBURG2013,
@@ -87,8 +115,12 @@
   pages   = {961--1019},
   year    = {2013},
   doi     = {10.1103/RevModPhys.85.961},
-  note    = {REVIEW. Comprehensive review of Si-based quantum computing.
-             Material parameters, device architectures, noise sources.}
+  note    = {REVIEW.
+             source\_role: context\_anchor (Si quantum computing architectures).
+             parameter\_anchor: false.
+             equation\_anchor: false.
+             context\_anchor: true (device architectures, noise overview).
+             material\_stack: Si, Si/SiGe, Si-MOS.}
 }
 
 @article{BURKARD2023,
@@ -101,8 +133,12 @@
   pages   = {025003},
   year    = {2023},
   doi     = {10.1103/RevModPhys.95.025003},
-  note    = {REVIEW. State-of-the-art review of semiconductor spin qubits.
-             Si/SiGe and Si-MOS architectures.}
+  note    = {REVIEW.
+             source\_role: context\_anchor (state of the art spin qubits).
+             parameter\_anchor: false.
+             equation\_anchor: false.
+             context\_anchor: true.
+             material\_stack: Si/SiGe, Si-MOS.}
 }
 
 @article{STESMANS1998,
@@ -115,8 +151,12 @@
   pages   = {2449--2457},
   year    = {1998},
   doi     = {10.1063/1.367005},
-  note    = {PRIMARY_EXPERIMENTAL. ESR characterization of Pb defects
-             at Si/SiO2 interface. Interface region thickness estimation.}
+  note    = {PRIMARY\_EXPERIMENTAL.
+             source\_role: parameter\_anchor (Pb defect density, interface region).
+             parameter\_anchor: true (interface region thickness estimation).
+             equation\_anchor: false.
+             context\_anchor: true (ESR characterization methodology).
+             material\_stack: Si(100)/SiO2 thermal.}
 }
 
 @misc{CODATA2018,
@@ -124,14 +164,23 @@
   title  = {2018 {CODATA} recommended values of the fundamental physical constants},
   year   = {2018},
   url    = {https://physics.nist.gov/cuu/Constants/},
-  note   = {PRIMARY_EXPERIMENTAL. Defines q, k_B, epsilon_0, and other
-             fundamental constants used throughout the MVP.}
+  note   = {PRIMARY\_EXPERIMENTAL.
+            source\_role: parameter\_anchor (q, k\_B, epsilon\_0).
+            parameter\_anchor: true.
+            equation\_anchor: false.
+            context\_anchor: false.
+            Note: q and k\_B are SI 2019 defining constants (CONST\_EXACT).
+            epsilon\_0 is derived (CONST\_DERIVED, relative uncertainty ~1.5e-10).}
 }
 
 @misc{IOFFE,
   author = {{Ioffe Institute}},
-  title  = {Semiconductors on {NSM} — New Semiconductor Materials archive},
+  title  = {Semiconductors on {NSM} --- New Semiconductor Materials archive},
   url    = {http://www.ioffe.ru/SVA/NSM/Semicond/},
-  note   = {REVIEW. Online database of semiconductor material properties.
-            epsilon_r values for Si, SiGe alloys.}
+  note   = {REVIEW / TOOL\_DOCUMENTATION.
+            source\_role: parameter\_anchor (epsilon\_r values).
+            parameter\_anchor: true (epsilon\_r Si, SiGe composition dependence).
+            equation\_anchor: false.
+            context\_anchor: true (online semiconductor database).
+            material\_stack: Si, SiGe alloys, various.}
 }
