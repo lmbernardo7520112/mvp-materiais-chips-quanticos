@@ -1,7 +1,7 @@
-# Walkthrough — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.5 / ADR-007 / v0.4.2
+# Walkthrough — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.5 / ADR-007 / v0.4.2 / v0.4.4
 
 > **Date:** 2026-05-11  
-> **Status:** ✅ ADR-008 PROPOSED — v0.4.2 SI Unit Conversion & Scale Audit
+> **Status:** 🔴 v0.4.4 RED — SI Constants Scaffolding TDD
 
 ## Post-Merge Validation Evidence
 
@@ -633,3 +633,38 @@
 - ✅ No parameter values changed in code
 - ✅ No tag created
 - ✅ Quality gates green
+
+## v0.4.4 RED — SI Constants Scaffolding
+
+> **Date:** 2026-05-11
+> **Branch:** `feature/v0.4.4-si-constants-scaffolding`
+> **Status:** 🔴 RED — tests written, modules not yet implemented
+> **ADR:** ADR-008 Accepted
+> **Option:** B — literature-scaled constants only (dimensional scaffolding)
+
+### Files Created
+
+| File | Purpose |
+|------|---------|
+| `docs/governance/v0.4.4_si_constants_tdd_plan.md` | TDD plan for Option B |
+| `tests/test_units.py` | RED specs: SI constants, permittivity, disclaimers (12 tests) |
+| `tests/test_scale_modes.py` | RED specs: scale/geometry/interpretation metadata (19 tests) |
+
+### RED Evidence
+
+```
+PYTHONPATH=. pytest tests/test_units.py tests/test_scale_modes.py -v --tb=short
+31 failed — all ModuleNotFoundError
+```
+
+- ✅ Failure cause: `ModuleNotFoundError` (modules do not exist yet)
+- ✅ No syntax errors in test files
+- ✅ `units.py` does NOT exist in src/
+- ✅ `scale_modes.py` does NOT exist in src/
+- ✅ No Option C (D_it, σ_eff, ρ_eff, t_eff) in test scope
+- ✅ No calibration claims in test docstrings
+- ✅ policy.json unchanged (current_stage v0.4)
+
+### Next Step
+
+Phase GREEN: implement `units.py` and `scale_modes.py` to satisfy all 31 tests.
