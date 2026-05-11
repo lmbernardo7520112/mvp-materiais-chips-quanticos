@@ -301,3 +301,19 @@ any calculation, formula, loop, boundary condition, or return value.
 - Overclaim audit: all TX params have do_not_claim fields.
 - Zero src/scripts/tests changes.
 - No calibration performed.
+
+## v0.4.2 Proposed Scope
+
+> **Date:** 2026-05-11
+> **Status:** ADR-008 PROPOSED — documentation only
+
+- **ADR-008:** SI Unit Conversion & Parameter Scale Audit.
+- **Branch:** `docs/adr-008-si-units-scale-audit`.
+- **Type:** Documentation-only proposal. Zero code changes.
+- **Decision brief:** Options A (demonstrative), B (literature-scaled constants), C (full charge closure).
+- **Council:** 5 simulated experts, unanimous vote for Option B.
+- **Risks:** 10 risks identified, 3 Critical (R1, R2, R7).
+- **Gates:** 10 acceptance gates defined.
+- **policy.json:** Unchanged (current_stage v0.4).
+- **No implementation authorized** until ADR-008 is Accepted via PR review.
+

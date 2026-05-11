@@ -1,7 +1,7 @@
-# Walkthrough — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.5 / ADR-007
+# Walkthrough — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.5 / ADR-007 / v0.4.2
 
-> **Date:** 2026-05-09  
-> **Status:** ✅ ADR-007 PROPOSED — v0.4 Poisson Bridge Scope
+> **Date:** 2026-05-11  
+> **Status:** ✅ ADR-008 PROPOSED — v0.4.2 SI Unit Conversion & Scale Audit
 
 ## Post-Merge Validation Evidence
 
@@ -588,3 +588,48 @@
 - **New T2 candidates (not in code):** epsilon_r(Si), epsilon_r(SiO2), D_it.
 - **Overclaim audit:** All TX parameters have do_not_claim fields. No calibration claims made.
 - **Decision:** Curation only; calibration requires future ADR.
+
+## v0.4.2 — ADR-008 SI Unit Conversion & Scale Audit Proposal
+
+> **Date:** 2026-05-11
+> **Branch:** `docs/adr-008-si-units-scale-audit`
+> **Status:** DOCUMENTATION-ONLY — ADR-008 Proposed
+> **Decision:** Proposal for SI unit conversion infrastructure; no implementation
+
+### Files Created
+
+| File | Purpose |
+|------|---------|
+| `docs/adr/ADR-008-v0.4.2-si-units-scale-audit.md` | ADR proposing SI unit conversion scope |
+| `docs/decision_briefs/v0.4.2_units_vs_demonstrative.md` | Option A/B/C comparison |
+| `docs/research_council/v0.4.2_units_scale_council.md` | 5-expert council deliberation |
+| `docs/governance/v0.4.2_acceptance_gates.md` | 10 acceptance gates |
+| `docs/governance/v0.4.2_risk_matrix.md` | 10 risks identified |
+| `docs/release_notes/v0.4.2_draft.md` | Release notes draft |
+
+### Files Updated
+
+| File | Change |
+|------|--------|
+| `docs/governance/walkthrough.md` | Added v0.4.2 section |
+| `docs/governance/project_audit.md` | Added v0.4.2 proposed scope |
+| `docs/governance/technical_debt.md` | Added TD-UNITS-02 |
+
+### Key Decisions
+
+- **ADR-008 Status:** Proposed (not Accepted).
+- **Council Recommendation:** Option B (literature-scaled constants only) as next step.
+- **Option C deferred:** Full charge closure requires ΔE convention, t_eff justification.
+- **No implementation:** Zero src/scripts/tests changes.
+- **policy.json unchanged:** current_stage remains v0.4.
+
+### Non-Regression Confirmations
+
+- ✅ Zero src/ changes
+- ✅ Zero scripts/ changes
+- ✅ Zero tests/ changes
+- ✅ policy.json current_stage remains v0.4
+- ✅ No SI unit conversion implemented
+- ✅ No parameter values changed in code
+- ✅ No tag created
+- ✅ Quality gates green
