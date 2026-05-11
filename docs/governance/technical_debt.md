@@ -1,6 +1,6 @@
-# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.9 / v0.4
+# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.2
 
-> **Last updated:** 2026-05-10
+> **Last updated:** 2026-05-11
 
 ## Summary
 
@@ -8,7 +8,7 @@
 |--------|-------|
 | RESOLVED | 7 |
 | PARTIALLY RESOLVED | 1 |
-| DEFERRED | 4 |
+| DEFERRED | 5 |
 | OPEN | 0 |
 | WONTFIX | 0 |
 
@@ -264,3 +264,21 @@
 - **Pre-requisite:** ADR authorizing unit conversion and calibrated mode.
 - **Evidence:** [v0.4.1 parameter registry](../parameter_registry/v0.4.1_parameter_registry.json),
   [literature review](../literature_review/v0.4.1_deep_parameter_curation.md)
+
+---
+
+### TD-UNITS-02: SI Unit Conversion Infrastructure Pending ADR-008 Acceptance
+
+- **Description:** The MVP requires a formal SI unit conversion infrastructure
+  to transition from demonstrative mode (ε = 1.0, N_ref = 1.0) to
+  literature-scaled mode (ε = ε_r · ε₀, physical D_it). ADR-008 proposes
+  the scope and criteria for this infrastructure but does not implement it.
+- **Impact:** Cannot validate physical scale of outputs (φ, ρ_eff) without
+  unit conversion. Risk of false calibration if units are introduced ad-hoc.
+- **Status:** DEFERRED
+- **Pre-requisite:** ADR-008 must be Accepted. Option B (literature-scaled
+  constants only) is the recommended first implementation step.
+- **Versão-alvo:** v0.4.3+ (after ADR-008 acceptance)
+- **Evidence:** [ADR-008](../adr/ADR-008-v0.4.2-si-units-scale-audit.md),
+  [v0.4.2 Decision Brief](../decision_briefs/v0.4.2_units_vs_demonstrative.md),
+  [v0.4.2 Council](../research_council/v0.4.2_units_scale_council.md)
