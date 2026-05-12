@@ -14,8 +14,8 @@ This module provides enumerations and a metadata dataclass to distinguish
     - Provide calibrated device electrostatics.
     - Authorize physical interpretation of φ.
 
-    Literature-scaled constants (ε = ε_r · ε₀) change the Poisson
-    coefficient but do **not** make φ physically interpretable if
+    Literature-scaled constants (ε = ε_r · ε₀) change the solver
+    permittivity coefficient but do **not** make φ physically interpretable if
     δρ_eff and domain geometry remain demonstrative.
 
     **Demonstrative mode is preserved as the default.** Any code that
