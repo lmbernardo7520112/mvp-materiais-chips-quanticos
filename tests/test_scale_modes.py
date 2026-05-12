@@ -8,8 +8,6 @@ demonstrative mode from literature-scaled constants mode. It does NOT
 implement physical charge conversion (Option C).
 """
 
-import pytest
-
 
 class TestScaleModeEnum:
     """Test ScaleMode enumeration exists and has required members."""

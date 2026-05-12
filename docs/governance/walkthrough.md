@@ -712,4 +712,56 @@ PYTHONPATH=. pytest tests/test_units.py -v --tb=short
 
 ### Next Step
 
-Phase GREEN 2: implement `scale_modes.py` to satisfy the remaining 19 tests.
+~~Phase GREEN 2: implement `scale_modes.py` to satisfy the remaining 19 tests.~~
+
+## v0.4.4 GREEN 2 — scale_modes.py
+
+> **Date:** 2026-05-11
+> **Status:** 🟢 GREEN — tests/test_scale_modes.py fully passing
+
+### File Created
+
+`src/mvp_quantum_materials/scale_modes.py`
+
+### Enums/Classes Implemented
+
+| Type | Members | Purpose |
+|------|---------|---------|
+| `ScaleMode` (Enum) | `DEMONSTRATIVE`, `LITERATURE_SCALED_CONSTANTS` | Operating scale mode |
+| `GeometryMode` (Enum) | `NORMALIZED_2D` | Domain geometry classification |
+| `PotentialInterpretation` (Enum) | `DEMONSTRATIVE`, `DIMENSIONAL_SCAFFOLDING` | φ output interpretation |
+| `ScaleMetadata` (dataclass) | 5 fields + `physical_interpretation_allowed()` | Run-level metadata |
+
+### Safety Invariants
+
+- Default `ScaleMode` = `DEMONSTRATIVE`
+- Default `GeometryMode` = `NORMALIZED_2D`
+- Default `source_mode` = `"demonstrative"`
+- Default `phi_unit_label` = `"demonstrative (a.u.)"`
+- `physical_interpretation_allowed()` = `False` for all defaults
+- `physical_interpretation_allowed()` = `False` even with `LITERATURE_SCALED_CONSTANTS` (source still demonstrative)
+- No `CALIBRATED` or `DEVICE_CALIBRATED` enum member exists
+
+### Test Results
+
+```
+PYTHONPATH=. pytest tests/test_units.py tests/test_scale_modes.py -v --tb=short
+31 passed in 0.03s (12 units + 19 scale_modes)
+```
+
+### Scope Confirmation
+
+- ✅ `units.py` exists, tests still passing (12/12)
+- ✅ `scale_modes.py` exists, tests passing (19/19)
+- ✅ scripts/ untouched
+- ✅ effective_charge.py untouched
+- ✅ poisson_solver_2d.py untouched
+- ✅ policy.json unchanged (current_stage v0.4)
+- ✅ Option B only — no D_it_SI, σ_eff, ρ_eff, t_eff, delta_E_window
+- ✅ No unit applied to solver — demonstrative mode unaffected
+- ✅ ruff check + format: PASS
+- ✅ pyright: 0 errors
+
+### Next Step
+
+Phase GREEN 3: run full test suite, validate coverage, and prepare PR.
