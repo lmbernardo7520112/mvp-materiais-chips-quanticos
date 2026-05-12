@@ -1,7 +1,7 @@
-# Walkthrough — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.5 / ADR-007 / v0.4.2
+# Walkthrough — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.5 / ADR-007 / v0.4.2 / v0.4.4
 
 > **Date:** 2026-05-11  
-> **Status:** ✅ ADR-008 PROPOSED — v0.4.2 SI Unit Conversion & Scale Audit
+> **Status:** 🔴 v0.4.4 RED — SI Constants Scaffolding TDD
 
 ## Post-Merge Validation Evidence
 
@@ -633,3 +633,177 @@
 - ✅ No parameter values changed in code
 - ✅ No tag created
 - ✅ Quality gates green
+
+## v0.4.4 RED — SI Constants Scaffolding
+
+> **Date:** 2026-05-11
+> **Branch:** `feature/v0.4.4-si-constants-scaffolding`
+> **Status:** 🔴 RED — tests written, modules not yet implemented
+> **ADR:** ADR-008 Accepted
+> **Option:** B — literature-scaled constants only (dimensional scaffolding)
+
+### Files Created
+
+| File | Purpose |
+|------|---------|
+| `docs/governance/v0.4.4_si_constants_tdd_plan.md` | TDD plan for Option B |
+| `tests/test_units.py` | RED specs: SI constants, permittivity, disclaimers (12 tests) |
+| `tests/test_scale_modes.py` | RED specs: scale/geometry/interpretation metadata (19 tests) |
+
+### RED Evidence
+
+```
+PYTHONPATH=. pytest tests/test_units.py tests/test_scale_modes.py -v --tb=short
+31 failed — all ModuleNotFoundError
+```
+
+- ✅ Failure cause: `ModuleNotFoundError` (modules do not exist yet)
+- ✅ No syntax errors in test files
+- ✅ `units.py` does NOT exist in src/
+- ✅ `scale_modes.py` does NOT exist in src/
+- ✅ No Option C (D_it, σ_eff, ρ_eff, t_eff) in test scope
+- ✅ No calibration claims in test docstrings
+- ✅ policy.json unchanged (current_stage v0.4)
+
+### Next Step
+
+~~Phase GREEN: implement `units.py` and `scale_modes.py` to satisfy all 31 tests.~~
+
+## v0.4.4 GREEN 1 — units.py
+
+> **Date:** 2026-05-11
+> **Status:** 🟢 GREEN — tests/test_units.py fully passing
+
+### File Created
+
+`src/mvp_quantum_materials/units.py`
+
+### Constants Implemented
+
+| Constant | Value | Classification |
+|----------|-------|---------------|
+| `ELEMENTARY_CHARGE` | 1.602 176 634 × 10⁻¹⁹ C | CONST_EXACT (SI 2019) |
+| `EPSILON_0` | 8.854 187 8128 × 10⁻¹² F/m | CONST_DERIVED (CODATA-recommended) |
+
+### Functions Implemented
+
+| Function | Signature | Purpose |
+|----------|-----------|---------|
+| `relative_permittivity` | `(material: str) -> float` | Literature ε_r lookup (Si=11.7, SiO₂=3.9) |
+| `absolute_permittivity` | `(epsilon_r: float) -> float` | Computes ε = ε_r · ε₀ |
+
+### Test Results
+
+```
+PYTHONPATH=. pytest tests/test_units.py -v --tb=short
+12 passed in 0.01s
+```
+
+### Scope Confirmation
+
+- ✅ `units.py` exists in src/
+- ✅ `scale_modes.py` does NOT exist — still RED (19 failed, ModuleNotFoundError)
+- ✅ Option B only — constants + permittivity scaffold
+- ✅ Option C not started — no D_it_SI, σ_eff, ρ_eff, t_eff, delta_E_window
+- ✅ No unit applied to solver — demonstrative mode unaffected
+- ✅ Module docstring explicitly disclaims calibration
+- ✅ ruff check + format: PASS
+- ✅ pyright: 0 errors
+
+### Next Step
+
+~~Phase GREEN 2: implement `scale_modes.py` to satisfy the remaining 19 tests.~~
+
+## v0.4.4 GREEN 2 — scale_modes.py
+
+> **Date:** 2026-05-11
+> **Status:** 🟢 GREEN — tests/test_scale_modes.py fully passing
+
+### File Created
+
+`src/mvp_quantum_materials/scale_modes.py`
+
+### Enums/Classes Implemented
+
+| Type | Members | Purpose |
+|------|---------|---------|
+| `ScaleMode` (Enum) | `DEMONSTRATIVE`, `LITERATURE_SCALED_CONSTANTS` | Operating scale mode |
+| `GeometryMode` (Enum) | `NORMALIZED_2D` | Domain geometry classification |
+| `PotentialInterpretation` (Enum) | `DEMONSTRATIVE`, `DIMENSIONAL_SCAFFOLDING` | φ output interpretation |
+| `ScaleMetadata` (dataclass) | 5 fields + `physical_interpretation_allowed()` | Run-level metadata |
+
+### Safety Invariants
+
+- Default `ScaleMode` = `DEMONSTRATIVE`
+- Default `GeometryMode` = `NORMALIZED_2D`
+- Default `source_mode` = `"demonstrative"`
+- Default `phi_unit_label` = `"demonstrative (a.u.)"`
+- `physical_interpretation_allowed()` = `False` for all defaults
+- `physical_interpretation_allowed()` = `False` even with `LITERATURE_SCALED_CONSTANTS` (source still demonstrative)
+- No `CALIBRATED` or `DEVICE_CALIBRATED` enum member exists
+
+### Test Results
+
+```
+PYTHONPATH=. pytest tests/test_units.py tests/test_scale_modes.py -v --tb=short
+31 passed in 0.03s (12 units + 19 scale_modes)
+```
+
+### Scope Confirmation
+
+- ✅ `units.py` exists, tests still passing (12/12)
+- ✅ `scale_modes.py` exists, tests passing (19/19)
+- ✅ scripts/ untouched
+- ✅ effective_charge.py untouched
+- ✅ poisson_solver_2d.py untouched
+- ✅ policy.json unchanged (current_stage v0.4)
+- ✅ Option B only — no D_it_SI, σ_eff, ρ_eff, t_eff, delta_E_window
+- ✅ No unit applied to solver — demonstrative mode unaffected
+- ✅ ruff check + format: PASS
+- ✅ pyright: 0 errors
+
+### Next Step
+
+~~Phase GREEN 3: run full test suite, validate coverage, and prepare PR.~~
+
+## v0.4.4 GREEN 3 — Global Validation & PR Readiness
+
+> **Date:** 2026-05-11
+> **Status:** 🟢 GREEN — full suite passing, PR submitted
+
+### Validation Results
+
+| Check | Result |
+|-------|--------|
+| Quality gates | 6/6 PASS |
+| pytest | 167 passed (136 original + 31 new) |
+| Coverage | 91.02% (≥70% threshold) |
+| ruff check | PASS |
+| ruff format | PASS |
+| pyright | 0 errors, 0 warnings |
+| generate_all_results | 10 figures + 5 CSVs (unchanged) |
+
+### Files Changed (vs main)
+
+| Status | File |
+|--------|------|
+| A | `src/mvp_quantum_materials/units.py` |
+| A | `src/mvp_quantum_materials/scale_modes.py` |
+| A | `tests/test_units.py` |
+| A | `tests/test_scale_modes.py` |
+| A | `docs/governance/v0.4.4_si_constants_tdd_plan.md` |
+| A | `docs/release_notes/v0.4.4_draft.md` |
+| M | `docs/governance/walkthrough.md` |
+| M | `docs/governance/project_audit.md` |
+| M | `docs/governance/technical_debt.md` |
+
+### Scope Confirmation
+
+- ✅ scripts/ untouched
+- ✅ effective_charge.py untouched
+- ✅ poisson_solver_2d.py untouched
+- ✅ policy.json unchanged (current_stage v0.4)
+- ✅ No Option C implementation
+- ✅ Demonstrative mode preserved as default
+- ✅ physical_interpretation_allowed() returns False
+- ✅ No calibration claims

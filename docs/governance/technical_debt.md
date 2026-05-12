@@ -1,4 +1,4 @@
-# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.2
+# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.2 / v0.4.4
 
 > **Last updated:** 2026-05-11
 
@@ -282,3 +282,20 @@
 - **Evidence:** [ADR-008](../adr/ADR-008-v0.4.2-si-units-scale-audit.md),
   [v0.4.2 Decision Brief](../decision_briefs/v0.4.2_units_vs_demonstrative.md),
   [v0.4.2 Council](../research_council/v0.4.2_units_scale_council.md)
+
+---
+
+### TD-UNITS-03: Option C Physical Charge Mapping Deferred
+
+- **Description:** Option B scaffolding (SI constants, scale mode metadata)
+  is implemented in v0.4.4. Option C (D_it → σ_eff, σ_eff → ρ_eff, t_eff
+  physical use, delta_E_window, charge sign convention) remains deferred
+  until a dedicated ADR amendment and TDD implementation PR.
+- **Impact:** The model cannot compute physical charge density from
+  literature D_it values. φ remains demonstrative or dimensional scaffolding.
+- **Status:** DEFERRED
+- **Pre-requisite:** Dedicated PR satisfying ADR-008 Acceptance Record
+  prerequisites #7–#10 (delta_E_window, t_eff, charge sign, perturbation mode).
+- **Versão-alvo:** v0.5+
+- **Evidence:** [ADR-008 Acceptance Record](../adr/ADR-008-v0.4.2-si-units-scale-audit.md),
+  [v0.4.4 TDD Plan](v0.4.4_si_constants_tdd_plan.md)
