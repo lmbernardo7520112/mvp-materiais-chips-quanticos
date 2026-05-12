@@ -317,3 +317,27 @@ any calculation, formula, loop, boundary condition, or return value.
 - **policy.json:** Unchanged (current_stage v0.4).
 - **No implementation authorized** until ADR-008 is Accepted via PR review.
 
+## v0.4.4 — SI Constants Scaffolding
+
+- **ADR-008:** Accepted (v0.4.3).
+- **Branch:** `feature/v0.4.4-si-constants-scaffolding`.
+- **Option:** B — literature-scaled constants only (dimensional scaffolding).
+- **Modules added:**
+  - `src/mvp_quantum_materials/units.py` — SI constants and permittivity lookups.
+  - `src/mvp_quantum_materials/scale_modes.py` — Scale mode, geometry mode, and potential interpretation metadata.
+- **Tests added:**
+  - `tests/test_units.py` — 12 tests for constants, permittivity, docstring disclaimers.
+  - `tests/test_scale_modes.py` — 19 tests for enum values, metadata defaults, safety invariants.
+- **Total tests:** 167 (136 original + 31 new).
+- **Coverage:** 91.02%.
+- **Scope boundaries:**
+  - No D_it → D_it_SI conversion.
+  - No σ_eff or ρ_eff physical computation.
+  - No t_eff physical conversion.
+  - No delta_E_window calculation.
+  - No solver or script changes.
+  - No physical interpretation of φ authorized.
+  - Demonstrative mode preserved as default.
+- **Option C:** NOT initiated.
+- **policy.json:** Unchanged (current_stage v0.4).
+

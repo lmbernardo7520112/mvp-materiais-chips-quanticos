@@ -764,4 +764,46 @@ PYTHONPATH=. pytest tests/test_units.py tests/test_scale_modes.py -v --tb=short
 
 ### Next Step
 
-Phase GREEN 3: run full test suite, validate coverage, and prepare PR.
+~~Phase GREEN 3: run full test suite, validate coverage, and prepare PR.~~
+
+## v0.4.4 GREEN 3 — Global Validation & PR Readiness
+
+> **Date:** 2026-05-11
+> **Status:** 🟢 GREEN — full suite passing, PR submitted
+
+### Validation Results
+
+| Check | Result |
+|-------|--------|
+| Quality gates | 6/6 PASS |
+| pytest | 167 passed (136 original + 31 new) |
+| Coverage | 91.02% (≥70% threshold) |
+| ruff check | PASS |
+| ruff format | PASS |
+| pyright | 0 errors, 0 warnings |
+| generate_all_results | 10 figures + 5 CSVs (unchanged) |
+
+### Files Changed (vs main)
+
+| Status | File |
+|--------|------|
+| A | `src/mvp_quantum_materials/units.py` |
+| A | `src/mvp_quantum_materials/scale_modes.py` |
+| A | `tests/test_units.py` |
+| A | `tests/test_scale_modes.py` |
+| A | `docs/governance/v0.4.4_si_constants_tdd_plan.md` |
+| A | `docs/release_notes/v0.4.4_draft.md` |
+| M | `docs/governance/walkthrough.md` |
+| M | `docs/governance/project_audit.md` |
+| M | `docs/governance/technical_debt.md` |
+
+### Scope Confirmation
+
+- ✅ scripts/ untouched
+- ✅ effective_charge.py untouched
+- ✅ poisson_solver_2d.py untouched
+- ✅ policy.json unchanged (current_stage v0.4)
+- ✅ No Option C implementation
+- ✅ Demonstrative mode preserved as default
+- ✅ physical_interpretation_allowed() returns False
+- ✅ No calibration claims
