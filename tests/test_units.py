@@ -88,9 +88,7 @@ class TestUnitsDocstrings:
         import mvp_quantum_materials.units as units_mod
 
         doc = units_mod.__doc__ or ""
-        assert "calibrat" in doc.lower(), (
-            "Module docstring must mention calibration disclaimer"
-        )
+        assert "calibrat" in doc.lower(), "Module docstring must mention calibration disclaimer"
 
     def test_relative_permittivity_docstring(self):
         from mvp_quantum_materials.units import relative_permittivity

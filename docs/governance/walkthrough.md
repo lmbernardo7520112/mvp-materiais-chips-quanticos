@@ -667,4 +667,49 @@ PYTHONPATH=. pytest tests/test_units.py tests/test_scale_modes.py -v --tb=short
 
 ### Next Step
 
-Phase GREEN: implement `units.py` and `scale_modes.py` to satisfy all 31 tests.
+~~Phase GREEN: implement `units.py` and `scale_modes.py` to satisfy all 31 tests.~~
+
+## v0.4.4 GREEN 1 — units.py
+
+> **Date:** 2026-05-11
+> **Status:** 🟢 GREEN — tests/test_units.py fully passing
+
+### File Created
+
+`src/mvp_quantum_materials/units.py`
+
+### Constants Implemented
+
+| Constant | Value | Classification |
+|----------|-------|---------------|
+| `ELEMENTARY_CHARGE` | 1.602 176 634 × 10⁻¹⁹ C | CONST_EXACT (SI 2019) |
+| `EPSILON_0` | 8.854 187 8128 × 10⁻¹² F/m | CONST_DERIVED (CODATA-recommended) |
+
+### Functions Implemented
+
+| Function | Signature | Purpose |
+|----------|-----------|---------|
+| `relative_permittivity` | `(material: str) -> float` | Literature ε_r lookup (Si=11.7, SiO₂=3.9) |
+| `absolute_permittivity` | `(epsilon_r: float) -> float` | Computes ε = ε_r · ε₀ |
+
+### Test Results
+
+```
+PYTHONPATH=. pytest tests/test_units.py -v --tb=short
+12 passed in 0.01s
+```
+
+### Scope Confirmation
+
+- ✅ `units.py` exists in src/
+- ✅ `scale_modes.py` does NOT exist — still RED (19 failed, ModuleNotFoundError)
+- ✅ Option B only — constants + permittivity scaffold
+- ✅ Option C not started — no D_it_SI, σ_eff, ρ_eff, t_eff, delta_E_window
+- ✅ No unit applied to solver — demonstrative mode unaffected
+- ✅ Module docstring explicitly disclaims calibration
+- ✅ ruff check + format: PASS
+- ✅ pyright: 0 errors
+
+### Next Step
+
+Phase GREEN 2: implement `scale_modes.py` to satisfy the remaining 19 tests.
