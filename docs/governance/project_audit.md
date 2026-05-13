@@ -1,4 +1,4 @@
-# Project Audit — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.5 / v0.4.6 / v0.4.7 / v0.4.8
+# Project Audit — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.5 / v0.4.6 / v0.4.7 / v0.4.8 / v0.4.9
 
 > **Date:** 2026-05-10  
 > **Auditor:** Staff Research Software Engineer (AI-assisted)  
@@ -431,3 +431,23 @@ any calculation, formula, loop, boundary condition, or return value.
 - **No skills altered.**
 - **No Option C implementation.**
 - **Next step:** ADR-009 Proposed.
+
+## v0.4.9 — Physics-first ADR-009 Proposed
+
+> **Date:** 2026-05-13
+> **Status:** DOCUMENTATION-ONLY / PHYSICS-FIRST
+
+- **Type:** ADR-009 Proposed — C1 surface-density bookkeeping scope.
+- **Branch:** `docs/v0.4.9-adr-009-physics-first-option-c-scope`.
+- **Methodology audit:** AI-RSE GateOps, maturity 4.5/5, score 8.0/10.
+- **Scientific decision:** C1 recommended (6/6), C2/C3 blocked.
+- **Council dissent:** Skeptical Reviewer raised 3 objections, all answered.
+- **Future TDD plan:** 8 RED tests specified (not created).
+- **Benchmark requirement:** Manufactured solution with physical ε before C2.
+- **No src/ changes.**
+- **No scripts/ changes.**
+- **No tests/ changes.**
+- **No policy.json changes.**
+- **No skills altered.**
+- **No Option C implementation.**
+- **Next step:** ADR-009 review/acceptance, then C1 TDD RED.

@@ -1206,3 +1206,37 @@ Option C blocked until ADR-009 is Accepted.
 - ✅ No Option C implementation
 - ✅ No physical φ interpretation
 - ✅ Next step: ADR-009 Proposed
+
+---
+
+## v0.4.9 — Physics-first ADR-009 Proposed
+
+> **Date:** 2026-05-13
+> **Branch:** `docs/v0.4.9-adr-009-physics-first-option-c-scope`
+> **Status:** 📋 Documentation-only — physics-first ADR proposal
+
+### Objective
+
+Propose ADR-009 with concrete physics decisions for Option C,
+shifting priority from governance to scientific content per the
+methodology audit recommendation.
+
+### Scientific Decision
+
+**C1 — Surface-density bookkeeping only** selected as next route.
+
+C1 chain: D_it → D_it_SI → N_it → σ_eff (no ρ_eff, no solver coupling).
+
+Council: 6/6 for C1 (with recorded dissent from Skeptical Reviewer).
+
+### Scope Confirmation
+
+- ✅ Zero `src/` changes
+- ✅ Zero `scripts/` changes
+- ✅ Zero `tests/` changes
+- ✅ `policy.json` unchanged
+- ✅ Skills unchanged
+- ✅ No Option C implementation
+- ✅ ADR-009 status: Proposed
+- ✅ `generate_all_results` executed locally after PR review: PASS (10 figures + 5 CSVs)
+- ✅ Next step: ADR-009 review/acceptance, then C1 TDD RED

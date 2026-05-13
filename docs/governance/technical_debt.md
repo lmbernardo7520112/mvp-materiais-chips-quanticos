@@ -1,4 +1,4 @@
-# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.2 / v0.4.4 / v0.4.5 / v0.4.6 / v0.4.7 / v0.4.8
+# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.2 / v0.4.4 / v0.4.5 / v0.4.6 / v0.4.7 / v0.4.8 / v0.4.9
 
 > **Last updated:** 2026-05-13
 
@@ -371,3 +371,18 @@
 - **Evidence:** [v0.4.8 Decision Brief](../decision_briefs/v0.4.8_option_c_readiness_review.md),
   [v0.4.8 Council](../research_council/v0.4.8_option_c_readiness_council.md),
   [v0.4.8 Risk Matrix](v0.4.8_option_c_readiness_risk_matrix.md)
+
+---
+
+### TD-ADR009-C1-01: C1 Surface-Density Bookkeeping Proposed but Not Implemented
+
+- **Description:** ADR-009 proposes C1 (D_it → D_it_SI → N_it → σ_eff)
+  as next physics step. Unresolved decisions: δE_window convention, charge
+  sign convention, occupancy convention, and explicit no-ρ_eff boundary.
+- **Impact:** Cannot advance to physical charge mapping until C1 is
+  implemented with TDD RED→GREEN after ADR-009 acceptance.
+- **Status:** DEFERRED
+- **Pre-requisite:** ADR-009 Accepted → TDD RED → GREEN.
+- **Versão-alvo:** v0.5.0 (C1 implementation)
+- **Evidence:** [ADR-009](../adr/ADR-009-option-c-surface-density-bookkeeping-scope.md),
+  [v0.4.9 TDD Plan](v0.4.9_adr009_future_tdd_plan.md)
