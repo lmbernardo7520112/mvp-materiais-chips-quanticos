@@ -1,4 +1,4 @@
-# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.2 / v0.4.4 / v0.4.5 / v0.4.6 / v0.4.7
+# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.2 / v0.4.4 / v0.4.5 / v0.4.6 / v0.4.7 / v0.4.8
 
 > **Last updated:** 2026-05-13
 
@@ -351,3 +351,23 @@
 - **Versão-alvo:** v0.5+ (if automation is needed)
 - **Evidence:** [v0.4.7 Governance Plan](v0.4.7_agent_skills_governance_plan.md),
   [v0.4.7 Risk Matrix](v0.4.7_agent_skills_risk_matrix.md)
+
+---
+
+### TD-OPTIONC-READINESS-01: Option C Requires ADR-009 Before Implementation
+
+- **Description:** Option C (physical charge mapping: D_it → σ_eff,
+  σ_eff → ρ_eff, t_eff regularization, δE_window, charge sign convention,
+  ε substitution, physical φ interpretation) requires ADR-009 before any
+  code implementation. v0.4.8 readiness review identified 8 of 10 blocking
+  gaps and 12 risks (4 Critical).
+- **Impact:** Cannot implement Option C without resolving: δE_window
+  convention, charge sign convention, t_eff regularization semantics,
+  geometry mode (normalized_2d vs physical_2d), ε substitution strategy,
+  φ scale sanity checks, solver stability with physical ε, and TDD plan.
+- **Status:** DEFERRED
+- **Pre-requisite:** ADR-009 Proposed → Council → Accepted → TDD RED.
+- **Versão-alvo:** v0.5+ (after ADR-009 acceptance)
+- **Evidence:** [v0.4.8 Decision Brief](../decision_briefs/v0.4.8_option_c_readiness_review.md),
+  [v0.4.8 Council](../research_council/v0.4.8_option_c_readiness_council.md),
+  [v0.4.8 Risk Matrix](v0.4.8_option_c_readiness_risk_matrix.md)

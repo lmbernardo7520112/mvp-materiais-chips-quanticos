@@ -1153,3 +1153,56 @@ governance automation for future Option C complexity.
 - ✅ No executable scripts in skills
 - ✅ No physics change
 - ✅ No Option C
+
+---
+
+## v0.4.8 — Skills-Governed Option C Readiness Review
+
+> **Date:** 2026-05-13
+> **Branch:** `docs/v0.4.8-skills-governed-option-c-readiness`
+> **Status:** 📋 Documentation-only — skills-governed deliberation
+
+### Objective
+
+Use the 6 Agent Skills from v0.4.7 to conduct a formal readiness
+review of Option C (physical charge mapping) before any ADR or code.
+
+### Skills Used
+
+All 6 skills were loaded and referenced:
+
+| Skill | Role in Review |
+|-------|---------------|
+| ai-rse-gateops | Evidence criteria and inspection |
+| tdd-red-green-release | Block implementation; require future RED |
+| physics-dimensional-audit | Dimensional gap analysis |
+| scope-guardrails | Enforce ADR-first governance |
+| release-manager | Confirm no tag/merge in this phase |
+| report-auditor | Validate prior report integrity |
+
+### Documents Created
+
+| Document | Purpose |
+|----------|---------|
+| Skill usage audit | How each skill was used |
+| Decision brief | 10 readiness questions (8 blocking) |
+| Council | 6 experts, 0/6 implement, 6/6 ADR |
+| Acceptance gates | 22 gates |
+| Risk matrix | 12 risks |
+
+### Council Decision
+
+**0/6 for immediate implementation. 6/6 for ADR-009 Proposed.**
+
+Option C blocked until ADR-009 is Accepted.
+
+### Scope Confirmation
+
+- ✅ Zero `src/` changes
+- ✅ Zero `scripts/` changes
+- ✅ Zero `tests/` changes
+- ✅ `policy.json` unchanged (current_stage v0.4)
+- ✅ Skills unchanged
+- ✅ No Option C implementation
+- ✅ No physical φ interpretation
+- ✅ Next step: ADR-009 Proposed
