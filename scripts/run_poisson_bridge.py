@@ -17,6 +17,10 @@ from mvp_quantum_materials.effective_charge import (
     compute_delta_rho_eff,
 )
 from mvp_quantum_materials.poisson_solver_2d import solve_poisson_2d_demonstrative
+from mvp_quantum_materials.scale_modes import (
+    ScaleMetadata,
+    attach_scale_metadata_to_metrics,
+)
 
 
 def run_poisson_bridge(output_dir: Path, tables_dir: Path) -> None:
@@ -84,24 +88,23 @@ def run_poisson_bridge(output_dir: Path, tables_dir: Path) -> None:
     plt.savefig(fig_path, dpi=300)
     plt.close()
 
-    # 6. Save CSV
-    headers = [
-        "max_abs_delta_rho_eff",
-        "mean_delta_rho_eff",
-        "max_abs_phi",
-        "solver_iterations",
-        "solver_residual",
-        "converged",
-    ]
-    row = [
-        float(np.max(np.abs(delta_rho_eff))),
-        float(np.mean(delta_rho_eff)),
-        float(np.max(np.abs(result.phi))),
-        result.iterations,
-        result.residual,
-        result.converged,
-    ]
+    # 6. Save CSV — numeric metrics + metadata-only declaration
+    numeric_metrics: dict[str, object] = {
+        "max_abs_delta_rho_eff": float(np.max(np.abs(delta_rho_eff))),
+        "mean_delta_rho_eff": float(np.mean(delta_rho_eff)),
+        "max_abs_phi": float(np.max(np.abs(result.phi))),
+        "solver_iterations": result.iterations,
+        "solver_residual": result.residual,
+        "converged": result.converged,
+    }
+
+    # Attach safe runtime metadata (demonstrative defaults, no physics claims)
+    metadata = ScaleMetadata()
+    enriched_metrics = attach_scale_metadata_to_metrics(numeric_metrics, metadata)
+
     csv_path = tables_dir / "poisson_bridge_metrics.csv"
+    headers = list(enriched_metrics.keys())
+    row = list(enriched_metrics.values())
     with open(csv_path, mode="w", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(headers)

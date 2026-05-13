@@ -865,3 +865,245 @@ v0.4.5 remains documentation-only.
 - ✅ Option C not initiated
 - ✅ Demonstrative mode preserved as default
 - ✅ physical_interpretation_allowed() returns False
+
+---
+
+## v0.4.6 RED — Runtime Scale Metadata
+
+> **Date:** 2026-05-13
+> **Status:** 🔴 RED — tests written, implementation pending
+> **Branch:** `feature/v0.4.6-runtime-scale-metadata-red`
+
+### Purpose
+
+Specify, via failing tests, the future metadata-only runtime declaration
+for bridge outputs. This follows the v0.4.5 council decision (5/5 unanimous
+Option B) and the TDD plan.
+
+### Branch
+
+Created from `main` at tag `v0.4.5` (commit `b71027b`).
+
+### TDD Plan
+
+- `docs/governance/v0.4.6_runtime_metadata_tdd_plan.md`
+
+### Tests Created
+
+| File | Tests | Purpose |
+|------|-------|---------|
+| `tests/test_runtime_scale_metadata.py` | 7 | RED specs for metadata serialization helpers |
+| `tests/test_runtime_metadata_integration.py` | 5 | RED specs for CSV metadata integration |
+
+**Total: 12 tests**
+
+### RED Execution
+
+```
+PYTHONPATH=. pytest tests/test_runtime_scale_metadata.py tests/test_runtime_metadata_integration.py -v --tb=short
+```
+
+**Result: 9 failed, 3 passed**
+
+| Category | Count | Failure type |
+|----------|-------|-------------|
+| Serialization helper tests | 7 FAILED | `ImportError` — `scale_metadata_to_record` and `attach_scale_metadata_to_metrics` do not exist yet |
+| CSV metadata columns | 2 FAILED | `AssertionError` — metadata columns not present in CSV |
+| Non-regression (existing columns) | 3 PASSED | Existing CSV schema preserved |
+
+All failures are **intentional and correct**:
+- No `SyntaxError`.
+- No path errors.
+- No regression in existing scripts.
+
+### Scope Confirmation
+
+- ✅ Zero src/ changes
+- ✅ Zero scripts/ changes
+- ✅ policy.json unchanged (current_stage v0.4)
+- ✅ Option C not initiated
+- ✅ Demonstrative mode preserved as default
+- ✅ physical_interpretation_allowed() returns False
+- ✅ No implementation — RED only
+
+---
+
+## v0.4.6 GREEN 1 — Metadata Serialization Helpers
+
+> **Date:** 2026-05-13
+> **Status:** 🟢 GREEN 1 — serialization helpers implemented
+
+### Helpers Implemented
+
+Added to `src/mvp_quantum_materials/scale_modes.py`:
+
+| Function | Purpose |
+|----------|---------|
+| `scale_metadata_to_record(metadata)` | Serialize `ScaleMetadata` to a flat governance-safe dict |
+| `attach_scale_metadata_to_metrics(metrics, metadata)` | Merge metadata into metrics dict without mutation |
+
+### Semantics
+
+- `scale_mode` default: `demonstrative`
+- `geometry_mode` default: `normalized_2d`
+- `physical_interpretation_allowed`: `False`
+- `literature_scaled_constants_available`: `True`
+- `option_c_enabled`: `False`
+- `numerical_values_modified`: `False`
+- `attach_scale_metadata_to_metrics` raises `ValueError` if `physical_interpretation_allowed()` is `True`
+- No Option C fields serialized
+
+### Test Results
+
+| Test file | Result |
+|-----------|--------|
+| `tests/test_runtime_scale_metadata.py` | ✅ **7/7 passed** |
+| `tests/test_units.py` | ✅ 12/12 passed (non-regression) |
+| `tests/test_scale_modes.py` | ✅ 19/19 passed (non-regression) |
+| **Joint total** | ✅ **38 passed** |
+
+### Integration CSV — Still RED (expected)
+
+| Test file | Result |
+|-----------|--------|
+| `tests/test_runtime_metadata_integration.py` | 2 failed, 3 passed |
+
+Failures are expected: CSV does not yet contain metadata columns.
+This will be resolved in GREEN 2.
+
+### Scope Confirmation
+
+- ✅ scripts/ untouched
+- ✅ effective_charge.py untouched
+- ✅ poisson_solver_2d.py untouched
+- ✅ policy.json unchanged (current_stage v0.4)
+- ✅ Option C not initiated
+- ✅ physical_interpretation_allowed() returns False
+- ✅ numerical_values_modified = False
+- ✅ ruff: PASS
+- ✅ pyright: 0 errors
+
+---
+
+## v0.4.6 GREEN 2 — Runtime CSV Metadata-Only Integration
+
+> **Date:** 2026-05-13
+> **Status:** 🟢 GREEN 2 — CSV metadata integrated
+
+### Script Modified
+
+`scripts/run_poisson_bridge.py`:
+
+- Imported `ScaleMetadata` and `attach_scale_metadata_to_metrics` from `scale_modes`.
+- Refactored CSV section to build a numeric metrics dict, attach metadata, then write combined output.
+- Zero changes to numerical computation, solver, or equations.
+
+### CSV Schema (after)
+
+| Column | Type | Source |
+|--------|------|--------|
+| max_abs_delta_rho_eff | numeric | existing |
+| mean_delta_rho_eff | numeric | existing |
+| max_abs_phi | numeric | existing |
+| solver_iterations | numeric | existing |
+| solver_residual | numeric | existing |
+| converged | bool | existing |
+| scale_mode | string | **new** — `demonstrative` |
+| geometry_mode | string | **new** — `normalized_2d` |
+| source_mode | string | **new** — `demonstrative` |
+| physical_interpretation_allowed | bool | **new** — `False` |
+| literature_scaled_constants_available | bool | **new** — `True` |
+| option_c_enabled | bool | **new** — `False` |
+| numerical_values_modified | bool | **new** — `False` |
+
+### Baseline Comparison
+
+Numeric values before and after implementation compared with string equality:
+
+| Column | Baseline | After | Match |
+|--------|----------|-------|-------|
+| max_abs_delta_rho_eff | 3.446670293460935e-20 | 3.446670293460935e-20 | ✅ |
+| mean_delta_rho_eff | 4.582819617816147e-36 | 4.582819617816147e-36 | ✅ |
+| max_abs_phi | 5.3854223335327114e-24 | 5.3854223335327114e-24 | ✅ |
+| solver_iterations | 1 | 1 | ✅ |
+| solver_residual | 5.3854223335327114e-24 | 5.3854223335327114e-24 | ✅ |
+| converged | True | True | ✅ |
+
+**Result:** `NUMERIC_BASELINE_PRESERVED_AND_METADATA_ATTACHED`
+
+### Test Results
+
+| Test file | Result |
+|-----------|--------|
+| `tests/test_runtime_metadata_integration.py` | ✅ **5/5 passed** |
+| `tests/test_runtime_scale_metadata.py` | ✅ 7/7 passed |
+| `tests/test_units.py` | ✅ 12/12 passed |
+| `tests/test_scale_modes.py` | ✅ 19/19 passed |
+| **Joint total** | ✅ **43 passed** |
+
+### Scope Confirmation
+
+- ✅ effective_charge.py untouched
+- ✅ poisson_solver_2d.py untouched
+- ✅ units.py untouched
+- ✅ policy.json unchanged (current_stage v0.4)
+- ✅ Option C not initiated
+- ✅ physical_interpretation_allowed = False
+- ✅ option_c_enabled = False
+- ✅ numerical_values_modified = False
+- ✅ ruff: PASS
+- ✅ pyright: 0 errors
+
+---
+
+## v0.4.6 GREEN 3 — Global Validation & PR Readiness
+
+> **Date:** 2026-05-13
+> **Status:** 🟢 GREEN 3 — global validation passed
+
+### Global Validation
+
+| Item | Result |
+|------|--------|
+| Quality gates | ✅ 6/6 PASS |
+| pytest | ✅ 179 passed |
+| Coverage | ✅ 90.86% (≥70%) |
+| ruff check | ✅ PASS |
+| ruff format | ✅ PASS |
+| pyright | ✅ 0 errors |
+| generate_all_results | ✅ 10 figures + 5 CSVs |
+
+### Files Changed (vs main)
+
+| File | Status |
+|------|--------|
+| `docs/governance/v0.4.6_runtime_metadata_tdd_plan.md` | Added |
+| `docs/governance/walkthrough.md` | Modified |
+| `docs/governance/project_audit.md` | Modified |
+| `docs/governance/technical_debt.md` | Modified |
+| `docs/release_notes/v0.4.6_draft.md` | Added |
+| `scripts/run_poisson_bridge.py` | Modified |
+| `src/mvp_quantum_materials/scale_modes.py` | Modified |
+| `tests/test_runtime_metadata_integration.py` | Added |
+| `tests/test_runtime_scale_metadata.py` | Added |
+| `tools/quality_gates/policy.json` | Modified (authorized_files only) |
+
+### CSV Metadata Fields
+
+7 metadata columns added to `poisson_bridge_metrics.csv`:
+scale_mode, geometry_mode, source_mode, physical_interpretation_allowed,
+literature_scaled_constants_available, option_c_enabled, numerical_values_modified.
+
+### Invariants Preserved
+
+- ✅ Numeric values identical to pre-v0.4.6 baseline
+- ✅ effective_charge.py untouched
+- ✅ poisson_solver_2d.py untouched
+- ✅ units.py untouched
+- ✅ policy.json current_stage v0.4 preserved
+- ✅ Option C not initiated
+- ✅ physical_interpretation_allowed = False
+- ✅ option_c_enabled = False
+- ✅ numerical_values_modified = False
+- ✅ No new physical coupling
+- ✅ TD-METADATA-01 resolved
