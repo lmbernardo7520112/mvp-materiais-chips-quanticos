@@ -1,4 +1,4 @@
-# Project Audit — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.5 / v0.4.6 / v0.4.7
+# Project Audit — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.5 / v0.4.6 / v0.4.7 / v0.4.8
 
 > **Date:** 2026-05-10  
 > **Auditor:** Staff Research Software Engineer (AI-assisted)  
@@ -410,3 +410,24 @@ any calculation, formula, loop, boundary condition, or return value.
 - **No Option C.**
 - **No external skills installed.**
 - **No executable scripts in skills.**
+
+## v0.4.8 — Skills-Governed Option C Readiness Review
+
+> **Date:** 2026-05-13
+> **Status:** DOCUMENTATION-ONLY
+
+- **Type:** Skills-governed readiness review for Option C.
+- **Branch:** `docs/v0.4.8-skills-governed-option-c-readiness`.
+- **Skills used:** All 6 Agent Skills loaded and referenced.
+- **Decision brief:** 10 readiness questions, 8 blocking.
+- **Council:** 6 experts, 0/6 for implementation, 6/6 for ADR-009.
+- **Acceptance gates:** 22 gates.
+- **Risk matrix:** 12 risks (4 Critical, 5 High, 1 Medium/High).
+- **Option C verdict:** NOT ready for implementation. Ready for ADR-009 Proposed.
+- **No src/ changes.**
+- **No scripts/ changes.**
+- **No tests/ changes.**
+- **No policy.json changes.**
+- **No skills altered.**
+- **No Option C implementation.**
+- **Next step:** ADR-009 Proposed.
