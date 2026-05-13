@@ -1238,4 +1238,5 @@ Council: 6/6 for C1 (with recorded dissent from Skeptical Reviewer).
 - ✅ Skills unchanged
 - ✅ No Option C implementation
 - ✅ ADR-009 status: Proposed
+- ✅ `generate_all_results` executed locally after PR review: PASS (10 figures + 5 CSVs)
 - ✅ Next step: ADR-009 review/acceptance, then C1 TDD RED

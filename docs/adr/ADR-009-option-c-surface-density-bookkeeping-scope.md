@@ -50,12 +50,14 @@ D_it [eV⁻¹·cm⁻²]    (literature input, tier T2/T3)
 ### Step 2 — SI Conversion
 
 ```
-D_it_SI = D_it × (1 / q_eV) × (1 / cm_to_m²)
-        = D_it × (1 / 1.602e-19) × 1e4
-        = D_it × 6.242e22
-
-Unit: [J⁻¹·m⁻²]
+D_it_SI = D_it × 10⁴ / q_e
 ```
+
+Where:
+- `D_it` is expressed in eV⁻¹·cm⁻².
+- `10⁴` converts cm⁻² → m⁻² (1 cm⁻² = 10⁴ m⁻²).
+- `q_e = 1.602176634 × 10⁻¹⁹ J/eV` converts eV⁻¹ → J⁻¹.
+- Therefore: `D_it_SI = D_it × 6.241509074 × 10²²` in units of [J⁻¹·m⁻²].
 
 ### Step 3 — Energy Integration Window
 
@@ -105,6 +107,13 @@ With:
 - ❌ Does NOT produce physical φ.
 - ❌ Does NOT set `physical_interpretation_allowed = True`.
 - ❌ Does NOT set `option_c_enabled = True` in runtime CSV.
+
+> **Note on `option_c_enabled`:** C1 is a subroute of Option C, but it
+> does not couple physical charge to the Poisson solver. In the existing
+> runtime CSV, `option_c_enabled` remains `False` because that flag
+> governs solver-level coupling semantics. A future C1-specific artifact
+> may expose `c1_bookkeeping_enabled = True`, but only outside the
+> current solver runtime CSV.
 
 ## Why C1
 
