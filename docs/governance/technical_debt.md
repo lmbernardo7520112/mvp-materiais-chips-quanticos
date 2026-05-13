@@ -1,12 +1,12 @@
-# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.2 / v0.4.4 / v0.4.5
+# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.2 / v0.4.4 / v0.4.5 / v0.4.6
 
-> **Last updated:** 2026-05-12
+> **Last updated:** 2026-05-13
 
 ## Summary
 
 | Status | Count |
 |--------|-------|
-| RESOLVED | 7 |
+| RESOLVED | 8 |
 | PARTIALLY RESOLVED | 1 |
 | DEFERRED | 6 |
 | OPEN | 0 |
@@ -302,7 +302,7 @@
 
 ---
 
-### TD-METADATA-01: Runtime Scale Metadata Integration Deferred
+### TD-METADATA-01: Runtime Scale Metadata Integration
 
 - **Description:** The v0.4.4 modules `units.py` and `scale_modes.py` are
   available at import time but not used by any runtime code. CSV outputs and
@@ -311,9 +311,25 @@
   recommended for future implementation.
 - **Impact:** Artifacts lack self-describing scale metadata. Consumers cannot
   programmatically distinguish demonstrative from physical outputs.
+- **Status:** ✅ RESOLVED in v0.4.6
+- **Resolution:** Metadata-only declaration implemented via TDD (RED → GREEN).
+  `scale_metadata_to_record()` and `attach_scale_metadata_to_metrics()` added
+  to `scale_modes.py`. `poisson_bridge_metrics.csv` now includes 7 metadata
+  columns. Numeric baseline preserved. physical_interpretation_allowed remains
+  False. Future physical charge mapping remains deferred pending new ADR.
+- **Evidence:** [v0.4.6 TDD Plan](v0.4.6_runtime_metadata_tdd_plan.md),
+  [v0.4.6 Release Notes](../release_notes/v0.4.6_draft.md)
+
+---
+
+### TD-RUNTIME-METADATA-01: Physical Charge Mapping Still Deferred
+
+- **Description:** Metadata-only declaration implemented in v0.4.6.
+  Future physical charge mapping (Option C: D_it → σ_eff, charge sign
+  convention, delta_E_window, t_eff physical) remains deferred.
+- **Impact:** The model cannot compute physical charge density from
+  literature D_it values. φ remains demonstrative.
 - **Status:** DEFERRED
-- **Pre-requisite:** TDD plan with bitwise phi identity tests. CSV schema
-  design. Council re-review.
-- **Versão-alvo:** v0.4.6
-- **Evidence:** [v0.4.5 Decision Brief](../decision_briefs/v0.4.5_runtime_scale_metadata_integration.md),
-  [v0.4.5 Council](../research_council/v0.4.5_runtime_scale_metadata_council.md)
+- **Pre-requisite:** New ADR and TDD plan for Option C.
+- **Versão-alvo:** v0.5+
+- **Evidence:** [v0.4.5 Decision Brief](../decision_briefs/v0.4.5_runtime_scale_metadata_integration.md)

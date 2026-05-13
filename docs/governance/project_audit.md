@@ -1,4 +1,4 @@
-# Project Audit — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.5
+# Project Audit — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.5 / v0.4.6
 
 > **Date:** 2026-05-10  
 > **Auditor:** Staff Research Software Engineer (AI-assisted)  
@@ -364,3 +364,24 @@ any calculation, formula, loop, boundary condition, or return value.
   - No solver modifications.
   - No Option C implementation.
   - policy.json unchanged (current_stage v0.4).
+
+## v0.4.6 — Runtime Metadata-Only Declaration
+
+> **Date:** 2026-05-13
+> **Status:** IMPLEMENTED
+
+- **Type:** Metadata-only runtime integration (Option B).
+- **Branch:** `feature/v0.4.6-runtime-scale-metadata-red`.
+- **TDD sequence:** RED → GREEN 1 → GREEN 2 → GREEN 3.
+- **Helpers added:**
+  - `scale_metadata_to_record()` — serialize ScaleMetadata to flat dict.
+  - `attach_scale_metadata_to_metrics()` — merge metadata without mutation.
+- **CSV integration:** `poisson_bridge_metrics.csv` now includes 7 metadata columns.
+- **Numeric baseline preserved:** string-identical values before and after.
+- **Tests added:** 12 (7 serialization + 5 integration).
+- **Total tests:** 179.
+- **Coverage:** 90.86%.
+- **No equation change.**
+- **No solver change.**
+- **No Option C.**
+- **policy.json:** Unchanged (current_stage v0.4).

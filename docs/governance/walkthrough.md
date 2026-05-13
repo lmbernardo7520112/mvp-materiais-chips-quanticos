@@ -1053,3 +1053,57 @@ Numeric values before and after implementation compared with string equality:
 - ✅ numerical_values_modified = False
 - ✅ ruff: PASS
 - ✅ pyright: 0 errors
+
+---
+
+## v0.4.6 GREEN 3 — Global Validation & PR Readiness
+
+> **Date:** 2026-05-13
+> **Status:** 🟢 GREEN 3 — global validation passed
+
+### Global Validation
+
+| Item | Result |
+|------|--------|
+| Quality gates | ✅ 6/6 PASS |
+| pytest | ✅ 179 passed |
+| Coverage | ✅ 90.86% (≥70%) |
+| ruff check | ✅ PASS |
+| ruff format | ✅ PASS |
+| pyright | ✅ 0 errors |
+| generate_all_results | ✅ 10 figures + 5 CSVs |
+
+### Files Changed (vs main)
+
+| File | Status |
+|------|--------|
+| `docs/governance/v0.4.6_runtime_metadata_tdd_plan.md` | Added |
+| `docs/governance/walkthrough.md` | Modified |
+| `docs/governance/project_audit.md` | Modified |
+| `docs/governance/technical_debt.md` | Modified |
+| `docs/release_notes/v0.4.6_draft.md` | Added |
+| `scripts/run_poisson_bridge.py` | Modified |
+| `src/mvp_quantum_materials/scale_modes.py` | Modified |
+| `tests/test_runtime_metadata_integration.py` | Added |
+| `tests/test_runtime_scale_metadata.py` | Added |
+| `tools/quality_gates/policy.json` | Modified (authorized_files only) |
+
+### CSV Metadata Fields
+
+7 metadata columns added to `poisson_bridge_metrics.csv`:
+scale_mode, geometry_mode, source_mode, physical_interpretation_allowed,
+literature_scaled_constants_available, option_c_enabled, numerical_values_modified.
+
+### Invariants Preserved
+
+- ✅ Numeric values identical to pre-v0.4.6 baseline
+- ✅ effective_charge.py untouched
+- ✅ poisson_solver_2d.py untouched
+- ✅ units.py untouched
+- ✅ policy.json current_stage v0.4 preserved
+- ✅ Option C not initiated
+- ✅ physical_interpretation_allowed = False
+- ✅ option_c_enabled = False
+- ✅ numerical_values_modified = False
+- ✅ No new physical coupling
+- ✅ TD-METADATA-01 resolved

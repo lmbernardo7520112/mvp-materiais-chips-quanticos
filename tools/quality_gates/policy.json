@@ -69,7 +69,9 @@
         "poisson_solver_2d.py",
         "test_effective_charge.py",
         "test_poisson_solver_2d.py",
-        "run_poisson_bridge.py"
+        "run_poisson_bridge.py",
+        "test_runtime_scale_metadata.py",
+        "test_runtime_metadata_integration.py"
       ],
       "allowed_exceptions": {
         "diffusion_solver.py": ["type_only_overload"]
