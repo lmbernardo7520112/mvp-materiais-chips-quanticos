@@ -865,3 +865,63 @@ v0.4.5 remains documentation-only.
 - ✅ Option C not initiated
 - ✅ Demonstrative mode preserved as default
 - ✅ physical_interpretation_allowed() returns False
+
+---
+
+## v0.4.6 RED — Runtime Scale Metadata
+
+> **Date:** 2026-05-13
+> **Status:** 🔴 RED — tests written, implementation pending
+> **Branch:** `feature/v0.4.6-runtime-scale-metadata-red`
+
+### Purpose
+
+Specify, via failing tests, the future metadata-only runtime declaration
+for bridge outputs. This follows the v0.4.5 council decision (5/5 unanimous
+Option B) and the TDD plan.
+
+### Branch
+
+Created from `main` at tag `v0.4.5` (commit `b71027b`).
+
+### TDD Plan
+
+- `docs/governance/v0.4.6_runtime_metadata_tdd_plan.md`
+
+### Tests Created
+
+| File | Tests | Purpose |
+|------|-------|---------|
+| `tests/test_runtime_scale_metadata.py` | 7 | RED specs for metadata serialization helpers |
+| `tests/test_runtime_metadata_integration.py` | 5 | RED specs for CSV metadata integration |
+
+**Total: 12 tests**
+
+### RED Execution
+
+```
+PYTHONPATH=. pytest tests/test_runtime_scale_metadata.py tests/test_runtime_metadata_integration.py -v --tb=short
+```
+
+**Result: 9 failed, 3 passed**
+
+| Category | Count | Failure type |
+|----------|-------|-------------|
+| Serialization helper tests | 7 FAILED | `ImportError` — `scale_metadata_to_record` and `attach_scale_metadata_to_metrics` do not exist yet |
+| CSV metadata columns | 2 FAILED | `AssertionError` — metadata columns not present in CSV |
+| Non-regression (existing columns) | 3 PASSED | Existing CSV schema preserved |
+
+All failures are **intentional and correct**:
+- No `SyntaxError`.
+- No path errors.
+- No regression in existing scripts.
+
+### Scope Confirmation
+
+- ✅ Zero src/ changes
+- ✅ Zero scripts/ changes
+- ✅ policy.json unchanged (current_stage v0.4)
+- ✅ Option C not initiated
+- ✅ Demonstrative mode preserved as default
+- ✅ physical_interpretation_allowed() returns False
+- ✅ No implementation — RED only
