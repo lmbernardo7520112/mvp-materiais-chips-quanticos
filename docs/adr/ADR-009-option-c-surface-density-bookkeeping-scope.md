@@ -1,6 +1,6 @@
 # ADR-009 — Option C Surface-Density Bookkeeping Scope
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-05-13
 **Supersedes:** None (extends ADR-008 Option B)
 **Skills used:** physics-dimensional-audit, scope-guardrails, tdd-red-green-release
@@ -161,7 +161,23 @@ C2 is **blocked** until such a benchmark is specified and passes.
 
 ## Acceptance Record
 
-- [ ] Council review completed.
-- [ ] Human approval obtained.
-- [ ] Status changed to Accepted.
+- [x] Council review completed.
+- [x] Human approval obtained.
+- [x] Status changed to Accepted.
 - [ ] Implementation PR opened with RED tests.
+
+## Acceptance Note — v0.4.10
+
+ADR-009 is accepted only for C1 surface-density bookkeeping.
+
+Acceptance authorizes a future RED phase for C1 unit tests.
+
+Acceptance does NOT authorize:
+
+- ρ_eff computation;
+- t_eff usage;
+- solver coupling;
+- ε substitution;
+- physical φ interpretation;
+- C2/C3;
+- runtime `option_c_enabled = True`.
