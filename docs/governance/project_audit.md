@@ -1,4 +1,4 @@
-# Project Audit — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.5 / v0.4.6 / v0.4.7 / v0.4.8 / v0.4.9
+# Project Audit — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.5 / v0.4.6 / v0.4.7 / v0.4.8 / v0.4.9 / v0.4.10
 
 > **Date:** 2026-05-10  
 > **Auditor:** Staff Research Software Engineer (AI-assisted)  
@@ -451,3 +451,21 @@ any calculation, formula, loop, boundary condition, or return value.
 - **No skills altered.**
 - **No Option C implementation.**
 - **Next step:** ADR-009 review/acceptance, then C1 TDD RED.
+
+## v0.4.10 — ADR-009 Accepted
+
+> **Date:** 2026-05-13
+> **Status:** DOCUMENTATION-ONLY / ADR ACCEPTANCE
+
+- **Type:** ADR-009 promoted from Proposed → Accepted.
+- **Branch:** `docs/v0.4.10-accept-adr-009-c1-scope`.
+- **Council:** 6/6 Accept (2 objections answered).
+- **Acceptance review:** 14/14 criteria satisfied.
+- **C1 authorized:** future RED phase only.
+- **No src/ changes.**
+- **No scripts/ changes.**
+- **No tests/ changes.**
+- **No policy.json changes.**
+- **No skills altered.**
+- **No Option C implementation.**
+- **Next step:** v0.5.0 RED for C1 surface-density bookkeeping.

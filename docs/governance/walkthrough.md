@@ -1240,3 +1240,34 @@ Council: 6/6 for C1 (with recorded dissent from Skeptical Reviewer).
 - ✅ ADR-009 status: Proposed
 - ✅ `generate_all_results` executed locally after PR review: PASS (10 figures + 5 CSVs)
 - ✅ Next step: ADR-009 review/acceptance, then C1 TDD RED
+
+---
+
+## v0.4.10 — ADR-009 Accepted
+
+> **Date:** 2026-05-13
+> **Branch:** `docs/v0.4.10-accept-adr-009-c1-scope`
+> **Status:** 📋 Documentation-only — ADR acceptance
+
+### Objective
+
+Promote ADR-009 from Proposed to Accepted for C1 surface-density bookkeeping.
+
+### Council Decision
+
+6/6 Accept (Skeptical Reviewer: 2 objections, both answered).
+
+### ADR-009 Status Change
+
+Proposed → **Accepted** (C1 only).
+
+### Scope Confirmation
+
+- ✅ Zero `src/` changes
+- ✅ Zero `scripts/` changes
+- ✅ Zero `tests/` changes
+- ✅ `policy.json` unchanged
+- ✅ Skills unchanged
+- ✅ No Option C implementation
+- ✅ ADR-009 status: Accepted
+- ✅ Next step: v0.5.0 RED for C1 surface-density bookkeeping

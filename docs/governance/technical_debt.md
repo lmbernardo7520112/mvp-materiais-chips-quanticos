@@ -1,4 +1,4 @@
-# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.2 / v0.4.4 / v0.4.5 / v0.4.6 / v0.4.7 / v0.4.8 / v0.4.9
+# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.2 / v0.4.4 / v0.4.5 / v0.4.6 / v0.4.7 / v0.4.8 / v0.4.9 / v0.4.10
 
 > **Last updated:** 2026-05-13
 
@@ -386,3 +386,19 @@
 - **Versão-alvo:** v0.5.0 (C1 implementation)
 - **Evidence:** [ADR-009](../adr/ADR-009-option-c-surface-density-bookkeeping-scope.md),
   [v0.4.9 TDD Plan](v0.4.9_adr009_future_tdd_plan.md)
+
+---
+
+### TD-C1-RED-01: ADR-009 Accepted but C1 Not Yet Implemented
+
+- **Description:** ADR-009 accepted for C1 surface-density bookkeeping.
+  Implementation requires RED tests before code: D_it conversion,
+  δE_window explicitness, sign convention, occupancy bounds, N_it,
+  σ_eff, no ρ_eff, no solver coupling, metadata blocks physical φ.
+- **Impact:** C1 cannot produce dimensional charge bookkeeping until
+  v0.5.0 RED→GREEN cycle is completed.
+- **Status:** READY FOR RED
+- **Pre-requisite:** v0.5.0 branch with RED tests.
+- **Versão-alvo:** v0.5.0
+- **Evidence:** [ADR-009 Accepted](../adr/ADR-009-option-c-surface-density-bookkeeping-scope.md),
+  [v0.4.10 Acceptance Review](../decision_briefs/v0.4.10_adr009_acceptance_review.md)
