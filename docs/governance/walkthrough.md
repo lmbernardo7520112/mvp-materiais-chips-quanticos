@@ -1107,3 +1107,49 @@ literature_scaled_constants_available, option_c_enabled, numerical_values_modifi
 - ✅ numerical_values_modified = False
 - ✅ No new physical coupling
 - ✅ TD-METADATA-01 resolved
+
+---
+
+## v0.4.7 — Agent Skills Governance Bootstrap
+
+> **Date:** 2026-05-13
+> **Branch:** `docs/v0.4.7-agent-skills-governance-bootstrap`
+> **Status:** 🔧 Infrastructure / Governance — no physics change
+
+### Objective
+
+Formalize AI-RSE governance rituals as project-scoped Antigravity Agent Skills.
+Reduce prompt size, improve consistency, prevent regressions, and prepare
+governance automation for future Option C complexity.
+
+### Skills Created
+
+| # | Skill | Directory | Purpose |
+|---|-------|-----------|---------|
+| 1 | ai-rse-gateops | `.agent/skills/ai-rse-gateops/` | Operational governance |
+| 2 | tdd-red-green-release | `.agent/skills/tdd-red-green-release/` | TDD cycle discipline |
+| 3 | physics-dimensional-audit | `.agent/skills/physics-dimensional-audit/` | Dimensional audit |
+| 4 | scope-guardrails | `.agent/skills/scope-guardrails/` | Scope protection |
+| 5 | release-manager | `.agent/skills/release-manager/` | Release sequence |
+| 6 | report-auditor | `.agent/skills/report-auditor/` | Self-audit |
+
+### Documents Created
+
+| Document | Purpose |
+|----------|---------|
+| `v0.4.7_agent_skills_governance_plan.md` | Rationale and scope |
+| `v0.4.7_agent_skills_acceptance_gates.md` | 16 gates |
+| `v0.4.7_agent_skills_risk_matrix.md` | 10 risks |
+| `v0.4.7_draft.md` (release notes) | Release changelog |
+
+### Scope Confirmation
+
+- ✅ Zero `src/` changes
+- ✅ Zero `scripts/` changes
+- ✅ Zero `tests/` changes
+- ✅ `policy.json` unchanged (current_stage v0.4)
+- ✅ `pyproject.toml` unchanged
+- ✅ No external skills installed
+- ✅ No executable scripts in skills
+- ✅ No physics change
+- ✅ No Option C
