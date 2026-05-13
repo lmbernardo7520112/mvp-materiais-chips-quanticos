@@ -22,10 +22,7 @@ from __future__ import annotations
 import csv
 import subprocess
 import sys
-import tempfile
 from pathlib import Path
-
-import pytest
 
 # ---------------------------------------------------------------------------
 # Existing numeric columns that must never be removed or renamed
@@ -120,18 +117,14 @@ def _run_bridge_and_read_csv(tmp_path: Path) -> tuple[list[str], dict[str, str]]
 class TestBridgeMetricsCsvContainsRuntimeMetadata:
     """Verify that the bridge CSV includes metadata columns."""
 
-    def test_bridge_metrics_csv_contains_runtime_metadata_fields(
-        self, tmp_path: Path
-    ) -> None:
+    def test_bridge_metrics_csv_contains_runtime_metadata_fields(self, tmp_path: Path) -> None:
         """The bridge CSV must contain all future metadata columns.
 
         RED expected: columns do not exist yet."""
         headers, _ = _run_bridge_and_read_csv(tmp_path)
 
         missing = FUTURE_METADATA_COLUMNS - set(headers)
-        assert not missing, (
-            f"Missing metadata columns in CSV: {sorted(missing)}"
-        )
+        assert not missing, f"Missing metadata columns in CSV: {sorted(missing)}"
 
 
 # ===========================================================================
@@ -142,16 +135,12 @@ class TestBridgeMetricsCsvContainsRuntimeMetadata:
 class TestBridgeMetricsCsvKeepsExistingColumns:
     """Verify that existing numeric columns are preserved."""
 
-    def test_bridge_metrics_csv_keeps_existing_numeric_columns(
-        self, tmp_path: Path
-    ) -> None:
+    def test_bridge_metrics_csv_keeps_existing_numeric_columns(self, tmp_path: Path) -> None:
         """All original numeric columns must still be present in the CSV."""
         headers, _ = _run_bridge_and_read_csv(tmp_path)
 
         missing = EXISTING_NUMERIC_COLUMNS - set(headers)
-        assert not missing, (
-            f"Missing existing numeric columns: {sorted(missing)}"
-        )
+        assert not missing, f"Missing existing numeric columns: {sorted(missing)}"
 
 
 # ===========================================================================
@@ -162,17 +151,20 @@ class TestBridgeMetricsCsvKeepsExistingColumns:
 class TestRuntimeMetadataDeclaresDemonstrativeMode:
     """Verify that metadata values declare demonstrative mode."""
 
-    def test_runtime_metadata_declares_demonstrative_mode(
-        self, tmp_path: Path
-    ) -> None:
+    def test_runtime_metadata_declares_demonstrative_mode(self, tmp_path: Path) -> None:
         """Metadata fields in the CSV must declare demonstrative mode.
 
         RED expected: metadata columns do not exist yet."""
         headers, row = _run_bridge_and_read_csv(tmp_path)
 
         # First check columns exist (this is the primary RED failure point)
-        for col in ["scale_mode", "geometry_mode", "physical_interpretation_allowed",
-                     "option_c_enabled", "numerical_values_modified"]:
+        for col in [
+            "scale_mode",
+            "geometry_mode",
+            "physical_interpretation_allowed",
+            "option_c_enabled",
+            "numerical_values_modified",
+        ]:
             assert col in headers, f"Metadata column '{col}' not in CSV"
 
         assert row["scale_mode"] == "demonstrative"
@@ -190,9 +182,7 @@ class TestRuntimeMetadataDeclaresDemonstrativeMode:
 class TestRuntimeMetadataDoesNotEnablePhysicalPhi:
     """Verify that no field declares physical phi interpretation."""
 
-    def test_runtime_metadata_does_not_enable_physical_phi(
-        self, tmp_path: Path
-    ) -> None:
+    def test_runtime_metadata_does_not_enable_physical_phi(self, tmp_path: Path) -> None:
         """No CSV field must declare physical phi interpretation, calibration,
         or physical voltage units.
 
@@ -202,9 +192,7 @@ class TestRuntimeMetadataDoesNotEnablePhysicalPhi:
 
         # No forbidden physical declaration columns
         for col in FORBIDDEN_PHYSICAL_DECLARATIONS:
-            assert col not in headers, (
-                f"Forbidden physical declaration column present: {col}"
-            )
+            assert col not in headers, f"Forbidden physical declaration column present: {col}"
 
         # If metadata columns exist, verify they do not enable physics
         if "physical_interpretation_allowed" in headers:
@@ -229,6 +217,4 @@ class TestMetadataOnlyDoesNotChangeExistingSchemaNames:
         headers, _ = _run_bridge_and_read_csv(tmp_path)
 
         for col in EXISTING_NUMERIC_COLUMNS:
-            assert col in headers, (
-                f"Existing column '{col}' was renamed or removed"
-            )
+            assert col in headers, f"Existing column '{col}' was renamed or removed"

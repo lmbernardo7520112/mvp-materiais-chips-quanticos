@@ -982,3 +982,74 @@ This will be resolved in GREEN 2.
 - ✅ numerical_values_modified = False
 - ✅ ruff: PASS
 - ✅ pyright: 0 errors
+
+---
+
+## v0.4.6 GREEN 2 — Runtime CSV Metadata-Only Integration
+
+> **Date:** 2026-05-13
+> **Status:** 🟢 GREEN 2 — CSV metadata integrated
+
+### Script Modified
+
+`scripts/run_poisson_bridge.py`:
+
+- Imported `ScaleMetadata` and `attach_scale_metadata_to_metrics` from `scale_modes`.
+- Refactored CSV section to build a numeric metrics dict, attach metadata, then write combined output.
+- Zero changes to numerical computation, solver, or equations.
+
+### CSV Schema (after)
+
+| Column | Type | Source |
+|--------|------|--------|
+| max_abs_delta_rho_eff | numeric | existing |
+| mean_delta_rho_eff | numeric | existing |
+| max_abs_phi | numeric | existing |
+| solver_iterations | numeric | existing |
+| solver_residual | numeric | existing |
+| converged | bool | existing |
+| scale_mode | string | **new** — `demonstrative` |
+| geometry_mode | string | **new** — `normalized_2d` |
+| source_mode | string | **new** — `demonstrative` |
+| physical_interpretation_allowed | bool | **new** — `False` |
+| literature_scaled_constants_available | bool | **new** — `True` |
+| option_c_enabled | bool | **new** — `False` |
+| numerical_values_modified | bool | **new** — `False` |
+
+### Baseline Comparison
+
+Numeric values before and after implementation compared with string equality:
+
+| Column | Baseline | After | Match |
+|--------|----------|-------|-------|
+| max_abs_delta_rho_eff | 3.446670293460935e-20 | 3.446670293460935e-20 | ✅ |
+| mean_delta_rho_eff | 4.582819617816147e-36 | 4.582819617816147e-36 | ✅ |
+| max_abs_phi | 5.3854223335327114e-24 | 5.3854223335327114e-24 | ✅ |
+| solver_iterations | 1 | 1 | ✅ |
+| solver_residual | 5.3854223335327114e-24 | 5.3854223335327114e-24 | ✅ |
+| converged | True | True | ✅ |
+
+**Result:** `NUMERIC_BASELINE_PRESERVED_AND_METADATA_ATTACHED`
+
+### Test Results
+
+| Test file | Result |
+|-----------|--------|
+| `tests/test_runtime_metadata_integration.py` | ✅ **5/5 passed** |
+| `tests/test_runtime_scale_metadata.py` | ✅ 7/7 passed |
+| `tests/test_units.py` | ✅ 12/12 passed |
+| `tests/test_scale_modes.py` | ✅ 19/19 passed |
+| **Joint total** | ✅ **43 passed** |
+
+### Scope Confirmation
+
+- ✅ effective_charge.py untouched
+- ✅ poisson_solver_2d.py untouched
+- ✅ units.py untouched
+- ✅ policy.json unchanged (current_stage v0.4)
+- ✅ Option C not initiated
+- ✅ physical_interpretation_allowed = False
+- ✅ option_c_enabled = False
+- ✅ numerical_values_modified = False
+- ✅ ruff: PASS
+- ✅ pyright: 0 errors
