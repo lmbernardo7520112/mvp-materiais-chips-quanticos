@@ -1,4 +1,4 @@
-# Project Audit — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.9 / v0.4
+# Project Audit — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.5
 
 > **Date:** 2026-05-10  
 > **Auditor:** Staff Research Software Engineer (AI-assisted)  
@@ -341,3 +341,26 @@ any calculation, formula, loop, boundary condition, or return value.
 - **Option C:** NOT initiated.
 - **policy.json:** Unchanged (current_stage v0.4).
 
+## v0.4.5 — Runtime Scale Metadata Integration Review
+
+> **Date:** 2026-05-12
+> **Status:** DOCUMENTATION-ONLY
+
+- **Type:** Integration review and architectural decision.
+- **Branch:** `docs/v0.4.5-runtime-scale-metadata-review`.
+- **Decision:** Option B (metadata-only runtime declaration) recommended for future v0.4.6. Option C prohibited.
+- **v0.4.4 audit finding:** Release report had test counts swapped (listed 17/14, actual 12/19). Total 31 correct. Correction issued.
+- **Documents created:**
+  - Decision brief comparing Options A/B/C.
+  - Research council (5 experts, unanimous Option B).
+  - Acceptance gates (9 gates).
+  - Risk matrix (8 risks, 3 Critical).
+  - Release notes draft.
+  - v0.4.4 test count correction.
+- **Scope boundaries:**
+  - Zero src/ changes.
+  - Zero scripts/ changes.
+  - Zero tests/ changes.
+  - No solver modifications.
+  - No Option C implementation.
+  - policy.json unchanged (current_stage v0.4).

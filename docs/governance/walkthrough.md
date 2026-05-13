@@ -807,3 +807,61 @@ PYTHONPATH=. pytest tests/test_units.py tests/test_scale_modes.py -v --tb=short
 - ✅ Demonstrative mode preserved as default
 - ✅ physical_interpretation_allowed() returns False
 - ✅ No calibration claims
+
+---
+
+## v0.4.5 — Runtime Scale Metadata Integration Review
+
+> **Date:** 2026-05-12
+> **Status:** 📄 DOCUMENTATION-ONLY — integration review and decision
+
+### Purpose
+
+Review whether the passive SI scaffolding from v0.4.4 (`units.py`,
+`scale_modes.py`) should be integrated into the runtime as metadata
+declarations.
+
+### v0.4.4 Release Report Audit
+
+During this review, a test count discrepancy was identified in the
+v0.4.4 release report:
+
+| File | Report | Actual |
+|------|--------|--------|
+| test_units.py | 17 | **12** |
+| test_scale_modes.py | 14 | **19** |
+| Total | 31 | 31 ✅ |
+
+Correction issued: `docs/release_notes/v0.4.4_release_report_correction.md`.
+
+### Options Evaluated
+
+| Option | Description | Decision |
+|--------|-------------|----------|
+| A | Keep scaffolding passive | Acceptable as interim |
+| B | Metadata-only runtime declaration | **Recommended** for v0.4.6 |
+| C | Numerical coupling to solver | **Prohibited** |
+
+### Council Decision
+
+5/5 experts unanimously recommend Option B for future implementation.
+v0.4.5 remains documentation-only.
+
+### Deliverables
+
+- `docs/decision_briefs/v0.4.5_runtime_scale_metadata_integration.md`
+- `docs/research_council/v0.4.5_runtime_scale_metadata_council.md`
+- `docs/governance/v0.4.5_acceptance_gates.md`
+- `docs/governance/v0.4.5_risk_matrix.md`
+- `docs/release_notes/v0.4.5_draft.md`
+- `docs/release_notes/v0.4.4_release_report_correction.md`
+
+### Scope Confirmation
+
+- ✅ Zero src/ changes
+- ✅ Zero scripts/ changes
+- ✅ Zero tests/ changes
+- ✅ policy.json unchanged (current_stage v0.4)
+- ✅ Option C not initiated
+- ✅ Demonstrative mode preserved as default
+- ✅ physical_interpretation_allowed() returns False

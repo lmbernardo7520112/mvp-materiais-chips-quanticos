@@ -1,6 +1,6 @@
-# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.2 / v0.4.4
+# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.2 / v0.4.4 / v0.4.5
 
-> **Last updated:** 2026-05-11
+> **Last updated:** 2026-05-12
 
 ## Summary
 
@@ -8,7 +8,7 @@
 |--------|-------|
 | RESOLVED | 7 |
 | PARTIALLY RESOLVED | 1 |
-| DEFERRED | 5 |
+| DEFERRED | 6 |
 | OPEN | 0 |
 | WONTFIX | 0 |
 
@@ -299,3 +299,21 @@
 - **Versão-alvo:** v0.5+
 - **Evidence:** [ADR-008 Acceptance Record](../adr/ADR-008-v0.4.2-si-units-scale-audit.md),
   [v0.4.4 TDD Plan](v0.4.4_si_constants_tdd_plan.md)
+
+---
+
+### TD-METADATA-01: Runtime Scale Metadata Integration Deferred
+
+- **Description:** The v0.4.4 modules `units.py` and `scale_modes.py` are
+  available at import time but not used by any runtime code. CSV outputs and
+  figures do not declare their scale context (demonstrative vs physical).
+  Integration as metadata-only (Option B) was evaluated in v0.4.5 and
+  recommended for future implementation.
+- **Impact:** Artifacts lack self-describing scale metadata. Consumers cannot
+  programmatically distinguish demonstrative from physical outputs.
+- **Status:** DEFERRED
+- **Pre-requisite:** TDD plan with bitwise phi identity tests. CSV schema
+  design. Council re-review.
+- **Versão-alvo:** v0.4.6
+- **Evidence:** [v0.4.5 Decision Brief](../decision_briefs/v0.4.5_runtime_scale_metadata_integration.md),
+  [v0.4.5 Council](../research_council/v0.4.5_runtime_scale_metadata_council.md)
