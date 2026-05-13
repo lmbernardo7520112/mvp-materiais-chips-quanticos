@@ -19,14 +19,10 @@ v0.4.5_runtime_scale_metadata_integration.md : Decision brief.
 
 from __future__ import annotations
 
-import pytest
-
 from mvp_quantum_materials.scale_modes import (
-    GeometryMode,
     ScaleMetadata,
     ScaleMode,
 )
-
 
 # ---------------------------------------------------------------------------
 # Helper: attempt import of future functions

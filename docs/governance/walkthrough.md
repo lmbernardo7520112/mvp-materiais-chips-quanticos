@@ -925,3 +925,60 @@ All failures are **intentional and correct**:
 - ✅ Demonstrative mode preserved as default
 - ✅ physical_interpretation_allowed() returns False
 - ✅ No implementation — RED only
+
+---
+
+## v0.4.6 GREEN 1 — Metadata Serialization Helpers
+
+> **Date:** 2026-05-13
+> **Status:** 🟢 GREEN 1 — serialization helpers implemented
+
+### Helpers Implemented
+
+Added to `src/mvp_quantum_materials/scale_modes.py`:
+
+| Function | Purpose |
+|----------|---------|
+| `scale_metadata_to_record(metadata)` | Serialize `ScaleMetadata` to a flat governance-safe dict |
+| `attach_scale_metadata_to_metrics(metrics, metadata)` | Merge metadata into metrics dict without mutation |
+
+### Semantics
+
+- `scale_mode` default: `demonstrative`
+- `geometry_mode` default: `normalized_2d`
+- `physical_interpretation_allowed`: `False`
+- `literature_scaled_constants_available`: `True`
+- `option_c_enabled`: `False`
+- `numerical_values_modified`: `False`
+- `attach_scale_metadata_to_metrics` raises `ValueError` if `physical_interpretation_allowed()` is `True`
+- No Option C fields serialized
+
+### Test Results
+
+| Test file | Result |
+|-----------|--------|
+| `tests/test_runtime_scale_metadata.py` | ✅ **7/7 passed** |
+| `tests/test_units.py` | ✅ 12/12 passed (non-regression) |
+| `tests/test_scale_modes.py` | ✅ 19/19 passed (non-regression) |
+| **Joint total** | ✅ **38 passed** |
+
+### Integration CSV — Still RED (expected)
+
+| Test file | Result |
+|-----------|--------|
+| `tests/test_runtime_metadata_integration.py` | 2 failed, 3 passed |
+
+Failures are expected: CSV does not yet contain metadata columns.
+This will be resolved in GREEN 2.
+
+### Scope Confirmation
+
+- ✅ scripts/ untouched
+- ✅ effective_charge.py untouched
+- ✅ poisson_solver_2d.py untouched
+- ✅ policy.json unchanged (current_stage v0.4)
+- ✅ Option C not initiated
+- ✅ physical_interpretation_allowed() returns False
+- ✅ numerical_values_modified = False
+- ✅ ruff: PASS
+- ✅ pyright: 0 errors
