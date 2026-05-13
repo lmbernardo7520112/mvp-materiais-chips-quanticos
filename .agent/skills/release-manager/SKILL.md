@@ -68,8 +68,8 @@ Confirm:
 ```bash
 source .venv/bin/activate
 
-PRIVATE_FORBIDDEN_TERMS_REGEX="dummy_term_that_will_never_exist_in_code" \
-  PYTHONPATH=. python tools/quality_gates/run_all_quality_gates.py \
+# Quality gates (set PRIVATE_FORBIDDEN_TERMS_REGEX env var as needed)
+PYTHONPATH=. python tools/quality_gates/run_all_quality_gates.py \
   --require-artifacts --strict-private-terms
 
 PYTHONPATH=. pytest -v --tb=short

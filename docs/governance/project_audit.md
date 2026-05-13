@@ -1,4 +1,4 @@
-# Project Audit — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.5 / v0.4.6
+# Project Audit — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.5 / v0.4.6 / v0.4.7
 
 > **Date:** 2026-05-10  
 > **Auditor:** Staff Research Software Engineer (AI-assisted)  
@@ -385,3 +385,28 @@ any calculation, formula, loop, boundary condition, or return value.
 - **No solver change.**
 - **No Option C.**
 - **policy.json:** Unchanged (current_stage v0.4).
+
+## v0.4.7 — Governance Infrastructure
+
+> **Date:** 2026-05-13
+> **Status:** INFRASTRUCTURE
+
+- **Type:** Agent Skills Governance Bootstrap.
+- **Branch:** `docs/v0.4.7-agent-skills-governance-bootstrap`.
+- **Skills added:** 6 project-scoped Antigravity Agent Skills under `.agent/skills/`.
+  - ai-rse-gateops — operational governance.
+  - tdd-red-green-release — TDD cycle discipline.
+  - physics-dimensional-audit — dimensional consistency.
+  - scope-guardrails — scientific boundary protection.
+  - release-manager — merge/tag/release sequence.
+  - report-auditor — self-audit and verification.
+- **Documents added:** governance plan, acceptance gates (16), risk matrix (10 risks).
+- **No src/ changes.**
+- **No scripts/ changes.**
+- **No tests/ changes.**
+- **No policy.json changes.**
+- **No pyproject.toml changes.**
+- **No physics change.**
+- **No Option C.**
+- **No external skills installed.**
+- **No executable scripts in skills.**

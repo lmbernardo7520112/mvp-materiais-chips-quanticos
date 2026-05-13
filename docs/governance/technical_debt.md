@@ -1,4 +1,4 @@
-# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.2 / v0.4.4 / v0.4.5 / v0.4.6
+# Technical Debt Scorecard — MVP v0.1 / v0.2 / v0.2.1 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.2 / v0.4.4 / v0.4.5 / v0.4.6 / v0.4.7
 
 > **Last updated:** 2026-05-13
 
@@ -333,3 +333,21 @@
 - **Pre-requisite:** New ADR and TDD plan for Option C.
 - **Versão-alvo:** v0.5+
 - **Evidence:** [v0.4.5 Decision Brief](../decision_briefs/v0.4.5_runtime_scale_metadata_integration.md)
+
+---
+
+### TD-SKILLS-01: Agent Skills Are Markdown-Only Playbooks
+
+- **Description:** Agent Skills created in v0.4.7 are Markdown-only
+  project-scoped playbooks under `.agent/skills/`. They contain no
+  executable scripts, no automation hooks, and no deterministic
+  validation logic.
+- **Impact:** Skills guide the agent but do not enforce rules
+  programmatically. Compliance depends on agent following the playbook.
+- **Status:** DEFERRED
+- **Future evolution:** Deterministic scripts (e.g., pre-commit hooks,
+  validation runners) may be added in future releases via dedicated
+  PR with acceptance gates and ADR review.
+- **Versão-alvo:** v0.5+ (if automation is needed)
+- **Evidence:** [v0.4.7 Governance Plan](v0.4.7_agent_skills_governance_plan.md),
+  [v0.4.7 Risk Matrix](v0.4.7_agent_skills_risk_matrix.md)
