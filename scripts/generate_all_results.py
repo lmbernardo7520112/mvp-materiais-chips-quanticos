@@ -266,7 +266,7 @@ def main(output_dir: Path) -> None:
     print("[6/7] Defect 2D (v0.3)")
     run_defect(output_dir, tables_dir)
 
-    print("[7/8] P-Bridge (v0.4)")
+    print("[7/9] P-Bridge (v0.4)")
     print("  Running demonstrative P-Bridge pipeline...")
     subprocess.run(
         [
@@ -280,7 +280,19 @@ def main(output_dir: Path) -> None:
         check=True,
     )
 
-    print("[8/8] Summary")
+    print("[8/9] C1 Validation Demo (v0.5.1)")
+    print("  Running C1 surface-density bookkeeping demonstration...")
+    subprocess.run(
+        [
+            sys.executable,
+            "scripts/run_c1_surface_charge_demo.py",
+            "--output-dir",
+            str(output_dir.parent),
+        ],
+        check=True,
+    )
+
+    print("[9/9] Summary")
     figures = list(output_dir.glob("*.png"))
     csvs = list(tables_dir.glob("*.csv"))
     print("=" * 60)

@@ -490,3 +490,19 @@ any calculation, formula, loop, boundary condition, or return value.
 - **Scripts:** untouched.
 - **Skills:** unchanged.
 - **pyproject.toml:** unchanged.
+
+## v0.5.1 — C1 Validation & Demonstration Hardening
+
+> **Date:** 2026-05-14
+> **Status:** IMPLEMENTED
+
+- **Type:** C1 Validation.
+- **Branch:** `feature/v0.5.1-c1-validation-demo-hardening`.
+- **Script added:** `scripts/run_c1_surface_charge_demo.py`.
+- **Tests added:** `tests/test_c1_surface_charge_demo.py`.
+- **Artifacts:** `c1_surface_charge_demo.csv` (72 rows), `c1_sigma_eff_sensitivity.png`.
+- **Integrated:** Added to `generate_all_results.py`.
+- **Policy:** Activated for new files.
+- **ρ_eff:** not implemented.
+- **t_eff:** not implemented.
+- **Solver:** untouched.
