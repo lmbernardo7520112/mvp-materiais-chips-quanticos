@@ -1473,3 +1473,44 @@ that require the files to be in `policy.json` `authorized_files`.
 - ✅ `pyproject.toml` unchanged
 - ✅ Skills unchanged
 - ✅ C1 scope intact
+
+---
+
+### v0.5.1 RED — C1 Validation & Demonstration Hardening
+
+> **Date:** 2026-05-14
+
+#### Actions
+
+- Created branch `feature/v0.5.1-c1-validation-demo-hardening`.
+- Created TDD plan `v0.5.1_c1_validation_tdd_plan.md`.
+- Created `tests/test_c1_surface_charge_demo.py` with 11 tests defining expected behavior of the C1 demo script.
+
+#### Validation (RED)
+
+- 10 tests failed as expected (`ModuleNotFoundError: No module named 'scripts.run_c1_surface_charge_demo'`).
+- 1 test skipped (`generate_all_results not found`).
+- Zero implementation code was written.
+- Ready for GREEN 1.
+
+---
+
+### v0.5.1 GREEN 1 — C1 Demonstration Artifacts
+
+> **Date:** 2026-05-14
+
+#### Actions
+
+- Created `scripts/run_c1_surface_charge_demo.py`.
+- Generates `c1_surface_charge_demo.csv` (72 rows) with strict adherence to C1 boundaries.
+- Generates `c1_sigma_eff_sensitivity.png`.
+- Integrated script into `scripts/generate_all_results.py`.
+- Updated `policy.json` to authorize new files under the `v0.5` stage.
+- Created `v0.5.1_c1_validation_scale_brief.md` to explicitly state non-calibration limits.
+- Created draft release notes `v0.5.1_draft.md`.
+
+#### Validation
+
+- `test_c1_surface_charge_demo.py` now has 11/11 passing tests.
+- Full local validation running for final PR preparation.
+

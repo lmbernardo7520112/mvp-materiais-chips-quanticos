@@ -432,3 +432,17 @@
 - **Versão-alvo:** v0.6+
 - **Evidence:** [v0.5.0 TDD Plan](v0.5.0_c1_surface_charge_tdd_plan.md)
 
+---
+
+### TD-C1-DEMO-01: C1 Validation is Numerical Only
+
+- **Description:** C1 demonstration artifacts validate monotonicity, sign
+  symmetry, and metadata boundaries but do not validate device behavior
+  or experimental calibration.
+- **Impact:** C1 provides a dimensionally consistent framework but remains
+  a demonstrative module until physics-based regularization (C2) and
+  experimental validation.
+- **Status:** DEFERRED
+- **Pre-requisite:** C2 and experimental data.
+- **Versão-alvo:** v0.6+
+- **Evidence:** [v0.5.1 C1 Validation Scale Brief](../decision_briefs/v0.5.1_c1_validation_scale_brief.md)
