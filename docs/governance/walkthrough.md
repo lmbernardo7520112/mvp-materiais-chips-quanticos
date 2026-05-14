@@ -1271,3 +1271,41 @@ Proposed → **Accepted** (C1 only).
 - ✅ No Option C implementation
 - ✅ ADR-009 status: Accepted
 - ✅ Next step: v0.5.0 RED for C1 surface-density bookkeeping
+
+---
+
+## v0.5.0 RED — C1 Surface-Density Bookkeeping
+
+> **Date:** 2026-05-14
+> **Branch:** `feature/v0.5.0-c1-surface-density-bookkeeping`
+> **Status:** 🔴 RED — Tests written, module absent
+
+### Pre-condition
+
+- ADR-009 Accepted (v0.4.10).
+- C1 authorized: D_it → D_it_SI → N_it → σ_eff.
+- No solver coupling, no ρ_eff, no t_eff.
+
+### TDD Plan
+
+- `docs/governance/v0.5.0_c1_surface_charge_tdd_plan.md` created.
+
+### RED Tests
+
+- `tests/test_surface_charge.py` created: 15 tests (8 test classes).
+- Command: `PYTHONPATH=. pytest tests/test_surface_charge.py -v --tb=short`
+- Result: **14 failed, 1 passed**.
+- Failure reason: `ModuleNotFoundError: No module named 'mvp_quantum_materials.surface_charge'`
+- Failure is **correct** — module does not exist yet.
+- Test 8 (`test_metadata_blocks_physical_phi`): PASSED — non-regression.
+
+### Scope
+
+- ✅ `surface_charge.py` ABSENT
+- ✅ Zero `src/` changes
+- ✅ Zero `scripts/` changes
+- ✅ `policy.json` unchanged
+- ✅ `pyproject.toml` unchanged
+- ✅ Skills unchanged
+- ✅ No ρ_eff, no t_eff, no solver coupling
+- ✅ Next step: GREEN 1 — implement `surface_charge.py`
