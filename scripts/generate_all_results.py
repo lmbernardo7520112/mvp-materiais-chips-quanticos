@@ -280,7 +280,7 @@ def main(output_dir: Path) -> None:
         check=True,
     )
 
-    print("[8/9] C1 Validation Demo (v0.5.1)")
+    print("[8/10] C1 Validation Demo (v0.5.1)")
     print("  Running C1 surface-density bookkeeping demonstration...")
     subprocess.run(
         [
@@ -292,7 +292,19 @@ def main(output_dir: Path) -> None:
         check=True,
     )
 
-    print("[9/9] Summary")
+    print("[9/10] C1 Literature Scale Benchmark (v0.5.2)")
+    print("  Running C1 literature-scale positioning...")
+    subprocess.run(
+        [
+            sys.executable,
+            "scripts/run_c1_literature_scale_benchmark.py",
+            "--output-dir",
+            str(output_dir.parent),
+        ],
+        check=True,
+    )
+
+    print("[10/10] Summary")
     figures = list(output_dir.glob("*.png"))
     csvs = list(tables_dir.glob("*.csv"))
     print("=" * 60)
