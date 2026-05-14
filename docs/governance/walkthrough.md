@@ -1355,3 +1355,42 @@ Proposed → **Accepted** (C1 only).
 - ✅ Skills unchanged
 - ✅ `physical_interpretation_allowed` still False
 - ✅ Next step: policy activation + GREEN 2
+
+---
+
+### v0.5.0 GREEN 2 — C1 Policy Activation
+
+> **Date:** 2026-05-14
+
+#### Reason
+
+`test_surface_charge.py` mentions "Poisson" and "rho_eff" as negative guards
+(assertions proving they are absent). These are conditionally forbidden terms
+that require the files to be in `policy.json` `authorized_files`.
+
+#### Policy Change
+
+- Added `surface_charge.py` to `authorized_files`.
+- Added `test_surface_charge.py` to `authorized_files`.
+- Added `ADR-009` to `required_adrs` as Accepted.
+- No gate removed. No term removed. No broad whitelist.
+
+#### Validation
+
+- Quality gates: **6/6 PASS** (was 5/6)
+- pytest: **194 passed**
+- Coverage: **89.28%**
+- ruff: PASS
+- pyright: 0 errors
+- `generate_all_results`: PASS
+
+#### Scope
+
+- ✅ ρ_eff not implemented
+- ✅ t_eff not implemented
+- ✅ Solver untouched
+- ✅ Scripts untouched
+- ✅ `pyproject.toml` unchanged
+- ✅ Skills unchanged
+- ✅ `physical_interpretation_allowed` still False
+- ✅ Next step: GREEN 3 — release readiness + PR

@@ -48,7 +48,8 @@
 
     "v0.4": {
       "required_adrs": {
-        "ADR-007-v0.4-poisson-bridge-scope.md": "Accepted"
+        "ADR-007-v0.4-poisson-bridge-scope.md": "Accepted",
+        "ADR-009-option-c-surface-density-bookkeeping-scope.md": "Accepted"
       },
       "forbidden_in_code": [
         "Schrodinger",
@@ -71,7 +72,9 @@
         "test_poisson_solver_2d.py",
         "run_poisson_bridge.py",
         "test_runtime_scale_metadata.py",
-        "test_runtime_metadata_integration.py"
+        "test_runtime_metadata_integration.py",
+        "surface_charge.py",
+        "test_surface_charge.py"
       ],
       "allowed_exceptions": {
         "diffusion_solver.py": ["type_only_overload"]
