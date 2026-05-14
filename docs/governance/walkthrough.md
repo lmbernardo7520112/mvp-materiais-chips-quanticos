@@ -1514,3 +1514,51 @@ that require the files to be in `policy.json` `authorized_files`.
 - `test_c1_surface_charge_demo.py` now has 11/11 passing tests.
 - Full local validation running for final PR preparation.
 
+---
+
+### v0.5.2 RED — C1 Literature Scale Benchmark
+
+> **Date:** 2026-05-14
+
+#### Actions
+
+- Created branch `feature/v0.5.2-c1-literature-scale-benchmark`.
+- Created literature review `v0.5.2_c1_literature_scale_benchmark.md`.
+- Created scale positioning brief `v0.5.2_c1_scale_positioning_brief.md`.
+- Created `tests/test_c1_literature_scale_benchmark.py` with 8 tests.
+
+#### Validation (RED)
+
+- 8 tests failed with `ModuleNotFoundError` — correct RED.
+- Zero implementation code written.
+
+---
+
+### v0.5.2 GREEN — C1 Literature Benchmark Artifacts
+
+> **Date:** 2026-05-14
+
+#### Actions
+
+- Created `scripts/run_c1_literature_scale_benchmark.py`.
+- 11 literature-anchored scenarios defined.
+- CSV: `c1_literature_scale_benchmark.csv` (11 rows).
+- Figure: `c1_literature_scale_positioning.png`.
+- Integrated into `generate_all_results.py`.
+- Policy updated to authorize new files.
+- Release notes and governance docs updated.
+
+#### Scale Classes Used
+
+- `literature_plausible_low` (D_it = 1×10¹⁰)
+- `literature_plausible_nominal` (D_it = 5×10¹⁰)
+- `literature_plausible_high` (D_it = 5×10¹¹)
+- `aggressive_upper_bound` (D_it = 1×10¹²)
+
+#### Scope
+
+- ✅ ρ_eff not implemented
+- ✅ t_eff not implemented
+- ✅ Solver untouched
+- ✅ No calibration claims
+- ✅ C1 scope intact

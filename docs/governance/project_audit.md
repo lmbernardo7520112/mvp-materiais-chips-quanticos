@@ -506,3 +506,22 @@ any calculation, formula, loop, boundary condition, or return value.
 - **ρ_eff:** not implemented.
 - **t_eff:** not implemented.
 - **Solver:** untouched.
+
+## v0.5.2 — C1 Literature Scale Benchmark
+
+> **Date:** 2026-05-14
+> **Status:** IMPLEMENTED
+
+- **Type:** C1 Literature Benchmark.
+- **Branch:** `feature/v0.5.2-c1-literature-scale-benchmark`.
+- **Literature review:** `v0.5.2_c1_literature_scale_benchmark.md`.
+- **Decision brief:** `v0.5.2_c1_scale_positioning_brief.md`.
+- **Script added:** `scripts/run_c1_literature_scale_benchmark.py`.
+- **Tests added:** `tests/test_c1_literature_scale_benchmark.py` (8 tests).
+- **Artifacts:** `c1_literature_scale_benchmark.csv` (11 rows), `c1_literature_scale_positioning.png`.
+- **Scale classes:** literature_plausible_low, nominal, high, aggressive_upper_bound.
+- **Integrated:** Added to `generate_all_results.py`.
+- **ρ_eff:** not implemented.
+- **t_eff:** not implemented.
+- **Solver:** untouched.
+- **Calibration claims:** NONE.

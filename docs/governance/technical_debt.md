@@ -446,3 +446,17 @@
 - **Pre-requisite:** C2 and experimental data.
 - **Versão-alvo:** v0.6+
 - **Evidence:** [v0.5.1 C1 Validation Scale Brief](../decision_briefs/v0.5.1_c1_validation_scale_brief.md)
+
+---
+
+### TD-C1-LIT-BENCH-01: Literature Benchmark Does Not Replace Experimental Validation
+
+- **Description:** Literature-scale benchmark contextualizes σ_eff against
+  plausible D_it ranges but does not validate device behavior. Future work
+  still requires experimental or high-fidelity simulation comparison.
+- **Impact:** Benchmark provides order-of-magnitude confidence but cannot
+  be cited as calibration evidence.
+- **Status:** DEFERRED
+- **Pre-requisite:** Experimental D_it data or device-level measurement.
+- **Versão-alvo:** v0.6+
+- **Evidence:** [v0.5.2 Literature Review](../literature_review/v0.5.2_c1_literature_scale_benchmark.md)
