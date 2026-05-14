@@ -460,3 +460,18 @@
 - **Pre-requisite:** Experimental D_it data or device-level measurement.
 - **Versão-alvo:** v0.6+
 - **Evidence:** [v0.5.2 Literature Review](../literature_review/v0.5.2_c1_literature_scale_benchmark.md)
+
+---
+
+### TD-C1-ENERGY-DIST-01: Constant D_it Approximation
+
+- **Description:** C1 currently uses N_it = D_it × ΔE_window, which assumes
+  constant D_it across the energy window. ADR-010 proposes D_it(E) integration
+  via piecewise-constant profiles, but implementation remains blocked until
+  future RED tests and ADR acceptance.
+- **Impact:** The constant approximation is dimensionally correct but does
+  not capture energy-dependent trap distributions observed in real interfaces.
+- **Status:** PROPOSED (ADR-010)
+- **Pre-requisite:** ADR-010 acceptance + dedicated TDD cycle.
+- **Versão-alvo:** v0.6+
+- **Evidence:** [ADR-010](../adr/ADR-010-c1-energy-distribution-scope.md)
