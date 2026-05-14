@@ -525,3 +525,23 @@ any calculation, formula, loop, boundary condition, or return value.
 - **t_eff:** not implemented.
 - **Solver:** untouched.
 - **Calibration claims:** NONE.
+
+## v0.5.3 — C1 Energy-Distribution Upgrade Proposal
+
+> **Date:** 2026-05-14
+> **Status:** PROPOSED (documentation-only)
+
+- **Type:** Physics upgrade proposal.
+- **Branch:** `docs/v0.5.3-c1-energy-distribution-upgrade-proposal`.
+- **ADR-010:** Proposed — C1 energy-distribution scope.
+- **Profiles compared:** P0 constant, P1 piecewise, P2 gaussian, P3 triangular.
+- **Recommendation:** P1 piecewise-constant.
+- **Council:** 6 specialists, unanimous P1 vote.
+- **Future TDD plan:** 10 tests specified, not created.
+- **Risk matrix:** 8 risks (R1–R8).
+- **Acceptance gates:** 19 gates (G1–G19).
+- **Code changes:** NONE.
+- **ρ_eff:** not implemented.
+- **t_eff:** not implemented.
+- **Solver:** untouched.
+- **Calibration claims:** NONE.

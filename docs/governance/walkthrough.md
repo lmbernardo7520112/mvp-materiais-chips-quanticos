@@ -1562,3 +1562,36 @@ that require the files to be in `policy.json` `authorized_files`.
 - ✅ Solver untouched
 - ✅ No calibration claims
 - ✅ C1 scope intact
+
+---
+
+### v0.5.3 — C1 Energy-Distribution Upgrade Proposal
+
+> **Date:** 2026-05-14
+
+#### Actions
+
+- Created branch `docs/v0.5.3-c1-energy-distribution-upgrade-proposal`.
+- Created ADR-010 (Proposed): C1 energy-distribution scope.
+- Compared four profiles: P0 constant, P1 piecewise, P2 gaussian, P3 triangular.
+- Created decision brief recommending P1 piecewise-constant.
+- Convened research council (6 specialists, unanimous P1 vote).
+- Created future TDD plan (10 tests specified, not created).
+- Created risk matrix (8 risks: R1–R8).
+- Created acceptance gates (19 gates: G1–G19).
+
+#### Council Decision
+
+- P1 piecewise-constant D_it(E) recommended as next implementation step.
+- P0 preserved as baseline.
+- P2/P3 deferred.
+- C2 remains blocked.
+
+#### Scope
+
+- ✅ Documentation-only release
+- ✅ Zero src/scripts/tests changes
+- ✅ ρ_eff not implemented
+- ✅ t_eff not implemented
+- ✅ Solver untouched
+- ✅ No calibration claims
