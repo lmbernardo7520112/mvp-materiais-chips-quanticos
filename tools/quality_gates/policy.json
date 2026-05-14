@@ -6,7 +6,7 @@
     "They are versioned policies per development stage."
   ],
 
-  "current_stage": "v0.4",
+  "current_stage": "v0.5",
 
   "stages": {
     "v0.3": {
@@ -48,6 +48,58 @@
 
     "v0.4": {
       "required_adrs": {
+        "ADR-007-v0.4-poisson-bridge-scope.md": "Accepted"
+      },
+      "forbidden_in_code": [
+        "Schrodinger",
+        "Schrödinger",
+        "TCAD",
+        "QTCAD",
+        "coherence prediction",
+        "fidelity prediction",
+        "charge-noise prediction",
+        "calibrated physical claims"
+      ],
+      "forbidden_in_code_except_authorized": [
+        "Poisson",
+        "rho_eff"
+      ],
+      "authorized_files": [
+        "effective_charge.py",
+        "poisson_solver_2d.py",
+        "test_effective_charge.py",
+        "test_poisson_solver_2d.py",
+        "run_poisson_bridge.py",
+        "test_runtime_scale_metadata.py",
+        "test_runtime_metadata_integration.py"
+      ],
+      "allowed_exceptions": {
+        "diffusion_solver.py": ["type_only_overload"]
+      },
+      "required_docs": [
+        "docs/governance/walkthrough.md",
+        "docs/governance/project_audit.md",
+        "docs/governance/technical_debt.md",
+        "docs/parameters.md",
+        "docs/adr/ADR-007-v0.4-poisson-bridge-scope.md",
+        "docs/decision_briefs/v0.4_boussinesq_inspired_charge_closure.md"
+      ],
+      "required_artifacts": {
+        "figures_min": 7,
+        "csv_min": 4,
+        "figures": ["defect_2d_final.png"],
+        "tables": [
+          "defect_metrics.csv",
+          "defect_final_snapshot.csv",
+          "sensitivity_results.csv",
+          "convergence_results.csv"
+        ]
+      }
+    },
+
+    "v0.5": {
+      "_comment": "C1 surface-density bookkeeping — authorized by ADR-009 Accepted (v0.4.10)",
+      "required_adrs": {
         "ADR-007-v0.4-poisson-bridge-scope.md": "Accepted",
         "ADR-009-option-c-surface-density-bookkeeping-scope.md": "Accepted"
       },
@@ -85,6 +137,7 @@
         "docs/governance/technical_debt.md",
         "docs/parameters.md",
         "docs/adr/ADR-007-v0.4-poisson-bridge-scope.md",
+        "docs/adr/ADR-009-option-c-surface-density-bookkeeping-scope.md",
         "docs/decision_briefs/v0.4_boussinesq_inspired_charge_closure.md"
       ],
       "required_artifacts": {

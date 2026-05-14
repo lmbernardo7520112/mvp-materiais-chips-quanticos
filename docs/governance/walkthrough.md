@@ -1394,3 +1394,50 @@ that require the files to be in `policy.json` `authorized_files`.
 - ✅ Skills unchanged
 - ✅ `physical_interpretation_allowed` still False
 - ✅ Next step: GREEN 3 — release readiness + PR
+
+---
+
+### v0.5.0 GREEN 2.1 — Policy Stage Semantics Audit
+
+> **Date:** 2026-05-14
+
+#### Before
+
+- `current_stage`: `"v0.4"`
+- Stages: `v0.3`, `v0.4`
+- C1 files were in v0.4 `authorized_files` — semantically incorrect
+
+#### After
+
+- `current_stage`: `"v0.5"`
+- Stages: `v0.3`, `v0.4`, `v0.5`
+- v0.4 restored to original (no C1 files)
+- v0.5 created with:
+  - ADR-007 + ADR-009 as required ADRs
+  - C1 files in `authorized_files`
+  - ADR-009 in `required_docs`
+  - Same forbidden terms and protections as v0.4
+
+#### Test Update
+
+- `test_current_stage_is_v04` → `test_current_stage_is_v05`
+- Minimal semantic update, no gate weakened
+
+#### Validation
+
+- Quality gates: **6/6 PASS** (stage: v0.5)
+- pytest: **194 passed**
+- Coverage: **89.28%**
+- ruff: PASS
+- pyright: 0 errors
+- `generate_all_results`: PASS
+
+#### Scope
+
+- ✅ ρ_eff not implemented
+- ✅ t_eff not implemented
+- ✅ Solver untouched
+- ✅ Scripts untouched
+- ✅ `pyproject.toml` unchanged
+- ✅ Skills unchanged
+- ✅ Next step: GREEN 3 — release readiness + PR
