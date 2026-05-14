@@ -128,7 +128,9 @@
         "surface_charge.py",
         "test_surface_charge.py",
         "run_c1_surface_charge_demo.py",
-        "test_c1_surface_charge_demo.py"
+        "test_c1_surface_charge_demo.py",
+        "run_c1_literature_scale_benchmark.py",
+        "test_c1_literature_scale_benchmark.py"
       ],
       "allowed_exceptions": {
         "diffusion_solver.py": ["type_only_overload"]
