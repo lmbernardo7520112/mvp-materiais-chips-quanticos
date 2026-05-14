@@ -1271,3 +1271,205 @@ Proposed → **Accepted** (C1 only).
 - ✅ No Option C implementation
 - ✅ ADR-009 status: Accepted
 - ✅ Next step: v0.5.0 RED for C1 surface-density bookkeeping
+
+---
+
+## v0.5.0 RED — C1 Surface-Density Bookkeeping
+
+> **Date:** 2026-05-14
+> **Branch:** `feature/v0.5.0-c1-surface-density-bookkeeping`
+> **Status:** 🔴 RED — Tests written, module absent
+
+### Pre-condition
+
+- ADR-009 Accepted (v0.4.10).
+- C1 authorized: D_it → D_it_SI → N_it → σ_eff.
+- No solver coupling, no ρ_eff, no t_eff.
+
+### TDD Plan
+
+- `docs/governance/v0.5.0_c1_surface_charge_tdd_plan.md` created.
+
+### RED Tests
+
+- `tests/test_surface_charge.py` created: 15 tests (8 test classes).
+- Command: `PYTHONPATH=. pytest tests/test_surface_charge.py -v --tb=short`
+- Result: **14 failed, 1 passed**.
+- Failure reason: `ModuleNotFoundError: No module named 'mvp_quantum_materials.surface_charge'`
+- Failure is **correct** — module does not exist yet.
+- Test 8 (`test_metadata_blocks_physical_phi`): PASSED — non-regression.
+
+### Scope
+
+- ✅ `surface_charge.py` ABSENT
+- ✅ Zero `src/` changes
+- ✅ Zero `scripts/` changes
+- ✅ `policy.json` unchanged
+- ✅ `pyproject.toml` unchanged
+- ✅ Skills unchanged
+- ✅ No ρ_eff, no t_eff, no solver coupling
+- ✅ Next step: GREEN 1 — implement `surface_charge.py`
+
+---
+
+### v0.5.0 GREEN 1 — C1 Surface-Density Bookkeeping Core
+
+> **Date:** 2026-05-14
+
+#### Implementation
+
+- `src/mvp_quantum_materials/surface_charge.py` created.
+- Functions:
+  - `convert_dit_ev_cm2_to_j_m2(d_it)` — D_it_SI = D_it × 10⁴ / q_e
+  - `compute_nit_areal_density(d_it_si, delta_e_window)` — N_it = D_it_SI × δE
+  - `compute_sigma_eff(n_it, s_charge, f_occ)` — σ_eff = s × q_e × N_it × f
+  - `compute_c1_surface_charge(d_it, delta_e_window, s_charge, f_occ)` — end-to-end
+- Conversion factor: `DIT_EV_CM2_TO_J_M2_FACTOR = 1e4 / ELEMENTARY_CHARGE`
+- Uses `ELEMENTARY_CHARGE` from `mvp_quantum_materials.units`.
+
+#### Validation
+
+- `tests/test_surface_charge.py`: **15/15 passed**
+- Regression suite (58 tests): passed
+- Full suite (excluding gate test): **170 passed** + 23 gate tests (1 gate FAIL)
+- ruff: PASS
+- pyright: 0 errors
+- `generate_all_results`: PASS
+
+#### Quality Gates (observational)
+
+- 5/6 PASS.
+- Scope guardrails: **FAIL** — `test_surface_charge.py` mentions "Poisson"
+  and "rho_eff" as negation guards, but is not in `policy.json` authorized_files.
+- **Resolution needed:** add `test_surface_charge.py` and `surface_charge.py`
+  to `policy.json` authorized_files in a separate policy activation step.
+
+#### Scope
+
+- ✅ ρ_eff not implemented
+- ✅ t_eff not implemented
+- ✅ Solver untouched
+- ✅ Scripts untouched
+- ✅ `policy.json` unchanged (fix needed separately)
+- ✅ `pyproject.toml` unchanged
+- ✅ Skills unchanged
+- ✅ `physical_interpretation_allowed` still False
+- ✅ Next step: policy activation + GREEN 2
+
+---
+
+### v0.5.0 GREEN 2 — C1 Policy Activation
+
+> **Date:** 2026-05-14
+
+#### Reason
+
+`test_surface_charge.py` mentions "Poisson" and "rho_eff" as negative guards
+(assertions proving they are absent). These are conditionally forbidden terms
+that require the files to be in `policy.json` `authorized_files`.
+
+#### Policy Change
+
+- Added `surface_charge.py` to `authorized_files`.
+- Added `test_surface_charge.py` to `authorized_files`.
+- Added `ADR-009` to `required_adrs` as Accepted.
+- No gate removed. No term removed. No broad whitelist.
+
+#### Validation
+
+- Quality gates: **6/6 PASS** (was 5/6)
+- pytest: **194 passed**
+- Coverage: **89.28%**
+- ruff: PASS
+- pyright: 0 errors
+- `generate_all_results`: PASS
+
+#### Scope
+
+- ✅ ρ_eff not implemented
+- ✅ t_eff not implemented
+- ✅ Solver untouched
+- ✅ Scripts untouched
+- ✅ `pyproject.toml` unchanged
+- ✅ Skills unchanged
+- ✅ `physical_interpretation_allowed` still False
+- ✅ Next step: GREEN 3 — release readiness + PR
+
+---
+
+### v0.5.0 GREEN 2.1 — Policy Stage Semantics Audit
+
+> **Date:** 2026-05-14
+
+#### Before
+
+- `current_stage`: `"v0.4"`
+- Stages: `v0.3`, `v0.4`
+- C1 files were in v0.4 `authorized_files` — semantically incorrect
+
+#### After
+
+- `current_stage`: `"v0.5"`
+- Stages: `v0.3`, `v0.4`, `v0.5`
+- v0.4 restored to original (no C1 files)
+- v0.5 created with:
+  - ADR-007 + ADR-009 as required ADRs
+  - C1 files in `authorized_files`
+  - ADR-009 in `required_docs`
+  - Same forbidden terms and protections as v0.4
+
+#### Test Update
+
+- `test_current_stage_is_v04` → `test_current_stage_is_v05`
+- Minimal semantic update, no gate weakened
+
+#### Validation
+
+- Quality gates: **6/6 PASS** (stage: v0.5)
+- pytest: **194 passed**
+- Coverage: **89.28%**
+- ruff: PASS
+- pyright: 0 errors
+- `generate_all_results`: PASS
+
+#### Scope
+
+- ✅ ρ_eff not implemented
+- ✅ t_eff not implemented
+- ✅ Solver untouched
+- ✅ Scripts untouched
+- ✅ `pyproject.toml` unchanged
+- ✅ Skills unchanged
+- ✅ Next step: GREEN 3 — release readiness + PR
+
+---
+
+### v0.5.0 GREEN 3 — Final Documentation and PR Readiness
+
+> **Date:** 2026-05-14
+
+#### Documentation Created/Updated
+
+- `docs/release_notes/v0.5.0_draft.md` — release notes with validation table.
+- `docs/governance/project_audit.md` — v0.5.0 section added.
+- `docs/governance/technical_debt.md` — TD-C1-RED-01 resolved;
+  TD-C1-C2-BOUNDARY-01 and TD-C1-VALIDATION-01 added.
+
+#### Validation
+
+- Quality gates: **6/6 PASS** (stage: v0.5)
+- pytest: **194 passed**
+- Coverage: **89.28%**
+- ruff: PASS
+- pyright: 0 errors
+- `generate_all_results`: PASS
+
+#### Scope
+
+- ✅ ρ_eff not implemented
+- ✅ t_eff not implemented
+- ✅ Solver untouched
+- ✅ Scripts untouched
+- ✅ `pyproject.toml` unchanged
+- ✅ Skills unchanged
+- ✅ C1 scope intact

@@ -34,10 +34,10 @@ class TestPolicyLoader:
         assert "current_stage" in policy
         assert "stages" in policy
 
-    def test_current_stage_is_v04(self):
-        """Current stage is v0.4."""
+    def test_current_stage_is_v05(self):
+        """Current stage is v0.5."""
         policy = load_policy()
-        assert get_stage_name(policy) == "v0.4"
+        assert get_stage_name(policy) == "v0.5"
 
     def test_active_stage_has_required_keys(self):
         """Active stage has essential keys."""

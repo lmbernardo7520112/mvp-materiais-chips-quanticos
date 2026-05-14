@@ -1,4 +1,4 @@
-# Project Audit — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.5 / v0.4.6 / v0.4.7 / v0.4.8 / v0.4.9 / v0.4.10
+# Project Audit — MVP v0.1 / v0.2 / v0.3 / v0.3.1–v0.3.9 / v0.4 / v0.4.5 / v0.4.6 / v0.4.7 / v0.4.8 / v0.4.9 / v0.4.10 / v0.5.0
 
 > **Date:** 2026-05-10  
 > **Auditor:** Staff Research Software Engineer (AI-assisted)  
@@ -469,3 +469,24 @@ any calculation, formula, loop, boundary condition, or return value.
 - **No skills altered.**
 - **No Option C implementation.**
 - **Next step:** v0.5.0 RED for C1 surface-density bookkeeping.
+
+## v0.5.0 — C1 Surface-Density Bookkeeping
+
+> **Date:** 2026-05-14
+> **Status:** IMPLEMENTED — first physics code since v0.4.6
+
+- **Type:** C1 surface-density bookkeeping (ADR-009 Accepted).
+- **Branch:** `feature/v0.5.0-c1-surface-density-bookkeeping`.
+- **TDD sequence:** RED → GREEN 1 → GREEN 2 → GREEN 2.1 → GREEN 3.
+- **Module added:** `src/mvp_quantum_materials/surface_charge.py`.
+- **API:** `convert_dit_ev_cm2_to_j_m2`, `compute_nit_areal_density`,
+  `compute_sigma_eff`, `compute_c1_surface_charge`.
+- **Chain:** D_it → D_it_SI → N_it → σ_eff.
+- **Tests added:** 15 (in `test_surface_charge.py`).
+- **Policy stage:** v0.4 → **v0.5** (`current_stage` updated).
+- **ρ_eff:** not implemented.
+- **t_eff:** not implemented.
+- **Solver:** untouched.
+- **Scripts:** untouched.
+- **Skills:** unchanged.
+- **pyproject.toml:** unchanged.
