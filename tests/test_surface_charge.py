@@ -192,4 +192,3 @@ class TestMetadataBlocksPhysicalPhi:
 
         record = scale_metadata_to_record(meta)
         assert record["option_c_enabled"] is False
-

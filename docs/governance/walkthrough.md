@@ -1309,3 +1309,49 @@ Proposed → **Accepted** (C1 only).
 - ✅ Skills unchanged
 - ✅ No ρ_eff, no t_eff, no solver coupling
 - ✅ Next step: GREEN 1 — implement `surface_charge.py`
+
+---
+
+### v0.5.0 GREEN 1 — C1 Surface-Density Bookkeeping Core
+
+> **Date:** 2026-05-14
+
+#### Implementation
+
+- `src/mvp_quantum_materials/surface_charge.py` created.
+- Functions:
+  - `convert_dit_ev_cm2_to_j_m2(d_it)` — D_it_SI = D_it × 10⁴ / q_e
+  - `compute_nit_areal_density(d_it_si, delta_e_window)` — N_it = D_it_SI × δE
+  - `compute_sigma_eff(n_it, s_charge, f_occ)` — σ_eff = s × q_e × N_it × f
+  - `compute_c1_surface_charge(d_it, delta_e_window, s_charge, f_occ)` — end-to-end
+- Conversion factor: `DIT_EV_CM2_TO_J_M2_FACTOR = 1e4 / ELEMENTARY_CHARGE`
+- Uses `ELEMENTARY_CHARGE` from `mvp_quantum_materials.units`.
+
+#### Validation
+
+- `tests/test_surface_charge.py`: **15/15 passed**
+- Regression suite (58 tests): passed
+- Full suite (excluding gate test): **170 passed** + 23 gate tests (1 gate FAIL)
+- ruff: PASS
+- pyright: 0 errors
+- `generate_all_results`: PASS
+
+#### Quality Gates (observational)
+
+- 5/6 PASS.
+- Scope guardrails: **FAIL** — `test_surface_charge.py` mentions "Poisson"
+  and "rho_eff" as negation guards, but is not in `policy.json` authorized_files.
+- **Resolution needed:** add `test_surface_charge.py` and `surface_charge.py`
+  to `policy.json` authorized_files in a separate policy activation step.
+
+#### Scope
+
+- ✅ ρ_eff not implemented
+- ✅ t_eff not implemented
+- ✅ Solver untouched
+- ✅ Scripts untouched
+- ✅ `policy.json` unchanged (fix needed separately)
+- ✅ `pyproject.toml` unchanged
+- ✅ Skills unchanged
+- ✅ `physical_interpretation_allowed` still False
+- ✅ Next step: policy activation + GREEN 2
