@@ -397,8 +397,38 @@
   σ_eff, no ρ_eff, no solver coupling, metadata blocks physical φ.
 - **Impact:** C1 cannot produce dimensional charge bookkeeping until
   v0.5.0 RED→GREEN cycle is completed.
-- **Status:** READY FOR RED
-- **Pre-requisite:** v0.5.0 branch with RED tests.
-- **Versão-alvo:** v0.5.0
+- **Status:** ✅ RESOLVED in v0.5.0
+- **Resolution:** C1 implemented in `surface_charge.py` with 15 tests.
+  TDD RED→GREEN 1→GREEN 2→GREEN 2.1→GREEN 3 cycle completed.
+  Policy stage promoted to v0.5.
 - **Evidence:** [ADR-009 Accepted](../adr/ADR-009-option-c-surface-density-bookkeeping-scope.md),
-  [v0.4.10 Acceptance Review](../decision_briefs/v0.4.10_adr009_acceptance_review.md)
+  [v0.5.0 TDD Plan](v0.5.0_c1_surface_charge_tdd_plan.md),
+  [v0.5.0 Policy Activation](v0.5.0_c1_policy_activation.md)
+
+---
+
+### TD-C1-C2-BOUNDARY-01: C2 Blocked Until Future ADR
+
+- **Description:** C1 is implemented as surface-density bookkeeping only.
+  C2 remains blocked until a future ADR defines ρ_eff, t_eff regularization,
+  geometry mode, epsilon mode, and solver-coupling tests.
+- **Impact:** Cannot compute volume charge density or couple to solver.
+- **Status:** DEFERRED
+- **Pre-requisite:** New ADR extending ADR-009 for C2 scope.
+- **Versão-alvo:** v0.6+
+- **Evidence:** [ADR-009](../adr/ADR-009-option-c-surface-density-bookkeeping-scope.md)
+
+---
+
+### TD-C1-VALIDATION-01: C1 Lacks Experimental Validation
+
+- **Description:** C1 validates dimensional bookkeeping (unit conversion,
+  sign convention, occupancy bounds) but does not validate experimental
+  device behavior. Future work requires benchmark or analytic sanity
+  checks before physical interpretation.
+- **Impact:** σ_eff values are dimensionally correct but not calibrated.
+- **Status:** DEFERRED
+- **Pre-requisite:** Experimental D_it data or manufactured solution.
+- **Versão-alvo:** v0.6+
+- **Evidence:** [v0.5.0 TDD Plan](v0.5.0_c1_surface_charge_tdd_plan.md)
+

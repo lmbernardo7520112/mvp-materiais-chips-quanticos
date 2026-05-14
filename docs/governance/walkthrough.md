@@ -1441,3 +1441,35 @@ that require the files to be in `policy.json` `authorized_files`.
 - ✅ `pyproject.toml` unchanged
 - ✅ Skills unchanged
 - ✅ Next step: GREEN 3 — release readiness + PR
+
+---
+
+### v0.5.0 GREEN 3 — Final Documentation and PR Readiness
+
+> **Date:** 2026-05-14
+
+#### Documentation Created/Updated
+
+- `docs/release_notes/v0.5.0_draft.md` — release notes with validation table.
+- `docs/governance/project_audit.md` — v0.5.0 section added.
+- `docs/governance/technical_debt.md` — TD-C1-RED-01 resolved;
+  TD-C1-C2-BOUNDARY-01 and TD-C1-VALIDATION-01 added.
+
+#### Validation
+
+- Quality gates: **6/6 PASS** (stage: v0.5)
+- pytest: **194 passed**
+- Coverage: **89.28%**
+- ruff: PASS
+- pyright: 0 errors
+- `generate_all_results`: PASS
+
+#### Scope
+
+- ✅ ρ_eff not implemented
+- ✅ t_eff not implemented
+- ✅ Solver untouched
+- ✅ Scripts untouched
+- ✅ `pyproject.toml` unchanged
+- ✅ Skills unchanged
+- ✅ C1 scope intact
