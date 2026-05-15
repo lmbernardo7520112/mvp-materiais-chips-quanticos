@@ -587,3 +587,23 @@ any calculation, formula, loop, boundary condition, or return value.
 - **t_eff:** not implemented.
 - **Solver:** untouched.
 - **Calibration claims:** NONE.
+
+## v0.5.6 — ADR-010 Hardening: No Demonstrative Evidence Profiles
+
+> **Date:** 2026-05-15
+> **Status:** AMENDMENT (documentation-only)
+
+- **Type:** ADR-010 evidence policy hardening.
+- **Branch:** `docs/v0.5.6-adr010-no-demonstrative-evidence-profiles`.
+- **ADR-010:** Accepted + Amendment v0.5.6.
+- **E0 operational:** deprecated.
+- **S0 TEST_ONLY:** introduced for test fixtures only.
+- **E1:** minimum operational evidence level.
+- **E2:** conditional with metadata.
+- **E3/E4:** blocked.
+- **Council:** 7 specialists, 7/7 Accept, 3 skeptical objections.
+- **Code changes:** NONE.
+- **ρ_eff:** not implemented.
+- **t_eff:** not implemented.
+- **Solver:** untouched.
+- **Calibration claims:** NONE.
