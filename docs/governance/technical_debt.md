@@ -475,3 +475,17 @@
 - **Pre-requisite:** ADR-010 acceptance + dedicated TDD cycle.
 - **Versão-alvo:** v0.6+
 - **Evidence:** [ADR-010](../adr/ADR-010-c1-energy-distribution-scope.md)
+
+---
+
+### TD-C1-EXPERIMENTAL-ANCHORING-01: Evidence-Level Labels Required
+
+- **Description:** Future P1 D_it(E) implementation should label all profiles
+  by evidence level (E0/E1/E2). E3/E4 calibration-grade evidence requires a
+  separate ADR and is not authorized in the current roadmap.
+- **Impact:** Without evidence labels, literature-informed bins could be
+  mistaken for calibrated parameters.
+- **Status:** PROPOSED (v0.5.4 feasibility review)
+- **Pre-requisite:** ADR-010 acceptance + evidence taxonomy integration.
+- **Versão-alvo:** v0.6+
+- **Evidence:** [v0.5.4 Evidence Taxonomy](v0.5.4_energy_profile_evidence_taxonomy.md)

@@ -1595,3 +1595,36 @@ that require the files to be in `policy.json` `authorized_files`.
 - ✅ t_eff not implemented
 - ✅ Solver untouched
 - ✅ No calibration claims
+
+---
+
+### v0.5.4 — Experimental-Anchored Energy Profile Feasibility
+
+> **Date:** 2026-05-14
+
+#### Actions
+
+- Created branch `docs/v0.5.4-experimental-anchored-energy-profile-feasibility`.
+- Created evidence taxonomy (E0–E4 levels).
+- Created literature/evidence source review (6 techniques).
+- Created feasibility decision brief (Options A–D).
+- Convened research council (7 specialists, 3 skeptical objections).
+- Created risk matrix (10 risks, 6 Critical).
+- Created acceptance gates (23 gates).
+
+#### Council Decision
+
+- Option B (literature-informed) recommended as default.
+- Option C (experimental-profile prior) conditional with E2 metadata.
+- E3/E4 blocked.
+- C2 blocked.
+
+#### Scope
+
+- ✅ Documentation-only release
+- ✅ Zero src/scripts/tests changes
+- ✅ ADR-010 remains Proposed
+- ✅ ρ_eff not implemented
+- ✅ t_eff not implemented
+- ✅ Solver untouched
+- ✅ No calibration claims

@@ -545,3 +545,24 @@ any calculation, formula, loop, boundary condition, or return value.
 - **t_eff:** not implemented.
 - **Solver:** untouched.
 - **Calibration claims:** NONE.
+
+## v0.5.4 — Experimental-Anchored Energy Profile Feasibility
+
+> **Date:** 2026-05-14
+> **Status:** PROPOSED (documentation-only)
+
+- **Type:** Feasibility review.
+- **Branch:** `docs/v0.5.4-experimental-anchored-energy-profile-feasibility`.
+- **Evidence taxonomy:** E0–E4 levels defined.
+- **Techniques reviewed:** 6 (charge pumping, C-V, DLTS, DCIV, noise, STM).
+- **Decision options:** A (demonstrative), B (literature-informed), C (experimental prior), D (same-stack).
+- **Recommendation:** Option B default, Option C conditional.
+- **Council:** 7 specialists, unanimous Option B.
+- **Risk matrix:** 10 risks (6 Critical).
+- **Acceptance gates:** 23 gates.
+- **ADR-010:** remains Proposed.
+- **Code changes:** NONE.
+- **ρ_eff:** not implemented.
+- **t_eff:** not implemented.
+- **Solver:** untouched.
+- **Calibration claims:** NONE.
