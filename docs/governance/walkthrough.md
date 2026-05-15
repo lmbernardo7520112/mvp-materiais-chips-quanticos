@@ -1609,7 +1609,7 @@ that require the files to be in `policy.json` `authorized_files`.
 - Created literature/evidence source review (6 techniques).
 - Created feasibility decision brief (Options A–D).
 - Convened research council (7 specialists, 3 skeptical objections).
-- Created risk matrix (10 risks, 5 Critical).
+- Created risk matrix (10 risks, 6 Critical).
 - Created acceptance gates (23 gates).
 
 #### Council Decision

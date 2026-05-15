@@ -558,7 +558,7 @@ any calculation, formula, loop, boundary condition, or return value.
 - **Decision options:** A (demonstrative), B (literature-informed), C (experimental prior), D (same-stack).
 - **Recommendation:** Option B default, Option C conditional.
 - **Council:** 7 specialists, unanimous Option B.
-- **Risk matrix:** 10 risks (5 Critical).
+- **Risk matrix:** 10 risks (6 Critical).
 - **Acceptance gates:** 23 gates.
 - **ADR-010:** remains Proposed.
 - **Code changes:** NONE.
