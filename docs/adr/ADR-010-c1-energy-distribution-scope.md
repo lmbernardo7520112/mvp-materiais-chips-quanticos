@@ -176,3 +176,54 @@ Acceptance authorizes a future RED phase for P1 piecewise D_it(E).
 - Calibration claims.
 - Device prediction.
 
+---
+
+## Amendment — v0.5.6: No Demonstrative Evidence Profiles
+
+> **Date:** 2026-05-15
+> **Council:** v0.5.6 No Demonstrative Profiles Council (7/7 Accept)
+
+ADR-010 remains Accepted, but its evidence policy is hardened.
+
+**E0 demonstrative profiles are not accepted** as operational C1 D_it(E)
+profiles.
+
+Synthetic profiles are allowed only as **S0 TEST_ONLY** fixtures for
+mathematical verification inside test suites.
+
+### Operational Evidence Levels
+
+| Level | Status | Where Allowed |
+|-------|--------|---------------|
+| S0 | TEST_ONLY | Tests only (fixtures) |
+| E0 | **Deprecated** | Not allowed as operational |
+| E1 | Minimum operational | Model + artifacts |
+| E2 | Conditional | Model + artifacts (with metadata) |
+| E3 | Blocked | Requires future ADR |
+| E4 | Blocked | Requires future ADR |
+
+### S0 TEST_ONLY Rules
+
+S0 fixtures **may**:
+- Provide known-answer inputs for numerical verification.
+- Test convergence, monotonicity, symmetry, and dimensional consistency.
+- Validate backward compatibility with P0 (single bin = constant D_it).
+
+S0 fixtures **must not**:
+- Appear in release artifacts as scientific scenarios.
+- Be exported in benchmark CSVs as model profiles.
+- Be used as default profiles in scripts or demonstrations.
+- Be described as evidence-informed.
+- Support calibration or device prediction claims.
+
+### This Amendment Does NOT Authorize
+
+- ρ_eff.
+- t_eff.
+- Solver coupling.
+- Physical φ interpretation.
+- C2/C3.
+- Calibration claims.
+- Device prediction.
+
+
