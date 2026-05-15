@@ -1,10 +1,10 @@
 # ADR-010 — C1 Energy-Distribution Scope
 
-**Status:** Proposed
+**Status:** Accepted
 
 **Date:** 2026-05-14
 
-**Deciders:** Research Council v0.5.3
+**Deciders:** Research Council v0.5.3, v0.5.4, v0.5.5
 
 **Supersedes:** None
 
@@ -145,3 +145,34 @@ D_it(E) = piecewise linear with peak at E_peak and finite support
 - The C1/C2 boundary is preserved: σ_eff stays as the terminal output.
 - Future implementation, if authorized, must be test-first (TDD).
 - P0 constant profile is preserved as the regression baseline.
+
+---
+
+## Acceptance Note — v0.5.5
+
+> **Accepted:** 2026-05-15
+> **Council:** v0.5.5 ADR-010 Acceptance Council (7/7 Accept)
+
+ADR-010 is accepted only for future C1 energy-distribution modeling.
+
+Acceptance authorizes a future RED phase for P1 piecewise D_it(E).
+
+**Accepted default:**
+
+- Option B: literature-informed P1 bins.
+
+**Accepted conditional path:**
+
+- Option C: E2 experimental-profile prior only with complete metadata.
+
+**Blocked:**
+
+- E3/E4 calibration-grade anchoring.
+- ρ_eff.
+- t_eff.
+- Solver coupling.
+- Physical φ interpretation.
+- C2/C3.
+- Calibration claims.
+- Device prediction.
+

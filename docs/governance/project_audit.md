@@ -566,3 +566,24 @@ any calculation, formula, loop, boundary condition, or return value.
 - **t_eff:** not implemented.
 - **Solver:** untouched.
 - **Calibration claims:** NONE.
+
+## v0.5.5 — ADR-010 Accepted: C1 Energy-Distribution Scope
+
+> **Date:** 2026-05-15
+> **Status:** ACCEPTED (documentation-only)
+
+- **Type:** ADR acceptance review.
+- **Branch:** `docs/v0.5.5-accept-adr-010-energy-distribution`.
+- **ADR-010:** promoted from Proposed to **Accepted**.
+- **Acceptance criteria:** 15/15 PASS.
+- **Council:** 7 specialists, 7/7 Accept.
+- **Skeptical objections:** 3 raised and addressed.
+- **Option B:** literature-informed default.
+- **Option C:** conditional (E2 metadata only).
+- **E3/E4:** blocked.
+- **Acceptance gates:** 22 gates.
+- **Code changes:** NONE.
+- **ρ_eff:** not implemented.
+- **t_eff:** not implemented.
+- **Solver:** untouched.
+- **Calibration claims:** NONE.

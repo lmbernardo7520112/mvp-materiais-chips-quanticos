@@ -1628,3 +1628,36 @@ that require the files to be in `policy.json` `authorized_files`.
 - ✅ t_eff not implemented
 - ✅ Solver untouched
 - ✅ No calibration claims
+
+---
+
+### v0.5.5 — ADR-010 Accepted: C1 Energy-Distribution Scope
+
+> **Date:** 2026-05-15
+
+#### Actions
+
+- Created acceptance review (15 criteria, all PASS).
+- Convened acceptance council (7 specialists, 7/7 Accept).
+- Promoted ADR-010 from Proposed to **Accepted**.
+- Added acceptance note to ADR-010.
+- Created acceptance gates (22 gates).
+
+#### Council Decision
+
+- ADR-010 Accepted for future C1 energy-distribution modeling.
+- P1 piecewise authorized for future RED phase.
+- Option B (literature-informed) confirmed as default.
+- Option C (E2 experimental-profile prior) conditional.
+- E3/E4 blocked.
+- C2 blocked.
+
+#### Scope
+
+- ✅ Documentation-only release
+- ✅ Zero src/scripts/tests changes
+- ✅ ADR-010 promoted to Accepted
+- ✅ ρ_eff not implemented
+- ✅ t_eff not implemented
+- ✅ Solver untouched
+- ✅ No calibration claims

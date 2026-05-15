@@ -489,3 +489,17 @@
 - **Pre-requisite:** ADR-010 acceptance + evidence taxonomy integration.
 - **Versão-alvo:** v0.6+
 - **Evidence:** [v0.5.4 Evidence Taxonomy](v0.5.4_energy_profile_evidence_taxonomy.md)
+
+---
+
+### TD-C1-ENERGY-RED-01: RED Tests Required Before Implementation
+
+- **Description:** ADR-010 accepted. Future P1 piecewise D_it(E) implementation
+  requires RED tests before any code. C1 must remain without ρ_eff, t_eff,
+  solver coupling, C2/C3, or calibration claims.
+- **Impact:** Without RED-first discipline, implementation could bypass the
+  physics and governance guardrails established in v0.5.0–v0.5.5.
+- **Status:** ACCEPTED (ADR-010 accepted in v0.5.5)
+- **Pre-requisite:** v0.6.0 RED phase with all 10 future tests from v0.5.3.
+- **Versão-alvo:** v0.6.0
+- **Evidence:** [ADR-010 Acceptance Note](../adr/ADR-010-c1-energy-distribution-scope.md)
