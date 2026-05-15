@@ -503,3 +503,19 @@
 - **Pre-requisite:** v0.6.0 RED phase with all 10 future tests from v0.5.3.
 - **Versão-alvo:** v0.6.0
 - **Evidence:** [ADR-010 Acceptance Note](../adr/ADR-010-c1-energy-distribution-scope.md)
+
+---
+
+### TD-C1-EVIDENCE-MINIMUM-01: E1 Minimum for Operational Profiles
+
+- **Description:** ADR-010 hardened (v0.5.6). Future operational D_it(E)
+  profiles require at minimum E1 (literature-informed). E0 demonstrative is
+  deprecated. S0 synthetic fixtures may be used only for tests and must not
+  appear as scientific scenarios in release artifacts.
+- **Impact:** Without E1 minimum enforcement, model-facing profiles could
+  appear without literature grounding, undermining scientific positioning.
+- **Status:** AMENDMENT (v0.5.6 ADR-010 amendment)
+- **Pre-requisite:** v0.6.0 must enforce evidence_level >= E1 for model-facing
+  profiles and confine S0 to test suites.
+- **Versão-alvo:** v0.6.0
+- **Evidence:** [ADR-010 Amendment v0.5.6](../adr/ADR-010-c1-energy-distribution-scope.md)

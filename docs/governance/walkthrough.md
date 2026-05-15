@@ -1661,3 +1661,36 @@ that require the files to be in `policy.json` `authorized_files`.
 - ✅ t_eff not implemented
 - ✅ Solver untouched
 - ✅ No calibration claims
+
+---
+
+### v0.5.6 — ADR-010 Hardening: No Demonstrative Evidence Profiles
+
+> **Date:** 2026-05-15
+
+#### Actions
+
+- Created decision brief rejecting E0 operational profiles.
+- Convened council (7 specialists, 7/7 Accept, 3 skeptical objections).
+- Added ADR-010 amendment v0.5.6.
+- Updated evidence taxonomy: E0 deprecated, S0 TEST_ONLY added.
+- Created acceptance gates (22 gates).
+
+#### Council Decision
+
+- E0 operational profiles rejected (deprecated).
+- S0 TEST_ONLY introduced for test fixtures only.
+- E1 is the minimum operational evidence level.
+- E2 remains conditional with metadata.
+- E3/E4 blocked.
+- C2 blocked.
+
+#### Scope
+
+- ✅ Documentation-only release
+- ✅ Zero src/scripts/tests changes
+- ✅ ADR-010 amendment added
+- ✅ ρ_eff not implemented
+- ✅ t_eff not implemented
+- ✅ Solver untouched
+- ✅ No calibration claims
