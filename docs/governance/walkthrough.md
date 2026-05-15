@@ -1694,3 +1694,47 @@ that require the files to be in `policy.json` `authorized_files`.
 - ✅ t_eff not implemented
 - ✅ Solver untouched
 - ✅ No calibration claims
+
+---
+
+### v0.6.0 RED — Piecewise D_it(E) Energy Integration
+
+> **Date:** 2026-05-15
+
+#### Actions
+
+- Created branch `feature/v0.6.0-piecewise-dit-energy-red`.
+- Created RED plan (`v0.6.0_piecewise_dit_energy_red_plan.md`).
+- Created `tests/test_energy_profiles.py` with 13 RED tests.
+- Ran RED: **13 failed** (ModuleNotFoundError/ImportError).
+- `energy_profiles.py` intentionally absent (RED phase).
+
+#### RED Test Summary
+
+| # | Test | Failure |
+|---|------|---------|
+| 1 | module_imports | ImportError |
+| 2 | s0_fixture_constant | ModuleNotFoundError |
+| 3 | piecewise_integrates | ModuleNotFoundError |
+| 4 | ordered_edges | ModuleNotFoundError |
+| 5 | negative_dit | ModuleNotFoundError |
+| 6 | joules_units | ModuleNotFoundError |
+| 7 | reject_e0 | ModuleNotFoundError |
+| 8 | accept_e1 | ModuleNotFoundError |
+| 9 | accept_e2_metadata | ModuleNotFoundError |
+| 10 | reject_e3_e4 | ModuleNotFoundError |
+| 11 | sigma_eff_chain | ModuleNotFoundError |
+| 12 | no_rho_t_solver | ImportError |
+| 13 | blocks_calibration | ModuleNotFoundError |
+
+#### Scope
+
+- ✅ TDD RED phase: tests only, no implementation
+- ✅ energy_profiles.py absent
+- ✅ Zero src/scripts changes
+- ✅ E0 rejected in tests
+- ✅ S0 only as fixture
+- ✅ E3/E4 blocked in tests
+- ✅ ρ_eff/t_eff/solver blocked in tests
+- ✅ No calibration claims
+
