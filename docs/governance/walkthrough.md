@@ -1780,4 +1780,24 @@ that require the files to be in `policy.json` `authorized_files`.
 - ✅ physical_interpretation_allowed = False enforced
 - ✅ option_c_enabled = False enforced
 
+---
 
+### v0.6.0 Governance Finalization
+
+> **Date:** 2026-05-15
+
+#### Actions
+
+- Reorganized commits: separated policy activation from feature implementation.
+- Created policy activation document.
+- Created acceptance gates (20 gates).
+- Created release notes draft.
+- Updated project audit.
+- Updated technical debt (TD-C1-ENERGY-PROFILE-01).
+
+#### Commit Structure
+
+1. `test: add v0.6.0 piecewise D_it energy RED specifications` — RED tests.
+2. `feat: implement v0.6.0 piecewise D_it energy profiles` — GREEN module.
+3. `chore: activate v0.6.0 energy profile scope guardrails` — Policy.
+4. `docs: finalize v0.6.0 energy profile governance` — Governance.
