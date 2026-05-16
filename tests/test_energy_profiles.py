@@ -270,7 +270,7 @@ def test_operational_profiles_reject_e3_e4():
     ev_to_j = 1.602176634e-19
 
     for level in ("E3", "E4"):
-        with pytest.raises(ValueError, match=f"[Ee]3|[Ee]4|[Bb]lock"):
+        with pytest.raises(ValueError, match="[Ee]3|[Ee]4|[Bb]lock"):
             PiecewiseDitProfile(
                 edges_j=[0.0, 0.1 * ev_to_j],
                 densities_j_m2=[1e15],
