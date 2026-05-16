@@ -607,3 +607,25 @@ any calculation, formula, loop, boundary condition, or return value.
 - **t_eff:** not implemented.
 - **Solver:** untouched.
 - **Calibration claims:** NONE.
+
+## v0.6.0 — C1 Piecewise D_it(E) Energy Profiles
+
+> **Date:** 2026-05-15
+> **Status:** IMPLEMENTATION (TDD RED → GREEN)
+
+- **Type:** C1 energy-distribution bookkeeping.
+- **Branch:** `feature/v0.6.0-piecewise-dit-energy-red`.
+- **Module:** `src/mvp_quantum_materials/energy_profiles.py`.
+- **API:** `EnergyInterval`, `PiecewiseDitProfile`, `integrate_piecewise_dit`,
+  `compute_sigma_eff_from_energy_profile`.
+- **Physics:** N_it = Σ D_i × ΔE_i; σ_eff = s_charge × q_e × N_it × f_occ.
+- **RED tests:** 13 created (all failed with ModuleNotFoundError).
+- **GREEN tests:** 13/13 PASSED.
+- **Full pytest:** 226 passed.
+- **Coverage:** 88.18%.
+- **Evidence policy:** S0 test-only, E0 deprecated, E1 min, E2 conditional, E3/E4 blocked.
+- **Policy activation:** Documented separately.
+- **ρ_eff:** not implemented.
+- **t_eff:** not implemented.
+- **Solver:** untouched.
+- **Calibration claims:** NONE.
