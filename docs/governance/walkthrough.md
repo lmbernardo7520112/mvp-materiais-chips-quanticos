@@ -1694,3 +1694,110 @@ that require the files to be in `policy.json` `authorized_files`.
 - ✅ t_eff not implemented
 - ✅ Solver untouched
 - ✅ No calibration claims
+
+---
+
+### v0.6.0 RED — Piecewise D_it(E) Energy Integration
+
+> **Date:** 2026-05-15
+
+#### Actions
+
+- Created branch `feature/v0.6.0-piecewise-dit-energy-red`.
+- Created RED plan (`v0.6.0_piecewise_dit_energy_red_plan.md`).
+- Created `tests/test_energy_profiles.py` with 13 RED tests.
+- Ran RED: **13 failed** (ModuleNotFoundError/ImportError).
+- `energy_profiles.py` intentionally absent (RED phase).
+
+#### RED Test Summary
+
+| # | Test | Failure |
+|---|------|---------|
+| 1 | module_imports | ImportError |
+| 2 | s0_fixture_constant | ModuleNotFoundError |
+| 3 | piecewise_integrates | ModuleNotFoundError |
+| 4 | ordered_edges | ModuleNotFoundError |
+| 5 | negative_dit | ModuleNotFoundError |
+| 6 | joules_units | ModuleNotFoundError |
+| 7 | reject_e0 | ModuleNotFoundError |
+| 8 | accept_e1 | ModuleNotFoundError |
+| 9 | accept_e2_metadata | ModuleNotFoundError |
+| 10 | reject_e3_e4 | ModuleNotFoundError |
+| 11 | sigma_eff_chain | ModuleNotFoundError |
+| 12 | no_rho_t_solver | ImportError |
+| 13 | blocks_calibration | ModuleNotFoundError |
+
+#### Scope
+
+- ✅ TDD RED phase: tests only, no implementation
+- ✅ energy_profiles.py absent
+- ✅ Zero src/scripts changes
+- ✅ E0 rejected in tests
+- ✅ S0 only as fixture
+- ✅ E3/E4 blocked in tests
+- ✅ ρ_eff/t_eff/solver blocked in tests
+- ✅ No calibration claims
+
+---
+
+### v0.6.0 GREEN 1 — Implement energy_profiles.py
+
+> **Date:** 2026-05-15
+
+#### Actions
+
+- Created `src/mvp_quantum_materials/energy_profiles.py`.
+- Implemented: `EnergyInterval`, `PiecewiseDitProfile`,
+  `integrate_piecewise_dit`, `compute_sigma_eff_from_energy_profile`.
+- Fixed ruff lint (SIM102, F541) and formatted.
+- Added `energy_profiles.py` and `test_energy_profiles.py` to policy
+  authorized_files (same pattern as surface_charge.py).
+
+#### Test Results
+
+- **13/13 energy_profiles tests PASSED** (GREEN).
+- **226 total tests PASSED** (213 existing + 13 new).
+- Coverage: 88.18% (≥70%).
+- ruff: PASS.
+- pyright: 0 errors.
+- generate_all_results: PASS.
+- Quality gates: 6/6 PASS.
+
+#### Evidence Level Enforcement
+
+- S0_TEST_ONLY: accepted only as test fixture.
+- E0/demonstrative/toy: rejected (ValueError).
+- E1: accepted as minimum operational level.
+- E2: accepted only with complete metadata.
+- E3/E4: rejected (ValueError).
+
+#### Scope Guards
+
+- ✅ No compute_rho_eff, convert_sigma_to_rho, t_eff
+- ✅ No poisson_solver_2d import
+- ✅ No solver coupling
+- ✅ calibration_status = "not_calibrated" enforced
+- ✅ physical_interpretation_allowed = False enforced
+- ✅ option_c_enabled = False enforced
+
+---
+
+### v0.6.0 Governance Finalization
+
+> **Date:** 2026-05-15
+
+#### Actions
+
+- Reorganized commits: separated policy activation from feature implementation.
+- Created policy activation document.
+- Created acceptance gates (20 gates).
+- Created release notes draft.
+- Updated project audit.
+- Updated technical debt (TD-C1-ENERGY-PROFILE-01).
+
+#### Commit Structure
+
+1. `test: add v0.6.0 piecewise D_it energy RED specifications` — RED tests.
+2. `feat: implement v0.6.0 piecewise D_it energy profiles` — GREEN module.
+3. `chore: activate v0.6.0 energy profile scope guardrails` — Policy.
+4. `docs: finalize v0.6.0 energy profile governance` — Governance.

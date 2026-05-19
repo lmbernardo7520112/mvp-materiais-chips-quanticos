@@ -519,3 +519,19 @@
   profiles and confine S0 to test suites.
 - **Versão-alvo:** v0.6.0
 - **Evidence:** [ADR-010 Amendment v0.5.6](../adr/ADR-010-c1-energy-distribution-scope.md)
+
+---
+
+### TD-C1-ENERGY-PROFILE-01: Curated E1/E2 Profile Libraries
+
+- **Description:** Piecewise D_it(E) integration is implemented as C1
+  energy-distribution bookkeeping (v0.6.0). Future work may add curated
+  E1 (literature-informed) or E2 (experimental-profile) profile libraries
+  with pre-validated bin configurations for common Si/SiO₂ interfaces.
+- **Impact:** Without curated profiles, users must manually construct
+  `PiecewiseDitProfile` instances with appropriate evidence metadata.
+- **Status:** DEFERRED
+- **Pre-requisite:** C2 remains blocked until a separate ADR. Profile
+  libraries must not enable ρ_eff, t_eff, or solver coupling.
+- **Versão-alvo:** TBD (post v0.6.0)
+- **Evidence:** [energy_profiles.py](../../src/mvp_quantum_materials/energy_profiles.py)
