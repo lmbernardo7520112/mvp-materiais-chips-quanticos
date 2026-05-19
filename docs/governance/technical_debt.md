@@ -535,3 +535,18 @@
   libraries must not enable ρ_eff, t_eff, or solver coupling.
 - **Versão-alvo:** TBD (post v0.6.0)
 - **Evidence:** [energy_profiles.py](../../src/mvp_quantum_materials/energy_profiles.py)
+
+---
+
+### TD-PROCESS-DEVICE-ROADMAP-01: Layers L3–L6 Not Implemented
+
+- **Description:** The project is re-anchored toward a process-to-device
+  demonstrator (ADR-011), but layers L3 (ρ_eff), L4 (Poisson coupling),
+  L5 (V_conf), and L6 (Schrödinger) remain blocked until dedicated ADRs
+  and TDD cycles are completed for each layer.
+- **Impact:** The project currently reaches only L2 (σ_eff). The full
+  chain from defects to quantum confinement is documented but not implemented.
+- **Status:** DEFERRED (by design)
+- **Pre-requisite:** Each layer requires its own ADR, council, TDD RED/GREEN.
+- **Versão-alvo:** L3 at v0.7, L4 at v0.8, L5–L6 at v0.9, integration at v1.0
+- **Evidence:** [ADR-011](../adr/ADR-011-process-to-device-qubit-demonstrator-roadmap.md)

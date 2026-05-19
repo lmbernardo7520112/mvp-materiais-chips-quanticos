@@ -1801,3 +1801,36 @@ that require the files to be in `policy.json` `authorized_files`.
 2. `feat: implement v0.6.0 piecewise D_it energy profiles` — GREEN module.
 3. `chore: activate v0.6.0 energy profile scope guardrails` — Policy.
 4. `docs: finalize v0.6.0 energy profile governance` — Governance.
+
+---
+
+### v0.6.1 — Process-to-Device Roadmap Re-Anchoring
+
+> **Date:** 2026-05-19
+
+#### Actions
+
+- Created ADR-011 Proposed: process-to-device qubit demonstrator roadmap.
+- Created strategy brief: 4 options, Option C (layer-by-layer) selected.
+- Created council: 8 specialists, 4 skeptical objections, 8/8 unanimous.
+- Created target architecture: 7-layer L0→L6 with units and data flow.
+- Created roadmap: v0.6.1→v1.0 with stop conditions.
+- Created risk matrix: 10 risks (6 Critical).
+- Created acceptance gates: 25 gates.
+- Created release notes draft.
+
+#### Mission Statement
+
+Build a process-to-device demonstrator for silicon/CMOS qubits, inspired
+by Maurand et al. 2016, to study how interface-defect and surface-charge
+profiles modify electrostatic potential and effective quantum confinement,
+without claiming experimental calibration or coherence prediction.
+
+#### Scope
+
+- ✅ Documentation-only release
+- ✅ Zero src/scripts/tests changes
+- ✅ C2 blocked until ADR
+- ✅ Schrödinger blocked until Poisson coupling
+- ✅ No calibration/coherence/fidelity claims
+
