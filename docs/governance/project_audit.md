@@ -629,3 +629,23 @@ any calculation, formula, loop, boundary condition, or return value.
 - **t_eff:** not implemented.
 - **Solver:** untouched.
 - **Calibration claims:** NONE.
+
+## v0.6.1 — Process-to-Device Roadmap Re-Anchoring
+
+> **Date:** 2026-05-19
+> **Status:** DOCUMENTATION-ONLY
+
+- **Type:** Strategic roadmap re-anchoring.
+- **Branch:** `docs/v0.6.1-process-to-device-roadmap-reanchoring`.
+- **ADR-011:** Proposed — process-to-device qubit demonstrator roadmap.
+- **Mission:** Process-to-device demonstrator for Si/CMOS qubits.
+- **Council:** 8/8 unanimous — Option C (layer-by-layer).
+- **Roadmap:** v0.6.1→v1.0 (7 releases, 7 layers).
+- **Risks:** 10 identified (6 Critical).
+- **Zero src/scripts/tests changes.**
+- **ρ_eff:** blocked until ADR-C2.
+- **t_eff:** blocked until ADR-C2.
+- **Solver coupling:** blocked until v0.8.0.
+- **Schrödinger:** blocked until v0.9.0.
+- **Calibration claims:** NONE.
+- **Coherence claims:** NONE.
