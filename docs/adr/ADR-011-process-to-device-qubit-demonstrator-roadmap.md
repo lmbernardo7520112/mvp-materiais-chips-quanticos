@@ -33,10 +33,14 @@ now needs to explicitly re-anchor its trajectory toward the device layer.
 Nature Communications 7, 13575. DOI: 10.1038/ncomms13575.
 
 This paper demonstrates a spin qubit fabricated using standard CMOS
-technology on silicon, establishing that process-generated interface
-defects directly affect qubit quality. It serves as the **device-target
-anchor** — the motivating example for why modeling the chain from
-process defects to electrostatic environment matters.
+technology on silicon. It does not calibrate this MVP, but it motivates
+the project's long-term process-to-device direction: understanding how
+process/interface assumptions may propagate toward electrostatic and
+confinement models relevant to silicon spin-qubit platforms.
+
+It serves as the **device-target anchor** — the motivating example for
+why modeling the chain from process defects to electrostatic environment
+is a relevant research direction.
 
 **Maurand et al. is NOT:**
 - A calibration source for this project.
@@ -105,8 +109,8 @@ The following require **dedicated ADRs** before implementation:
 | v0.6.2 | docs+code | Curated E1/E2 D_it(E) profile library |
 | v0.7.0 | docs | ADR-C2: surface-to-volume charge mapping |
 | v0.7.1 | code | C2 RED/GREEN if ADR accepted |
-| v0.8.0 | code | Poisson coupling demonstrator |
-| v0.9.0 | code | Schrödinger effective confinement prototype |
+| v0.8.0 | code, only if ADR-Poisson-coupling is accepted | Poisson coupling demonstrator |
+| v0.9.0 | code, only if ADR-Schrödinger is accepted | Schrödinger effective confinement prototype |
 | v1.0 | integration | Integrated process-to-device demonstrator |
 
 ## Decision
