@@ -197,6 +197,13 @@ def _build_si_sio2_low_trap() -> PiecewiseDitProfile:
         "3-bin U-shape with lower D_it representing high-quality "
         "passivated Si/SiO2 interface. Lower range of literature values."
     )
+    meta["lower_bound_assumption"] = (
+        "Midgap bin uses 5e9 eV^-1 cm^-2, slightly below the documented "
+        "Si/SiO2 lower bound of 1e10. This is a conservative piecewise "
+        "approximation to model the U-shape minimum, not a measured value. "
+        "The 5e9 scale is consistent with Si/SiGe heterostructure midgap "
+        "values (Connors et al. 2022) and represents an optimistic limit."
+    )
 
     return PiecewiseDitProfile(
         edges_j=[_ev_to_j(e) for e in edges_ev],
