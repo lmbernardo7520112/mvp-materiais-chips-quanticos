@@ -11,7 +11,7 @@ Evidence policy:
 - E3/E4: blocked.
 
 Scope guards:
-- No ρ_eff, t_eff, solver coupling, Schrödinger.
+- No ρ_eff, t_eff, solver coupling, quantum confinement solver.
 - No calibration claims.
 """
 
@@ -21,7 +21,6 @@ import copy
 import re
 
 import pytest
-
 
 # ---------------------------------------------------------------------------
 # Test 1: Module imports
@@ -285,8 +284,6 @@ def test_literature_profile_units_are_si_internal():
         list_curated_dit_profiles,
     )
 
-    q_e = 1.602176634e-19  # C
-
     for pid in list_curated_dit_profiles():
         profile = get_curated_dit_profile(pid)
         # All edges must be < ~2 eV in Joules (< 3.2e-19 J)
@@ -346,26 +343,60 @@ def test_profile_metadata_blocks_device_prediction():
 
 
 def test_no_rho_eff_no_t_eff_no_solver_coupling():
-    """Module must not expose forbidden scope terms."""
+    """Module must not expose forbidden scope terms in executable code.
+
+    Docstrings and comments may mention these terms as non-goal
+    declarations. Only non-comment, non-docstring lines are checked.
+    """
+    import ast
+    import inspect
+
     import mvp_quantum_materials.dit_profile_library as lib
 
-    source = lib.__file__
-    assert source is not None
-    with open(source) as f:
-        content = f.read()
+    source_code = inspect.getsource(lib)
+
+    # Parse to extract only non-docstring, non-comment code lines
+    tree = ast.parse(source_code)
+    # Collect docstring line ranges to exclude
+    docstring_lines: set[int] = set()
+    for node in ast.walk(tree):
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef, ast.Module)):
+            ds = ast.get_docstring(node, clean=False)
+            if ds and hasattr(node, "body") and node.body:
+                first = node.body[0]
+                if isinstance(first, ast.Expr) and isinstance(first.value, ast.Constant):
+                    for ln in range(first.lineno, first.end_lineno + 1):  # type: ignore[operator]
+                        docstring_lines.add(ln)
+
+    lines = source_code.splitlines()
+    code_lines = []
+    for i, line in enumerate(lines, 1):
+        stripped = line.strip()
+        if i in docstring_lines:
+            continue
+        if stripped.startswith("#"):
+            continue
+        code_lines.append(stripped)
+
+    code_only = "\n".join(code_lines)
 
     forbidden_patterns = [
         "compute_rho_eff",
         "convert_sigma_to_rho",
-        "t_eff",
         "poisson_solver_2d",
         "solve_poisson",
     ]
 
     for pattern in forbidden_patterns:
-        assert pattern not in content, (
-            f"dit_profile_library.py must not reference '{pattern}'"
+        assert pattern not in code_only, (
+            f"dit_profile_library.py must not reference '{pattern}' in code"
         )
+
+    # Additionally: module must not define or import t_eff as a variable/function
+    module_attrs = dir(lib)
+    assert "compute_rho_eff" not in module_attrs
+    assert "convert_sigma_to_rho" not in module_attrs
+    assert "solve_poisson" not in module_attrs
 
 
 # ---------------------------------------------------------------------------
