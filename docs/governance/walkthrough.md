@@ -1834,3 +1834,16 @@ without claiming experimental calibration or coherence prediction.
 - ✅ Schrödinger blocked until Poisson coupling
 - ✅ No calibration/coherence/fidelity claims
 
+---
+
+### v0.6.2 — Curated E1/E2 D_it(E) Profile Library
+
+> **Date:** 2026-05-20
+
+#### RED Phase
+
+- Branch: `feature/v0.6.2-curated-dit-profile-library`
+- TDD plan created.
+- 20 RED tests in `tests/test_dit_profile_library.py`.
+- RED result: 20 failed (ModuleNotFoundError).
+- `dit_profile_library.py` does not exist yet.
