@@ -649,3 +649,26 @@ any calculation, formula, loop, boundary condition, or return value.
 - **Schrödinger:** blocked until v0.9.0.
 - **Calibration claims:** NONE.
 - **Coherence claims:** NONE.
+
+## v0.6.2 — Curated E1/E2 D_it(E) Profile Library
+
+> **Date:** 2026-05-20
+
+- **Type:** Feature — curated profile library.
+- **Branch:** `feature/v0.6.2-curated-dit-profile-library`.
+- **Module:** `dit_profile_library.py`.
+- **Profiles:** 3 E1 Si/SiO₂ (nominal, high, low) + E2 factory.
+- **Tests:** 20 in `test_dit_profile_library.py`.
+- **Full pytest:** 246 passed.
+- **Coverage:** 87.37%.
+- **Quality gates:** 6/6 PASS.
+- **ruff:** PASS.
+- **pyright:** 0 errors.
+- **generate_all_results:** PASS.
+- **Evidence policy:** E1 minimum, E2 with metadata, E0 rejected, E3/E4 blocked.
+- **calibration_status:** not_calibrated (all profiles).
+- **ρ_eff:** blocked until ADR-C2.
+- **t_eff:** blocked until ADR-C2.
+- **Solver coupling:** blocked.
+- **Calibration claims:** NONE.
+- **Coherence claims:** NONE.

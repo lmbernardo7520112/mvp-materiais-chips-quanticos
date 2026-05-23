@@ -550,3 +550,18 @@
 - **Pre-requisite:** Each layer requires its own ADR, council, TDD RED/GREEN.
 - **Versão-alvo:** L3 at v0.7, L4 at v0.8, L5–L6 at v0.9, integration at v1.0
 - **Evidence:** [ADR-011](../adr/ADR-011-process-to-device-qubit-demonstrator-roadmap.md)
+
+---
+
+### TD-C1-PROFILE-LIBRARY-01: Curated Profiles Are Not Calibrated
+
+- **Description:** The curated E1/E2 profile library provides literature-
+  informed scale profiles for Si/SiO₂. These are piecewise approximations
+  of literature D_it ranges, not measured energy-resolved curves. Future
+  C2 development must not treat these profiles as calibrated device data.
+- **Impact:** Downstream quantities (N_it, σ_eff) are literature-scale
+  estimates only. They cannot be used for device prediction.
+- **Status:** ACCEPTED (by design)
+- **Pre-requisite:** C2 requires its own ADR with explicit t_eff semantics.
+- **Versão-alvo:** C2 at v0.7, must not reuse library profiles as calibration.
+- **Evidence:** [dit_profile_library.py](../../src/mvp_quantum_materials/dit_profile_library.py)

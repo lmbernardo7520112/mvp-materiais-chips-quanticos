@@ -1834,3 +1834,39 @@ without claiming experimental calibration or coherence prediction.
 - ✅ Schrödinger blocked until Poisson coupling
 - ✅ No calibration/coherence/fidelity claims
 
+---
+
+### v0.6.2 — Curated E1/E2 D_it(E) Profile Library
+
+> **Date:** 2026-05-20
+
+#### RED Phase
+
+- Branch: `feature/v0.6.2-curated-dit-profile-library`
+- TDD plan created.
+- 20 RED tests in `tests/test_dit_profile_library.py`.
+- RED result: 20 failed (ModuleNotFoundError).
+- `dit_profile_library.py` does not exist yet.
+
+#### GREEN Phase
+
+- Created `src/mvp_quantum_materials/dit_profile_library.py`.
+- 3 E1 literature-informed Si/SiO₂ profiles:
+  - `si_sio2_literature_nominal` (D_it ~1–5×10¹⁰ eV⁻¹·cm⁻²)
+  - `si_sio2_literature_high_trap` (D_it ~1–5×10¹¹ eV⁻¹·cm⁻²)
+  - `si_sio2_literature_low_trap` (D_it ~0.5–1×10¹⁰ eV⁻¹·cm⁻²)
+- E2 experimental-prior factory.
+- E1 literature-informed factory.
+- Unit conversion eV⁻¹·cm⁻² → J⁻¹·m⁻².
+- Policy activation: authorized_files updated.
+- GREEN result: 20/20 passed.
+- Full pytest: 246 passed.
+- Coverage: 87.37%.
+- Quality gates: 6/6 PASS.
+
+#### Commits
+
+1. `test: add v0.6.2 curated D_it profile library RED specifications` — RED.
+2. `feat: implement v0.6.2 curated D_it profile library` — GREEN.
+3. `chore: activate v0.6.2 D_it profile library scope guardrails` — Policy.
+4. `docs: finalize v0.6.2 curated profile governance` — Governance.
