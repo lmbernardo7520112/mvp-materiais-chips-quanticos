@@ -217,9 +217,9 @@ This ADR does not authorize implementation.
 
 Implementation requires:
 
-1. ADR-012 acceptance review.
-2. Future TDD RED phase specifying C2 tests.
-3. Future GREEN phase implementing the chosen path.
+1. ADR-012 acceptance review (v0.7.1, documentation-only).
+2. Future TDD RED phase specifying C2 tests (v0.7.2, earliest).
+3. Future GREEN phase implementing the chosen path (v0.7.3, earliest).
 
 ## Still Blocked
 

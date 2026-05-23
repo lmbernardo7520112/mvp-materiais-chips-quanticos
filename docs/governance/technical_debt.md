@@ -579,6 +579,6 @@
   No solver coupling, no ρ_eff API, no t_eff parameter until ADR accepted.
 - **Status:** DEFERRED (by design — ADR-012 Proposed, not Accepted)
 - **Pre-requisite:** ADR-012 acceptance review + TDD RED phase.
-- **Versão-alvo:** v0.7.1 (C2 RED after acceptance).
+- **Versão-alvo:** v0.7.2 (C2 RED after ADR-012 acceptance in v0.7.1).
 - **Evidence:** [ADR-012](../../docs/adr/ADR-012-c2-interface-sheet-source-vs-volume-regularization.md)
 
