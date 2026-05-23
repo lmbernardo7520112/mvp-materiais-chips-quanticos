@@ -565,3 +565,20 @@
 - **Pre-requisite:** C2 requires its own ADR with explicit t_eff semantics.
 - **Versão-alvo:** C2 at v0.7, must not reuse library profiles as calibration.
 - **Evidence:** [dit_profile_library.py](../../src/mvp_quantum_materials/dit_profile_library.py)
+
+---
+
+### TD-C2-INTERFACE-SOURCE-01: ADR-C2 Proposed — Implementation Blocked
+
+- **Description:** ADR-012 proposes C2-A (interface sheet source) as primary
+  path for σ_eff → electrostatic coupling. Volume regularization (C2-B) is
+  fallback only, using l_reg as numerical parameter, not physical t_eff.
+  Generic physical t_eff is rejected (C2-D). Calibrated t_eff is blocked
+  (C2-E). No C2 code exists.
+- **Impact:** Future implementation must follow ADR-012 recommendation.
+  No solver coupling, no ρ_eff API, no t_eff parameter until ADR accepted.
+- **Status:** DEFERRED (by design — ADR-012 Proposed, not Accepted)
+- **Pre-requisite:** ADR-012 acceptance review + TDD RED phase.
+- **Versão-alvo:** v0.7.2 (C2 RED after ADR-012 acceptance in v0.7.1).
+- **Evidence:** [ADR-012](../../docs/adr/ADR-012-c2-interface-sheet-source-vs-volume-regularization.md)
+

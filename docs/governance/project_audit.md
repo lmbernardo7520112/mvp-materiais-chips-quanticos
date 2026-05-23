@@ -672,3 +672,23 @@ any calculation, formula, loop, boundary condition, or return value.
 - **Solver coupling:** blocked.
 - **Calibration claims:** NONE.
 - **Coherence claims:** NONE.
+
+## v0.7.0 — ADR-C2 Interface Sheet Source vs Volume Regularization
+
+> **Date:** 2026-05-23
+
+- **Type:** Documentation-only — ADR-C2 decision proposal.
+- **Branch:** `docs/v0.7.0-adr-c2-interface-source-regularization`.
+- **ADR-012:** Proposed (not yet accepted).
+- **Decision:** C2-A primary, C2-B fallback, C2-C conditional, C2-D rejected, C2-E blocked.
+- **Code changes:** NONE.
+- **Test changes:** NONE.
+- **Script changes:** NONE.
+- **policy.json:** unchanged.
+- **pyproject.toml:** unchanged.
+- **ρ_eff:** blocked.
+- **t_eff:** rejected (C2-D).
+- **l_reg:** documented as numerical regularization only, not implemented.
+- **Solver coupling:** blocked.
+- **Calibration claims:** NONE.
+- **Coherence claims:** NONE.

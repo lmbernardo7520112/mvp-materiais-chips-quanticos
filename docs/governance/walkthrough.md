@@ -1870,3 +1870,19 @@ without claiming experimental calibration or coherence prediction.
 2. `feat: implement v0.6.2 curated D_it profile library` — GREEN.
 3. `chore: activate v0.6.2 D_it profile library scope guardrails` — Policy.
 4. `docs: finalize v0.6.2 curated profile governance` — Governance.
+
+### v0.7.0 — ADR-C2 Interface Sheet Source vs Volume Regularization
+
+- Branch: `docs/v0.7.0-adr-c2-interface-source-regularization`
+- Documentation-only release.
+- ADR-012 Proposed: C2 interface sheet source vs volume regularization.
+- C2-A primary: interface sheet source / jump condition.
+- C2-B fallback: conservative volume regularization with l_reg.
+- C2-C conditional: literature/experimental depth prior.
+- C2-D rejected: generic physical t_eff.
+- C2-E blocked: calibrated device-fitted t_eff.
+- Council: 9 panelists, unanimous recommendation.
+- Evidence taxonomy: S0/R1/E1/E2/E3/E4 for regularization.
+- Risk matrix: 10 risks.
+- Future RED plan: 15 candidate tests.
+- Zero src/scripts/tests changes.
