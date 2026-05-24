@@ -1910,7 +1910,8 @@ without claiming experimental calibration or coherence prediction.
 - ADR-012 Accepted verified.
 - RED plan created (`docs/governance/v0.7.2_c2_red_plan.md`).
 - RED tests created (`tests/test_c2_charge_mapping.py`).
-- RED executed: Expected failure (ModuleNotFoundError/ImportError).
+- RED executed: Total 20 tests. 17 failed with expected `ModuleNotFoundError`. 3 passed because they are static validations of the RED state itself (e.g., asserting module absence).
+- RED audit passed. The test failures and passes are correct and intentional.
 - `c2_charge_mapping.py` is explicitly absent.
 - Zero C2 implementation in this phase.
 - Solver coupling remains fully absent.
