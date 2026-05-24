@@ -716,3 +716,17 @@ any calculation, formula, loop, boundary condition, or return value.
 - **Calibration claims:** NONE.
 - **Coherence claims:** NONE.
 - **Next step:** v0.7.2 — C2 RED (earliest implementation phase).
+
+---
+
+## v0.7.3 C2 GREEN Validation
+
+> **Date:** 2026-05-24
+> **Type:** Feature implementation (RED/GREEN).
+
+- **Implementation:** `c2_charge_mapping.py`
+- **Core Entities:** `InterfaceSheetSource`, `ConservativeVolumeRegularization`, `DepthPriorMetadata`
+- **Tests:** 20/20 C2 tests passing.
+- **Coverage:** >= 70%.
+- **Solver Constraints:** `poisson_solver_2d` blocked. Quantum solvers blocked.
+- **Calibration Status:** Forced `not_calibrated`.

@@ -1915,3 +1915,15 @@ without claiming experimental calibration or coherence prediction.
 - `c2_charge_mapping.py` is explicitly absent.
 - Zero C2 implementation in this phase.
 - Solver coupling remains fully absent.
+
+### v0.7.3 — C2 GREEN: Interface Sheet Source and Volume Regularization
+
+- Branch: `feature/v0.7.2-c2-red-interface-source-regularization`
+- `c2_charge_mapping.py` implemented.
+- `InterfaceSheetSource` and `ConservativeVolumeRegularization` built.
+- `DepthPriorMetadata` provided for literature/experimental data.
+- Solver coupling explicitly disabled and verified.
+- 20/20 RED tests passing.
+- Quality Gates PASS.
+- Full suite verified.
+- C2 Mapping achieved with `not_calibrated` enforced.
