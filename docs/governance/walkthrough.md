@@ -1903,3 +1903,14 @@ without claiming experimental calibration or coherence prediction.
 - No C2 implementation.
 - Next step: v0.7.2 — C2 RED.
 - Zero src/scripts/tests changes.
+
+### v0.7.2 — C2 RED: Interface Source and Volume Regularization
+
+- Branch: `feature/v0.7.2-c2-red-interface-source-regularization`
+- ADR-012 Accepted verified.
+- RED plan created (`docs/governance/v0.7.2_c2_red_plan.md`).
+- RED tests created (`tests/test_c2_charge_mapping.py`).
+- RED executed: Expected failure (ModuleNotFoundError/ImportError).
+- `c2_charge_mapping.py` is explicitly absent.
+- Zero C2 implementation in this phase.
+- Solver coupling remains fully absent.
