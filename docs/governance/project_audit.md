@@ -692,3 +692,27 @@ any calculation, formula, loop, boundary condition, or return value.
 - **Solver coupling:** blocked.
 - **Calibration claims:** NONE.
 - **Coherence claims:** NONE.
+
+## v0.7.1 — ADR-012 Acceptance Review
+
+> **Date:** 2026-05-24
+
+- **Type:** Documentation-only — ADR-012 acceptance review.
+- **Branch:** `docs/v0.7.1-accept-adr-012-c2-interface-source`.
+- **ADR-012:** Promoted from Proposed to **Accepted**.
+- **Acceptance criteria:** 18/18 satisfied.
+- **Council vote:** 9/9 Accept.
+- **Skeptical objections:** 5 raised, 5 addressed.
+- **Decision confirmed:** C2-A primary, C2-B fallback, C2-C conditional, C2-D rejected, C2-E blocked.
+- **Code changes:** NONE.
+- **Test changes:** NONE.
+- **Script changes:** NONE.
+- **policy.json:** unchanged.
+- **pyproject.toml:** unchanged.
+- **ρ_eff:** not implemented.
+- **t_eff:** rejected (C2-D).
+- **l_reg:** not implemented.
+- **Solver coupling:** blocked.
+- **Calibration claims:** NONE.
+- **Coherence claims:** NONE.
+- **Next step:** v0.7.2 — C2 RED (earliest implementation phase).

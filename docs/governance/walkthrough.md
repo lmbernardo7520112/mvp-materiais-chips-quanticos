@@ -1886,3 +1886,20 @@ without claiming experimental calibration or coherence prediction.
 - Risk matrix: 10 risks.
 - Future RED plan: 15 candidate tests.
 - Zero src/scripts/tests changes.
+
+### v0.7.1 — ADR-012 Acceptance Review
+
+- Branch: `docs/v0.7.1-accept-adr-012-c2-interface-source`
+- Documentation-only release.
+- ADR-012 promoted from Proposed to **Accepted**.
+- Acceptance review: 18/18 criteria satisfied.
+- Council: 9/9 Accept.
+- Skeptical objections: 5 raised, 5 addressed.
+- C2-A primary confirmed.
+- C2-B fallback confirmed.
+- C2-C conditional confirmed.
+- C2-D rejected confirmed.
+- C2-E blocked confirmed.
+- No C2 implementation.
+- Next step: v0.7.2 — C2 RED.
+- Zero src/scripts/tests changes.

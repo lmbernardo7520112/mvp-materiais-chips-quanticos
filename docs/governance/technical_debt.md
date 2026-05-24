@@ -576,9 +576,23 @@
   Generic physical t_eff is rejected (C2-D). Calibrated t_eff is blocked
   (C2-E). No C2 code exists.
 - **Impact:** Future implementation must follow ADR-012 recommendation.
-  No solver coupling, no ρ_eff API, no t_eff parameter until ADR accepted.
-- **Status:** DEFERRED (by design — ADR-012 Proposed, not Accepted)
-- **Pre-requisite:** ADR-012 acceptance review + TDD RED phase.
+  No solver coupling, no ρ_eff API, no t_eff parameter until RED/GREEN.
+- **Status:** ACTIVE (ADR-012 Accepted in v0.7.1)
+- **Pre-requisite:** TDD RED phase (v0.7.2).
 - **Versão-alvo:** v0.7.2 (C2 RED after ADR-012 acceptance in v0.7.1).
 - **Evidence:** [ADR-012](../../docs/adr/ADR-012-c2-interface-sheet-source-vs-volume-regularization.md)
+
+---
+
+### TD-C2-ACCEPTANCE-01: ADR-012 Accepted — Implementation Still Blocked
+
+- **Description:** ADR-012 accepted in v0.7.1. C2 implementation
+  remains blocked until v0.7.2 RED phase. No ρ_eff/t_eff/l_reg/solver
+  implementation exists yet.
+- **Impact:** C2 RED must be created before any GREEN implementation.
+  v0.7.2 = RED, v0.7.3 = GREEN (earliest).
+- **Status:** ACTIVE (by design — awaiting v0.7.2 RED)
+- **Pre-requisite:** v0.7.2 RED tests created and failing.
+- **Versão-alvo:** v0.7.2 (C2 RED).
+- **Evidence:** [ADR-012 Acceptance Note](../../docs/adr/ADR-012-c2-interface-sheet-source-vs-volume-regularization.md)
 
