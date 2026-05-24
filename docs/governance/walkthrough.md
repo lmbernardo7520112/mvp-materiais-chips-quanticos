@@ -1903,3 +1903,27 @@ without claiming experimental calibration or coherence prediction.
 - No C2 implementation.
 - Next step: v0.7.2 — C2 RED.
 - Zero src/scripts/tests changes.
+
+### v0.7.2 — C2 RED: Interface Source and Volume Regularization
+
+- Branch: `feature/v0.7.2-c2-red-interface-source-regularization`
+- ADR-012 Accepted verified.
+- RED plan created (`docs/governance/v0.7.2_c2_red_plan.md`).
+- RED tests created (`tests/test_c2_charge_mapping.py`).
+- RED executed: Total 20 tests. 17 failed with expected `ModuleNotFoundError`. 3 passed because they are static validations of the RED state itself (e.g., asserting module absence).
+- RED audit passed. The test failures and passes are correct and intentional.
+- `c2_charge_mapping.py` is explicitly absent.
+- Zero C2 implementation in this phase.
+- Solver coupling remains fully absent.
+
+### v0.7.3 — C2 GREEN: Interface Sheet Source and Volume Regularization
+
+- Branch: `feature/v0.7.2-c2-red-interface-source-regularization`
+- `c2_charge_mapping.py` implemented.
+- `InterfaceSheetSource` and `ConservativeVolumeRegularization` built.
+- `DepthPriorMetadata` provided for literature/experimental data.
+- Solver coupling explicitly disabled and verified.
+- 20/20 RED tests passing.
+- Quality Gates PASS.
+- Full suite verified.
+- C2 Mapping achieved with `not_calibrated` enforced.

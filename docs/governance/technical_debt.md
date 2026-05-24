@@ -596,3 +596,11 @@
 - **Versão-alvo:** v0.7.2 (C2 RED).
 - **Evidence:** [ADR-012 Acceptance Note](../../docs/adr/ADR-012-c2-interface-sheet-source-vs-volume-regularization.md)
 
+---
+
+### TD-C2-GREEN-01: C2 Mapping is Bookkeeping Only
+
+- **Description:** C2 mapping is implemented as isolated source/regularization bookkeeping only. It does not solve electrostatics, does not couple to a solver, and does not authorize physical potential interpretation.
+- **Impact:** Ensures scientific integrity but leaves the project uncoupled from actual physical equation solving.
+- **Status:** ACTIVE
+- **Versão-alvo:** Future C3 coupling phase.
