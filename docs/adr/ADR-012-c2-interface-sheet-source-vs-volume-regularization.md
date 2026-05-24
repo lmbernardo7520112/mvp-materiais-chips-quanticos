@@ -2,7 +2,7 @@
 
 ## Status
 
-Proposed
+Accepted
 
 ## Date
 
@@ -233,6 +233,34 @@ Implementation requires:
 - C2 code of any kind.
 - Calibration claims.
 - Coherence/fidelity claims.
+
+## Acceptance Note — v0.7.1
+
+ADR-012 is accepted for future C2 planning only.
+
+**Accepted decision:**
+
+- C2-A interface sheet source is the primary representation.
+- C2-B conservative volume regularization is fallback only.
+- C2-C literature/experimental depth prior is conditional for sensitivity analysis.
+- C2-D generic physical t_eff is rejected.
+- C2-E calibrated device-fitted t_eff is blocked.
+
+**This acceptance does not implement C2.**
+
+This acceptance does not authorize:
+
+- ρ_eff API.
+- t_eff physical parameter.
+- l_reg implementation.
+- Solver coupling.
+- C2/C3 code.
+- Calibration claims.
+
+**Earliest implementation sequence:**
+
+- v0.7.2 — C2 RED.
+- v0.7.3 — C2 GREEN, only after RED.
 
 ## References
 
