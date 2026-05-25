@@ -134,7 +134,11 @@
         "energy_profiles.py",
         "test_energy_profiles.py",
         "dit_profile_library.py",
-        "test_dit_profile_library.py"
+        "test_dit_profile_library.py",
+        "c2_charge_mapping.py",
+        "test_c2_charge_mapping.py",
+        "run_c2_charge_mapping_demo.py",
+        "test_c2_charge_mapping_demo.py"
       ],
       "allowed_exceptions": {
         "diffusion_solver.py": ["type_only_overload"]

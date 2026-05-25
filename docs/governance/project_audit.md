@@ -730,3 +730,19 @@ any calculation, formula, loop, boundary condition, or return value.
 - **Coverage:** >= 70%.
 - **Solver Constraints:** `poisson_solver_2d` blocked. Quantum solvers blocked.
 - **Calibration Status:** Forced `not_calibrated`.
+
+---
+
+## v0.7.4 C2 Charge Mapping Demo & Sanity Checks
+
+> **Date:** 2026-05-25
+> **Type:** Demonstration and sanity validation.
+
+- **Script:** `scripts/run_c2_charge_mapping_demo.py`
+- **Tests:** 15/15 demo tests passing.
+- **Scenarios:** 9 (3 sigma × 3 l_reg).
+- **Charge conservation:** relative error ≤ 1e-12.
+- **l_reg sensitivity:** rho ∝ 1/l_reg confirmed.
+- **Solver constraints:** No solver import. No physical phi. No calibration.
+- **Total tests:** 281 passed.
+- **Coverage:** 88%.
