@@ -604,3 +604,12 @@
 - **Impact:** Ensures scientific integrity but leaves the project uncoupled from actual physical equation solving.
 - **Status:** ACTIVE
 - **Versão-alvo:** Future C3 coupling phase.
+
+---
+
+### TD-C2-DEMO-01: C2 Demo Exists But No Solver Coupling
+
+- **Description:** C2 mapping demo validates charge conservation and l_reg sensitivity in isolation. No electrostatic solver coupling is authorized. Future v0.8.0 must decide solver coupling via ADR.
+- **Impact:** Demo builds confidence in C2 mapping correctness but does not verify physical behavior under solver.
+- **Status:** ACTIVE
+- **Versão-alvo:** v0.8.0 — ADR for C3 solver coupling.
