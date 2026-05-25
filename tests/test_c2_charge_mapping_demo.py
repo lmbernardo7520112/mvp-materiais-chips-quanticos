@@ -8,7 +8,6 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-import pytest
 
 DEMO_SCRIPT = Path("scripts/run_c2_charge_mapping_demo.py")
 
@@ -105,9 +104,7 @@ def test_rho_scales_as_inverse_l_reg_for_fixed_sigma():
         if len(subset) >= 2:
             product = subset["rho_reg_c_per_m3"] * subset["l_reg_m"]
             # product should be constant (= sigma)
-            assert np.allclose(
-                product, first_sigma, rtol=1e-12
-            ), "rho_reg * l_reg is not constant"
+            assert np.allclose(product, first_sigma, rtol=1e-12), "rho_reg * l_reg is not constant"
 
 
 def test_total_charge_independent_of_l_reg():
@@ -118,10 +115,10 @@ def test_total_charge_independent_of_l_reg():
         first_sigma = df["sigma_c_per_m2"].iloc[0]
         subset = df[df["sigma_c_per_m2"] == first_sigma].copy()
         if len(subset) >= 2:
-            charges = subset["total_volume_charge_c"].values
-            assert np.allclose(
-                charges, charges[0], rtol=1e-12
-            ), "Total volume charge varies with l_reg"
+            charges = subset["total_volume_charge_c"].to_numpy()  # type: ignore[union-attr]
+            assert np.allclose(charges, charges[0], rtol=1e-12), (
+                "Total volume charge varies with l_reg"
+            )
 
 
 def test_demo_flags_are_safe():

@@ -1934,3 +1934,10 @@ without claiming experimental calibration or coherence prediction.
 - TDD plan created (`docs/governance/v0.7.4_c2_demo_tdd_plan.md`).
 - RED tests created (`tests/test_c2_charge_mapping_demo.py`).
 - RED executed: 13 failed (script absent), 2 passed (static checks).
+- GREEN: `scripts/run_c2_charge_mapping_demo.py` implemented.
+- Demo tests: 15/15 PASSED.
+- CSV generated with 9 scenarios (3 sigma × 3 l_reg).
+- Charge conservation: relative error ≤ 1e-12.
+- l_reg sensitivity: rho ∝ 1/l_reg confirmed.
+- Policy activation for C2 files completed.
+- No solver import. No physical phi. No C1 mutation.
