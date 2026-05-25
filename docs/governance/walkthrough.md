@@ -1927,3 +1927,10 @@ without claiming experimental calibration or coherence prediction.
 - Quality Gates PASS.
 - Full suite verified.
 - C2 Mapping achieved with `not_calibrated` enforced.
+
+### v0.7.4 — C2 Charge Mapping Demo & Sanity Checks
+
+- Branch: `feature/v0.7.4-c2-charge-mapping-demo-sanity`
+- TDD plan created (`docs/governance/v0.7.4_c2_demo_tdd_plan.md`).
+- RED tests created (`tests/test_c2_charge_mapping_demo.py`).
+- RED executed: 13 failed (script absent), 2 passed (static checks).
