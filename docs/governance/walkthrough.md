@@ -1941,3 +1941,8 @@ without claiming experimental calibration or coherence prediction.
 - l_reg sensitivity: rho ∝ 1/l_reg confirmed.
 - Policy activation for C2 files completed.
 - No solver import. No physical phi. No C1 mutation.
+- First CI failed: `ModuleNotFoundError: No module named 'pandas'`.
+- pandas not in pyproject.toml — dependency decision: no pandas for v0.7.4.
+- Tests rewritten with stdlib csv.
+- Second CI: 5/5 SUCCESS.
+- No dependency added.
