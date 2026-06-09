@@ -14,9 +14,9 @@ A missão do MVP é modelar, de forma *adimensional/demonstrativa* para o *proxy
 
 O MVP **faz**:
 - Simulação termo-difusiva e reativo-difusiva de defeitos ($C_{def}$).
-- Integração de bibliotecas de perfis de energia ($D_{it}(E)$) balanceadas entre literatura (Sze, Terman) e perfis demonstrativos.
+- Integração de bibliotecas de perfis de energia ($D_{it}(E)$) balanceadas entre literatura (Sze, Terman) e perfis E1 literature-informed e E2 condicionais, com S0 restrito a fixtures de teste e E0 operacional rejeitado.
 - Mapeamento C1 de balanço de densidade superficial de carga ($\sigma_{eff}$).
-- Mapeamento C2 conservativo (demo) da interface para grid volumétrico de Poisson.
+- Mapeamento C2 conservativo isolado, como preparação para futura projeção em solver, sem acoplamento ao solver e sem interpretação física de phi.
 
 O MVP **não faz e bloqueia permanentemente**:
 - Simulação de decoerência ($T_1$, $T_2$).
@@ -99,6 +99,8 @@ O caminho *process-to-device* ($C1 \rightarrow C2 \rightarrow C3$) é metodologi
 
 ## 11. Metrics and Evidence
 
+*As métricas foram extraídas do estado do repositório no momento da geração do dossiê por comandos como pytest, gh pr list, git tag e find docs/. Elas representam o estado auditado daquela execução, não constantes permanentes do projeto.*
+
 | Métrica | Status / Valor | 
 |---------|---------------|
 | **Total de Testes** | 281 |
@@ -113,7 +115,7 @@ O caminho *process-to-device* ($C1 \rightarrow C2 \rightarrow C3$) é metodologi
 | **Tags** | 31 tags (até v0.7.4) |
 | **Total de PRs** | 44 (1 aberto, 43 merged) |
 
-*(Evidências extraídas do `pytest`, `gh pr list`, e `find docs/` no Passo 1/2/4).*
+*(Evidências extraídas do `pytest`, `gh pr list`, e `find docs/` no Passo 1/2/4. Valores são repository-reported; re-run commands to refresh.)*
 
 ## 12. Methodology Scorecard
 
@@ -136,9 +138,17 @@ Comparado com a base profissional de **Research Software Engineering (RSE)**:
 
 ## 14. Weaknesses and Open Risks
 
-- **Ausência de Solver Coupling real:** Muito trabalho preparatório ($C1$, $C2$, $D_{it}$) mas o potencial $\Phi(x,y)$ ainda não responde fisicamente à distribuição de defeitos gerada pelo processo.
+- **Ausência de Solver Coupling real:** Muito trabalho preparatório ($C1$, $C2$, $D_{it}$) mas o modelo não possui acoplamento ao solver, portanto $\Phi(x,y)$ não é calculado, resolvido fisicamente ou acoplado à distribuição de defeitos gerada pelo processo.
 - **Fardo Burocrático:** O excesso de governança (Councils, Risk Matrices, Briefs, Acceptance Gates) gera dezenas de arquivos Markdown por release, podendo retardar avanços físicos iterativos diretos se a burocracia descolar do código real.
 - **Automação dependente de contexto:** Se a conversa com a IA for limpa (clear context), ela produz maravilhas. Se for fragmentada, a IA perde rastreio e sugere ações de closure na fase errada.
+
+### Limits of This Methodology Assessment
+
+- councils are AI-assisted methodological reviews, not external peer review;
+- CI/test metrics validate software behavior, not experimental physics;
+- literature anchoring is not calibration;
+- human oversight remains essential;
+- future solver coupling can still expose hidden assumptions.
 
 ## 15. Recommended Next Methodological Improvements
 
@@ -149,4 +159,4 @@ Comparado com a base profissional de **Research Software Engineering (RSE)**:
 
 ## 16. Conclusion
 
-A metodologia híbrida **AI-RSE GateOps** provou ser uma arquitetura fenomenal para gerenciar os potenciais de overclaim e imprecisão da IA Generativa aplicada à física do estado sólido computacional. O Humano conteve a entropia da automação enquanto a IA Generativa operou a força braçal do código iterativo, verificação estática, e *boilerplates* complexos de TDD. O balanço foi respeitado: a Governança bloqueou a predição vazia, o TDD construiu alicerces verificáveis, e o *process-to-device proxy* caminhou confiavelmente em direção ao solver acoplado.
+A metodologia híbrida **AI-RSE GateOps** provou ser uma metodologia robusta sob as evidências internas disponíveis para gerenciar os potenciais de overclaim e imprecisão da IA Generativa aplicada à física do estado sólido computacional. A metodologia reduziu riscos de overclaim; o TDD criou alicerces verificáveis; a governança preservou o escopo. O Humano conteve a entropia da automação enquanto a IA Generativa operou a força braçal do código iterativo, verificação estática, e *boilerplates* complexos de TDD. O balanço foi respeitado: a validação física completa ainda depende de futuras etapas C3, solver coupling e eventual comparação experimental. Não há calibração experimental nem predição de dispositivo. O *process-to-device proxy* caminhou confiavelmente em preparação para futura projeção em solver, sem acoplamento prévio.
