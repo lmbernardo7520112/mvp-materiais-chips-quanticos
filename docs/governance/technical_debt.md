@@ -622,3 +622,12 @@
 - **Impact:** Reduces prompt size and documentation redundancy for future releases. Does not alter scientific behavior or code.
 - **Status:** RESOLVED (v0.7.5)
 - **Versão-alvo:** v0.7.5 — completed.
+
+---
+
+### TD-AIFS-TRACK-01: AI-for-Science Track — Documentation-Only Parallel Feasibility
+
+- **Description:** AI-for-Science track proposed as documentation-only parallel feasibility (v0.7.6). No implementation, no dependency, no ML runtime. Covers PINNs, surrogate models, and operator learning as future exploratory possibilities only.
+- **Impact:** Opens a governed path for future ML exploration without contaminating the classical solver roadmap. No scientific behavior altered.
+- **Status:** ACTIVE
+- **Versão-alvo:** Future — activation requires accepted ADR, dependency decision, analytic benchmarks, RED tests, reproducibility plan, and human approval.

@@ -91,3 +91,18 @@ This log captures critical human decisions made during AI-assisted development o
 - **Files Affected:** New skills, templates, checklists in v0.7.5.
 - **Future Consequence:** v0.8.x work can use fast lanes for documentation-only releases and slow lanes for physics-critical work.
 - **Reversible:** Yes — skills are additive and can be deprecated.
+
+---
+
+## HDL-007 — Open AI-for-Science exploration only as a parallel governed track
+
+- **Date:** 2026-06-12
+- **Release:** v0.7.6
+- **Human Decision:** Explore AI-for-Science / PINNs / surrogate models only as a documentation-first parallel track, fully isolated from the classical solver roadmap.
+- **Rationale:** AI-for-Science methods may offer future value for parametric studies or inverse problems, but the classical solver is not yet coupled (C3 pending). Implementing ML now would risk overclaims, dependency bloat, and contamination of the governed classical path.
+- **AI Suggestion:** N/A — this was a human-initiated decision to evaluate the topic proactively.
+- **Alternatives Rejected:** Implement PINN now; add ML dependencies now; replace classical solver; claim AI-for-Science validation.
+- **Evidence:** See `docs/adr/ADR-014-ai-for-science-parallel-track-governance.md`, `docs/decision_briefs/v0.7.6_ai_for_science_parallel_track_brief.md`, `docs/research_council/v0.7.6_ai_for_science_parallel_track_council.md`.
+- **Files Affected:** Documentation only. Zero src/tests/scripts/pyproject changes.
+- **Future Consequence:** ADR-014 proposed. No code, no dependency. Future implementation requires accepted ADR, dependency decision, analytic benchmarks, RED tests, reproducibility plan, and human approval.
+- **Reversible:** Yes — through future ADR acceptance or rejection.
