@@ -759,3 +759,21 @@ any calculation, formula, loop, boundary condition, or return value.
 - **Governance docs added:** release methodology checklist, human decision log (6 entries).
 - **Zero code changes.** Zero test changes. Zero script changes.
 - **No solver coupling.** No physical phi. No calibration. No dependency added.
+
+---
+
+## v0.7.6 AI-for-Science Parallel Track Governance & Feasibility
+
+> **Date:** 2026-06-12
+> **Type:** Documentation-only.
+
+- **ADR-014:** Proposed. AI-for-Science Parallel Track Governance.
+- **Classical track:** Canonical. Unchanged.
+- **AI track:** Exploratory, documentation-only. No code. No dependency.
+- **Council:** 10 specialists, unanimous approval.
+- **Risk matrix:** 12 risks, 7 Critical.
+- **Future RED plan:** 20 candidate tests.
+- **Separation architecture:** Defined.
+- **HDL-007:** Recorded.
+- **Zero code changes.** Zero test changes. Zero script changes.
+- **No ML dependencies.** No ML imports. No solver replacement. No physical claims.

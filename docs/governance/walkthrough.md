@@ -1969,3 +1969,26 @@ without claiming experimental calibration or coherence prediction.
 - No src changes. No tests changes. No scripts changes.
 - No policy change. No pyproject change. No dependency added.
 - No solver coupling. No physical phi. No calibration claims.
+
+---
+
+## v0.7.6 — AI-for-Science Parallel Track Governance & Feasibility
+
+> **Date:** 2026-06-12
+> **Type:** Documentation-only. Strategy and governance.
+
+- ADR-014 proposed: AI-for-Science Parallel Track Governance.
+- Classical track remains canonical.
+- AI-for-Science track opened as exploratory, documentation-only.
+- Decision brief scored 5 options: AIFS-A (documentation-only) recommended.
+- Council: 10 specialists, unanimous approval of documentation-only.
+- Risk matrix: 12 risks, 7 Critical, all mitigated by governance.
+- Feasibility note: PINNs, surrogates, operator learning assessed as future-only.
+- Future RED plan: 20 candidate tests defined.
+- Separation architecture: isolated namespace, optional dependencies, CI guarantees.
+- Human decision log: HDL-007 recorded.
+- Acceptance gates: 34 gates defined.
+- No src changes. No tests changes. No scripts changes.
+- No skill changes. No policy change. No pyproject change.
+- No ML dependencies. No ML imports. No AI runtime.
+- No solver replacement. No physical phi. No calibration claims. No device prediction.
