@@ -1946,3 +1946,26 @@ without claiming experimental calibration or coherence prediction.
 - Tests rewritten with stdlib csv.
 - Second CI: 5/5 SUCCESS.
 - No dependency added.
+
+---
+
+## v0.7.5 — AI-RSE Methodology Acceleration Skills Bootstrap
+
+> **Date:** 2026-06-12
+> **Type:** Documentation/skills-only.
+
+- Six new Agent Skills added to `.agent/skills/`:
+  - release-acceleration-lanes
+  - minimal-red-contract
+  - dependency-governance
+  - evidence-metrics-refresh
+  - ai-failure-mode-review
+  - human-decision-log
+- Seven reusable templates added to `docs/templates/`.
+- Release methodology checklist created.
+- Human decision log created with 6 initial entries (HDL-001 to HDL-006).
+- v0.7.5 methodology acceleration plan created.
+- v0.7.5 acceptance gates created (26 gates).
+- No src changes. No tests changes. No scripts changes.
+- No policy change. No pyproject change. No dependency added.
+- No solver coupling. No physical phi. No calibration claims.

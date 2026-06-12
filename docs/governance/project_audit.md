@@ -746,3 +746,16 @@ any calculation, formula, loop, boundary condition, or return value.
 - **Solver constraints:** No solver import. No physical phi. No calibration.
 - **Total tests:** 281 passed.
 - **Coverage:** 88%.
+
+---
+
+## v0.7.5 AI-RSE Methodology Acceleration Skills Bootstrap
+
+> **Date:** 2026-06-12
+> **Type:** Documentation/skills-only.
+
+- **Skills added:** 6 (release-acceleration-lanes, minimal-red-contract, dependency-governance, evidence-metrics-refresh, ai-failure-mode-review, human-decision-log).
+- **Templates added:** 7 reusable templates in `docs/templates/`.
+- **Governance docs added:** release methodology checklist, human decision log (6 entries).
+- **Zero code changes.** Zero test changes. Zero script changes.
+- **No solver coupling.** No physical phi. No calibration. No dependency added.

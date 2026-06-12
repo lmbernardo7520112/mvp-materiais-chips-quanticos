@@ -613,3 +613,12 @@
 - **Impact:** Demo builds confidence in C2 mapping correctness but does not verify physical behavior under solver.
 - **Status:** ACTIVE
 - **Versão-alvo:** v0.8.0 — ADR for C3 solver coupling.
+
+---
+
+### TD-METHODOLOGY-ACCELERATION-01: Methodology Acceleration Skills and Templates
+
+- **Description:** Methodology acceleration skills and templates added (v0.7.5) to reduce repetitive governance overhead while preserving ADR/TDD/CI/release discipline. Six new skills, seven templates, release methodology checklist, and human decision log created.
+- **Impact:** Reduces prompt size and documentation redundancy for future releases. Does not alter scientific behavior or code.
+- **Status:** RESOLVED (v0.7.5)
+- **Versão-alvo:** v0.7.5 — completed.
