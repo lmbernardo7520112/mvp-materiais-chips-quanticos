@@ -1982,7 +1982,7 @@ without claiming experimental calibration or coherence prediction.
 - AI-for-Science track opened as exploratory, documentation-only.
 - Decision brief scored 5 options: AIFS-A (documentation-only) recommended.
 - Council: 10 specialists, unanimous approval of documentation-only.
-- Risk matrix: 12 risks, 7 Critical, all mitigated by governance.
+- Risk matrix: 12 risks identified, 7 Critical, with mitigation plans defined.
 - Feasibility note: PINNs, surrogates, operator learning assessed as future-only.
 - Future RED plan: 20 candidate tests defined.
 - Separation architecture: isolated namespace, optional dependencies, CI guarantees.
