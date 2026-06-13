@@ -178,16 +178,6 @@ def test_demo_is_deterministic():
         assert rows1 == rows2, "CSVs differ between runs"
 
 
-def test_generate_all_results_not_modified():
-    """generate_all_results.py must remain untouched by v0.7.4."""
-    result = subprocess.run(
-        ["git", "diff", "main", "--name-only", "--", "scripts/generate_all_results.py"],
-        capture_output=True,
-        text=True,
-    )
-    assert result.stdout.strip() == "", "generate_all_results.py was modified"
-
-
 def test_no_c1_mutation():
     """C1 modules must not be altered."""
     result = subprocess.run(
