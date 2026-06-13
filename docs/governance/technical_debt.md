@@ -631,3 +631,6 @@
 - **Impact:** Opens a governed path for future ML exploration without contaminating the classical solver roadmap. No scientific behavior altered.
 - **Status:** ACTIVE
 - **Versão-alvo:** Future — activation requires accepted ADR, dependency decision, analytic benchmarks, RED tests, reproducibility plan, and human approval.
+
+### TD-C3-SOLVER-COUPLING-01
+ADR-013 proposed for staged classical C3 solver coupling strategy. No projection, no Poisson runtime and no solver coupling exists yet. Future C3 implementation requires ADR acceptance, RED tests and preservation of classical/AI-for-Science separation.

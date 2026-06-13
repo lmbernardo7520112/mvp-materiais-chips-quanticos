@@ -1992,3 +1992,18 @@ without claiming experimental calibration or coherence prediction.
 - No skill changes. No policy change. No pyproject change.
 - No ML dependencies. No ML imports. No AI runtime.
 - No solver replacement. No physical phi. No calibration claims. No device prediction.
+
+### Phase 14: v0.8.0 — ADR-C3 Solver Coupling Strategy (Documentation-only)
+
+- ADR-013 proposed: C3 Solver Coupling Strategy.
+- C3-A (Conservative grid projection) recommended as primary future RED path.
+- C3-D/E/F (Self-consistent, device-predictive, AI-for-Science replacement) blocked.
+- Decision brief scored 6 options: C3-A recommended.
+- Council: 10 specialists, unanimous approval of C3-A as future path.
+- Risk matrix: 12 risks, 7 Critical, with mitigation plans defined.
+- Future RED plan: 20 candidate tests defined.
+- Evidence note: Rationale for staged coupling defined.
+- Human decision log: HDL-008 recorded.
+- Acceptance gates: 33 gates defined.
+- No src changes. No tests changes. No scripts changes.
+- No solver coupling. No Poisson runtime. No physical phi. No AI-for-Science runtime.
