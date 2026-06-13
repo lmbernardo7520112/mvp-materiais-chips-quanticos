@@ -159,3 +159,27 @@ This log captures critical human decisions made during AI-assisted development o
   * no dependency
   * no C3 interaction
 * reversible: yes, through future ADR
+
+## HDL-011 — One-way Poisson Coupling Strategy (ADR-016)
+
+* release/package: v0.8.5
+* human decision: advance classical track with a one-way demonstrative coupling to the Poisson solver
+* rationale: demonstrate C3 charge electrostatics without self-consistency, preserving C3 isolation and scope
+* alternatives rejected:
+  * self-consistent coupling
+  * full drift-diffusion coupling
+  * implement Poisson runtime now
+  * produce physical phi now
+  * claim calibration or device prediction
+  * involve AI-for-Science runtime
+* consequence:
+  * ADR-016 Proposed
+  * documentation-only phase
+  * no implementation or testing authorized yet
+  * no Poisson runtime
+  * no physical phi
+  * no solver coupling
+  * no calibration claims
+  * no device prediction
+  * no AIFS runtime
+* reversible: yes, through future ADR acceptance or rejection
