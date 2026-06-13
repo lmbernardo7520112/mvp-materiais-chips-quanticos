@@ -10,10 +10,12 @@ class GridGeometry:
     cell_area: float | None = None
     cell_volume: float | None = None
 
+
 @dataclass
 class BoundaryConditionMetadata:
     boundary_type: str
     metadata: dict[str, Any] = field(default_factory=dict)
+
 
 @dataclass
 class ProjectedC3Source:
@@ -30,6 +32,7 @@ class ProjectedC3Source:
     def total_charge(self) -> float:
         return self.total_projected_charge
 
+
 def project_c2_source_to_grid(
     source: dict[str, Any],
     domain: Any,
@@ -37,7 +40,7 @@ def project_c2_source_to_grid(
     cell_area: float | None = None,
     cell_volume: float | None = None,
     bc_metadata: Any | None = "default",
-    geometry_label: str | None = "default"
+    geometry_label: str | None = "default",
 ) -> ProjectedC3Source:
     if domain is None:
         raise ValueError("domain is required")
@@ -65,8 +68,9 @@ def project_c2_source_to_grid(
         total_source_charge=total_charge,
         total_projected_charge=total_charge,
         charge_conservation_error=0.0,
-        metadata=metadata
+        metadata=metadata,
     )
+
 
 def validate_projected_charge_conservation(
     source_charge: float, projected_charge: float, tol: float = 1e-25
