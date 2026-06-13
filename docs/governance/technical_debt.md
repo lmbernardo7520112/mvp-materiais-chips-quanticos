@@ -634,3 +634,16 @@
 
 ### TD-C3-SOLVER-COUPLING-01
 ADR-013 accepted in v0.8.1 for future RED only. C3 projection implementation remains pending and requires v0.8.2 RED before any GREEN.
+
+## AIFS-001 Analytic Benchmark Design
+
+* AIFS-001 documentation-only benchmark design iniciado.
+* Não interfere com v0.8.2 C3 RED.
+* Não adiciona dependências.
+* Não cria PINN.
+* Não cria surrogate.
+* Não toca C1/C2/C3.
+* Classical Track permanece canônica.
+
+### TD-AIFS-001
+AIFS analytic benchmark design exists only as documentation. Future implementation requires ADR-015 acceptance, dependency decision if ML packages are proposed, RED tests, reproducibility protocol, and strict isolation from C1/C2/C3.

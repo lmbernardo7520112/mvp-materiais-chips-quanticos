@@ -140,3 +140,22 @@ This log captures critical human decisions made during AI-assisted development o
   - no GREEN authorized
   - no solver runtime authorized
 - **Reversible:** conditional, through future ADR amendment
+
+## HDL-010 — Advance AI-for-Science only as analytic benchmark design
+
+* release/package: AIFS-001
+* human decision: advance AI-for-Science in parallel only through documentation-only analytic benchmark design
+* rationale: allow parallel intellectual progress without contaminating C3 classical development
+* alternatives rejected:
+  * implement PINN now
+  * add ML dependencies now
+  * create notebook now
+  * use C1/C2/C3 as ML benchmark now
+  * replace classical solver
+* consequence:
+  * ADR-015 Proposed
+  * benchmark design created
+  * no runtime
+  * no dependency
+  * no C3 interaction
+* reversible: yes, through future ADR

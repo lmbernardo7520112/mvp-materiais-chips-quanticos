@@ -806,3 +806,13 @@ any calculation, formula, loop, boundary condition, or return value.
 - **No RED:** True.
 - **No solver runtime:** True.
 - **No physical phi:** True.
+
+## AIFS-001 Analytic Benchmark Design
+
+* AIFS-001 documentation-only benchmark design iniciado.
+* Não interfere com v0.8.2 C3 RED.
+* Não adiciona dependências.
+* Não cria PINN.
+* Não cria surrogate.
+* Não toca C1/C2/C3.
+* Classical Track permanece canônica.
