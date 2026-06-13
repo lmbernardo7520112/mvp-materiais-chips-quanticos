@@ -2007,3 +2007,14 @@ without claiming experimental calibration or coherence prediction.
 - Acceptance gates: 33 gates defined.
 - No src changes. No tests changes. No scripts changes.
 - No solver coupling. No Poisson runtime. No physical phi. No AI-for-Science runtime.
+
+### Phase 15: v0.8.1 — ADR-013 Acceptance Review
+
+- v0.8.1 acceptance review created.
+- 30 acceptance criteria evaluated.
+- council created.
+- ADR-013 accepted.
+- no implementation.
+- no RED.
+- no solver runtime.
+- no physical phi.
