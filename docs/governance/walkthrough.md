@@ -2042,3 +2042,4 @@ without claiming experimental calibration or coherence prediction.
 * Sem Poisson runtime.
 * Sem physical phi.
 * Sem AI-for-Science runtime.
+* Audit após AIFS-001: branch atualizada com main preservando ambas as trilhas, RED focal reexecutado e verificado bloqueios, AIFS-001 isolado.

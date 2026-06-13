@@ -830,3 +830,4 @@ any calculation, formula, loop, boundary condition, or return value.
 * Sem Poisson runtime.
 * Sem physical phi.
 * Sem AI-for-Science runtime.
+* Audit após AIFS-001: branch atualizada, RED focal reexecutado com falhas esperadas, c3_solver_projection.py continua ausente.
