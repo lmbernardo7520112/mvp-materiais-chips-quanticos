@@ -123,3 +123,20 @@ This log captures critical human decisions made during AI-assisted development o
   - no tests
   - future C3 RED requires ADR-013 acceptance
 - **Reversible:** conditional, through future ADR
+
+## HDL-009 — Decide ADR-013 acceptance scope for C3 conservative grid projection
+
+- **Release:** v0.8.1
+- **Human Decision:** accept ADR-013 only if acceptance criteria are satisfied
+- **Rationale:** permit future RED while blocking implementation and solver runtime
+- **Alternatives Rejected:**
+  - implement C3 immediately
+  - create RED before ADR acceptance
+  - run Poisson from C2/C3 now
+  - allow physical phi
+  - involve AI-for-Science runtime
+- **Consequence:**
+  - if accepted, v0.8.2 may create C3 RED
+  - no GREEN authorized
+  - no solver runtime authorized
+- **Reversible:** conditional, through future ADR amendment

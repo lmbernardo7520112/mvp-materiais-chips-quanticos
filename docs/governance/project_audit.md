@@ -793,3 +793,16 @@ any calculation, formula, loop, boundary condition, or return value.
 - **HDL-008:** Recorded.
 - **Zero code changes.** Zero test changes. Zero script changes.
 - **No solver coupling.** No physical phi. No AI-for-Science runtime.
+
+## v0.8.1 ADR-013 Acceptance Review
+
+> **Date:** 2026-06-12
+> **Type:** Documentation-only.
+
+- **Acceptance Review:** Created and evaluated 30 criteria.
+- **Council:** Formed and concluded with Accept.
+- **ADR-013:** Accepted.
+- **No implementation:** True.
+- **No RED:** True.
+- **No solver runtime:** True.
+- **No physical phi:** True.
