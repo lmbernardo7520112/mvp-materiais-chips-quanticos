@@ -1,16 +1,43 @@
 # Acceptance Gates for ADR-016 One-way Poisson Coupling
 
-To transition ADR-016 from `Proposed` to `Accepted`, the following gates must be cleared:
+## v0.8.5 Documentation-Only Gates
 
-1. **Gate 1: Methodological Alignment**
-   - Confirm that one-way coupling aligns with the incremental demonstrative goals of the project.
-   - Confirm that self-consistency remains strictly deferred.
+The following gates must be satisfied for v0.8.5 to be merged. These verify that the release is strictly documentation-only:
 
-2. **Gate 2: Scientific Integrity**
-   - Confirm the scale modes (Option B) are correctly utilized in the proposed coupling.
-   - Confirm that the risk matrix adequately addresses the danger of false physical claims.
+| Gate | Criterion | Status |
+| :--- | :--- | :--- |
+| G1 | Release is documentation-only. | |
+| G2 | Zero `src/` changes. | |
+| G3 | Zero `tests/` changes. | |
+| G4 | Zero `scripts/` changes. | |
+| G5 | `pyproject.toml` unchanged. | |
+| G6 | `tools/quality_gates/policy.json` unchanged. | |
+| G7 | `.agent/skills/` unchanged. | |
+| G8 | ADR-016 status = Proposed. | |
+| G9 | No Poisson runtime. | |
+| G10 | No solver coupling. | |
+| G11 | No physical phi. | |
+| G12 | No dummy phi. | |
+| G13 | No potential grid. | |
+| G14 | No calibration claims. | |
+| G15 | No device prediction. | |
+| G16 | No AIFS runtime. | |
+| G17 | Quality gates PASS. | |
+| G18 | pytest PASS. | |
+| G19 | Coverage >= 70%. | |
+| G20 | ruff PASS. | |
+| G21 | pyright 0 errors. | |
+| G22 | `generate_all_results` PASS. | |
+| G23 | CI PASS. | |
 
-3. **Gate 3: Process Adherence**
-   - Confirm that no implementation code has been written during the Proposal phase.
+## Future ADR-016 Acceptance Gates
 
-Upon acceptance, a dedicated RED phase branch may be created to implement the tests for the one-way Poisson coupling.
+To transition ADR-016 from `Proposed` to `Accepted`, the following additional gates must be cleared in a dedicated acceptance review release (e.g. v0.8.6):
+
+1. **Methodological Alignment** — Confirm that one-way coupling aligns with the incremental demonstrative goals.
+2. **Scientific Integrity** — Confirm Option B scale modes are correctly proposed.
+3. **Risk Matrix Completeness** — Confirm all 10 risks are addressed.
+4. **Process Adherence** — Confirm no implementation occurred during the Proposal phase.
+5. **Council Deliberation** — Form council and record vote.
+
+Upon acceptance, a dedicated RED phase branch may be created.

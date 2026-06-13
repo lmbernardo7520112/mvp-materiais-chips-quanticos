@@ -26,3 +26,19 @@ Implement a one-way, non-self-consistent pass of the projected charge through `p
 1. Propose ADR-016 (Done).
 2. Convene council for ADR-016 review.
 3. If accepted, initiate C3 Poisson Coupling RED phase.
+
+## v0.8.5 Scope
+
+This release (v0.8.5) is **documentation-only**. ADR-016 status remains **Proposed**.
+
+v0.8.5 does not authorize:
+
+* Implementation of any kind.
+* Poisson runtime or solver coupling.
+* Physical phi interpretation.
+* Dummy phi outputs.
+* Potential grid generation.
+* Calibration claims or device prediction.
+* AI-for-Science runtime, PINN, or surrogate models.
+
+Any future implementation requires ADR-016 acceptance review, TDD RED/GREEN phases, explicit no-physical-phi guardrails, and full CI validation.

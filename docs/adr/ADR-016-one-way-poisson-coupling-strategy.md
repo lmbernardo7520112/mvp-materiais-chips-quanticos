@@ -66,3 +66,31 @@ This ADR proposes future implementation of the one-way coupling.
 * The system will gain a complete, albeit demonstrative, forward path from defect distribution to electrostatic potential.
 * Test coverage will need to ensure self-consistency loops are NOT accidentally invoked.
 * Output artifacts must clearly flag the potential as `demonstrative`.
+* Physical interpretation remains blocked until a dedicated posterior ADR.
+* Any eventual solver output must be treated as a demonstrative numerical field, not as a physically calibrated potential.
+
+## Non-Authorization Clause
+
+ADR-016, while Proposed, does not authorize:
+
+* code changes;
+* tests;
+* Poisson runtime;
+* solver coupling;
+* physical phi interpretation;
+* dummy phi;
+* potential grid;
+* voltage output;
+* electrostatic potential output;
+* quantum confinement;
+* calibration claims;
+* device prediction;
+* AI-for-Science runtime.
+
+Any future implementation requires:
+
+* ADR-016 acceptance review;
+* RED phase;
+* GREEN phase;
+* explicit no-physical-phi guardrails;
+* full validation and CI.
