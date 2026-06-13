@@ -2028,3 +2028,21 @@ without claiming experimental calibration or coherence prediction.
 * Não cria surrogate.
 * Não toca C1/C2/C3.
 * Classical Track permanece canônica.
+
+## v0.8.2 C3 RED
+
+* v0.8.2 C3 RED iniciado.
+* ADR-013 Accepted em v0.8.1.
+* Testes RED criados.
+* Módulo c3_solver_projection.py ausente.
+* RED executado.
+* Falhas esperadas por ModuleNotFoundError / ImportError.
+* Sem implementação.
+* Sem solver coupling.
+* Sem Poisson runtime.
+* Sem physical phi.
+* Sem AI-for-Science runtime.
+* Audit após AIFS-001: branch atualizada com main preservando ambas as trilhas, RED focal reexecutado e verificado bloqueios, AIFS-001 isolado.
+
+### v0.8.3 C3 GREEN
+Three RED sentinel tests that previously expected ImportError were converted into GREEN isolation tests after the authorized creation of c3_solver_projection.py. This does not weaken the test suite; it preserves the original guardrails by checking successful import plus absence of solver, Poisson runtime, ML imports, physical phi and AI-for-Science contamination.
