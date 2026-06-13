@@ -106,3 +106,20 @@ This log captures critical human decisions made during AI-assisted development o
 - **Files Affected:** Documentation only. Zero src/tests/scripts/pyproject changes.
 - **Future Consequence:** ADR-014 proposed. No code, no dependency. Future implementation requires accepted ADR, dependency decision, analytic benchmarks, RED tests, reproducibility plan, and human approval.
 - **Reversible:** Yes — through future ADR acceptance or rejection.
+
+## HDL-008 — Resume classical C3 solver coupling strategy after opening AI-for-Science parallel track
+
+- **Release:** v0.8.0
+- **Human Decision:** keep classical C3 as primary roadmap and treat AI-for-Science as future parallel, non-blocking track
+- **Rationale:** preserve solver traceability and avoid contaminating classical physics path
+- **Alternatives Rejected:**
+  - direct Poisson coupling now
+  - implement PINN/surrogate before C3 projection
+  - replace classical solver
+  - claim physical phi before projection and solver gates
+- **Consequence:**
+  - ADR-013 Proposed
+  - no code
+  - no tests
+  - future C3 RED requires ADR-013 acceptance
+- **Reversible:** conditional, through future ADR

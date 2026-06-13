@@ -777,3 +777,19 @@ any calculation, formula, loop, boundary condition, or return value.
 - **HDL-007:** Recorded.
 - **Zero code changes.** Zero test changes. Zero script changes.
 - **No ML dependencies.** No ML imports. No solver replacement. No physical claims.
+
+## v0.8.0 C3 Solver Coupling Strategy
+
+> **Date:** 2026-06-12
+> **Type:** Documentation-only.
+
+- **ADR-013:** Proposed. C3 Solver Coupling Strategy.
+- **C3-A:** Primary future path (Conservative grid projection).
+- **C3-B/C:** Future/Conditional paths.
+- **C3-D/E/F:** Blocked paths.
+- **Council:** 10 specialists, unanimous approval.
+- **Risk matrix:** 12 risks, 7 Critical.
+- **Future RED plan:** 20 candidate tests.
+- **HDL-008:** Recorded.
+- **Zero code changes.** Zero test changes. Zero script changes.
+- **No solver coupling.** No physical phi. No AI-for-Science runtime.
