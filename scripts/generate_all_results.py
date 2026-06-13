@@ -304,7 +304,19 @@ def main(output_dir: Path) -> None:
         check=True,
     )
 
-    print("[10/10] Summary")
+    print("[11/11] C3 Projection Demo (v0.8.4)")
+    print("  Running C3 grid projection sanity demo...")
+    subprocess.run(
+        [
+            sys.executable,
+            "scripts/run_c3_projection_demo.py",
+            "--output-dir",
+            str(output_dir),
+        ],
+        check=True,
+    )
+
+    print("[10/11] Summary")
     figures = list(output_dir.glob("*.png"))
     csvs = list(tables_dir.glob("*.csv"))
     print("=" * 60)
