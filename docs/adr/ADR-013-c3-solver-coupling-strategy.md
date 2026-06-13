@@ -2,7 +2,26 @@
 
 ## Status
 
-Proposed
+Accepted
+
+## Acceptance Note
+
+Accepted in v0.8.1.
+
+This acceptance authorizes only future RED planning for C3 conservative grid projection.
+
+It does not authorize:
+
+* C3 implementation;
+* Poisson runtime;
+* solver coupling;
+* physical phi interpretation;
+* quantum confinement;
+* AI-for-Science runtime;
+* calibration claims;
+* device prediction.
+
+Future implementation requires a separate RED phase and later GREEN phase.
 
 ## Date
 
