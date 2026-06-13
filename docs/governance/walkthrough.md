@@ -2043,3 +2043,6 @@ without claiming experimental calibration or coherence prediction.
 * Sem physical phi.
 * Sem AI-for-Science runtime.
 * Audit após AIFS-001: branch atualizada com main preservando ambas as trilhas, RED focal reexecutado e verificado bloqueios, AIFS-001 isolado.
+
+### v0.8.3 C3 GREEN
+Three RED sentinel tests that previously expected ImportError were converted into GREEN isolation tests after the authorized creation of c3_solver_projection.py. This does not weaken the test suite; it preserves the original guardrails by checking successful import plus absence of solver, Poisson runtime, ML imports, physical phi and AI-for-Science contamination.
