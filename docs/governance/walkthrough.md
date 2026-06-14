@@ -2047,3 +2047,13 @@ without claiming experimental calibration or coherence prediction.
 ### v0.8.3 C3 GREEN
 Three RED sentinel tests that previously expected ImportError were converted into GREEN isolation tests after the authorized creation of c3_solver_projection.py. This does not weaken the test suite; it preserves the original guardrails by checking successful import plus absence of solver, Poisson runtime, ML imports, physical phi and AI-for-Science contamination.
 \n- v0.8.4: Added C3 Projection Demo script and tests. Ensured solver isolation.
+
+### Phase 16: v0.8.5 — ADR-016 One-way Poisson Coupling Strategy (Documentation-only)
+
+- ADR-016 proposed: One-way Poisson Coupling Strategy.
+- Documentation-only phase.
+- Proposed one-way demonstrative coupling to propose a future, one-way, non-physical-interpretation strategy for feeding a numerical source representation into a Poisson demonstration layer, only after ADR acceptance and future RED/GREEN phases.
+- Rejected self-consistent coupling and full drift-diffusion coupling.
+- No implementation, code changes, or testing authorized in this phase.
+- AI-for-Science track remains separate.
+- Classical track maintains isolation from predictive physical claims.
