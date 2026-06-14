@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "budget_mode": "strict",
+  "currency": "BRL",
+  "monetary_budget": {
+    "max_total_estimated_cost_brl": 0.0,
+    "external_paid_api_allowed": false,
+    "requires_human_approval_to_increase": true
+  },
+  "llm_budget": {
+    "max_llm_calls_per_goal": 0,
+    "max_autonomous_goal_loops": 0,
+    "max_retry_cycles": 2,
+    "max_context_refreshes": 3,
+    "requires_human_approval_for_goal_mode": true,
+    "requires_human_approval_for_sdk_use": true
+  },
+  "execution_budget": {
+    "max_shell_commands_per_phase": 40,
+    "max_minutes_per_phase": 30,
+    "max_ci_watch_minutes": 15,
+    "max_failed_validation_attempts": 2,
+    "max_files_changed": 15,
+    "max_diff_lines": 1200
+  },
+  "artifact_budget": {
+    "max_new_files": 12,
+    "max_artifact_size_mb": 10,
+    "max_total_generated_artifacts_mb": 50,
+    "max_artifacts_generated": 100
+  },
+  "usage_accounting": {
+    "usage_ledger_required": true,
+    "usage_summary_required": true,
+    "human_review_required_before_merge": true,
+    "human_review_required_before_tag": true,
+    "fail_if_ledger_missing": true,
+    "fail_if_cost_unknown_when_paid_api_used": true
+  },
+  "stop_conditions": [
+    "estimated_cost_exceeds_budget",
+    "paid_api_requested_without_approval",
+    "sdk_requested_without_approval",
+    "goal_mode_requested_without_approval",
+    "retry_limit_exceeded",
+    "ci_watch_timeout_exceeded",
+    "diff_size_exceeded",
+    "unexpected_pyproject_change",
+    "unexpected_policy_change",
+    "unexpected_skills_change",
+    "scientific_guardrail_violation"
+  ]
+}

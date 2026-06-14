@@ -1,0 +1,280 @@
+# AI-RSE Release Rules
+# Defines policies for each release type.
+# The agentic workflow reads these rules to enforce scope boundaries.
+
+budget_guardrails:
+  required: true
+  default_mode: strict
+  external_paid_api_allowed_by_default: false
+  require_human_approval_for:
+    - increase_budget
+    - use_paid_api
+    - use_external_sdk
+    - enable_goal_mode
+    - increase_llm_call_limit
+    - increase_retry_limit
+    - increase_ci_watch_limit
+  blocked:
+    - unlimited_goal_loop
+    - unbounded_retry
+    - unbounded_ci_watch
+    - autonomous_budget_increase
+    - paid_api_without_budget
+    - sdk_without_approval
+
+usage_ledger_guardrails:
+  required: true
+  required_for_autonomous_phases: true
+  require_human_review_before:
+    - merge_pr
+    - create_tag
+    - accept_adr
+    - increase_budget
+  blocked_if_missing:
+    - autonomous_phase
+    - goal_mode
+    - external_sdk
+    - paid_api
+
+release_types:
+
+  docs_only:
+    description: "Documentation-only release. No code, no tests, no scripts."
+    allowed_paths:
+      - "docs/"
+      - ".agent/"
+    forbidden_paths:
+      - "src/"
+      - "tests/"
+      - "scripts/"
+      - "results/"
+      - "tools/quality_gates/policy.json"
+      - "pyproject.toml"
+    required_checks:
+      - quality_gates
+      - pytest
+      - coverage
+      - ruff_check
+      - ruff_format
+      - pyright
+      - generate_all_results
+      - git_diff_scope
+    human_approval_required:
+      - merge_pr
+      - create_tag
+    forbidden_runtime_claims:
+      - solver_coupling
+      - poisson_runtime
+      - physical_phi
+      - calibration_claim
+      - device_prediction
+      - aifs_runtime
+    budget_required: true
+    max_retry_cycles: 2
+    max_ci_watch_minutes: 15
+    allow_paid_api: false
+    allow_external_sdk: false
+    allow_goal_mode: false
+    usage_ledger_required: true
+    usage_summary_required: true
+    human_review_of_usage_required: true
+
+  red:
+    description: "RED phase — create failing tests only. No production code."
+    allowed_paths:
+      - "tests/"
+      - "docs/"
+    forbidden_paths:
+      - "src/"
+      - "scripts/"
+      - "results/"
+      - "tools/quality_gates/policy.json"
+      - "pyproject.toml"
+      - ".agent/skills/"
+    required_checks:
+      - quality_gates
+      - ruff_check
+      - ruff_format
+      - pyright
+      - git_diff_scope
+    human_approval_required:
+      - merge_pr
+      - create_tag
+      - accept_adr
+    forbidden_runtime_claims:
+      - solver_coupling
+      - poisson_runtime
+      - physical_phi
+      - calibration_claim
+      - device_prediction
+      - aifs_runtime
+    budget_required: true
+    max_retry_cycles: 2
+    max_ci_watch_minutes: 15
+    allow_paid_api: false
+    allow_external_sdk: false
+    allow_goal_mode: false
+    usage_ledger_required: true
+    usage_summary_required: true
+    human_review_of_usage_required: true
+
+  green:
+    description: "GREEN phase — implement minimal code to pass RED tests."
+    allowed_paths:
+      - "src/"
+      - "tests/"
+      - "docs/"
+      - "scripts/"
+    forbidden_paths:
+      - "tools/quality_gates/policy.json"
+      - "pyproject.toml"
+      - ".agent/skills/"
+    required_checks:
+      - quality_gates
+      - pytest
+      - coverage
+      - ruff_check
+      - ruff_format
+      - pyright
+      - generate_all_results
+      - git_diff_scope
+    human_approval_required:
+      - merge_pr
+      - create_tag
+      - accept_adr
+      - add_dependency
+      - change_pyproject
+    forbidden_runtime_claims:
+      - poisson_runtime
+      - physical_phi
+      - calibration_claim
+      - device_prediction
+      - aifs_runtime
+    budget_required: true
+    max_retry_cycles: 2
+    max_ci_watch_minutes: 15
+    allow_paid_api: false
+    allow_external_sdk: false
+    allow_goal_mode: false
+    usage_ledger_required: true
+    usage_summary_required: true
+    human_review_of_usage_required: true
+
+  demo:
+    description: "Demo/sanity check release — generate demonstrative results."
+    allowed_paths:
+      - "scripts/"
+      - "docs/"
+      - "results/"
+    forbidden_paths:
+      - "src/"
+      - "tests/"
+      - "tools/quality_gates/policy.json"
+      - "pyproject.toml"
+      - ".agent/skills/"
+    required_checks:
+      - quality_gates
+      - pytest
+      - coverage
+      - ruff_check
+      - ruff_format
+      - pyright
+      - generate_all_results
+      - git_diff_scope
+    human_approval_required:
+      - merge_pr
+      - create_tag
+    forbidden_runtime_claims:
+      - calibration_claim
+      - device_prediction
+    budget_required: true
+    max_retry_cycles: 2
+    max_ci_watch_minutes: 15
+    allow_paid_api: false
+    allow_external_sdk: false
+    allow_goal_mode: false
+    usage_ledger_required: true
+    usage_summary_required: true
+    human_review_of_usage_required: true
+
+  audit:
+    description: "Audit release — review existing code and documentation quality."
+    allowed_paths:
+      - "docs/"
+    forbidden_paths:
+      - "src/"
+      - "tests/"
+      - "scripts/"
+      - "results/"
+      - "tools/quality_gates/policy.json"
+      - "pyproject.toml"
+      - ".agent/skills/"
+    required_checks:
+      - quality_gates
+      - pytest
+      - coverage
+      - ruff_check
+      - ruff_format
+      - pyright
+      - generate_all_results
+    human_approval_required:
+      - merge_pr
+      - create_tag
+    forbidden_runtime_claims:
+      - solver_coupling
+      - poisson_runtime
+      - physical_phi
+      - calibration_claim
+      - device_prediction
+      - aifs_runtime
+    budget_required: true
+    max_retry_cycles: 2
+    max_ci_watch_minutes: 15
+    allow_paid_api: false
+    allow_external_sdk: false
+    allow_goal_mode: false
+    usage_ledger_required: true
+    usage_summary_required: true
+    human_review_of_usage_required: true
+
+  acceptance_review:
+    description: "ADR acceptance review — evaluate whether an ADR should be promoted."
+    allowed_paths:
+      - "docs/"
+    forbidden_paths:
+      - "src/"
+      - "tests/"
+      - "scripts/"
+      - "results/"
+      - "tools/quality_gates/policy.json"
+      - "pyproject.toml"
+      - ".agent/skills/"
+    required_checks:
+      - quality_gates
+      - pytest
+      - coverage
+      - ruff_check
+      - ruff_format
+      - pyright
+      - generate_all_results
+      - git_diff_scope
+    human_approval_required:
+      - merge_pr
+      - create_tag
+      - accept_adr
+    forbidden_runtime_claims:
+      - solver_coupling
+      - poisson_runtime
+      - physical_phi
+      - calibration_claim
+      - device_prediction
+      - aifs_runtime
+    budget_required: true
+    max_retry_cycles: 2
+    max_ci_watch_minutes: 15
+    allow_paid_api: false
+    allow_external_sdk: false
+    allow_goal_mode: false
+    usage_ledger_required: true
+    usage_summary_required: true
+    human_review_of_usage_required: true

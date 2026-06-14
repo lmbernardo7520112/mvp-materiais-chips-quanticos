@@ -1,0 +1,141 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AI-RSE Agentic Workflow State",
+  "description": "Schema for the agentic workflow state file that governs agent autonomy boundaries.",
+  "type": "object",
+  "required": [
+    "current_release",
+    "current_phase",
+    "track",
+    "branch",
+    "allowed_paths",
+    "forbidden_paths",
+    "forbidden_terms",
+    "required_skills",
+    "required_checks",
+    "human_approval_required_for",
+    "next_allowed_actions",
+    "blocked_actions",
+    "budget",
+    "usage_ledger"
+  ],
+  "properties": {
+    "current_release": {
+      "type": "string",
+      "description": "The semantic version of the current release being worked on.",
+      "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "current_phase": {
+      "type": "string",
+      "description": "The current TDD or governance phase.",
+      "enum": ["PLANNING", "RED", "GREEN", "REFACTOR", "DEMO", "AUDIT", "ACCEPTANCE_REVIEW", "DOCS_ONLY", "CLOSED"]
+    },
+    "track": {
+      "type": "string",
+      "description": "Which development track this release belongs to.",
+      "enum": ["classical", "ai_for_science", "infrastructure"]
+    },
+    "adr_id": {
+      "type": ["string", "null"],
+      "description": "The ADR governing this release, if any."
+    },
+    "branch": {
+      "type": "string",
+      "description": "The git branch for this release."
+    },
+    "allowed_paths": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "File or directory paths the agent is authorized to create or modify."
+    },
+    "forbidden_paths": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "File or directory paths the agent must never modify without human approval."
+    },
+    "forbidden_terms": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Terms or regex patterns that must not appear in new code or documentation as affirmative claims."
+    },
+    "required_skills": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Agent skills that must be read and activated for this release."
+    },
+    "required_checks": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Validation checks that must pass before the agent can request human review."
+    },
+    "human_approval_required_for": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "description": "Actions that require explicit human approval. Must always include merge_pr, create_tag, and accept_adr."
+    },
+    "next_allowed_actions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Actions the agent is currently authorized to perform autonomously."
+    },
+    "blocked_actions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Actions the agent is explicitly prohibited from performing."
+    },
+    "budget": {
+      "type": "object",
+      "description": "BudgetOps constraints governing cost, token, and resource limits.",
+      "required": [
+        "budget_limits_file",
+        "budget_mode",
+        "external_paid_api_allowed",
+        "max_total_estimated_cost_brl",
+        "max_llm_calls_per_goal",
+        "max_autonomous_goal_loops",
+        "max_retry_cycles",
+        "max_ci_watch_minutes",
+        "requires_human_approval_to_increase_budget",
+        "requires_human_approval_for_sdk_use",
+        "requires_human_approval_for_goal_mode"
+      ],
+      "properties": {
+        "budget_limits_file": { "type": "string" },
+        "budget_mode": { "type": "string", "enum": ["strict", "advisory"] },
+        "external_paid_api_allowed": { "type": "boolean" },
+        "max_total_estimated_cost_brl": { "type": "number", "minimum": 0 },
+        "max_llm_calls_per_goal": { "type": "integer", "minimum": 0 },
+        "max_autonomous_goal_loops": { "type": "integer", "minimum": 0, "maximum": 5 },
+        "max_retry_cycles": { "type": "integer", "minimum": 0, "maximum": 5 },
+        "max_ci_watch_minutes": { "type": "integer", "minimum": 1, "maximum": 60 },
+        "requires_human_approval_to_increase_budget": { "type": "boolean" },
+        "requires_human_approval_for_sdk_use": { "type": "boolean" },
+        "requires_human_approval_for_goal_mode": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "usage_ledger": {
+      "type": "object",
+      "description": "Configuration for usage ledger and cost accounting.",
+      "required": [
+        "enabled",
+        "ledger_file",
+        "schema_file",
+        "required_for_autonomous_phases",
+        "requires_human_review_before_merge",
+        "requires_human_review_before_tag"
+      ],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "ledger_file": { "type": "string" },
+        "schema_file": { "type": "string" },
+        "required_for_autonomous_phases": { "type": "boolean" },
+        "requires_human_review_before_merge": { "type": "boolean" },
+        "requires_human_review_before_tag": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
