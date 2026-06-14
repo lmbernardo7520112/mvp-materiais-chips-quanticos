@@ -668,3 +668,10 @@ AIFS analytic benchmark design exists only as documentation. Future implementati
 - **Status:** DEFERRED
 - **Pre-requisite:** Create RED planning phase for ADR-016.
 - **Versão-alvo:** Future RED planning release.
+
+### TD-v0.8.7: Future RED tests still pending
+- **Description:** v0.8.7 planned 10 future RED test categories for the one-way Poisson coupling. No RED tests were created in this release by design.
+- **Impact:** The RED phase cannot begin until a future release (v0.8.8 or later) is explicitly authorized by the human.
+- **Status:** DEFERRED
+- **Pre-requisite:** Human approval (HDL entry) for v0.8.8 RED.
+- **Versão-alvo:** v0.8.8 or later.

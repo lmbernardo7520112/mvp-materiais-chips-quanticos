@@ -855,3 +855,18 @@ any calculation, formula, loop, boundary condition, or return value.
 - **HDL-012:** Recorded.
 - **Zero code changes.** Zero test changes. Zero script changes.
 - **No solver coupling.** No Poisson runtime. No physical phi. No AI-for-Science runtime.
+
+## v0.8.7 One-way Poisson Coupling RED Planning Only
+
+> **Date:** 2026-06-14
+> **Type:** Documentation-only / RED planning.
+
+- **Autonomy mode:** Assisted only.
+- **External cost:** R$ 0.00.
+- **No paid API.** No external SDK. No goal-like autonomous execution.
+- **10 future RED categories** planned.
+- **15 risks** identified with mitigations.
+- **35 acceptance gates** defined.
+- **HDL-013:** Recorded.
+- **Zero code changes.** Zero test changes. Zero script changes.
+- **No RED tests created.** No implementation. No Poisson runtime. No physical phi.

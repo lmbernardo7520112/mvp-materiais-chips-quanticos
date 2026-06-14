@@ -197,3 +197,25 @@ This log captures critical human decisions made during AI-assisted development o
 - **Files Affected:** `docs/adr/ADR-016-one-way-poisson-coupling-strategy.md` status updated.
 - **Future Consequence:** Future RED phase is allowed, but no implementation, Poisson runtime, or dummy phi output is authorized yet. BudgetOps and Usage Ledger are mandatory.
 - **Reversible:** Yes — RED plans can be rejected.
+
+## HDL-013 — Authorize assisted autonomy dry-run for v0.8.7 RED planning only
+
+- **Date:** 2026-06-14
+- **Release:** v0.8.7
+- **Human Decision:** Authorize assisted autonomy dry-run for RED planning documentation.
+- **Rationale:** Test the Autonomy-001/002 infrastructure in assisted mode with zero external cost.
+- **Constraints:**
+  * No `/goal`.
+  * No goal-like autonomous execution.
+  * No external SDK.
+  * No paid API.
+  * No implementation.
+  * No tests.
+  * No merge (PR only).
+  * No tag.
+  * External estimated cost: R$ 0.00.
+- **Alternatives Rejected:** Full autonomous execution; deferred planning.
+- **Evidence:** `docs/governance/v0.8.7_autonomy_usage_report.md`.
+- **Files Affected:** Documentation only in `docs/`.
+- **Future Consequence:** Future v0.8.8 RED tests require new human approval.
+- **Reversible:** Yes — PR can be closed without merge.
