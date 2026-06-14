@@ -26,7 +26,16 @@
   "artifact_budget": {
     "max_new_files": 12,
     "max_artifact_size_mb": 10,
-    "max_total_generated_artifacts_mb": 50
+    "max_total_generated_artifacts_mb": 50,
+    "max_artifacts_generated": 100
+  },
+  "usage_accounting": {
+    "usage_ledger_required": true,
+    "usage_summary_required": true,
+    "human_review_required_before_merge": true,
+    "human_review_required_before_tag": true,
+    "fail_if_ledger_missing": true,
+    "fail_if_cost_unknown_when_paid_api_used": true
   },
   "stop_conditions": [
     "estimated_cost_exceeds_budget",

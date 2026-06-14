@@ -16,7 +16,8 @@
     "human_approval_required_for",
     "next_allowed_actions",
     "blocked_actions",
-    "budget"
+    "budget",
+    "usage_ledger"
   ],
   "properties": {
     "current_release": {
@@ -111,6 +112,27 @@
         "requires_human_approval_to_increase_budget": { "type": "boolean" },
         "requires_human_approval_for_sdk_use": { "type": "boolean" },
         "requires_human_approval_for_goal_mode": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "usage_ledger": {
+      "type": "object",
+      "description": "Configuration for usage ledger and cost accounting.",
+      "required": [
+        "enabled",
+        "ledger_file",
+        "schema_file",
+        "required_for_autonomous_phases",
+        "requires_human_review_before_merge",
+        "requires_human_review_before_tag"
+      ],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "ledger_file": { "type": "string" },
+        "schema_file": { "type": "string" },
+        "required_for_autonomous_phases": { "type": "boolean" },
+        "requires_human_review_before_merge": { "type": "boolean" },
+        "requires_human_review_before_tag": { "type": "boolean" }
       },
       "additionalProperties": false
     }
