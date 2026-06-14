@@ -848,8 +848,10 @@ any calculation, formula, loop, boundary condition, or return value.
 
 - **ADR-016:** Promoted from Proposed to **Accepted**.
 - **Decision:** Authorized future RED planning phase only. No implementation.
-- **Council:** 7/7 unanimous approval.
+- **Council:** 9/9 unanimous approval.
 - **Risk matrix:** 15 risks, 7 Critical. All mitigated.
+- **Acceptance criteria:** 30 criteria PASS.
+- **Acceptance gates:** 35 gates PASS.
 - **HDL-012:** Recorded.
 - **Zero code changes.** Zero test changes. Zero script changes.
 - **No solver coupling.** No Poisson runtime. No physical phi. No AI-for-Science runtime.

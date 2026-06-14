@@ -770,8 +770,8 @@ PYTHONPATH=. pytest tests/test_units.py tests/test_scale_modes.py -v --tb=short
 - **Type:** ADR acceptance review.
 - **Branch:** `docs/v0.8.6-adr-016-acceptance-review`.
 - **ADR-016:** Promoted from Proposed to **Accepted**.
-- **Council:** 7/7 Accept.
-- **Acceptance criteria:** All gates satisfied.
+- **Council:** 9/9 Accept.
+- **Acceptance criteria:** 30 criteria PASS, 35 gates PASS.
 - **Decision:** Authorized future RED planning only. No implementation.
 - **Zero src/scripts/tests changes.**
 - **No Poisson runtime.**
