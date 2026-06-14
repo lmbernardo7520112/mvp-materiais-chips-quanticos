@@ -105,7 +105,7 @@
         "external_paid_api_allowed": { "type": "boolean" },
         "max_total_estimated_cost_brl": { "type": "number", "minimum": 0 },
         "max_llm_calls_per_goal": { "type": "integer", "minimum": 0 },
-        "max_autonomous_goal_loops": { "type": "integer", "minimum": 0 },
+        "max_autonomous_goal_loops": { "type": "integer", "minimum": 0, "maximum": 5 },
         "max_retry_cycles": { "type": "integer", "minimum": 0, "maximum": 5 },
         "max_ci_watch_minutes": { "type": "integer", "minimum": 1, "maximum": 60 },
         "requires_human_approval_to_increase_budget": { "type": "boolean" },

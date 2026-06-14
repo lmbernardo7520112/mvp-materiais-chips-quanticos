@@ -55,10 +55,10 @@ def validate_budget(state: dict, budget: dict) -> list[str]:
     if llm is None or not isinstance(llm, int) or llm < 0:
         errors.append("  budget.max_llm_calls_per_goal must exist and be integer >= 0.")
 
-    # max_autonomous_goal_loops must exist and be >= 0
+    # max_autonomous_goal_loops must exist and be between 0 and 5
     loops = sb.get("max_autonomous_goal_loops")
-    if loops is None or not isinstance(loops, int) or loops < 0:
-        errors.append("  budget.max_autonomous_goal_loops must exist and be integer >= 0.")
+    if loops is None or not isinstance(loops, int) or loops < 0 or loops > 5:
+        errors.append("  budget.max_autonomous_goal_loops must exist and be integer 0-5.")
 
     # max_retry_cycles must exist and be between 0 and 5
     retries = sb.get("max_retry_cycles")
