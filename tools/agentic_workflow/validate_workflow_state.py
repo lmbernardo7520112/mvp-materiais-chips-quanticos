@@ -211,6 +211,7 @@ def _validate_budget(data: dict, errors: list[str]) -> None:
         if b.get(flag) is not True:
             errors.append(f"  budget.{flag} must be true.")
 
+
 def _validate_usage_ledger(data: dict, errors: list[str]) -> None:
     """Validate usage ledger configuration."""
     if "usage_ledger" not in data:
@@ -233,6 +234,7 @@ def _validate_usage_ledger(data: dict, errors: list[str]) -> None:
     ):
         if ul.get(flag) is not True:
             errors.append(f"  usage_ledger.{flag} must be true.")
+
 
 def main() -> None:
     if len(sys.argv) != 2:

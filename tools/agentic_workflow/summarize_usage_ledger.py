@@ -75,7 +75,7 @@ def summarize_ledger(ledger_path, output_path=None):
         f"Total Artifacts Generated: {total_artifacts}",
         f"Human Approvals Granted: {approvals_granted}",
         f"Human Approvals Denied: {approvals_denied}",
-        "============================"
+        "============================",
     ]
 
     summary_text = "\n".join(lines)
@@ -90,6 +90,7 @@ def summarize_ledger(ledger_path, output_path=None):
             return False
 
     return True
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

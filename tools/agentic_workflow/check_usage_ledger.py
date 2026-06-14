@@ -3,18 +3,37 @@ import json
 import sys
 
 ALLOWED_EVENTS = {
-    "session_started", "phase_started", "command_executed", "validation_run",
-    "validation_failed", "validation_passed", "retry_used", "ci_watch_started",
-    "ci_watch_finished", "files_changed_reported", "artifacts_generated",
-    "budget_checked", "human_approval_required", "human_approval_granted",
-    "human_approval_denied", "session_finished"
+    "session_started",
+    "phase_started",
+    "command_executed",
+    "validation_run",
+    "validation_failed",
+    "validation_passed",
+    "retry_used",
+    "ci_watch_started",
+    "ci_watch_finished",
+    "files_changed_reported",
+    "artifacts_generated",
+    "budget_checked",
+    "human_approval_required",
+    "human_approval_granted",
+    "human_approval_denied",
+    "session_finished",
 }
 
 REQUIRED_FIELDS = {
-    "timestamp_utc", "session_id", "release_id", "phase", "event_type",
-    "actor", "paid_api_used", "external_sdk_used", "goal_mode_used",
-    "estimated_cost_brl"
+    "timestamp_utc",
+    "session_id",
+    "release_id",
+    "phase",
+    "event_type",
+    "actor",
+    "paid_api_used",
+    "external_sdk_used",
+    "goal_mode_used",
+    "estimated_cost_brl",
 }
+
 
 def check_ledger(ledger_path, budget_path):
     try:
@@ -32,7 +51,7 @@ def check_ledger(ledger_path, budget_path):
     max_cost = mb.get("max_total_estimated_cost_brl", 0.0)
     max_retries = lb.get("max_retry_cycles", 0)
     max_ci_watch = eb.get("max_ci_watch_minutes", 0)
-    max_artifacts = ab.get("max_artifacts_generated", 999) # Default high if missing
+    max_artifacts = ab.get("max_artifacts_generated", 999)  # Default high if missing
 
     total_cost = 0.0
     total_retries = 0
@@ -96,13 +115,9 @@ def check_ledger(ledger_path, budget_path):
     if total_retries > max_retries:
         errors.append(f"Total retries ({total_retries}) exceeds budget ({max_retries}).")
     if total_ci_watch > max_ci_watch:
-        errors.append(
-            f"CI watch mins ({total_ci_watch}) exceeds budget ({max_ci_watch})."
-        )
+        errors.append(f"CI watch mins ({total_ci_watch}) exceeds budget ({max_ci_watch}).")
     if total_artifacts > max_artifacts:
-        errors.append(
-            f"Artifacts ({total_artifacts}) exceeds budget ({max_artifacts})."
-        )
+        errors.append(f"Artifacts ({total_artifacts}) exceeds budget ({max_artifacts}).")
 
     if errors:
         print(f"FAIL — {len(errors)} ledger violation(s):")
@@ -112,6 +127,7 @@ def check_ledger(ledger_path, budget_path):
 
     print("PASS — Usage ledger is valid and within budget.")
     return True
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
