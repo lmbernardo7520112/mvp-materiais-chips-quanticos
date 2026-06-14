@@ -12,3 +12,7 @@
 | R8 | **AIFS Runtime Confusion** | AI-for-Science runtime confused with classical one-way coupling. | Medium | AIFS track remains parallel, documentation-only. No ML imports or dependencies in classical path. |
 | R9 | **C3 Guardrail Bypass** | Solver coupling bypasses C3 projection guardrails. | High | Future implementation must route through `project_c2_source_to_grid` only. Direct C2-to-Poisson coupling prohibited. |
 | R10 | **Artifact Contamination** | `generate_all_results` starts producing physical-looking artifacts from coupling. | Medium | Future integration must carry `demonstrative` flag in all CSV headers and figure titles. No physical units on axes. |
+| R11 | **BudgetOps Bypass** | BudgetOps bypassed during future implementation. | Critical | Implementation phases must invoke `check_budget_limits.py` to prevent unauthorized resource usage. |
+| R12 | **Ledger Omission** | Usage Ledger omitted during future implementation. | Critical | All implementation steps must append to and validate against `usage_ledger.example.jsonl`. |
+| R13 | **Goal Mode Unauthorized** | goal-like autonomous execution used without approval. | High | The `/goal` mode remains blocked and explicitly unapproved for this documentation-only phase. |
+| R14 | **External Resources Unauthorized** | external SDK or paid API used without approval. | High | Use of paid APIs or external SDKs is explicitly blocked and triggers validation failure. |

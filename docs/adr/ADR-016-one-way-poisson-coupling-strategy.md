@@ -85,7 +85,10 @@ ADR-016, while Proposed, does not authorize:
 * quantum confinement;
 * calibration claims;
 * device prediction;
-* AI-for-Science runtime.
+* AI-for-Science runtime;
+* paid API usage;
+* external SDK usage;
+* goal-like autonomous execution.
 
 Any future implementation requires:
 
@@ -93,4 +96,7 @@ Any future implementation requires:
 * RED phase;
 * GREEN phase;
 * explicit no-physical-phi guardrails;
-* full validation and CI.
+* BudgetOps validation;
+* Usage Ledger validation;
+* full validation and CI;
+* human approval before merge and tag.

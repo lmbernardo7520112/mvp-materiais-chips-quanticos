@@ -22,13 +22,18 @@ The following gates must be satisfied for v0.8.5 to be merged. These verify that
 | G14 | No calibration claims. | |
 | G15 | No device prediction. | |
 | G16 | No AIFS runtime. | |
-| G17 | Quality gates PASS. | |
-| G18 | pytest PASS. | |
-| G19 | Coverage >= 70%. | |
-| G20 | ruff PASS. | |
-| G21 | pyright 0 errors. | |
-| G22 | `generate_all_results` PASS. | |
-| G23 | CI PASS. | |
+| G17 | No paid API. | |
+| G18 | No external SDK. | |
+| G19 | No goal-like autonomous execution. | |
+| G20 | BudgetOps PASS. | |
+| G21 | Usage Ledger PASS. | |
+| G22 | Quality gates PASS. | |
+| G23 | pytest PASS. | |
+| G24 | Coverage >= 70%. | |
+| G25 | ruff PASS. | |
+| G26 | pyright 0 errors. | |
+| G27 | `generate_all_results` PASS. | |
+| G28 | CI PASS. | |
 
 ## Future ADR-016 Acceptance Gates
 

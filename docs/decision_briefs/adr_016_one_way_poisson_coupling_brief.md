@@ -41,4 +41,4 @@ v0.8.5 does not authorize:
 * Calibration claims or device prediction.
 * AI-for-Science runtime, PINN, or surrogate models.
 
-Any future implementation requires ADR-016 acceptance review, TDD RED/GREEN phases, explicit no-physical-phi guardrails, and full CI validation.
+Any future implementation requires ADR-016 acceptance review, TDD RED/GREEN phases, explicit no-physical-phi guardrails, BudgetOps validation, Usage Ledger validation, and full CI validation.

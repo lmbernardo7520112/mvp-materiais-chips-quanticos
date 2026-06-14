@@ -182,4 +182,6 @@ This log captures critical human decisions made during AI-assisted development o
   * no calibration claims
   * no device prediction
   * no AIFS runtime
+  * BudgetOps validation required for future implementation
+  * Usage Ledger validation required for future implementation
 * reversible: yes, through future ADR acceptance or rejection

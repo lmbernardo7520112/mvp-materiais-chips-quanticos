@@ -2052,7 +2052,7 @@ Three RED sentinel tests that previously expected ImportError were converted int
 
 - ADR-016 proposed: One-way Poisson Coupling Strategy.
 - Documentation-only phase.
-- Proposed one-way demonstrative coupling to connect C3 projection with the Poisson solver.
+- Proposed one-way demonstrative coupling to propose a future, one-way, non-physical-interpretation strategy for feeding a numerical source representation into a Poisson demonstration layer, only after ADR acceptance and future RED/GREEN phases.
 - Rejected self-consistent coupling and full drift-diffusion coupling.
 - No implementation, code changes, or testing authorized in this phase.
 - AI-for-Science track remains separate.
