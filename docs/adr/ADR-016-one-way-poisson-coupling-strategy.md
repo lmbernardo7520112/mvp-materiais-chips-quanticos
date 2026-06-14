@@ -2,7 +2,30 @@
 
 ## Status
 
-Proposed
+Accepted
+
+## Acceptance Note — v0.8.6
+
+ADR-016 is accepted only as a strategy for future RED planning.
+
+Acceptance does not authorize:
+
+* implementation;
+* Poisson runtime;
+* solver coupling execution;
+* physical phi interpretation;
+* dummy phi;
+* potential grid;
+* voltage output;
+* electrostatic_potential output;
+* calibration claims;
+* device prediction;
+* AI-for-Science runtime;
+* paid API;
+* external SDK;
+* goal-like autonomous execution.
+
+The only newly authorized next step is a future RED planning phase, with no implementation.
 
 ## Date
 

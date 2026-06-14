@@ -661,3 +661,10 @@ AIFS analytic benchmark design exists only as documentation. Future implementati
 * Sem Poisson runtime.
 * Sem physical phi.
 * Sem AI-for-Science runtime.
+
+### TD-POISSON-COUPLING-01: ADR-016 Accepted but Implementation Blocked
+- **Description:** ADR-016 (One-way Poisson coupling strategy) was accepted in v0.8.6. The acceptance only authorizes a future RED planning phase. Any implementation, Poisson runtime execution, or output of potential fields remains explicitly prohibited.
+- **Impact:** No physical coupling or potential output until the RED phase is approved.
+- **Status:** DEFERRED
+- **Pre-requisite:** Create RED planning phase for ADR-016.
+- **Versão-alvo:** Future RED planning release.
