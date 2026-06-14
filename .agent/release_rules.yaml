@@ -1,0 +1,192 @@
+# AI-RSE Release Rules
+# Defines policies for each release type.
+# The agentic workflow reads these rules to enforce scope boundaries.
+
+release_types:
+
+  docs_only:
+    description: "Documentation-only release. No code, no tests, no scripts."
+    allowed_paths:
+      - "docs/"
+      - ".agent/"
+    forbidden_paths:
+      - "src/"
+      - "tests/"
+      - "scripts/"
+      - "results/"
+      - "tools/quality_gates/policy.json"
+      - "pyproject.toml"
+    required_checks:
+      - quality_gates
+      - pytest
+      - coverage
+      - ruff_check
+      - ruff_format
+      - pyright
+      - generate_all_results
+      - git_diff_scope
+    human_approval_required:
+      - merge_pr
+      - create_tag
+    forbidden_runtime_claims:
+      - solver_coupling
+      - poisson_runtime
+      - physical_phi
+      - calibration_claim
+      - device_prediction
+      - aifs_runtime
+
+  red:
+    description: "RED phase — create failing tests only. No production code."
+    allowed_paths:
+      - "tests/"
+      - "docs/"
+    forbidden_paths:
+      - "src/"
+      - "scripts/"
+      - "results/"
+      - "tools/quality_gates/policy.json"
+      - "pyproject.toml"
+      - ".agent/skills/"
+    required_checks:
+      - quality_gates
+      - ruff_check
+      - ruff_format
+      - pyright
+      - git_diff_scope
+    human_approval_required:
+      - merge_pr
+      - create_tag
+      - accept_adr
+    forbidden_runtime_claims:
+      - solver_coupling
+      - poisson_runtime
+      - physical_phi
+      - calibration_claim
+      - device_prediction
+      - aifs_runtime
+
+  green:
+    description: "GREEN phase — implement minimal code to pass RED tests."
+    allowed_paths:
+      - "src/"
+      - "tests/"
+      - "docs/"
+      - "scripts/"
+    forbidden_paths:
+      - "tools/quality_gates/policy.json"
+      - "pyproject.toml"
+      - ".agent/skills/"
+    required_checks:
+      - quality_gates
+      - pytest
+      - coverage
+      - ruff_check
+      - ruff_format
+      - pyright
+      - generate_all_results
+      - git_diff_scope
+    human_approval_required:
+      - merge_pr
+      - create_tag
+      - accept_adr
+      - add_dependency
+      - change_pyproject
+    forbidden_runtime_claims:
+      - poisson_runtime
+      - physical_phi
+      - calibration_claim
+      - device_prediction
+      - aifs_runtime
+
+  demo:
+    description: "Demo/sanity check release — generate demonstrative results."
+    allowed_paths:
+      - "scripts/"
+      - "docs/"
+      - "results/"
+    forbidden_paths:
+      - "src/"
+      - "tests/"
+      - "tools/quality_gates/policy.json"
+      - "pyproject.toml"
+      - ".agent/skills/"
+    required_checks:
+      - quality_gates
+      - pytest
+      - coverage
+      - ruff_check
+      - ruff_format
+      - pyright
+      - generate_all_results
+      - git_diff_scope
+    human_approval_required:
+      - merge_pr
+      - create_tag
+    forbidden_runtime_claims:
+      - calibration_claim
+      - device_prediction
+
+  audit:
+    description: "Audit release — review existing code and documentation quality."
+    allowed_paths:
+      - "docs/"
+    forbidden_paths:
+      - "src/"
+      - "tests/"
+      - "scripts/"
+      - "results/"
+      - "tools/quality_gates/policy.json"
+      - "pyproject.toml"
+      - ".agent/skills/"
+    required_checks:
+      - quality_gates
+      - pytest
+      - coverage
+      - ruff_check
+      - ruff_format
+      - pyright
+      - generate_all_results
+    human_approval_required:
+      - merge_pr
+      - create_tag
+    forbidden_runtime_claims:
+      - solver_coupling
+      - poisson_runtime
+      - physical_phi
+      - calibration_claim
+      - device_prediction
+      - aifs_runtime
+
+  acceptance_review:
+    description: "ADR acceptance review — evaluate whether an ADR should be promoted."
+    allowed_paths:
+      - "docs/"
+    forbidden_paths:
+      - "src/"
+      - "tests/"
+      - "scripts/"
+      - "results/"
+      - "tools/quality_gates/policy.json"
+      - "pyproject.toml"
+      - ".agent/skills/"
+    required_checks:
+      - quality_gates
+      - pytest
+      - coverage
+      - ruff_check
+      - ruff_format
+      - pyright
+      - generate_all_results
+      - git_diff_scope
+    human_approval_required:
+      - merge_pr
+      - create_tag
+      - accept_adr
+    forbidden_runtime_claims:
+      - solver_coupling
+      - poisson_runtime
+      - physical_phi
+      - calibration_claim
+      - device_prediction
+      - aifs_runtime

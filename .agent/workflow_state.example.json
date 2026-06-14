@@ -1,0 +1,79 @@
+{
+  "current_release": "v0.8.2",
+  "current_phase": "RED",
+  "track": "classical",
+  "adr_id": "ADR-013",
+  "branch": "feat/v0.8.2-c3-red",
+  "allowed_paths": [
+    "src/mvp_quantum_materials/c3_grid_projection.py",
+    "tests/test_c3_grid_projection.py",
+    "docs/"
+  ],
+  "forbidden_paths": [
+    "tools/quality_gates/policy.json",
+    "pyproject.toml",
+    ".agent/skills/",
+    "results/"
+  ],
+  "forbidden_terms": [
+    "physical_phi",
+    "calibration_status.*calibrated",
+    "solver_coupling_enabled.*True",
+    "import torch",
+    "import tensorflow",
+    "import jax",
+    "import sklearn",
+    "from torch",
+    "from tensorflow",
+    "from jax",
+    "from sklearn"
+  ],
+  "required_skills": [
+    "ai-rse-gateops",
+    "tdd-red-green-release",
+    "scope-guardrails",
+    "physics-dimensional-audit",
+    "minimal-red-contract"
+  ],
+  "required_checks": [
+    "quality_gates",
+    "pytest",
+    "coverage",
+    "ruff_check",
+    "ruff_format",
+    "pyright",
+    "generate_all_results",
+    "git_diff_scope"
+  ],
+  "human_approval_required_for": [
+    "merge_pr",
+    "create_tag",
+    "accept_adr",
+    "change_pyproject",
+    "change_policy",
+    "add_dependency",
+    "enable_poisson_runtime",
+    "enable_physical_phi",
+    "enable_solver_coupling",
+    "enable_aifs_runtime"
+  ],
+  "next_allowed_actions": [
+    "create_branch",
+    "write_red_tests",
+    "run_local_validation",
+    "create_pr",
+    "request_human_review"
+  ],
+  "blocked_actions": [
+    "merge_pr",
+    "create_tag",
+    "accept_adr",
+    "implement_green",
+    "add_ml_dependency",
+    "enable_poisson_runtime",
+    "enable_physical_phi",
+    "enable_solver_coupling",
+    "enable_aifs_runtime",
+    "auto_approve"
+  ]
+}
