@@ -160,6 +160,21 @@ def main() -> None:
 
     errors = validate_budget(state, budget)
 
+    # -- check usage accounting
+    ua = budget.get("usage_accounting")
+    if not isinstance(ua, dict):
+        errors.append("usage_accounting must exist and be an object.")
+    else:
+        for flag in (
+            "usage_ledger_required",
+            "usage_summary_required",
+            "human_review_required_before_merge",
+            "human_review_required_before_tag",
+            "fail_if_ledger_missing",
+        ):
+            if ua.get(flag) is not True:
+                errors.append(f"  usage_accounting.{flag} must be true.")
+
     if errors:
         print(f"FAIL — {len(errors)} budget violation(s):")
         for err in errors:

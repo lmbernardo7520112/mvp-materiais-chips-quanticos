@@ -66,6 +66,8 @@ MANDATORY_HUMAN_GATES = frozenset(
         "use_paid_api",
         "use_external_sdk",
         "enable_goal_mode",
+        "approve_usage_ledger",
+        "approve_cost_report",
     }
 )
 
@@ -154,6 +156,9 @@ def validate(path: Path) -> list[str]:
     # ── budget section ──────────────────────────────────────────────
     _validate_budget(data, errors)
 
+    # ── usage ledger section ────────────────────────────────────────
+    _validate_usage_ledger(data, errors)
+
     return errors
 
 
@@ -205,6 +210,30 @@ def _validate_budget(data: dict, errors: list[str]) -> None:
     ):
         if b.get(flag) is not True:
             errors.append(f"  budget.{flag} must be true.")
+
+
+def _validate_usage_ledger(data: dict, errors: list[str]) -> None:
+    """Validate usage ledger configuration."""
+    if "usage_ledger" not in data:
+        errors.append("  Missing required field: usage_ledger")
+        return
+
+    ul = data["usage_ledger"]
+    if not isinstance(ul, dict):
+        errors.append("  Field 'usage_ledger' must be an object.")
+        return
+
+    for field in ("ledger_file", "schema_file"):
+        if not ul.get(field):
+            errors.append(f"  usage_ledger.{field} must be a non-empty string.")
+
+    for flag in (
+        "required_for_autonomous_phases",
+        "requires_human_review_before_merge",
+        "requires_human_review_before_tag",
+    ):
+        if ul.get(flag) is not True:
+            errors.append(f"  usage_ledger.{flag} must be true.")
 
 
 def main() -> None:

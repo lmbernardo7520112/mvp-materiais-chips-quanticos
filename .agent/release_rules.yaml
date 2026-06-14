@@ -22,6 +22,20 @@ budget_guardrails:
     - paid_api_without_budget
     - sdk_without_approval
 
+usage_ledger_guardrails:
+  required: true
+  required_for_autonomous_phases: true
+  require_human_review_before:
+    - merge_pr
+    - create_tag
+    - accept_adr
+    - increase_budget
+  blocked_if_missing:
+    - autonomous_phase
+    - goal_mode
+    - external_sdk
+    - paid_api
+
 release_types:
 
   docs_only:
@@ -61,6 +75,9 @@ release_types:
     allow_paid_api: false
     allow_external_sdk: false
     allow_goal_mode: false
+    usage_ledger_required: true
+    usage_summary_required: true
+    human_review_of_usage_required: true
 
   red:
     description: "RED phase — create failing tests only. No production code."
@@ -97,6 +114,9 @@ release_types:
     allow_paid_api: false
     allow_external_sdk: false
     allow_goal_mode: false
+    usage_ledger_required: true
+    usage_summary_required: true
+    human_review_of_usage_required: true
 
   green:
     description: "GREEN phase — implement minimal code to pass RED tests."
@@ -136,6 +156,9 @@ release_types:
     allow_paid_api: false
     allow_external_sdk: false
     allow_goal_mode: false
+    usage_ledger_required: true
+    usage_summary_required: true
+    human_review_of_usage_required: true
 
   demo:
     description: "Demo/sanity check release — generate demonstrative results."
@@ -170,6 +193,9 @@ release_types:
     allow_paid_api: false
     allow_external_sdk: false
     allow_goal_mode: false
+    usage_ledger_required: true
+    usage_summary_required: true
+    human_review_of_usage_required: true
 
   audit:
     description: "Audit release — review existing code and documentation quality."
@@ -207,6 +233,9 @@ release_types:
     allow_paid_api: false
     allow_external_sdk: false
     allow_goal_mode: false
+    usage_ledger_required: true
+    usage_summary_required: true
+    human_review_of_usage_required: true
 
   acceptance_review:
     description: "ADR acceptance review — evaluate whether an ADR should be promoted."
@@ -246,3 +275,6 @@ release_types:
     allow_paid_api: false
     allow_external_sdk: false
     allow_goal_mode: false
+    usage_ledger_required: true
+    usage_summary_required: true
+    human_review_of_usage_required: true

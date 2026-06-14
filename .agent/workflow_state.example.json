@@ -44,7 +44,9 @@
     "pyright",
     "generate_all_results",
     "git_diff_scope",
-    "budget_limits"
+    "budget_limits",
+    "check_usage_ledger",
+    "summarize_usage_ledger"
   ],
   "human_approval_required_for": [
     "merge_pr",
@@ -63,7 +65,9 @@
     "enable_goal_mode",
     "increase_llm_call_limit",
     "increase_retry_limit",
-    "increase_ci_watch_limit"
+    "increase_ci_watch_limit",
+    "approve_usage_ledger",
+    "approve_cost_report"
   ],
   "next_allowed_actions": [
     "create_branch",
@@ -102,5 +106,13 @@
     "requires_human_approval_to_increase_budget": true,
     "requires_human_approval_for_sdk_use": true,
     "requires_human_approval_for_goal_mode": true
+  },
+  "usage_ledger": {
+    "enabled": true,
+    "ledger_file": ".agent/usage_ledger.example.jsonl",
+    "schema_file": ".agent/usage_ledger.schema.json",
+    "required_for_autonomous_phases": true,
+    "requires_human_review_before_merge": true,
+    "requires_human_review_before_tag": true
   }
 }
