@@ -95,3 +95,21 @@ State transitions follow the TDD cycle:
 - The state file is versioned in git and auditable.
 - If the state file is missing, the agent must operate in maximum-restriction mode (equivalent to PLANNING with all paths forbidden except docs/).
 - The agent must never modify the state file to grant itself additional permissions.
+
+## BudgetOps and Cost Safety
+
+Autonomy is not authorization for unlimited resource consumption.
+
+1. **No paid API by default.** The budget configuration (`budget_limits.example.json`) sets `external_paid_api_allowed: false`. Any use of paid APIs (LLM endpoints, cloud services, external SDKs) requires explicit human approval.
+
+2. **No unbounded loops.** The `/goal` command, SDK subagent invocation, and autonomous retry loops are all governed by finite limits (`max_autonomous_goal_loops`, `max_retry_cycles`). Default values are zero or conservatively low.
+
+3. **Budget increase requires human approval.** The agent cannot self-grant additional budget. Any increase to token limits, cost limits, retry limits, or CI watch time requires `increase_budget` human approval.
+
+4. **CI watch is finite.** The agent may monitor CI for at most `max_ci_watch_minutes` (default: 15). After timeout, the agent must stop and report status.
+
+5. **Artifact generation is bounded.** The agent cannot generate unlimited files or artifacts. `max_new_files`, `max_artifact_size_mb`, and `max_total_generated_artifacts_mb` enforce storage discipline.
+
+6. **Stop conditions are mandatory.** The budget limits file defines explicit stop conditions (e.g., `estimated_cost_exceeds_budget`, `retry_limit_exceeded`). The agent must halt when any stop condition is triggered.
+
+7. **The human remains responsible for financial decisions.** The agent operates within a pre-approved budget envelope. Any request to expand that envelope returns control to the human.

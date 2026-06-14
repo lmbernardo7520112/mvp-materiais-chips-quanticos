@@ -62,6 +62,10 @@ MANDATORY_HUMAN_GATES = frozenset(
         "enable_physical_phi",
         "enable_solver_coupling",
         "enable_aifs_runtime",
+        "increase_budget",
+        "use_paid_api",
+        "use_external_sdk",
+        "enable_goal_mode",
     }
 )
 
@@ -147,7 +151,60 @@ def validate(path: Path) -> list[str]:
             f"  current_release '{data['current_release']}' does not match pattern vX.Y.Z"
         )
 
+    # ── budget section ──────────────────────────────────────────────
+    _validate_budget(data, errors)
+
     return errors
+
+
+def _validate_budget(data: dict, errors: list[str]) -> None:
+    """Validate the budget section of the workflow state."""
+    if "budget" not in data:
+        errors.append("  Missing required field: budget")
+        return
+
+    b = data["budget"]
+    if not isinstance(b, dict):
+        errors.append("  Field 'budget' must be an object.")
+        return
+
+    # external_paid_api_allowed must be false
+    if b.get("external_paid_api_allowed") is not False:
+        errors.append("  budget.external_paid_api_allowed must be false by default.")
+
+    # max_total_estimated_cost_brl
+    cost = b.get("max_total_estimated_cost_brl")
+    if cost is None or not isinstance(cost, (int, float)) or cost < 0:
+        errors.append("  budget.max_total_estimated_cost_brl must be number >= 0.")
+
+    # max_llm_calls_per_goal
+    llm = b.get("max_llm_calls_per_goal")
+    if llm is None or not isinstance(llm, int) or llm < 0:
+        errors.append("  budget.max_llm_calls_per_goal must be integer >= 0.")
+
+    # max_autonomous_goal_loops
+    loops = b.get("max_autonomous_goal_loops")
+    if loops is None or not isinstance(loops, int) or loops < 0:
+        errors.append("  budget.max_autonomous_goal_loops must be integer >= 0.")
+
+    # max_retry_cycles (0-5)
+    retries = b.get("max_retry_cycles")
+    if retries is None or not isinstance(retries, int) or retries < 0 or retries > 5:
+        errors.append("  budget.max_retry_cycles must be integer 0-5.")
+
+    # max_ci_watch_minutes (1-60)
+    ci = b.get("max_ci_watch_minutes")
+    if ci is None or not isinstance(ci, int) or ci < 1 or ci > 60:
+        errors.append("  budget.max_ci_watch_minutes must be integer 1-60.")
+
+    # Human approval flags must be true
+    for flag in (
+        "requires_human_approval_to_increase_budget",
+        "requires_human_approval_for_sdk_use",
+        "requires_human_approval_for_goal_mode",
+    ):
+        if b.get(flag) is not True:
+            errors.append(f"  budget.{flag} must be true.")
 
 
 def main() -> None:

@@ -43,7 +43,8 @@
     "ruff_format",
     "pyright",
     "generate_all_results",
-    "git_diff_scope"
+    "git_diff_scope",
+    "budget_limits"
   ],
   "human_approval_required_for": [
     "merge_pr",
@@ -55,7 +56,14 @@
     "enable_poisson_runtime",
     "enable_physical_phi",
     "enable_solver_coupling",
-    "enable_aifs_runtime"
+    "enable_aifs_runtime",
+    "increase_budget",
+    "use_paid_api",
+    "use_external_sdk",
+    "enable_goal_mode",
+    "increase_llm_call_limit",
+    "increase_retry_limit",
+    "increase_ci_watch_limit"
   ],
   "next_allowed_actions": [
     "create_branch",
@@ -74,6 +82,25 @@
     "enable_physical_phi",
     "enable_solver_coupling",
     "enable_aifs_runtime",
-    "auto_approve"
-  ]
+    "auto_approve",
+    "unlimited_goal_loop",
+    "paid_api_without_budget",
+    "sdk_without_approval",
+    "autonomous_budget_increase",
+    "unbounded_retry",
+    "unbounded_ci_watch"
+  ],
+  "budget": {
+    "budget_limits_file": ".agent/budget_limits.example.json",
+    "budget_mode": "strict",
+    "external_paid_api_allowed": false,
+    "max_total_estimated_cost_brl": 0.0,
+    "max_llm_calls_per_goal": 0,
+    "max_autonomous_goal_loops": 0,
+    "max_retry_cycles": 2,
+    "max_ci_watch_minutes": 15,
+    "requires_human_approval_to_increase_budget": true,
+    "requires_human_approval_for_sdk_use": true,
+    "requires_human_approval_for_goal_mode": true
+  }
 }

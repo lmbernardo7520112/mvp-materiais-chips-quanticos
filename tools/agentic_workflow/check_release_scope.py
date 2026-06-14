@@ -125,6 +125,50 @@ def check_hardcoded_guards(changed_files: list[str]) -> list[str]:
     return violations
 
 
+def check_budget_guardrails(state: dict) -> list[str]:
+    """Verify that budget guardrails are present and conservative."""
+    violations: list[str] = []
+
+    # Budget section must exist
+    if "budget" not in state:
+        violations.append("  BUDGET GUARD: state file missing 'budget' section.")
+        return violations
+
+    b = state["budget"]
+
+    # Paid API must be blocked by default
+    if b.get("external_paid_api_allowed") is not False:
+        violations.append("  BUDGET GUARD: external_paid_api_allowed must be false by default.")
+
+    # Goal mode must require human approval
+    if b.get("requires_human_approval_for_goal_mode") is not True:
+        violations.append("  BUDGET GUARD: requires_human_approval_for_goal_mode must be true.")
+
+    # SDK must require human approval
+    if b.get("requires_human_approval_for_sdk_use") is not True:
+        violations.append("  BUDGET GUARD: requires_human_approval_for_sdk_use must be true.")
+
+    # Budget increase must require human approval
+    if b.get("requires_human_approval_to_increase_budget") is not True:
+        violations.append(
+            "  BUDGET GUARD: requires_human_approval_to_increase_budget must be true."
+        )
+
+    # human_approval_required_for must include budget gates
+    required_budget_gates = {
+        "increase_budget",
+        "use_paid_api",
+        "use_external_sdk",
+        "enable_goal_mode",
+    }
+    declared = set(state.get("human_approval_required_for", []))
+    missing = required_budget_gates - declared
+    if missing:
+        violations.append(f"  BUDGET GUARD: human_approval_required_for missing: {sorted(missing)}")
+
+    return violations
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Check release scope against workflow state.")
     parser.add_argument(
@@ -167,6 +211,9 @@ def main() -> None:
     forbidden_terms = state.get("forbidden_terms", [])
     if forbidden_terms:
         all_violations.extend(check_forbidden_terms(args.base, forbidden_terms))
+
+    # 4. Budget guardrails.
+    all_violations.extend(check_budget_guardrails(state))
 
     # ── report ──────────────────────────────────────────────────────
     if all_violations:

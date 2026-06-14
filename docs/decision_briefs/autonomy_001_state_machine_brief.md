@@ -26,11 +26,11 @@ The audit of AI-RSE skill utilization (2026-06-14) concluded that the 12 agent s
 
 ## Risks
 
-See `docs/governance/autonomy_risk_matrix.md` for the full 10-risk matrix.
+See `docs/governance/autonomy_risk_matrix.md` for the full 16-risk matrix.
 
 ## Acceptance Criteria
 
-See `docs/governance/autonomy_acceptance_gates.md` for 37 gates.
+See `docs/governance/autonomy_acceptance_gates.md` for 47 gates.
 
 ## Constraints
 
@@ -38,3 +38,7 @@ See `docs/governance/autonomy_acceptance_gates.md` for 37 gates.
 - No dependency changes.
 - Human approval required for all irreversible actions.
 - Skills remain authoritative; state machine is operational only.
+
+## Budget Decision
+
+Autonomy-001 authorizes no paid API usage and no external SDK usage. Any future paid or token-consuming automation requires explicit budget approval. The default monetary budget is zero BRL. The `/goal` command and subagent SDK are blocked by default and require `enable_goal_mode` human approval.

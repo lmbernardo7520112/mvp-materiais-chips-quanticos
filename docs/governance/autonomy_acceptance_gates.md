@@ -37,7 +37,7 @@ Defines the minimum criteria for accepting the Autonomy-001 release.
 | G27 | No auto-merge capability. | Yes | |
 | G28 | No auto-tag capability. | Yes | |
 | G29 | No ADR auto-acceptance capability. | Yes | |
-| G30 | Risk matrix exists with 10 risks documented. | Yes | |
+| G30 | Risk matrix exists with 16 risks documented. | Yes | |
 | G31 | Governance document exists. | Yes | |
 | G32 | Quality gates PASS (6/6). | Yes | |
 | G33 | pytest PASS (281+ passed). | Yes | |
@@ -45,3 +45,13 @@ Defines the minimum criteria for accepting the Autonomy-001 release.
 | G35 | ruff PASS. | Yes | |
 | G36 | pyright PASS (0 errors). | Yes | |
 | G37 | `generate_all_results` PASS. | Yes | |
+| G38 | Budget config exists (`.agent/budget_limits.example.json`). | Yes | |
+| G39 | Budget schema exists in workflow state schema. | Yes | |
+| G40 | Budget validator exists (`check_budget_limits.py`). | Yes | |
+| G41 | Paid API disabled by default. | Yes | |
+| G42 | External SDK disabled by default. | Yes | |
+| G43 | Goal mode disabled by default. | Yes | |
+| G44 | Budget increase requires human approval. | Yes | |
+| G45 | Retry limit finite (0-5). | Yes | |
+| G46 | CI watch limit finite (1-60 minutes). | Yes | |
+| G47 | Artifact budget finite. | Yes | |
