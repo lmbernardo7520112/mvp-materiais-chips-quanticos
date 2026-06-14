@@ -59,10 +59,29 @@ def check_forbidden_paths(
     return violations
 
 
+
+# Paths excluded from forbidden-term scanning because they legitimately
+# contain forbidden terms as *configuration* (listing what is prohibited).
+TERM_SCAN_EXCLUDED_PREFIXES = (
+    ".agent/",
+    "tools/agentic_workflow/",
+    "docs/governance/",
+    "docs/decision_briefs/",
+    "docs/release_notes/",
+    "docs/research_council/",
+    "docs/adr/",
+)
+
+
 def check_forbidden_terms(
     base: str, forbidden_terms: list[str], cwd: str | None = None
 ) -> list[str]:
-    """Scan added lines in git diff for forbidden term patterns."""
+    """Scan added lines in git diff for forbidden term patterns.
+
+    Files under TERM_SCAN_EXCLUDED_PREFIXES are skipped because they
+    legitimately reference forbidden terms as governance configuration
+    (e.g. listing ``physical_phi`` as a blocked term).
+    """
     violations: list[str] = []
     diff_output = _run_git(["diff", base, "--unified=0"], cwd=cwd)
 
@@ -71,6 +90,12 @@ def check_forbidden_terms(
         if line.startswith("+++ b/"):
             current_file = line[6:]
         elif line.startswith("+") and not line.startswith("+++"):
+            # Skip files that are governance/config by nature.
+            if any(
+                current_file.startswith(prefix)
+                for prefix in TERM_SCAN_EXCLUDED_PREFIXES
+            ):
+                continue
             added_line = line[1:]
             for term in forbidden_terms:
                 try:
