@@ -185,3 +185,15 @@ This log captures critical human decisions made during AI-assisted development o
   * BudgetOps validation required for future implementation
   * Usage Ledger validation required for future implementation
 * reversible: yes, through future ADR acceptance or rejection
+
+## HDL-012 — Accept ADR-016 for future RED planning only.
+
+- **Date:** 2026-06-14
+- **Release:** v0.8.6
+- **Human Decision:** Accept ADR-016 purely for strategy and to authorize future RED planning phase.
+- **Rationale:** The council unanimously recommended acceptance with strict non-physical, demonstrative boundary conditions. Risk profile is thoroughly mitigated.
+- **Alternatives Rejected:** Keep Proposed; Reject; Authorize implementation directly.
+- **Evidence:** `docs/decision_briefs/v0.8.6_adr016_acceptance_review.md` and `docs/research_council/v0.8.6_adr016_acceptance_council.md`.
+- **Files Affected:** `docs/adr/ADR-016-one-way-poisson-coupling-strategy.md` status updated.
+- **Future Consequence:** Future RED phase is allowed, but no implementation, Poisson runtime, or dummy phi output is authorized yet. BudgetOps and Usage Ledger are mandatory.
+- **Reversible:** Yes — RED plans can be rejected.
