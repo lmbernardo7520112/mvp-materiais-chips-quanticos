@@ -2037,3 +2037,24 @@ Three RED sentinel tests that previously expected ImportError were converted int
 - No implementation, code changes, or testing authorized in this phase.
 - AI-for-Science track remains separate.
 - Classical track maintains isolation from predictive physical claims.
+
+## v0.8.7 — One-way Poisson Coupling RED Planning Only
+
+> **Date:** 2026-06-14
+> **Status:** DOCUMENTATION-ONLY / RED PLANNING
+
+- **Type:** RED planning documentation.
+- **Branch:** `docs/v0.8.7-red-planning-only-one-way-poisson-coupling`.
+- **Autonomy mode:** Assisted only. No `/goal`. No autonomous loops.
+- **External cost:** R$ 0.00.
+- **10 future RED categories** defined (import contract, adapter, metadata guards, naming, BCs, conservation, solver block, generate_all_results, BudgetOps/Ledger).
+- **15 risks** identified with mitigations and gate mappings.
+- **35 acceptance gates** defined.
+- **HDL-013:** Recorded.
+- **Zero src/tests/scripts/results changes.**
+- **No RED tests created.**
+- **No implementation.**
+- **No Poisson runtime.**
+- **No physical phi.**
+- **No solver coupling.**
+- **No paid API.** No external SDK. No goal-like autonomous execution.
