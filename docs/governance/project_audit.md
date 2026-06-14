@@ -840,3 +840,16 @@ any calculation, formula, loop, boundary condition, or return value.
 * No self-consistent loops allowed.
 * Preserves C3 isolation.
 * Classical Track advances without AI/ML.
+
+## v0.8.6 ADR-016 Acceptance Review
+
+> **Date:** 2026-06-14
+> **Type:** Documentation-only.
+
+- **ADR-016:** Promoted from Proposed to **Accepted**.
+- **Decision:** Authorized future RED planning phase only. No implementation.
+- **Council:** 7/7 unanimous approval.
+- **Risk matrix:** 15 risks, 7 Critical. All mitigated.
+- **HDL-012:** Recorded.
+- **Zero code changes.** Zero test changes. Zero script changes.
+- **No solver coupling.** No Poisson runtime. No physical phi. No AI-for-Science runtime.
