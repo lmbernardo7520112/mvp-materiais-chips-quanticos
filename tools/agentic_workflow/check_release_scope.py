@@ -46,9 +46,7 @@ def _load_state(path: Path) -> dict:
         sys.exit(2)
 
 
-def check_forbidden_paths(
-    changed_files: list[str], forbidden: list[str]
-) -> list[str]:
+def check_forbidden_paths(changed_files: list[str], forbidden: list[str]) -> list[str]:
     """Return list of violation messages for forbidden path modifications."""
     violations: list[str] = []
     for f in changed_files:
@@ -57,7 +55,6 @@ def check_forbidden_paths(
             if f == fp or f.startswith(fp.rstrip("/") + "/"):
                 violations.append(f"  FORBIDDEN PATH modified: {f} (rule: {fp})")
     return violations
-
 
 
 # Paths excluded from forbidden-term scanning because they legitimately
@@ -91,10 +88,7 @@ def check_forbidden_terms(
             current_file = line[6:]
         elif line.startswith("+") and not line.startswith("+++"):
             # Skip files that are governance/config by nature.
-            if any(
-                current_file.startswith(prefix)
-                for prefix in TERM_SCAN_EXCLUDED_PREFIXES
-            ):
+            if any(current_file.startswith(prefix) for prefix in TERM_SCAN_EXCLUDED_PREFIXES):
                 continue
             added_line = line[1:]
             for term in forbidden_terms:
@@ -132,9 +126,7 @@ def check_hardcoded_guards(changed_files: list[str]) -> list[str]:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(
-        description="Check release scope against workflow state."
-    )
+    parser = argparse.ArgumentParser(description="Check release scope against workflow state.")
     parser.add_argument(
         "--base",
         required=True,
@@ -174,9 +166,7 @@ def main() -> None:
     # 3. Forbidden terms in added lines.
     forbidden_terms = state.get("forbidden_terms", [])
     if forbidden_terms:
-        all_violations.extend(
-            check_forbidden_terms(args.base, forbidden_terms)
-        )
+        all_violations.extend(check_forbidden_terms(args.base, forbidden_terms))
 
     # ── report ──────────────────────────────────────────────────────
     if all_violations:

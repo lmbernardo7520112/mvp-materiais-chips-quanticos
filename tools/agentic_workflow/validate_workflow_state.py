@@ -66,15 +66,11 @@ MANDATORY_HUMAN_GATES = frozenset(
 )
 
 
-def _check_list_items_are_strings(
-    data: dict, field: str, errors: list[str]
-) -> None:
+def _check_list_items_are_strings(data: dict, field: str, errors: list[str]) -> None:
     """Ensure every item in *field* is a string."""
     for i, item in enumerate(data[field]):
         if not isinstance(item, str):
-            errors.append(
-                f"  {field}[{i}] must be a string, got {type(item).__name__}"
-            )
+            errors.append(f"  {field}[{i}] must be a string, got {type(item).__name__}")
 
 
 def validate(path: Path) -> list[str]:
@@ -120,8 +116,7 @@ def validate(path: Path) -> list[str]:
 
     if data["track"] not in VALID_TRACKS:
         errors.append(
-            f"  track '{data['track']}' is not valid. "
-            f"Must be one of: {sorted(VALID_TRACKS)}"
+            f"  track '{data['track']}' is not valid. Must be one of: {sorted(VALID_TRACKS)}"
         )
 
     # ── list-item type checks ───────────────────────────────────────
@@ -134,8 +129,7 @@ def validate(path: Path) -> list[str]:
     missing_gates = MANDATORY_HUMAN_GATES - declared_gates
     if missing_gates:
         errors.append(
-            f"  human_approval_required_for is missing mandatory gates: "
-            f"{sorted(missing_gates)}"
+            f"  human_approval_required_for is missing mandatory gates: {sorted(missing_gates)}"
         )
 
     # ── blocked_actions must not overlap with next_allowed_actions ──
@@ -143,18 +137,14 @@ def validate(path: Path) -> list[str]:
     blocked_set = set(data["blocked_actions"])
     overlap = allowed_set & blocked_set
     if overlap:
-        errors.append(
-            f"  next_allowed_actions and blocked_actions overlap: "
-            f"{sorted(overlap)}"
-        )
+        errors.append(f"  next_allowed_actions and blocked_actions overlap: {sorted(overlap)}")
 
     # ── release version pattern ─────────────────────────────────────
     import re
 
     if not re.match(r"^v\d+\.\d+\.\d+$", data["current_release"]):
         errors.append(
-            f"  current_release '{data['current_release']}' does not match "
-            f"pattern vX.Y.Z"
+            f"  current_release '{data['current_release']}' does not match pattern vX.Y.Z"
         )
 
     return errors
