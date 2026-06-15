@@ -320,3 +320,18 @@ This log captures critical human decisions made during AI-assisted development o
 * no /goal;
 * external estimated cost: R$ 0.00;
 * future benchmark requires new ADR.
+
+## HDL-019 — Authorize v0.9.1 ADR-017 manufactured Poisson benchmark strategy
+* decision: authorize documentation-only ADR;
+* no code;
+* no tests;
+* no solver runtime;
+* no physical phi;
+* no calibration;
+* no device prediction;
+* no coherence prediction;
+* no API paga;
+* no SDK;
+* no /goal;
+* external estimated cost: R$ 0.00;
+* future RED requires ADR-017 acceptance.

@@ -702,3 +702,5 @@ AIFS analytic benchmark design exists only as documentation. Future implementati
 - **Supersedes:** TD-v0.8.9-policy (pending) → now ratified.
 
 - v0.9.0: future benchmark path proposed (manufactured solution first). External solver benchmark deferred.
+
+- v0.9.1: ADR-017 Proposed; manufactured benchmark strategy selected for future planning; no implementation; no physical validation yet.
