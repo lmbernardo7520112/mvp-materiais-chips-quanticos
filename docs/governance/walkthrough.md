@@ -2117,3 +2117,5 @@ Three RED sentinel tests that previously expected ImportError were converted int
 - Merge/tag require human approval.
 
 - v0.9.0: scientific audit completed. Adapter scientifically honest only as metadata. Future benchmark path proposed. No implementation. No physical validation yet.
+
+- v0.9.1: ADR-017 Proposed; manufactured benchmark strategy selected for future planning; no implementation; no physical validation yet.

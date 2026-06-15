@@ -916,3 +916,5 @@ any calculation, formula, loop, boundary condition, or return value.
 - Module is metadata-only. No solver runtime.
 
 - v0.9.0: scientific audit; adapter scientifically honest only as metadata; future benchmark path proposed; no implementation; no physical validation yet.
+
+- v0.9.1: ADR-017 Proposed; manufactured benchmark strategy selected for future planning; no implementation; no physical validation yet.
