@@ -219,3 +219,90 @@ This log captures critical human decisions made during AI-assisted development o
 - **Files Affected:** Documentation only in `docs/`.
 - **Future Consequence:** Future v0.8.8 RED tests require new human approval.
 - **Reversible:** Yes — PR can be closed without merge.
+
+## HDL-014 — Authorize v0.8.8 RED-only tests for one-way Poisson coupling
+
+- **Date:** 2026-06-15
+- **Release:** v0.8.8
+- **Human Decision:** Authorize RED tests only for one-way Poisson coupling.
+- **Rationale:** v0.8.7 planned 10 RED categories. v0.8.8 creates 20 concrete tests.
+- **Constraints:**
+  * No implementation.
+  * No GREEN.
+  * No Poisson runtime.
+  * No physical phi.
+  * No SDK.
+  * No paid API.
+  * No `/goal`.
+  * No goal-like autonomous execution.
+  * No merge (PR only).
+  * No tag.
+  * External estimated cost: R$ 0.00.
+- **Alternatives Rejected:** Implement GREEN directly; defer RED further.
+- **Evidence:** `docs/governance/v0.8.8_red_plan.md`, `tests/test_one_way_poisson_coupling_red.py`.
+- **Files Affected:** `tests/test_one_way_poisson_coupling_red.py`, docs in `docs/`.
+- **Future Consequence:** Future v0.8.9 GREEN requires new human approval after external audit.
+- **Reversible:** Yes — PR can be closed; tests can be removed.
+
+## HDL-015 — Ratify v0.8.8 policy exception for RED file
+
+- **Date:** 2026-06-15
+- **Release:** v0.8.8
+- **Human Decision:** Ratify minimal policy exception.
+- **File authorized:** `test_one_way_poisson_coupling_red.py`.
+- **Policy field:** `authorized_files` only.
+- **Reason:** Allow conditionally-forbidden term "Poisson" in ADR-016 RED test file.
+- **Evidence:** `docs/governance/v0.8.8_policy_exception_ratification.md`, `docs/decision_briefs/v0.8.8_red_policy_exception_review.md`.
+- **Constraints:**
+  * No implementation authorized.
+  * No GREEN authorized.
+  * No Poisson runtime authorized.
+  * No physical phi authorized.
+  * No paid API.
+  * No SDK.
+  * No `/goal`.
+  * External estimated cost: R$ 0.00.
+- **Reversible:** Yes — file can be removed from `authorized_files` if RED is reverted.
+
+## HDL-016 — Authorize v0.8.9 GREEN minimum for one-way Poisson coupling
+
+- **Date:** 2026-06-15
+- **Release:** v0.8.9
+- **Human Decision:** Authorize GREEN minimum.
+- **Scope:** Metadata-only adapter contract.
+- **Constraints:**
+  * No Poisson runtime.
+  * No solver execution.
+  * No physical phi.
+  * No calibration.
+  * No device prediction.
+  * No paid API.
+  * No SDK.
+  * No `/goal`.
+  * External estimated cost: R$ 0.00.
+  * Merge/tag require future human approval.
+- **Policy Extension:** `one_way_poisson_coupling.py` added to `authorized_files` (same pattern as `poisson_solver_2d.py`). Requires human ratification.
+- **Evidence:** `src/mvp_quantum_materials/one_way_poisson_coupling.py`, `docs/governance/v0.8.9_green_plan.md`.
+- **Files Affected:** 1 src file, docs in `docs/`, `policy.json` authorized_files.
+- **Reversible:** Yes — module can be removed; tests will revert to RED.
+
+## HDL-017 — Ratify v0.8.9 policy extension for GREEN module
+
+- **Date:** 2026-06-15
+- **Release:** v0.8.9
+- **Human Decision:** Ratify minimal policy extension.
+- **File authorized:** `one_way_poisson_coupling.py`.
+- **Policy field:** `authorized_files` only.
+- **Reason:** Allow conditionally forbidden term "Poisson" in ADR-016 GREEN module.
+- **Evidence:** `docs/governance/v0.8.9_policy_extension_ratification.md`, `docs/decision_briefs/v0.8.9_green_policy_extension_review.md`.
+- **Constraints:**
+  * No solver runtime authorized.
+  * No `solve_poisson` authorized.
+  * No physical phi authorized.
+  * No calibration authorized.
+  * No device prediction authorized.
+  * No paid API.
+  * No SDK.
+  * No `/goal`.
+  * External estimated cost: R$ 0.00.
+- **Reversible:** Yes — module can be removed from `authorized_files`; tests will revert to RED.

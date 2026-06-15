@@ -870,3 +870,47 @@ any calculation, formula, loop, boundary condition, or return value.
 - **HDL-013:** Recorded.
 - **Zero code changes.** Zero test changes. Zero script changes.
 - **No RED tests created.** No implementation. No Poisson runtime. No physical phi.
+
+## v0.8.8 One-way Poisson Coupling RED Only
+
+> **Date:** 2026-06-15
+> **Type:** RED-only tests.
+
+- **20 RED tests** across 10 categories.
+- **Target module absent** by design.
+- **No implementation.** No Poisson runtime. No physical phi. No solver coupling.
+- **No paid API.** No external SDK. No goal-like autonomous execution.
+- **Autonomy mode:** Assisted only.
+- **External cost:** R$ 0.00.
+- **HDL-014:** Recorded.
+- **Zero src changes.** Zero scripts changes.
+
+### v0.8.8 Policy Exception Ratification
+
+> **Date:** 2026-06-15
+
+- Minimal `policy.json` change: add RED test file to `authorized_files`.
+- No forbidden terms removed. No gates weakened.
+- Exception ratified. HDL-015 recorded.
+- Target module remains absent. Focal RED correctly fails.
+
+## v0.8.9 One-way Poisson Coupling GREEN Minimum
+
+> **Date:** 2026-06-15
+
+- **GREEN minimum** implemented.
+- **Module:** `one_way_poisson_coupling.py` — metadata-only adapter.
+- **20/20 tests PASS.** Full suite 333 PASS.
+- **No Poisson runtime.** No physical phi. No solver coupling.
+- **No paid API.** No external SDK. No goal-like execution.
+- **HDL-016:** Recorded.
+- **External cost:** R$ 0.00.
+
+### v0.8.9 Policy Extension Ratification
+
+> **Date:** 2026-06-15
+
+- Policy extension for GREEN module ratified.
+- `authorized_files` only. No gates/terms altered.
+- HDL-017 recorded.
+- Module is metadata-only. No solver runtime.

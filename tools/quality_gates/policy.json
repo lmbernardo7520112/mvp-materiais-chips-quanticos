@@ -138,7 +138,9 @@
         "c2_charge_mapping.py",
         "test_c2_charge_mapping.py",
         "run_c2_charge_mapping_demo.py",
-        "test_c2_charge_mapping_demo.py"
+        "test_c2_charge_mapping_demo.py",
+        "test_one_way_poisson_coupling_red.py",
+        "one_way_poisson_coupling.py"
       ],
       "allowed_exceptions": {
         "diffusion_solver.py": ["type_only_overload"]

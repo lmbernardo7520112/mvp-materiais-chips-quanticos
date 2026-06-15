@@ -2058,3 +2058,60 @@ Three RED sentinel tests that previously expected ImportError were converted int
 - **No physical phi.**
 - **No solver coupling.**
 - **No paid API.** No external SDK. No goal-like autonomous execution.
+
+## v0.8.8 — One-way Poisson Coupling RED Only
+
+> **Date:** 2026-06-15
+> **Status:** RED-ONLY
+
+- **Type:** RED tests for future one-way Poisson coupling.
+- **Branch:** `test/v0.8.8-red-one-way-poisson-coupling`.
+- **Target module:** `src/mvp_quantum_materials/one_way_poisson_coupling.py` (ABSENT).
+- **Test file:** `tests/test_one_way_poisson_coupling_red.py`.
+- **20 RED tests** across 10 categories.
+- **Expected:** Focal RED fails (ModuleNotFoundError/ImportError); static guards may pass.
+- **Zero src changes.** No implementation. No Poisson runtime. No physical phi.
+- **No paid API.** No external SDK. No goal-like autonomous execution.
+- **HDL-014:** Recorded.
+- **Autonomy mode:** Assisted only.
+- **External cost:** R$ 0.00.
+
+### v0.8.8 Policy Exception Ratification
+
+> **Date:** 2026-06-15
+
+- Policy change audited: only `authorized_files` modified.
+- One file added: `test_one_way_poisson_coupling_red.py`.
+- No gates weakened. No terms removed. No runtime introduced.
+- Exception ratified via HDL-015.
+- PR #57 remains OPEN. No merge. No tag.
+- Future GREEN requires new human approval.
+
+## v0.8.9 — One-way Poisson Coupling GREEN Minimum
+
+> **Date:** 2026-06-15
+> **Status:** GREEN MINIMUM
+
+- **Type:** GREEN minimum after validated RED (v0.8.8).
+- **Module:** `src/mvp_quantum_materials/one_way_poisson_coupling.py`.
+- **Implementation:** Metadata-only adapter with safety validators.
+- **20/20 tests PASS.** Full suite: 333 passed.
+- **Coverage:** 88.01%.
+- **No Poisson runtime.** No solver execution. No physical phi.
+- **No paid API.** No external SDK. No goal-like autonomous execution.
+- **HDL-016:** Recorded.
+- **Policy:** `one_way_poisson_coupling.py` added to `authorized_files`.
+- **PR #57 remains OPEN.** No merge. No tag.
+- **Merge/tag require human approval.**
+
+### v0.8.9 Policy Extension Ratification
+
+> **Date:** 2026-06-15
+
+- Policy extension reviewed and ratified.
+- `one_way_poisson_coupling.py` added to `authorized_files`.
+- Module remains metadata-only. No runtime.
+- No gates weakened. No terms removed.
+- HDL-017 recorded.
+- PR #57 remains OPEN. No merge. No tag.
+- Merge/tag require human approval.
