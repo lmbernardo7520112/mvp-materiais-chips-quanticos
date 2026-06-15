@@ -2086,3 +2086,20 @@ Three RED sentinel tests that previously expected ImportError were converted int
 - Exception ratified via HDL-015.
 - PR #57 remains OPEN. No merge. No tag.
 - Future GREEN requires new human approval.
+
+## v0.8.9 — One-way Poisson Coupling GREEN Minimum
+
+> **Date:** 2026-06-15
+> **Status:** GREEN MINIMUM
+
+- **Type:** GREEN minimum after validated RED (v0.8.8).
+- **Module:** `src/mvp_quantum_materials/one_way_poisson_coupling.py`.
+- **Implementation:** Metadata-only adapter with safety validators.
+- **20/20 tests PASS.** Full suite: 333 passed.
+- **Coverage:** 88.01%.
+- **No Poisson runtime.** No solver execution. No physical phi.
+- **No paid API.** No external SDK. No goal-like autonomous execution.
+- **HDL-016:** Recorded.
+- **Policy:** `one_way_poisson_coupling.py` added to `authorized_files`.
+- **PR #57 remains OPEN.** No merge. No tag.
+- **Merge/tag require human approval.**

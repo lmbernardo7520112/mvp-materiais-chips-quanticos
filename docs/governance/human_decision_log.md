@@ -263,3 +263,25 @@ This log captures critical human decisions made during AI-assisted development o
   * No `/goal`.
   * External estimated cost: R$ 0.00.
 - **Reversible:** Yes — file can be removed from `authorized_files` if RED is reverted.
+
+## HDL-016 — Authorize v0.8.9 GREEN minimum for one-way Poisson coupling
+
+- **Date:** 2026-06-15
+- **Release:** v0.8.9
+- **Human Decision:** Authorize GREEN minimum.
+- **Scope:** Metadata-only adapter contract.
+- **Constraints:**
+  * No Poisson runtime.
+  * No solver execution.
+  * No physical phi.
+  * No calibration.
+  * No device prediction.
+  * No paid API.
+  * No SDK.
+  * No `/goal`.
+  * External estimated cost: R$ 0.00.
+  * Merge/tag require future human approval.
+- **Policy Extension:** `one_way_poisson_coupling.py` added to `authorized_files` (same pattern as `poisson_solver_2d.py`). Requires human ratification.
+- **Evidence:** `src/mvp_quantum_materials/one_way_poisson_coupling.py`, `docs/governance/v0.8.9_green_plan.md`.
+- **Files Affected:** 1 src file, docs in `docs/`, `policy.json` authorized_files.
+- **Reversible:** Yes — module can be removed; tests will revert to RED.

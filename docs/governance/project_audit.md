@@ -893,3 +893,15 @@ any calculation, formula, loop, boundary condition, or return value.
 - No forbidden terms removed. No gates weakened.
 - Exception ratified. HDL-015 recorded.
 - Target module remains absent. Focal RED correctly fails.
+
+## v0.8.9 One-way Poisson Coupling GREEN Minimum
+
+> **Date:** 2026-06-15
+
+- **GREEN minimum** implemented.
+- **Module:** `one_way_poisson_coupling.py` — metadata-only adapter.
+- **20/20 tests PASS.** Full suite 333 PASS.
+- **No Poisson runtime.** No physical phi. No solver coupling.
+- **No paid API.** No external SDK. No goal-like execution.
+- **HDL-016:** Recorded.
+- **External cost:** R$ 0.00.

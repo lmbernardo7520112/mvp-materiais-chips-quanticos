@@ -688,3 +688,9 @@ AIFS analytic benchmark design exists only as documentation. Future implementati
 - **Impact:** Minimal. Only affects scope guardrail for this specific test file.
 - **Status:** RATIFIED
 - **Review trigger:** Must be revisited before GREEN if file is renamed or production runtime is introduced.
+
+### TD-v0.8.9: Policy exception extended for GREEN module
+- **Description:** `one_way_poisson_coupling.py` added to `authorized_files` alongside the RED test file.
+- **Impact:** Same pattern as existing `poisson_solver_2d.py`. Minimal.
+- **Status:** PENDING HUMAN RATIFICATION
+- **Review trigger:** Before any future extension of the module beyond metadata-only adapter.
