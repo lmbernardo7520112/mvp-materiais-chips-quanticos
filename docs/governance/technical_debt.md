@@ -682,3 +682,9 @@ AIFS analytic benchmark design exists only as documentation. Future implementati
 - **Status:** EXPECTED RED
 - **Pre-requisite:** Human approval (HDL entry) for v0.8.9 GREEN after external audit.
 - **Versão-alvo:** v0.8.9 or later.
+
+### TD-v0.8.8-policy: Policy exception for RED file
+- **Description:** `test_one_way_poisson_coupling_red.py` added to `authorized_files` in `policy.json` to allow "Poisson" term in RED tests.
+- **Impact:** Minimal. Only affects scope guardrail for this specific test file.
+- **Status:** RATIFIED
+- **Review trigger:** Must be revisited before GREEN if file is renamed or production runtime is introduced.

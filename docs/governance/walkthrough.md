@@ -2075,3 +2075,14 @@ Three RED sentinel tests that previously expected ImportError were converted int
 - **HDL-014:** Recorded.
 - **Autonomy mode:** Assisted only.
 - **External cost:** R$ 0.00.
+
+### v0.8.8 Policy Exception Ratification
+
+> **Date:** 2026-06-15
+
+- Policy change audited: only `authorized_files` modified.
+- One file added: `test_one_way_poisson_coupling_red.py`.
+- No gates weakened. No terms removed. No runtime introduced.
+- Exception ratified via HDL-015.
+- PR #57 remains OPEN. No merge. No tag.
+- Future GREEN requires new human approval.

@@ -884,3 +884,12 @@ any calculation, formula, loop, boundary condition, or return value.
 - **External cost:** R$ 0.00.
 - **HDL-014:** Recorded.
 - **Zero src changes.** Zero scripts changes.
+
+### v0.8.8 Policy Exception Ratification
+
+> **Date:** 2026-06-15
+
+- Minimal `policy.json` change: add RED test file to `authorized_files`.
+- No forbidden terms removed. No gates weakened.
+- Exception ratified. HDL-015 recorded.
+- Target module remains absent. Focal RED correctly fails.

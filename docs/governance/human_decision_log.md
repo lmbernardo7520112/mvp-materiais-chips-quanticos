@@ -243,3 +243,23 @@ This log captures critical human decisions made during AI-assisted development o
 - **Files Affected:** `tests/test_one_way_poisson_coupling_red.py`, docs in `docs/`.
 - **Future Consequence:** Future v0.8.9 GREEN requires new human approval after external audit.
 - **Reversible:** Yes — PR can be closed; tests can be removed.
+
+## HDL-015 — Ratify v0.8.8 policy exception for RED file
+
+- **Date:** 2026-06-15
+- **Release:** v0.8.8
+- **Human Decision:** Ratify minimal policy exception.
+- **File authorized:** `test_one_way_poisson_coupling_red.py`.
+- **Policy field:** `authorized_files` only.
+- **Reason:** Allow conditionally-forbidden term "Poisson" in ADR-016 RED test file.
+- **Evidence:** `docs/governance/v0.8.8_policy_exception_ratification.md`, `docs/decision_briefs/v0.8.8_red_policy_exception_review.md`.
+- **Constraints:**
+  * No implementation authorized.
+  * No GREEN authorized.
+  * No Poisson runtime authorized.
+  * No physical phi authorized.
+  * No paid API.
+  * No SDK.
+  * No `/goal`.
+  * External estimated cost: R$ 0.00.
+- **Reversible:** Yes — file can be removed from `authorized_files` if RED is reverted.
