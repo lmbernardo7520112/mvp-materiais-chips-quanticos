@@ -700,3 +700,5 @@ AIFS analytic benchmark design exists only as documentation. Future implementati
 - **Status:** RATIFIED
 - **Impact:** Minimal — same pattern as existing authorized modules.
 - **Supersedes:** TD-v0.8.9-policy (pending) → now ratified.
+
+- v0.9.0: future benchmark path proposed (manufactured solution first). External solver benchmark deferred.

@@ -2115,3 +2115,5 @@ Three RED sentinel tests that previously expected ImportError were converted int
 - HDL-017 recorded.
 - PR #57 remains OPEN. No merge. No tag.
 - Merge/tag require human approval.
+
+- v0.9.0: scientific audit completed. Adapter scientifically honest only as metadata. Future benchmark path proposed. No implementation. No physical validation yet.
