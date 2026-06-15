@@ -914,3 +914,5 @@ any calculation, formula, loop, boundary condition, or return value.
 - `authorized_files` only. No gates/terms altered.
 - HDL-017 recorded.
 - Module is metadata-only. No solver runtime.
+
+- v0.9.0: scientific audit; adapter scientifically honest only as metadata; future benchmark path proposed; no implementation; no physical validation yet.

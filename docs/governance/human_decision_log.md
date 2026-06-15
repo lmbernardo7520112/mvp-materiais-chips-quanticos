@@ -306,3 +306,17 @@ This log captures critical human decisions made during AI-assisted development o
   * No `/goal`.
   * External estimated cost: R$ 0.00.
 - **Reversible:** Yes — module can be removed from `authorized_files`; tests will revert to RED.
+
+## HDL-018 — Authorize v0.9.0 scientific audit and benchmark readiness review
+* decision: authorize documentation-only scientific audit;
+* no code;
+* no tests;
+* no solver runtime;
+* no physical phi;
+* no calibration;
+* no device prediction;
+* no API paga;
+* no SDK;
+* no /goal;
+* external estimated cost: R$ 0.00;
+* future benchmark requires new ADR.
