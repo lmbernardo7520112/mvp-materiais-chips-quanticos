@@ -870,3 +870,17 @@ any calculation, formula, loop, boundary condition, or return value.
 - **HDL-013:** Recorded.
 - **Zero code changes.** Zero test changes. Zero script changes.
 - **No RED tests created.** No implementation. No Poisson runtime. No physical phi.
+
+## v0.8.8 One-way Poisson Coupling RED Only
+
+> **Date:** 2026-06-15
+> **Type:** RED-only tests.
+
+- **20 RED tests** across 10 categories.
+- **Target module absent** by design.
+- **No implementation.** No Poisson runtime. No physical phi. No solver coupling.
+- **No paid API.** No external SDK. No goal-like autonomous execution.
+- **Autonomy mode:** Assisted only.
+- **External cost:** R$ 0.00.
+- **HDL-014:** Recorded.
+- **Zero src changes.** Zero scripts changes.

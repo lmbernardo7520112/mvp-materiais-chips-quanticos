@@ -2058,3 +2058,20 @@ Three RED sentinel tests that previously expected ImportError were converted int
 - **No physical phi.**
 - **No solver coupling.**
 - **No paid API.** No external SDK. No goal-like autonomous execution.
+
+## v0.8.8 — One-way Poisson Coupling RED Only
+
+> **Date:** 2026-06-15
+> **Status:** RED-ONLY
+
+- **Type:** RED tests for future one-way Poisson coupling.
+- **Branch:** `test/v0.8.8-red-one-way-poisson-coupling`.
+- **Target module:** `src/mvp_quantum_materials/one_way_poisson_coupling.py` (ABSENT).
+- **Test file:** `tests/test_one_way_poisson_coupling_red.py`.
+- **20 RED tests** across 10 categories.
+- **Expected:** Focal RED fails (ModuleNotFoundError/ImportError); static guards may pass.
+- **Zero src changes.** No implementation. No Poisson runtime. No physical phi.
+- **No paid API.** No external SDK. No goal-like autonomous execution.
+- **HDL-014:** Recorded.
+- **Autonomy mode:** Assisted only.
+- **External cost:** R$ 0.00.

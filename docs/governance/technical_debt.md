@@ -675,3 +675,10 @@ AIFS analytic benchmark design exists only as documentation. Future implementati
 - **Status:** DEFERRED
 - **Pre-requisite:** Human approval (HDL entry) for v0.8.8 RED.
 - **Versão-alvo:** v0.8.8 or later.
+
+### TD-v0.8.8: RED tests fail — GREEN implementation pending
+- **Description:** v0.8.8 created 20 RED tests for the one-way Poisson coupling module. The target module does not exist. Tests fail by design.
+- **Impact:** CI will report failures on the RED test file. Existing suite (excluding RED) passes.
+- **Status:** EXPECTED RED
+- **Pre-requisite:** Human approval (HDL entry) for v0.8.9 GREEN after external audit.
+- **Versão-alvo:** v0.8.9 or later.

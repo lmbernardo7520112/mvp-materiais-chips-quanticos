@@ -219,3 +219,27 @@ This log captures critical human decisions made during AI-assisted development o
 - **Files Affected:** Documentation only in `docs/`.
 - **Future Consequence:** Future v0.8.8 RED tests require new human approval.
 - **Reversible:** Yes — PR can be closed without merge.
+
+## HDL-014 — Authorize v0.8.8 RED-only tests for one-way Poisson coupling
+
+- **Date:** 2026-06-15
+- **Release:** v0.8.8
+- **Human Decision:** Authorize RED tests only for one-way Poisson coupling.
+- **Rationale:** v0.8.7 planned 10 RED categories. v0.8.8 creates 20 concrete tests.
+- **Constraints:**
+  * No implementation.
+  * No GREEN.
+  * No Poisson runtime.
+  * No physical phi.
+  * No SDK.
+  * No paid API.
+  * No `/goal`.
+  * No goal-like autonomous execution.
+  * No merge (PR only).
+  * No tag.
+  * External estimated cost: R$ 0.00.
+- **Alternatives Rejected:** Implement GREEN directly; defer RED further.
+- **Evidence:** `docs/governance/v0.8.8_red_plan.md`, `tests/test_one_way_poisson_coupling_red.py`.
+- **Files Affected:** `tests/test_one_way_poisson_coupling_red.py`, docs in `docs/`.
+- **Future Consequence:** Future v0.8.9 GREEN requires new human approval after external audit.
+- **Reversible:** Yes — PR can be closed; tests can be removed.
