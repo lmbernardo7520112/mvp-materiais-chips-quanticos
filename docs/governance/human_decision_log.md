@@ -285,3 +285,24 @@ This log captures critical human decisions made during AI-assisted development o
 - **Evidence:** `src/mvp_quantum_materials/one_way_poisson_coupling.py`, `docs/governance/v0.8.9_green_plan.md`.
 - **Files Affected:** 1 src file, docs in `docs/`, `policy.json` authorized_files.
 - **Reversible:** Yes — module can be removed; tests will revert to RED.
+
+## HDL-017 — Ratify v0.8.9 policy extension for GREEN module
+
+- **Date:** 2026-06-15
+- **Release:** v0.8.9
+- **Human Decision:** Ratify minimal policy extension.
+- **File authorized:** `one_way_poisson_coupling.py`.
+- **Policy field:** `authorized_files` only.
+- **Reason:** Allow conditionally forbidden term "Poisson" in ADR-016 GREEN module.
+- **Evidence:** `docs/governance/v0.8.9_policy_extension_ratification.md`, `docs/decision_briefs/v0.8.9_green_policy_extension_review.md`.
+- **Constraints:**
+  * No solver runtime authorized.
+  * No `solve_poisson` authorized.
+  * No physical phi authorized.
+  * No calibration authorized.
+  * No device prediction authorized.
+  * No paid API.
+  * No SDK.
+  * No `/goal`.
+  * External estimated cost: R$ 0.00.
+- **Reversible:** Yes — module can be removed from `authorized_files`; tests will revert to RED.

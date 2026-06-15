@@ -905,3 +905,12 @@ any calculation, formula, loop, boundary condition, or return value.
 - **No paid API.** No external SDK. No goal-like execution.
 - **HDL-016:** Recorded.
 - **External cost:** R$ 0.00.
+
+### v0.8.9 Policy Extension Ratification
+
+> **Date:** 2026-06-15
+
+- Policy extension for GREEN module ratified.
+- `authorized_files` only. No gates/terms altered.
+- HDL-017 recorded.
+- Module is metadata-only. No solver runtime.

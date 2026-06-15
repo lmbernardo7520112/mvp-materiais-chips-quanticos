@@ -2103,3 +2103,15 @@ Three RED sentinel tests that previously expected ImportError were converted int
 - **Policy:** `one_way_poisson_coupling.py` added to `authorized_files`.
 - **PR #57 remains OPEN.** No merge. No tag.
 - **Merge/tag require human approval.**
+
+### v0.8.9 Policy Extension Ratification
+
+> **Date:** 2026-06-15
+
+- Policy extension reviewed and ratified.
+- `one_way_poisson_coupling.py` added to `authorized_files`.
+- Module remains metadata-only. No runtime.
+- No gates weakened. No terms removed.
+- HDL-017 recorded.
+- PR #57 remains OPEN. No merge. No tag.
+- Merge/tag require human approval.

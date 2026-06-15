@@ -694,3 +694,9 @@ AIFS analytic benchmark design exists only as documentation. Future implementati
 - **Impact:** Same pattern as existing `poisson_solver_2d.py`. Minimal.
 - **Status:** PENDING HUMAN RATIFICATION
 - **Review trigger:** Before any future extension of the module beyond metadata-only adapter.
+
+### TD-v0.8.9-policy-ratified: Policy extension ratification complete
+- **Description:** `one_way_poisson_coupling.py` policy extension formally ratified via HDL-017.
+- **Status:** RATIFIED
+- **Impact:** Minimal — same pattern as existing authorized modules.
+- **Supersedes:** TD-v0.8.9-policy (pending) → now ratified.
